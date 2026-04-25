@@ -30,7 +30,7 @@ class ServiceController extends Controller
 
                 $input_search = $request['input_search'];
 
-                $query = Service::where('status', 1);
+                $query = Service::query();
 
                 if (!empty($input_search)) {
                     $query->where('name', 'LIKE', "%{$input_search}%");
@@ -38,7 +38,7 @@ class ServiceController extends Controller
 
                 $data = $query->latest()->get();
 
-                $this->common->imageNameToUrl($data, 'banner_img', $this->folder);
+                $data = $this->common->imageNameToUrl($data, 'banner_img', $this->folder);
 
                 return DataTables()::of($data)
                     ->addIndexColumn()
@@ -124,7 +124,9 @@ class ServiceController extends Controller
         try {
             $params['data'] = Service::where('id', $id)->first();
 
-            $this->common->imageNameToUrl(array($params['data']), 'banner_img', $this->folder);
+            $temp = array($params['data']);
+            $temp = $this->common->imageNameToUrl($temp, 'banner_img', $this->folder);
+            $params['data'] = $temp[0];
 
             if ($params['data'] != null) {
                 return view('admin.service.edit', $params);
@@ -142,7 +144,7 @@ class ServiceController extends Controller
                 'title' => 'required|min:2',
                 'short_title' => 'required',
                 'description' => 'required',
-                'banner_img' => 'image|mimes:jpeg,jpg,png,webp|max:5048',
+                'banner_img' => 'image|mimes:jpeg,jpg,png,webp',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();

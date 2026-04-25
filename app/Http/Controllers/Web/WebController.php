@@ -8,7 +8,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Exception;
 
-class HomeController extends Controller
+class WebController extends Controller
 {
     private $folder = "service";
     public $common;
@@ -22,7 +22,7 @@ class HomeController extends Controller
         try {
             $params['services'] = Service::get();
             $this->common->imageNameToUrl($params['services'], 'banner_img', $this->folder);
-            return view('web.home.index', $params);
+            return view('web.welcome', $params);
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }

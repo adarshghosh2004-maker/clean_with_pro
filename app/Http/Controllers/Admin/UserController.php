@@ -150,7 +150,9 @@ class UserController extends Controller
 
             if ($params['data'] != null) {
 
-                $this->common->imageNameToUrl(array($params['data']), 'image', $this->folder);
+                $temp = array($params['data']);
+                $temp = $this->common->imageNameToUrl($temp, 'image', $this->folder);
+                $params['data'] = $temp[0];
 
                 return view('admin.user.edit', $params);
             } else {

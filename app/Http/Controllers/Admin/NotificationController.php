@@ -32,7 +32,9 @@ class NotificationController extends Controller
                     $data = Notification::where('type', 1)->latest()->get();
                 }
 
-                $this->common->imageNameToUrl($data, 'image', $this->folder);
+             foreach ($data as $notification) {
+                    $notification['image'] = $this->common->getImage($this->folder, $notification['image']);
+                }
 
                 return DataTables()::of($data)
                     ->addIndexColumn()

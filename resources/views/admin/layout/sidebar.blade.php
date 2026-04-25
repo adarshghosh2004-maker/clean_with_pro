@@ -92,6 +92,12 @@
                 <span>{{__('label.feedback')}}</span>
             </a>
         </li>
+                <li class="side_line {{ request()->routeIs('admin.page*') ? 'active' : '' }}">
+            <a href="{{ route('admin.pages.index') }}">
+                <i class="fa-regular fa-comment fa-2xl menu-icon"></i>
+                <span>{{__('label.pages')}}</span>
+            </a>
+        </li>
         <p class="partition"><span>{{__('label.account')}}</span></p>
         <li>
             <a href="{{ route('admin.logout') }}"

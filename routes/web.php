@@ -17,6 +17,7 @@ use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\WebController;
 
 // Artisan
 Route::get('clearcache', function () {
@@ -45,7 +46,44 @@ Route::get('/lang/{locale}', function ($locale) {
 })->name('change.language');
 
 
-Route::group(['prefix' => 'web', 'as' => 'web.'], function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/about', [AboutController::class, 'index'])->name('about');
-});
+Route::get('/', function () {
+    return view('web.welcome');
+})->name('home');
+
+Route::get('/', [WebController::class, 'index'])->name('home');
+
+Route::get('/about', function () {
+    return view('web.aboutus');
+})->name('about');
+
+Route::get('/gallery', function () {
+    return view('web.gallery');
+})->name('gallery');
+
+Route::get('/specials', function () {
+    return view('web.specials');
+})->name('specials');
+
+Route::get('/care', function () {
+    return view('web.cleancare');
+})->name('care');
+
+Route::get('/contact', function () {
+    return view('web.contactus');
+})->name('contact');
+
+Route::get('/services', function () {
+    return view('web.services');
+})->name('services');
+
+Route::get('/pricing', function () {
+    return view('web.pricing');
+})->name('pricing');
+
+Route::get('/feedback1', function () {
+    return view('web.feedback1');
+})->name('feedback1');
+
+Route::get('/feedback2', function () {
+    return view('web.feedback2');
+})->name('feedback2');

@@ -24,7 +24,7 @@ class QuestionController extends Controller
         try {
 
             $params['data'] = Question::latest()->get();
-            $params['services']=Service::get();
+            $params['services'] = Service::get();
             if ($request->ajax()) {
 
                 $query = Question::query();
@@ -34,9 +34,10 @@ class QuestionController extends Controller
                 }
                 $data = $query->latest()->get();
 
-                foreach($data as $question){
-                    $question['img_1']=$this->common->getImage($this->folder,$question['img_1']);
-                }
+                $data = $this->common->imageNameToUrl($data, 'img_1', $this->folder);
+                $data = $this->common->imageNameToUrl($data, 'img_2', $this->folder);
+                $data = $this->common->imageNameToUrl($data, 'img_3', $this->folder);
+
                 return DataTables()::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function ($row) {
@@ -111,9 +112,11 @@ class QuestionController extends Controller
             $params['data'] = Question::where('id', $id)->first();
             $params['services'] = Service::get();
 
-            $this->common->imageNameToUrl(array($params['data']), 'img_1', $this->folder);
-            $this->common->imageNameToUrl(array($params['data']), 'img_2', $this->folder);
-            $this->common->imageNameToUrl(array($params['data']), 'img_3', $this->folder);
+            $temp = array($params['data']);
+            $temp = $this->common->imageNameToUrl($temp, 'img_1', $this->folder);
+            $temp = $this->common->imageNameToUrl($temp, 'img_2', $this->folder);
+            $temp = $this->common->imageNameToUrl($temp, 'img_3', $this->folder);
+            $params['data'] = $temp[0];
 
             if ($params['data'] != null) {
                 return view('admin.question.edit', $params);
@@ -130,9 +133,9 @@ class QuestionController extends Controller
             $validator = Validator::make($request->all(), [
                 'service_id' => 'required',
                 'description' => 'required|min:2',
-                'img_1' => 'required|image|mimes:jpeg,png,jpg,webp',
-                'img_2' => 'required|image|mimes:jpeg,png,jpg,webp',
-                'img_3' => 'required|image|mimes:jpeg,png,jpg,webp',
+                'img_1' => 'image|mimes:jpeg,png,jpg,webp',
+                'img_2' => 'image|mimes:jpeg,png,jpg,webp',
+                'img_3' => 'image|mimes:jpeg,png,jpg,webp',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -175,7 +178,7 @@ class QuestionController extends Controller
                 $this->common->deleteImageToFolder($this->folder, $data['img_3']);
                 $data->delete();
             }
-            return redirect()->route('admin.language.index')->with('success', __('label.language_delete'));
+            return redirect()->route('admin.question.index')->with('success', __('label.language_delete'));
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }

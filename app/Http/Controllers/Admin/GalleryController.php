@@ -38,7 +38,8 @@ class GalleryController extends Controller
 
                 $data = $query->latest()->get();
 
-                $this->common->imageNameToUrl($data, 'banner_img', $this->folder);
+                 $this->common->imageNameToUrl($data, 'before_img', $this->folder);
+                 $this->common->imageNameToUrl($data, 'after_img', $this->folder);
 
                 return DataTables()::of($data)
                     ->addIndexColumn()
@@ -130,8 +131,10 @@ class GalleryController extends Controller
             $params['data'] = Gallery::where('id', $id)->first();
             $params['services'] = Service::where('status', 1)->get();
 
-            $this->common->imageNameToUrl(array($params['data']), 'before_img', $this->folder);
-            $this->common->imageNameToUrl(array($params['data']), 'after_img', $this->folder);
+            $temp = array($params['data']);
+            $temp = $this->common->imageNameToUrl($temp, 'before_img', $this->folder);
+            $temp = $this->common->imageNameToUrl($temp, 'after_img', $this->folder);
+            $params['data'] = $temp[0];
 
             if ($params['data'] != null) {
                 return view('admin.gallery.edit', $params);
@@ -147,8 +150,8 @@ class GalleryController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'service_id' => 'required',
-                'before_img' => 'required|image|mimes:jpeg,jpg,png,webp|max:5048',
-                'after_img' => 'required|image|mimes:jpeg,jpg,png,webp|max:5048',
+                'before_img' => 'image|mimes:jpeg,jpg,png,webp',
+                'after_img' => 'image|mimes:jpeg,jpg,png,webp',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -170,7 +173,7 @@ class GalleryController extends Controller
                 $this->common->deleteImageToFolder($this->folder, basename($requestData['old_after_img']));
             }
 
-            unset($requestData['old_before_img'],$requestData['old_after_img']);
+            unset($requestData['old_before_img'], $requestData['old_after_img']);
 
             $gallery_data = Gallery::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($gallery_data->id)) {

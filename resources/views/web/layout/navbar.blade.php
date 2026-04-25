@@ -1,61 +1,84 @@
-<header class="site-header">
-    <div class="top-bannner">
-        <div class="container-fluid top-banner-inner">
-            <div class="top-banner-note">
-                <span class="top-banner-pill">Same Day Service</span>
-                <span>Trusted upholstery, sofa, carpet and mattress cleaning for homes and offices.</span>
-            </div>
-            <a href="tel:675676576576765" class="top-banner-call">24/7 Emergency Line: 675676576576765</a>
+<!-- Header / Navigation -->
+<header class="header-main sticky-top shadow-sm">
+    <!-- Section 1: Top Announcement Bar -->
+    <div
+        class="bg-primary-container text-white py-2 px-4 px-md-5 d-flex justify-content-between align-items-center small font-weight-medium">
+        <div class="d-flex align-items-center gap-3">
+            <span class="badge-announcement bg-secondary px-3 py-1 rounded-pill text-uppercase fw-bold">SAME DAY
+                SERVICE</span>
+            <span class="d-none d-sm-inline opacity-75">Expert fabric care across Melbourne metropolitan areas.</span>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <span class="material-symbols-outlined fs-6">call</span>
+            <a class="text-white text-decoration-none fw-bold" href="tel:1800CLEANCARE">1800-CLEAN-CARE</a>
         </div>
     </div>
-    <div class="container-fluid nav-container" id="site-navbar">
-        <div class="nav-shell">
-            <a href="/" class="brand-wrap">
-                <span class="logo">
-                    <img src="{{ asset('assets/imgs/no_img.png') }}" alt="Company logo">
-                </span>
-                <span class="brand-copy">
-                    <strong>CleanCare</strong>
-                    <small>Premium fabric and upholstery specialists</small>
-                </span>
+
+    <!-- Section 2: Main Navbar -->
+    <nav class="navbar navbar-expand-lg py-3" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="<?php echo route('home'); ?>">
+                <img src="<?php echo asset('assets/imgs/CWPss.PNG'); ?>" alt="Clean With Professionals Logo"
+                    class="navbar-logo me-3">
+                <span class="m-0 fs-4 fw-bold text-primary-blue headline">Clean With Professionals</span>
             </a>
 
-            <nav class="d-none d-lg-block" aria-label="Primary">
-                <ul class="nav-links">
-                    <li><a href="{{route('web.home')}}">Home</a></li>
-                    <li><a href="{{route('web.about')}}">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#hero-enquiry">Book Now</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo request()->routeIs('home') ? 'active' : ''; ?>"
+                            href="<?php echo route('home'); ?>">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo request()->routeIs('about') ? 'active' : ''; ?>"
+                            href="<?php echo route('about'); ?>">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo request()->routeIs('specials') ? 'active' : ''; ?>"
+                            href="<?php echo route('specials'); ?>">Specials</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle <?php echo request()->routeIs('services') ? 'active' : ''; ?>"
+                            href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item fw-bold text-primary mb-2"
+                                    href="<?php echo route('services'); ?>">All Services</a></li>
+                            <li>
+                                <hr class="dropdown-divider opacity-10">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Commercial Cleaning</a></li>
+                            <li><a class="dropdown-item" href="#">Residential Cleaning</a></li>
+                            <li><a class="dropdown-item" href="#">Deep Sanitization</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo request()->routeIs('pricing') ? 'active' : ''; ?>"
+                            href="<?php echo route('pricing'); ?>">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo request()->routeIs('gallery') ? 'active' : ''; ?>"
+                            href="<?php echo route('gallery'); ?>">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo request()->routeIs('contact') ? 'active' : ''; ?>"
+                            href="<?php echo route('contact'); ?>">Contact Us</a>
+                    </li>
                 </ul>
-            </nav>
-
-            <div class="nav-actions">
-                <a href="#hero-enquiry" class="quote-btn d-none d-md-inline-flex">Get A Quote</a>
-                <button
-                    class="mobile-nav-toggle d-inline-flex d-lg-none"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#mobileNav"
-                    aria-controls="mobileNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-
-            <div class="collapse nav-mobile-panel d-lg-none" id="mobileNav">
-                <div class="nav-mobile-inner">
-                    <a href="/">Home</a>
-                    <a href="#about">About Us</a>
-                    <a href="#services">Services</a>
-                    <a href="#hero-enquiry">Book Now</a>
-                    <a href="#contact">Contact Us</a>
-                    <a href="tel:675676576576765" class="quote-btn mobile-quote-btn">Call Now</a>
+                <div class="d-flex align-items-center mt-3 mt-lg-0">
+                    <a href="<?php echo route('contact'); ?>"
+                        class="btn btn-secondary px-4 py-2 rounded-pill fw-bold shadow-sm transition-all hover-translate-y">Get
+                        A Quote</a>
                 </div>
             </div>
         </div>
-    </div>
+    </nav>
 </header>
