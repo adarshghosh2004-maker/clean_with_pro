@@ -53,7 +53,7 @@
                     </div>
                     <p class="small fw-bold mt-2 mb-0">CURTAINS</p>
                 </div>
-                <div class="category-item text-center" data-aos="zoom-in" data-aos-delay="400">
+                <div class="category-item text-center" data-aos="zoom-in" data-aos-delay="350">
                     <div class="category-icon-circle">
                         <span class="material-symbols-outlined">tile_lamp</span>
                     </div>
@@ -142,8 +142,7 @@
                             <span>Removes oils, skin cells, and allergens</span>
                         </li>
                     </ul>
-                    <div
-                        class="d-flex align-items-center justify-content-between p-4 bg-white rounded-4 shadow-sm border">
+                    <div class="d-flex align-items-center justify-content-between p-4 bg-white rounded-4 shadow-sm border">
                         <div>
                             <p class="small text-muted mb-0">Starting from</p>
                             <h3 class="fw-bold mb-0 text-primary">$149.00</h3>
@@ -164,8 +163,7 @@
 
             <div class="row g-4 text-start">
                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
-                    <div
-                        class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
+                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
                         <div class="solution-icon mb-4">
                             <span class="material-symbols-outlined fs-1 text-secondary">grid_view</span>
                         </div>
@@ -178,8 +176,7 @@
                     </div>
                 </div>
                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
-                    <div
-                        class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
+                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
                         <div class="solution-icon mb-4">
                             <span class="material-symbols-outlined fs-1 text-secondary">workspace_premium</span>
                         </div>
@@ -192,8 +189,7 @@
                     </div>
                 </div>
                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
-                    <div
-                        class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
+                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
                         <div class="solution-icon mb-4">
                             <span class="material-symbols-outlined fs-1 text-secondary">wash</span>
                         </div>
@@ -206,8 +202,7 @@
                     </div>
                 </div>
                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
-                    <div
-                        class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
+                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
                         <div class="solution-icon mb-4">
                             <span class="material-symbols-outlined fs-1 text-secondary">medical_services</span>
                         </div>
@@ -412,8 +407,7 @@
     </section>
 
     <!-- Section 10: Ready to Book? -->
-    <section class="section-padding bg-primary text-white text-center position-relative overflow-hidden"
-        data-aos="zoom-in">
+    <section class="section-padding bg-primary text-white text-center position-relative overflow-hidden" data-aos="zoom-in">
         <div class="container position-relative z-2">
             <h2 class="display-4 fw-bold mb-3">Ready to Book?</h2>
             <p class="fs-5 opacity-75 mb-5 mx-auto" style="max-width: 600px;">Restore the life and health of your space

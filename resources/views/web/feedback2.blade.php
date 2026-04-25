@@ -1,27 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback - Clean With Professionals</title>
-    <?php include resource_path('views/layout/links.php'); ?>
-</head>
-
-<body class="feedback2-page">
-
-    <?php include resource_path('views/layout/navbar.php'); ?>
-
-    <!-- Header -->
-    <!-- <header class="feedback2-header shadow-sm">
-        <a href="{{ url('/') }}" class="back-btn">
-            <span class="material-symbols-outlined">arrow_back</span>
-        </a>
-        <h2 class="title">The Pristine Editorial</h2>
-        <div class="more-btn">
-            <span class="material-symbols-outlined">more_vert</span>
-        </div>
-    </header> -->
+@extends('web.layout.web-layout')
+@section('content')
 
     <!-- Hero Section -->
     <div class="feedback2-hero">
@@ -110,27 +88,6 @@
         <a href="#" class="btn-view-policy">View Policy</a>
     </div>
 
-    <!-- Bottom Navbar -->
-    <nav class="bottom-navbar-v2">
-        <a href="{{ url('/') }}" class="nav-item-v2">
-            <span class="material-symbols-outlined">home</span>
-            <span>Home</span>
-        </a>
-        <a href="{{ url('/services') }}" class="nav-item-v2">
-            <span class="material-symbols-outlined">cleaning_services</span>
-            <span>Services</span>
-        </a>
-        <a href="{{ url('/feedback2') }}" class="nav-item-v2 active">
-            <span class="material-symbols-outlined">star</span>
-            <span>Reviews</span>
-        </a>
-        <a href="#" class="nav-item-v2">
-            <span class="material-symbols-outlined">person</span>
-            <span>Profile</span>
-        </a>
-    </nav>
-
-    <?php include resource_path('views/layout/footer.php'); ?>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -165,6 +122,5 @@
             });
         });
     </script>
-</body>
 
-</html>
+@endsection

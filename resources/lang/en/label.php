@@ -2,6 +2,9 @@
 
 return [
 
+    "welcome_back_admin"=> "Welcome back, Admin!",
+    "sign_in_to_your_account"=> "Sign in to your account",
+
     'success_login'=> 'Login successfully',
     'logout_successfully' =>  'Logged out successfully',
 
@@ -24,6 +27,10 @@ return [
     'success_add_feature' => 'Feature added successfully',
     'success_edit_feature' => 'Feature updated successfully',
     'feature_delete' => 'Feature deleted successfully',
+    'delete_feature'=> 'Delete Feature',
+    'error_add_feature'=> 'Error adding feature',
+    'error_edit_feature'=> 'Error updating feature',
+    'data_not_found'=> 'Data not found',
 
     'questions' => 'Questions',
     'question' => 'Question',
@@ -35,13 +42,22 @@ return [
     'image_2' => 'Image 2',
     'image_3' => 'Image 3',
     'max_size_5mb' => 'Max Size: 5MB',
-
+    'edit_question'=> 'Edit Question',
+    'question_list'=> 'Question List',
+    'success_edit_password_change_successfully' => 'Question updated successfully',
+    'success_add_language'=> 'Question added successfully',
+    'language_delete' => 'Question deleted successfully',
+    'delete_language'=> 'Delete Question',
+    
     'packages' => 'Packages',
     'package' => 'Package',
     'add_package' => 'Add Package',
     'select_feature' => 'Select Feature',
     'edit_package' => 'Edit Package',
     'package_delete' => 'Package deleted successfully',
+    'success_add_package'=> 'Package added successfully',
+    'success_edit_package'=> 'Package updated successfully',
+    'delete_package' => 'Delete Package',
 
     'services' => 'Services',
     'service' => 'Service',
@@ -58,6 +74,7 @@ return [
     'service_save'=> 'Service Saved Successfully',
     'service_update' => 'Service Updated Successfully',
     'service_delete' => 'Service deleted successfully',
+    'delete_service_msg'=> 'Delete Service Message',
 
     'gallery' => 'Gallery',
     'add_gallery' => 'Add Gallery',
@@ -71,6 +88,7 @@ return [
     'gallery_save' => 'Gallery Saved Successfully',
     'gallery_update' => 'Gallery Updated Successfully',
     'gallery_delete' => 'Gallery deleted successfully',
+    'delete_gallery_msg'=> 'Delete Gallery Message',
 
     'users' => 'Users',
     'user' => 'User',
@@ -94,6 +112,7 @@ return [
     'user_delete' => 'User deleted successfully',
     'search_user'=> 'Search User',
     'edit_user'=> 'Edit User',
+    'delete_user'=> 'Delete User',
 
     'settings' => 'Settings',
     'app_settings' => 'App Settings',
@@ -149,6 +168,7 @@ return [
     'one_signal_reset_key_here'=> 'Here...',
     'success_add_notification'=> 'Notification Added Successfully',
     'notification_delete' => 'Notification Deleted Successfully',
+    'delete_notification'=> 'Delete Notification',
 
     'panel_settings' => 'Panel Settings',
     'panel_login_page'=> 'Panel Login Page',
@@ -181,6 +201,13 @@ return [
     'success_add_feedback'=> 'Feedback Added Successfully',
     'success_edit_feedback'=> 'Feedback Updated Successfully',
     'feedback_delete'=> 'Feedback Deleted Successfully',
+    'delete_feedback'=> 'Delete Feedback',
+
+    'pages'=> 'Pages',
+    'edit_pages'=> 'Edit page',
+    'success_edit_page'=> 'Page Updated Successfully',
+    'page_delete'=> 'Page Deleted Successfully',
+    'delete_pages'=> 'Delete Page',
 
     'personal_info'=> 'Personal Info',
     'change_password'=> 'Change Password',
@@ -190,6 +217,9 @@ return [
     'new_password_here'=> 'Here...',
     'confirm_password'=> 'Confirm Password',
     'confirm_password_here'=> 'Here...',
+    'data_edit_successfully'=> 'Data Updated successfully',
+    'password_change_successfully'=> 'Password changed successfully',
+    'please_enter_right_current_password'=> 'Please enter the correct current password',
 
     'search' => 'Search',
     'action' => 'Action',

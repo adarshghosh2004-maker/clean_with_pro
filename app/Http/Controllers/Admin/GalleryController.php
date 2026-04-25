@@ -93,8 +93,8 @@ class GalleryController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'service_id' => 'required',
-                'before_img' => 'required|image|mimes:jpeg,jpg,png,webp|max:5048',
-                'after_img' => 'required|image|mimes:jpeg,jpg,png,webp|max:5048',
+                'before_img' => 'required|image|mimes:jpeg,jpg,png,webp',
+                'after_img' => 'required|image|mimes:jpeg,jpg,png,webp',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();

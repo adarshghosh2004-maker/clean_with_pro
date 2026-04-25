@@ -2,9 +2,9 @@
 
 @section('content')
     <!-- ========================
-         SECTION 1: Hero
-    ======================== -->
-    <section class="about-hero-new">
+             SECTION 1: Hero
+        ======================== -->
+    <section class="about-hero-new" data-aos="fade-up">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
@@ -18,9 +18,9 @@
     </section>
 
     <!-- ========================
-         SECTION 2: Passion / Our Story
-    ======================== -->
-    <section class="passion-section">
+             SECTION 2: Passion / Our Story
+        ======================== -->
+    <section class="passion-section" data-aos="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6" data-aos="fade-right">
@@ -57,9 +57,9 @@
     </section>
 
     <!-- ========================
-         SECTION 3: Core Pillars
-    ======================== -->
-    <section class="pillars-section">
+             SECTION 3: Core Pillars
+        ======================== -->
+    <section class="pillars-section" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="display-5 fw-bold mb-3">The Core Pillars of CleanCare</h2>
@@ -116,9 +116,9 @@
     </section>
 
     <!-- ========================
-         SECTION 4: Professional Edge
-    ======================== -->
-    <section class="edge-section">
+             SECTION 4: Professional Edge
+        ======================== -->
+    <section class="edge-section" data-aos="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6" data-aos="fade-right">
@@ -143,8 +143,8 @@
     </section>
 
     <!-- ========================
-         SECTION 5: How It Works
-    ======================== -->
+             SECTION 5: How It Works
+        ======================== -->
     <section class="how-it-works-section">
         <div class="container">
             <div class="text-center mb-3" data-aos="fade-up">
@@ -176,9 +176,9 @@
     </section>
 
     <!-- ========================
-         SECTION 6: Team – Faces Behind the Shine
-    ======================== -->
-    <section class="team-section-new">
+             SECTION 6: Team – Faces Behind the Shine
+        ======================== -->
+    <section class="team-section-new" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="display-5 fw-bold mb-3">The Faces Behind the Shine</h2>
@@ -220,9 +220,9 @@
     </section>
 
     <!-- ========================
-         SECTION 7: Partners / Trusted By
-    ======================== -->
-    <section class="partners-section">
+             SECTION 7: Partners / Trusted By
+        ======================== -->
+    <section class="partners-section" data-aos="fade-up">
         <div class="container">
             <div class="row align-items-center justify-content-center g-5">
                 <div class="col-6 col-md-3 text-center" data-aos="fade-up" data-aos-delay="100">
@@ -246,9 +246,9 @@
     </section>
 
     <!-- ========================
-         SECTION 8: Testimonials
-    ======================== -->
-    <section class="about-testimonials-section">
+             SECTION 8: Testimonials
+        ======================== -->
+    <section class="about-testimonials-section" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="display-5 fw-bold mb-3">What Our Clients Say</h2>
@@ -323,8 +323,8 @@
     </section>
 
     <!-- ========================
-         SECTION 9: CTA – Experience the Standard
-    ======================== -->
+             SECTION 9: CTA – Experience the Standard
+        ======================== -->
     <section class="cta-section-new">
         <div class="container" data-aos="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Experience the CleanCare Standard</h2>

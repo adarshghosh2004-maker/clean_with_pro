@@ -3,7 +3,7 @@
 
 
     <!-- Hero Section -->
-    <section class="gallery-hero-v2">
+    <section class="gallery-hero-v2" data-aos="fade-up">
         <div class="container">
             <span class="badge-top" data-aos="fade-up">MELBOURNE'S PREMIER CLEANING EXPERIENCE</span>
             <h1 data-aos="fade-up" data-aos-delay="100">Before &<br><span>After Cleaning Gallery</span></h1>
@@ -35,7 +35,7 @@
     </nav>
 
     <!-- Gallery Grid -->
-    <section class="gallery-grid-v2">
+    <section class="gallery-grid-v2" data-aos="fade-up">
         <div class="container">
             <div class="row">
                 <!-- Project 1 -->
@@ -112,7 +112,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-banner-v2">
+    <section class="stats-banner-v2" data-aos="fade-up">
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-3 col-6">
@@ -138,7 +138,7 @@
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item-v2">
-                        <div class="icon-circle"><i class="bi bi-leaf"></i></div>
+                        <div class="icon-circle"><i class="fa-solid fa-leaf"></i></div>
                         <h3>Eco-Friendly</h3>
                         <p>Non-Toxic Formula</p>
                     </div>
@@ -148,7 +148,7 @@
     </section>
 
     <!-- Specialized Services -->
-    <section class="specialized-services">
+    <section class="specialized-services" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
                 <span class="text-secondary-green fw-bold text-uppercase small letter-spacing-1">Our Expertise</span>
@@ -208,7 +208,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonials-v2">
+    <section class="testimonials-v2" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-extrabold">What Our Clients Say</h2>
@@ -217,9 +217,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card-v2">
                         <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                         </div>
                         <p>"The before and after was incredible. I didn't think my 10-year-old carpets could look this
                             new again. Worth every cent."</p>
@@ -235,9 +234,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card-v2">
                         <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                         </div>
                         <p>"Extremely professional. They arrived on time, used high-quality equipment, and were very
                             respectful of our home."</p>
@@ -253,9 +251,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="testimonial-card-v2">
                         <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                         </div>
                         <p>"Seamless experience from booking to execution. The end-of-lease clean was perfect and we got
                             our full bond back."</p>
@@ -273,7 +270,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-v2">
+    <section class="cta-v2" data-aos="fade-up">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <h2>Ready for a Spotless Home? Book Today!</h2>

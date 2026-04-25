@@ -94,7 +94,7 @@
         </li>
                 <li class="side_line {{ request()->routeIs('admin.page*') ? 'active' : '' }}">
             <a href="{{ route('admin.pages.index') }}">
-                <i class="fa-regular fa-comment fa-2xl menu-icon"></i>
+               <i class="fa-solid fa-book-open fa-2xl menu-icon"></i>
                 <span>{{__('label.pages')}}</span>
             </a>
         </li>

@@ -71,7 +71,7 @@ class NotificationController extends Controller
             $validator = Validator::make($request->all(), [
                 'title' => 'required|min:2',
                 'message' => 'required|min:2',
-                'image' => 'image|mimes:jpeg,png,jpg,webp|max:5120',
+                'image' => 'image|mimes:jpeg,png,jpg,webp',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();

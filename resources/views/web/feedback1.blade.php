@@ -1,16 +1,6 @@
 @extends('web.layout.web-layout')
 @section('content')
 
-    <!-- <header class="feedback-header shadow-sm">
-        <a href="{{ url('/') }}" class="back-btn">
-            <span class="material-symbols-outlined">arrow_back</span>
-        </a>
-        <h2 class="title">The Pristine Editorial</h2>
-        <div class="more-btn">
-            <span class="material-symbols-outlined">more_vert</span>
-        </div>
-    </header> -->
-
     <main class="feedback-container">
         <div class="feedback-hero-wrapper" data-aos="fade-up">
             <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
@@ -65,8 +55,6 @@
         </div>
     </main>
 
-    <?php include resource_path('views/layout/footer.php'); ?>
-
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -117,6 +105,5 @@
             }
         });
     </script>
-</body>
-
-</html>
+    
+@endsection

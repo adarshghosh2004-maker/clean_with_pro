@@ -40,9 +40,9 @@ class PageController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function ($row) {
 
-                        $language_delete = __('label.delete_language');
+                        $pages_delete = __('label.delete_pages');
 
-                        $delete = '<form onsubmit="return confirm(\'' . $language_delete . '\');" method="POST" action="' . route('admin.pages.destroy', [$row->id]) . '">
+                        $delete = '<form onsubmit="return confirm(\'' . $pages_delete . '\');" method="POST" action="' . route('admin.pages.destroy', [$row->id]) . '">
                             <input type="hidden" name="_token" value="' . csrf_token() . '">
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="edit-delete-btn" title="' . __('label.delete') . '"><i class="fa-solid fa-trash-can fa-xl"></i></button></form>';
@@ -79,9 +79,9 @@ class PageController extends Controller
 
             $data = pages::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($data->id)) {
-                return response()->json(['status' => 200, 'success' => __('label.success_add_language')]);
+                return response()->json(['status' => 200, 'success' => __('label.success_add_page')]);
             } else {
-                return response()->json(['status' => 400, 'errors' => __('label.error_add_language')]);
+                return response()->json(['status' => 400, 'errors' => __('label.error_add_page')]);
             }
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
@@ -108,9 +108,9 @@ class PageController extends Controller
 
             $data = pages::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($data->id)) {
-                return response()->json(['status' => 200, 'success' => __('label.success_edit_language')]);
+                return response()->json(['status' => 200, 'success' => __('label.success_edit_page')]);
             } else {
-                return response()->json(['status' => 400, 'errors' => __('label.error_edit_language')]);
+                return response()->json(['status' => 400, 'errors' => __('label.error_edit_page')]);
             }
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
@@ -127,7 +127,7 @@ class PageController extends Controller
                 $this->common->deleteImageToFolder($this->folder, $data['img_3']);
                 $data->delete();
             }
-            return redirect()->route('admin.pages.index')->with('success', __('label.language_delete'));
+            return redirect()->route('admin.pages.index')->with('success', __('label.page_delete'));
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }

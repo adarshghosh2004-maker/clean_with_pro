@@ -100,8 +100,7 @@
         </section>
 
         <!-- Cleaning Packages -->
-        <section class="section-container section-padding">
-            <h2 class="section-title" data-aos="fade-up">Cleaning Packages</h2>
+        <section class="section-container section-padding" data-aos="fade-up">
             <div class="packages-grid row g-4 mt-2">
                 <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
                     <div class="package-card basic">
@@ -131,8 +130,7 @@
         </section>
 
         <!-- Results and Questions -->
-        <section class="section-container section-padding">
-            <h2 class="section-title" data-aos="fade-up">Have Questions? See Real Results</h2>
+        <section class="section-container section-padding" data-aos="fade-up">
             <div class="row g-4 align-items-stretch">
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="results-grid">

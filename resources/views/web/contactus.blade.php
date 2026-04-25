@@ -2,9 +2,9 @@
 
 @section('content')
     <!-- ========================
-         SECTION 1: Contact Hero
-    ======================== -->
-    <section class="contact-hero">
+             SECTION 1: Contact Hero
+        ======================== -->
+    <section class="contact-hero" data-aos="fade-up">
         <div class="container" data-aos="fade-up">
             <span class="about-hero-subtitle d-block mb-3">Get In Touch</span>
             <h1 class="display-3 fw-bold mb-4">We're Here to Help You Shine</h1>
@@ -14,13 +14,13 @@
     </section>
 
     <!-- ========================
-         SECTION 2: Contact Info Cards
-    ======================== -->
-    <section class="contact-info-section">
+             SECTION 2: Contact Info Cards
+        ======================== -->
+    <section class="contact-info-section" data-aos="fade-up">
         <div class="container">
             <div class="row g-4 justify-content-center">
                 <!-- Phone -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
                     <div class="contact-card text-center">
                         <div class="contact-icon-box mx-auto">
                             <span class="material-symbols-outlined">call</span>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <!-- Email -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
                     <div class="contact-card text-center">
                         <div class="contact-icon-box mx-auto">
                             <span class="material-symbols-outlined">mail</span>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <!-- Address -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
                     <div class="contact-card text-center">
                         <div class="contact-icon-box mx-auto">
                             <span class="material-symbols-outlined">location_on</span>
@@ -54,18 +54,29 @@
                         <a href="#map" class="text-secondary fw-bold fs-5 text-decoration-none">Get Directions</a>
                     </div>
                 </div>
+                <!-- Timing -->
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="contact-card text-center">
+                        <div class="contact-icon-box mx-auto">
+                            <span class="material-symbols-outlined">access_time</span>
+                        </div>
+                        <h4 class="fw-bold mb-3">Business Hours</h4>
+                        <p class="text-muted mb-4">Monday - Friday: 8AM - 6PM<br>Saturday: 9AM - 4PM<br>Sunday: Closed</p>
+                        <a href="#" class="text-secondary fw-bold fs-5 text-decoration-none">Get Directions</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- ========================
-         SECTION 3: Contact Form & Map
-    ======================== -->
-    <section class="section-padding bg-white">
+             SECTION 3: Contact Form & Map
+        ======================== -->
+    <section class="section-padding bg-white" data-aos="fade-up">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <!-- Contact Form -->
-                <div class="col-lg-6" data-aos="fade-right">
+                <div class="col-lg-12" data-aos="fade-right">
                     <div class="contact-form-wrapper">
                         <h2 class="display-5 fw-bold mb-4">Send Us a Message</h2>
                         <p class="text-muted mb-5">Fill out the form below and one of our cleaning specialists will get
@@ -105,40 +116,14 @@
                         </form>
                     </div>
                 </div>
-                <!-- Map / Visual -->
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div id="map" class="map-container">
-                        <!-- Google Maps Embed Placeholder -->
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d157555.281358999!2d144.8153406087595!3d-37.86028282436855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad646b5d2cb417c%3A0x1d0451560965e6b!2sMelbourne%20VIC!5e0!3m2!1sen!2sau!4v1713524000000!5m2!1sen!2sau"
-                            allowfullscreen="" loading="lazy">
-                        </iframe>
-                    </div>
-
-                    <div class="mt-5 p-4 bg-light rounded-4 border">
-                        <h5 class="fw-bold mb-3">Business Hours</h5>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Monday - Friday</span>
-                            <span class="fw-bold">8:00 AM - 6:00 PM</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Saturday</span>
-                            <span class="fw-bold">9:00 AM - 4:00 PM</span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span>Sunday</span>
-                            <span class="text-danger fw-bold">Closed</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- ========================
-         SECTION 4: FAQ (Following the template)
-    ======================== -->
-    <section class="section-padding bg-light">
+             SECTION 4: FAQ (Following the template)
+        ======================== -->
+    <section class="section-padding bg-light" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="display-5 fw-bold mb-3">Common Questions</h2>
@@ -196,9 +181,9 @@
     </section>
 
     <!-- ========================
-         SECTION 5: CTA
-    ======================== -->
-    <section class="cta-section-new">
+             SECTION 5: CTA
+        ======================== -->
+    <section class="cta-section-new" data-aos="fade-up">
         <div class="container" data-aos="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Ready to Start Your Clean Journey?</h2>
             <p class="fs-5 opacity-75 mb-5">Join 5,000+ happy Melburnians who trust CleanCare.</p>

@@ -48,7 +48,7 @@
     </section>
 
     <!-- Section 2: How Pricing Works -->
-    <section class="how-pricing-works py-5 bg-white">
+    <section class="how-pricing-works py-5 bg-white" data-aos="fade-up">
         <div class="container text-center">
             <h2 class="display-5 fw-bold text-primary mb-5 position-relative d-inline-block" data-aos="fade-up">
                 How Pricing Works
@@ -74,8 +74,7 @@
                         <div class="pricing-icon-box mb-4 bg-white text-primary">
                             <span class="material-symbols-outlined fs-2">task_alt</span>
                         </div>
-                        <span
-                            class="badge bg-secondary px-3 py-2 rounded-pill mb-3 text-uppercase fw-bold badge-sm">Best
+                        <span class="badge bg-secondary px-3 py-2 rounded-pill mb-3 text-uppercase fw-bold badge-sm">Best
                             Value, Best Shine</span>
                         <h3 class="fw-bold mb-3">Flat Rate</h3>
                         <p class="opacity-75">A complete home cleaning solution based on your home's size. Consistent,
@@ -87,7 +86,7 @@
     </section>
 
     <!-- Section 3: Pricing Details -->
-    <section class="pricing-details section-padding bg-light">
+    <section class="pricing-details section-padding bg-light" data-aos="fade-up">
         <div class="container">
             <!-- Hourly Rate Pricing -->
             <div class="mb-5" data-aos="fade-up">
@@ -262,7 +261,7 @@
     </section>
 
     <!-- Section 6: Trust Badges -->
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-light" data-aos="fade-up">
         <div class="container">
             <div class="row g-4 text-center">
                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
