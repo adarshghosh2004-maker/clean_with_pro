@@ -2,12 +2,18 @@
 @section('content')
     <!-- Section 1: Services Hero -->
     <section class="services-hero" data-aos="fade">
+        @foreach ($pages as $key => $value)
+            @if ($value['name'] == 'service')
+                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="services-hero-img">
+            @endif
+
+        @endforeach
         <div class="container text-center">
             <h1 class="display-3 fw-extrabold text-white mb-4" data-aos="fade-up" data-aos-delay="100">
                 Professional Cleaning <br> Services Across Melbourne
             </h1>
             <div class="d-flex justify-content-center gap-3 mt-4" data-aos="fade-up" data-aos-delay="200">
-                <button class="btn btn-secondary px-4 py-3">Book Now</button>
+                <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-4 py-3">Book Now</a>
                 <button class="btn btn-outline-white px-4 py-3">View Our Work</button>
             </div>
         </div>
@@ -105,7 +111,8 @@
                             <p class="small text-muted mb-0">Starting from</p>
                             <h3 class="fw-bold mb-0 text-primary">$99.00</h3>
                         </div>
-                        <button class="btn btn-primary-blue px-4 py-2 rounded-3 fw-bold">Book Service</button>
+                        <a class="btn btn-primary-blue px-4 py-2 rounded-3 fw-bold" href="#EditModel"
+                            data-bs-toggle="modal">Book Service</a>
                     </div>
                 </div>
             </div>
@@ -147,7 +154,8 @@
                             <p class="small text-muted mb-0">Starting from</p>
                             <h3 class="fw-bold mb-0 text-primary">$149.00</h3>
                         </div>
-                        <button class="btn btn-primary-blue px-4 py-2 rounded-3 fw-bold shadow-sm">Book Service</button>
+                        <a class="btn btn-primary-blue px-4 py-2 rounded-3 fw-bold shadow-sm" href="#EditModel"
+                            data-bs-toggle="modal">Book Service</a>
                     </div>
                 </div>
             </div>
@@ -263,57 +271,6 @@
         </div>
     </section>
 
-    <!-- Section 7: Transparent Pricing -->
-    <section class="section-padding bg-light" data-aos="fade-up">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold text-primary mb-3">Transparent Pricing</h2>
-            </div>
-            <div class="pricing-table-wrapper bg-white rounded-4 overflow-hidden shadow-sm border">
-                <table class="table table-hover mb-0">
-                    <thead class="bg-primary text-white">
-                        <tr>
-                            <th class="py-4 ps-4 fw-bold">SERVICE TYPE</th>
-                            <th class="py-4 fw-bold">STARTING FROM</th>
-                            <th class="py-4 fw-bold">EST. TIME</th>
-                            <th class="py-4 pe-4 text-end fw-bold">ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="py-4 ps-4 fw-bold">Steam Carpet Cleaning (3 Rooms)</td>
-                            <td class="py-4">$99.00</td>
-                            <td class="py-4">45 - 60 mins</td>
-                            <td class="py-4 pe-4 text-end"><button
-                                    class="btn btn-secondary btn-sm rounded-pill px-3 fw-bold">Book</button></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 ps-4 fw-bold">Standard 3-Seater Sofa</td>
-                            <td class="py-4">$149.00</td>
-                            <td class="py-4">2 - 3 hours</td>
-                            <td class="py-4 pe-4 text-end"><button
-                                    class="btn btn-secondary btn-sm rounded-pill px-3 fw-bold">Book</button></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 ps-4 fw-bold">Medical Grade Mattress Sanitize</td>
-                            <td class="py-4">$299.00</td>
-                            <td class="py-4">Full Day</td>
-                            <td class="py-4 pe-4 text-end"><button
-                                    class="btn btn-secondary btn-sm rounded-pill px-3 fw-bold">Book</button></td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 ps-4 fw-bold">Mattress (Preservation Specialist)</td>
-                            <td class="py-4">$60.00</td>
-                            <td class="py-4">45 mins</td>
-                            <td class="py-4 pe-4 text-end"><button
-                                    class="btn btn-secondary btn-sm rounded-pill px-3 fw-bold">Book</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
     <!-- Section 8: Features Row -->
     <section class="py-5 bg-primary text-white">
         <div class="container">
@@ -413,8 +370,9 @@
             <p class="fs-5 opacity-75 mb-5 mx-auto" style="max-width: 600px;">Restore the life and health of your space
                 today with Melbourne's fabric specialists.</p>
             <div class="d-flex justify-content-center gap-3">
-                <button class="btn btn-secondary px-5 py-3 rounded-3 fw-bold shadow">Get A Free Quote</button>
-                <button class="btn btn-outline-white px-5 py-3 rounded-3 fw-bold">Call 1800-CLEAN</button>
+                <a class="btn btn-secondary px-5 py-3 rounded-3 fw-bold shadow" href="#EditModel" data-bs-toggle="modal">Get
+                    A Free Quote</a>
+                <a class="btn btn-outline-white px-5 py-3 rounded-3 fw-bold" href="tel:1800-CLEAN">Call 1800-CLEAN</a>
             </div>
         </div>
         <div class="position-absolute top-50 start-50 translate-middle opacity-10 z-1"

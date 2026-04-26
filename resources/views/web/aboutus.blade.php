@@ -2,9 +2,15 @@
 
 @section('content')
     <!-- ========================
-             SECTION 1: Hero
-        ======================== -->
+                     SECTION 1: Hero
+                ======================== -->
     <section class="about-hero-new" data-aos="fade-up">
+        @foreach ($pages as $key => $value)
+            @if ($value['name'] == 'about')
+                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="about-hero-img">
+            @endif
+
+        @endforeach
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
@@ -18,8 +24,8 @@
     </section>
 
     <!-- ========================
-             SECTION 2: Passion / Our Story
-        ======================== -->
+                     SECTION 2: Passion / Our Story
+                ======================== -->
     <section class="passion-section" data-aos="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -57,8 +63,8 @@
     </section>
 
     <!-- ========================
-             SECTION 3: Core Pillars
-        ======================== -->
+                     SECTION 3: Core Pillars
+                ======================== -->
     <section class="pillars-section" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -116,8 +122,8 @@
     </section>
 
     <!-- ========================
-             SECTION 4: Professional Edge
-        ======================== -->
+                     SECTION 4: Professional Edge
+                ======================== -->
     <section class="edge-section" data-aos="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -143,8 +149,8 @@
     </section>
 
     <!-- ========================
-             SECTION 5: How It Works
-        ======================== -->
+                     SECTION 5: How It Works
+                ======================== -->
     <section class="how-it-works-section">
         <div class="container">
             <div class="text-center mb-3" data-aos="fade-up">
@@ -176,8 +182,8 @@
     </section>
 
     <!-- ========================
-             SECTION 6: Team – Faces Behind the Shine
-        ======================== -->
+                     SECTION 6: Team – Faces Behind the Shine
+                ======================== -->
     <section class="team-section-new" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -220,8 +226,8 @@
     </section>
 
     <!-- ========================
-             SECTION 7: Partners / Trusted By
-        ======================== -->
+                     SECTION 7: Partners / Trusted By
+                ======================== -->
     <section class="partners-section" data-aos="fade-up">
         <div class="container">
             <div class="row align-items-center justify-content-center g-5">
@@ -246,8 +252,8 @@
     </section>
 
     <!-- ========================
-             SECTION 8: Testimonials
-        ======================== -->
+                     SECTION 8: Testimonials
+                ======================== -->
     <section class="about-testimonials-section" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -323,8 +329,8 @@
     </section>
 
     <!-- ========================
-             SECTION 9: CTA – Experience the Standard
-        ======================== -->
+                     SECTION 9: CTA – Experience the Standard
+                ======================== -->
     <section class="cta-section-new">
         <div class="container" data-aos="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Experience the CleanCare Standard</h2>

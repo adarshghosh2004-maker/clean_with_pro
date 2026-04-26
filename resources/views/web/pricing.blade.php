@@ -15,9 +15,7 @@
                         come with surprises.
                     </p>
                     <div class="d-flex flex-wrap gap-3 mb-5">
-                        <a href="#" class="btn btn-secondary px-4 py-3 rounded-pill fw-bold">Book My Clean</a>
-                        <a href="#" class="btn btn-outline-primary px-4 py-3 rounded-pill fw-bold">Get An Instant
-                            Price</a>
+                        <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-4 py-3 rounded-pill fw-bold">Book My Clean</a>
                     </div>
                     <div class="d-flex flex-wrap gap-4 text-muted small fw-semibold">
                         <div class="d-flex align-items-center gap-2">
@@ -40,132 +38,6 @@
                             alt="Cleaning Service" class="img-fluid rounded-5 shadow-lg">
                         <div
                             class="abstract-shape bg-secondary-green opacity-20 position-absolute bottom-0 end-0 m-n4 rounded-5">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 2: How Pricing Works -->
-    <section class="how-pricing-works py-5 bg-white" data-aos="fade-up">
-        <div class="container text-center">
-            <h2 class="display-5 fw-bold text-primary mb-5 position-relative d-inline-block" data-aos="fade-up">
-                How Pricing Works
-                <span class="title-underline"></span>
-            </h2>
-            <div class="row g-4 mt-2">
-                <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
-                    <div class="pricing-model-card p-5 rounded-4 border h-100 text-start transition-all">
-                        <div class="pricing-icon-box mb-4 bg-secondary-container text-secondary">
-                            <span class="material-symbols-outlined fs-2">schedule</span>
-                        </div>
-                        <span
-                            class="badge bg-secondary-container text-secondary px-3 py-2 rounded-pill mb-3 text-uppercase fw-bold badge-sm">Flexibility
-                            & Control</span>
-                        <h3 class="fw-bold mb-3">Hourly Rate</h3>
-                        <p class="text-muted">Perfect for specific tasks like deep cleaning certain areas or partial
-                            service. Pay only for the time we spend cleaning your home.</p>
-                    </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
-                    <div
-                        class="pricing-model-card p-5 rounded-4 border h-100 text-start bg-primary-container text-white transition-all">
-                        <div class="pricing-icon-box mb-4 bg-white text-primary">
-                            <span class="material-symbols-outlined fs-2">task_alt</span>
-                        </div>
-                        <span class="badge bg-secondary px-3 py-2 rounded-pill mb-3 text-uppercase fw-bold badge-sm">Best
-                            Value, Best Shine</span>
-                        <h3 class="fw-bold mb-3">Flat Rate</h3>
-                        <p class="opacity-75">A complete home cleaning solution based on your home's size. Consistent,
-                            predictable pricing for a recurring pristine home.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 3: Pricing Details -->
-    <section class="pricing-details section-padding bg-light" data-aos="fade-up">
-        <div class="container">
-            <!-- Hourly Rate Pricing -->
-            <div class="mb-5" data-aos="fade-up">
-                <div class="d-flex align-items-center justify-content-between flex-wrap gap-4 mb-4">
-                    <div class="d-flex align-items-center gap-3">
-                        <h2 class="h3 fw-bold text-primary mb-0">Hourly Rate Pricing</h2>
-                        <span class="small text-danger d-flex align-items-center gap-1">
-                            <span class="material-symbols-outlined fs-6">cancel</span>
-                            Not suitable for End of Lease cleans
-                        </span>
-                    </div>
-                    <div class="pricing-tabs d-flex p-1 bg-white rounded-pill border">
-                        <button class="btn btn-sm px-4 py-2 rounded-pill fw-bold">One-Off $60/hr</button>
-                        <button class="btn btn-sm px-4 py-2 rounded-pill fw-bold">Weekly $55/hr</button>
-                        <button class="btn btn-secondary btn-sm px-4 py-2 rounded-pill fw-bold">Fortnightly
-                            $55/hr</button>
-                        <button class="btn btn-sm px-4 py-2 rounded-pill fw-bold">Monthly $50/hr</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Flat Rate Pricing -->
-            <div class="mt-5">
-                <h2 class="h3 fw-bold text-primary mb-4" data-aos="fade-up">Flat Rate Pricing</h2>
-                <div class="row g-4">
-                    <!-- 1 Bed -->
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="flat-rate-card p-4 bg-white rounded-4 border text-center h-100 transition-all">
-                            <div class="mb-3">
-                                <span class="material-symbols-outlined fs-1 text-secondary">hotel</span>
-                            </div>
-                            <p class="fw-bold mb-1">1 Bed</p>
-                            <h3 class="display-6 fw-extrabold text-primary mb-3">from $119</h3>
-                            <a href="#"
-                                class="text-secondary fw-bold text-decoration-none small d-flex align-items-center justify-content-center gap-1">View
-                                Details <span class="material-symbols-outlined fs-6">chevron_right</span></a>
-                        </div>
-                    </div>
-                    <!-- 2 Beds -->
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="flat-rate-card p-4 bg-white rounded-4 border text-center h-100 transition-all">
-                            <div class="mb-3">
-                                <span class="material-symbols-outlined fs-1 text-secondary">hotel</span>
-                            </div>
-                            <p class="fw-bold mb-1">2 Beds</p>
-                            <h3 class="display-6 fw-extrabold text-primary mb-3">from $139</h3>
-                            <a href="#"
-                                class="text-secondary fw-bold text-decoration-none small d-flex align-items-center justify-content-center gap-1">View
-                                Details <span class="material-symbols-outlined fs-6">chevron_right</span></a>
-                        </div>
-                    </div>
-                    <!-- 3 Beds -->
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div
-                            class="flat-rate-card p-4 bg-white rounded-4 border-secondary border-3 text-center h-100 transition-all position-relative overflow-hidden">
-                            <div
-                                class="most-popular-badge bg-secondary text-white small px-3 py-1 position-absolute top-0 start-50 translate-middle-x fw-bold">
-                                MOST POPULAR</div>
-                            <div class="mb-3 mt-2">
-                                <span class="material-symbols-outlined fs-1 text-secondary">hotel</span>
-                            </div>
-                            <p class="fw-bold mb-1">3 Beds</p>
-                            <h3 class="display-6 fw-extrabold text-primary mb-3">from $181</h3>
-                            <a href="#"
-                                class="text-secondary fw-bold text-decoration-none small d-flex align-items-center justify-content-center gap-1">View
-                                Details <span class="material-symbols-outlined fs-6">chevron_right</span></a>
-                        </div>
-                    </div>
-                    <!-- 4 Beds -->
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="flat-rate-card p-4 bg-white rounded-4 border text-center h-100 transition-all">
-                            <div class="mb-3">
-                                <span class="material-symbols-outlined fs-1 text-secondary">hotel</span>
-                            </div>
-                            <p class="fw-bold mb-1">4 Beds</p>
-                            <h3 class="display-6 fw-extrabold text-primary mb-3">from $232</h3>
-                            <a href="#"
-                                class="text-secondary fw-bold text-decoration-none small d-flex align-items-center justify-content-center gap-1">View
-                                Details <span class="material-symbols-outlined fs-6">chevron_right</span></a>
                         </div>
                     </div>
                 </div>
@@ -377,15 +249,13 @@
 
     <!-- Section 8: Ready for a Spotless Home? -->
     <section class="cta-section py-5" data-aos="zoom-in">
-        <div class="container">
+        <div class="container-fluid">
             <div class="bg-primary-container p-5 rounded-5 text-white text-center shadow-lg">
                 <h2 class="display-4 fw-bold mb-3">Ready for a Spotless Home?</h2>
                 <p class="fs-5 opacity-75 mb-5 mx-auto max-w-600">Join hundreds of Melbourne families who trust us as
                     their weekly sanctuary. Simple booking, professional results.</p>
                 <div class="d-flex justify-content-center flex-wrap gap-3">
-                    <a href="#" class="btn btn-secondary px-5 py-3 rounded-pill fw-bold">Get a Free Quote</a>
-                    <a href="#" class="btn btn-white bg-white text-primary px-5 py-3 rounded-pill fw-bold">Book My
-                        Clean</a>
+                    <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-5 py-3 rounded-pill fw-bold">Get a Free Quote</a>
                 </div>
             </div>
         </div>

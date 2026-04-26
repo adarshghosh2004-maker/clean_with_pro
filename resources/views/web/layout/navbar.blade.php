@@ -74,7 +74,7 @@
                     </li>
                 </ul>
                 <div class="d-flex align-items-center mt-3 mt-lg-0">
-                    <a href="<?php echo route('contact'); ?>"
+                    <a href="#EditModel" data-bs-toggle="modal"
                         class="btn btn-secondary px-4 py-2 rounded-pill fw-bold shadow-sm transition-all hover-translate-y">Get
                         A Quote</a>
                 </div>

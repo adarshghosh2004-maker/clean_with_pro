@@ -11,9 +11,7 @@
 |
 */
 
-use App\Http\Controllers\Admin\PageController;
-use App\Http\Controllers\Web\AboutController;
-use App\Http\Controllers\Web\HomeController;
+use App\Models\Gallery;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -56,10 +54,6 @@ Route::get('/about', function () {
     return view('web.aboutus');
 })->name('about');
 
-Route::get('/gallery', function () {
-    return view('web.gallery');
-})->name('gallery');
-
 Route::get('/specials', function () {
     return view('web.specials');
 })->name('specials');
@@ -87,3 +81,6 @@ Route::get('/feedback1', function () {
 Route::get('/feedback2', function () {
     return view('web.feedback2');
 })->name('feedback2');
+
+Route::resource('quote', WebController::class)->only('store');
+Route::get('gallery', [WebController::class, 'gallery'])->name('gallery');

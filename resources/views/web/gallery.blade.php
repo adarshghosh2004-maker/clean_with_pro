@@ -4,6 +4,12 @@
 
     <!-- Hero Section -->
     <section class="gallery-hero-v2" data-aos="fade-up">
+        @foreach ($pages as $key => $value)
+            @if ($value['name'] == 'gallery')
+                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="gallery-hero-v2-img">
+            @endif
+
+        @endforeach
         <div class="container">
             <span class="badge-top" data-aos="fade-up">MELBOURNE'S PREMIER CLEANING EXPERIENCE</span>
             <h1 data-aos="fade-up" data-aos-delay="100">Before &<br><span>After Cleaning Gallery</span></h1>
@@ -12,9 +18,10 @@
                 homes into pristine sanctuaries.
             </p>
             <div class="d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="300">
-                <a href="<?php echo route('contact'); ?>"
+                <a href="#EditModel" data-bs-toggle="modal"
                     class="btn-secondary-green rounded-pill px-4 py-3 text-decoration-none fw-bold">Get a Free Quote</a>
-                <a href="#" class="btn-outline-white rounded-pill px-4 py-3 text-decoration-none fw-bold">View
+                <a href="{{ route('pricing') }}"
+                    class="btn-outline-white rounded-pill px-4 py-3 text-decoration-none fw-bold">View
                     Pricing</a>
             </div>
         </div>
@@ -24,12 +31,11 @@
     <nav class="gallery-filter">
         <div class="container">
             <ul class="filter-nav">
-                <li><a href="#" class="active">All Projects</a></li>
-                <li><a href="#">Carpet Cleaning</a></li>
-                <li><a href="#">Sofa & Upholstery</a></li>
-                <li><a href="#">Bathroom</a></li>
-                <li><a href="#">End of Lease</a></li>
-                <li><a href="#">Duct Cleaning</a></li>
+                @foreach ($services as $key => $value)
+                    <li><a href="" id="{{ $value['id'] }}"
+                            class="{{ $key == 0 ? 'active' : '' }} filter-a">{{ $value['title'] }}</a>
+                    </li>
+                @endforeach
             </ul>
         </div>
     </nav>
@@ -37,77 +43,29 @@
     <!-- Gallery Grid -->
     <section class="gallery-grid-v2" data-aos="fade-up">
         <div class="container">
-            <div class="row">
-                <!-- Project 1 -->
-                <div class="col-lg-4 col-md-6 gallery-item-v2" data-aos="fade-up">
-                    <div class="ba-card-v2">
-                        <div class="ba-images-container">
-                            <div class="ba-side-v2">
-                                <span class="ba-label before">Before</span>
-                                <img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?q=80&w=800"
-                                    alt="Before Cleaning">
+            @foreach ($services as $key => $value)
+                <div class="row services-row" data-id="{{ $value['id'] }}" style="{{ $key == 0 ? '' : 'display:none;' }}">
+                    <!-- Project 1 -->
+                    @foreach ($gallery as $item => $data)
+                        @if($data['service_id'] == $value['id'])
+                            <div class="col-lg-4 col-md-6 gallery-item-v2" data-aos="fade-up" data-aos-duration="800">
+                                <div class="ba-card-v2">
+                                    <div class="ba-images-container">
+                                        <div class="ba-side-v2">
+                                            <span class="ba-label before">Before</span>
+                                            <img src="{{ $data['before_img'] }}" alt="Before Cleaning">
+                                        </div>
+                                        <div class="ba-side-v2">
+                                            <span class="ba-label after">After</span>
+                                            <img src="{{ $data['after_img'] }}" alt="After Cleaning">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ba-side-v2">
-                                <span class="ba-label after">After</span>
-                                <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=800"
-                                    alt="After Cleaning">
-                            </div>
-                        </div>
-                        <div class="ba-content-v2">
-                            <span class="category-tag">Southbank Residence</span>
-                            <h4>Master Bedroom Carpet Steam Clean</h4>
-                            <p>Removal of deep stains and deep fiber revitalization using eco-friendly thermal
-                                extraction.</p>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                 </div>
-
-                <!-- Project 2 -->
-                <div class="col-lg-4 col-md-6 gallery-item-v2" data-aos="fade-up" data-aos-delay="100">
-                    <div class="ba-card-v2">
-                        <div class="ba-images-container">
-                            <div class="ba-side-v2">
-                                <span class="ba-label before">Before</span>
-                                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800"
-                                    alt="Before Grout">
-                            </div>
-                            <div class="ba-side-v2">
-                                <span class="ba-label after">After</span>
-                                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=800"
-                                    alt="After Grout">
-                            </div>
-                        </div>
-                        <div class="ba-content-v2">
-                            <span class="category-tag">Docklands Penthouse</span>
-                            <h4>Grout & Tile Restoration</h4>
-                            <p>Full mineral deposit removal and grout whitening for a flawless high-gloss finish.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="col-lg-4 col-md-6 gallery-item-v2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="ba-card-v2">
-                        <div class="ba-images-container">
-                            <div class="ba-side-v2">
-                                <span class="ba-label before">Before</span>
-                                <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?q=80&w=800"
-                                    alt="Before Upholstery">
-                            </div>
-                            <div class="ba-side-v2">
-                                <span class="ba-label after">After</span>
-                                <img src="https://images.unsplash.com/photo-1556911223-047024844003?q=80&w=800"
-                                    alt="After Upholstery">
-                            </div>
-                        </div>
-                        <div class="ba-content-v2">
-                            <span class="category-tag">Brighton Estate</span>
-                            <h4>Upholstery Sanitization</h4>
-                            <p>Allergen removal and deep fabric cleaning for high-end linen sectional sofa.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 
@@ -278,6 +236,36 @@
             </div>
         </div>
     </section>
+@endsection
 
+@section('pagescript')
+    <script>
+        $(document).ready(function () {
 
+            $('.filter-a').click(function (e) {
+                e.preventDefault();
+
+                var serviceId = $(this).attr('id');
+
+                // Active button
+                $('.filter-a').removeClass('active');
+                $(this).addClass('active');
+
+                // Hide all rows smoothly
+                $('.services-row').fadeOut(200);
+
+                // Show selected with delay
+                setTimeout(function () {
+                    var target = $('.services-row[data-id="' + serviceId + '"]');
+
+                    target.fadeIn(300, function () {
+                        // 🔥 Re-init AOS after DOM visibility change
+                        AOS.refreshHard();
+                    });
+
+                }, 200);
+            });
+
+        });
+    </script>
 @endsection

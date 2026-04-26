@@ -20,10 +20,10 @@
       {{ String_Cut($value['short_title'], 70) }}
       </p>
       <div class="d-flex flex-column flex-sm-row gap-3">
-      <button class="btn btn-secondary py-3 px-5 d-flex align-items-center justify-content-center gap-2">
+      <a class="btn btn-secondary py-3 px-5 d-flex align-items-center justify-content-center gap-2"
+        data-bs-toggle="modal" href="#EditModel">
         Book Now <span class="material-symbols-outlined">arrow_forward</span>
-      </button>
-      <button class="btn btn-outline-white py-3 px-5">Our Services</button>
+      </a>
       </div>
       </div>
       </div>
@@ -354,31 +354,66 @@
         <p class="text-muted">No hidden costs. Transparent pricing. We work all 7 days 8:00 AM to 7:00 PM.</p>
         </div>
 
-        <form>
+        <form id="quote_form" enctype="multipart/form-data">
         <div class="row g-3">
           <div class="col-md-6">
-          <label class="form-label small fw-semibold text-muted">Full Name</label>
-          <input type="text" class="form-control bg-light border-0" placeholder="John Doe" required>
+          <label class="form-label small fw-semibold text-muted">Full Name<span class="text-danger">*</span></label>
+          <input type="text" name="name" class="form-control bg-light border-0" placeholder="John Doe" required>
           </div>
           <div class="col-md-6">
-          <label class="form-label small fw-semibold text-muted">Mobile Number</label>
-          <input type="tel" class="form-control bg-light border-0" placeholder="(555) 123-4567" required>
+          <label class="form-label small fw-semibold text-muted">Mobile Number<span class="text-danger">*</span></label>
+          <input type="number" name="phone" class="form-control bg-light border-0" placeholder="(555) 123-4567"
+            required>
           </div>
           <div class="col-md-6">
-          <label class="form-label small fw-semibold text-muted">Email Address</label>
-          <input type="email" class="form-control bg-light border-0" placeholder="john@example.com" required>
+          <label class="form-label small fw-semibold text-muted">Email Address<span class="text-danger">*</span></label>
+          <input type="email" name="email" class="form-control bg-light border-0" placeholder="john@example.com"
+            required>
           </div>
           <div class="col-md-6">
-          <label class="form-label small fw-semibold text-muted">Suburb / Area</label>
-          <input type="text" class="form-control bg-light border-0" placeholder="e.g. Richmond, VIC" required>
+          <label class="form-label small fw-semibold text-muted">Suburb / Area<span class="text-danger">*</span></label>
+          <input type="text" name="suburb" class="form-control bg-light border-0" placeholder="e.g. Richmond, VIC"
+            required>
+          </div>
+          <div class="col-md-6">
+          <label class="form-label small fw-semibold text-muted">Date<span class="text-danger">*</span></label>
+          <input type="date" name="date" class="form-control bg-light border-0" placeholder="dd/mm/yyyy" required>
+          </div>
+          <div class="col-md-6">
+          <label class="form-label small fw-semibold text-muted">Time (optional)</label>
+          <select name="time" class="form-control bg-light border-0" required>
+            <option value="">Select a time</option>
+            <option value="07:00">7:00 AM</option>
+            <option value="08:00">8:00 AM</option>
+            <option value="09:00">9:00 AM</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="12:00">12:00 PM</option>
+            <option value="13:00">1:00 PM</option>
+            <option value="14:00">2:00 PM</option>
+            <option value="15:00">3:00 PM</option>
+            <option value="16:00">4:00 PM</option>
+            <option value="17:00">5:00 PM</option>
+            <option value="18:00">6:00 PM</option>
+            <option value="19:00">7:00 PM</option>
+          </select>
+          </div>
+          <div class="col-md-12">
+          <label class="form-label small fw-semibold text-muted">Service<span class="text-danger">*</span></label>
+          <select name="service" class="form-control bg-light border-0">
+            <option value="">Select Service</option>
+            @foreach ($services as $key => $value)
+        <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
+        @endforeach
+          </select>
           </div>
           <div class="col-12">
-          <label class="form-label small fw-semibold text-muted">How can we help?</label>
-          <textarea class="form-control bg-light border-0" rows="3"
+          <label class="form-label small fw-semibold text-muted">Your Message (optional)</label>
+          <textarea class="form-control bg-light border-0" name="msg" rows="3"
             placeholder="Briefly describe your cleaning needs..."></textarea>
           </div>
           <div class="col-12 text-center mt-4">
-          <button type="submit" class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">Send
+          <button type="button" onclick="save_quote()" class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">Send
             Request</button>
           </div>
         </div>

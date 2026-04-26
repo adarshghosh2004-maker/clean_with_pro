@@ -972,20 +972,27 @@ h6,
 .about-hero-new {
     position: relative;
     height: 90vh;
-    background-image: url("../images/aboutus/hero.png");
-    background-size: cover;
-    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
 }
+.about-hero-new .about-hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1000;
+}
 .about-hero-new::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 30, 51, 0.6);
+
 }
 .about-hero-new .container {
     position: relative;
@@ -1103,13 +1110,29 @@ h6,
    ============================================= */
 
 .gallery-hero-v2 {
-    background: linear-gradient(135deg, #001e33 0%, #004b87 100%);
     padding: 100px 0 80px;
     color: white;
     text-align: center;
-    position: relative; 
+    position: relative;
     overflow: hidden;
     height: 90vh;
+}
+
+.gallery-hero-v2::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 30, 51, 0.6);
+}
+
+.gallery-hero-v2-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .gallery-hero-v2 .badge-top {
@@ -1652,14 +1675,21 @@ h6,
 .contact-hero {
     position: relative;
     height: 90vh;
-    background-image: url("../images/aboutus/hero.png");
-    background-size: cover;
-    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
+}
+
+.contact-hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 .contact-hero::before {
     content: "";
@@ -1728,14 +1758,27 @@ h6,
 
 .services-hero {
     height: 90vh;
-    background-image:
-        linear-gradient(rgba(0, 30, 51, 0.7), rgba(0, 30, 51, 0.7)),
-        url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3LJXMaW9ElZjrWPcZmEvz8tPmpL-AacytQhXOiUQ1gJ80WikZrNKoHMqFACU026cUcL0t9kfiQXw40E4Qq5G7l1NxNrT7dQNkFUJQQRbVeBOCL4FNwxojELaDAEwxnBekAzF8LkK7-KFFx6IbudaLxlvLe9GnIIAQBbjf9-r_UQrpE46qtq6WeGSWz8tev-oy0IQdcHjZFKDbdLC3vGmYEWG1QxEv_KgHOM1UCpzxrgwj93fAu_41C1NsWFEp2Ywc-YB-G1A-scE");
-    background-size: cover;
-    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.services-hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 30, 51, 0.6);
+}
+
+.services-hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .service-categories-bar {
