@@ -3,16 +3,16 @@
 @section('content')
 
   <!-- Section 3: Hero Slider -->
-  <section class="hero-slider" data-aos="fade-in">
+  <section class="hero-slider" data-aos="fade-up">
     <div id="heroSlider">
     <!-- Slide 1 -->
     @foreach ($services as $key => $value)
-    <div class="slide-item {{ $key == 0 ? "active" : "" }}">
+    <div class="slide-item {{ $key == 0 ? "active" : "" }}" data-aos="fade-up">
       <img alt="Modern luxury living room" class="w-100 h-100 object-fit-cover position-absolute"
       src="{{ $value['banner_img'] }}" />
       <div class="slide-overlay"></div>
-      <div class="container-custom position-relative px-4 px-md-5 z-2">
-      <div style="max-width: 700px;">
+      <div class="container-custom position-relative px-4 px-md-5 z-2" data-aos="fade-up">
+      <div style="max-width: 700px;" data-aos="fade-up">
       <h1 class="display-3 fw-extrabold text-white mb-4">
       <span class="text-secondary-fixed">{{ $value['title'] }}</span>
       </h1>
@@ -357,21 +357,25 @@
         <form id="quote_form" enctype="multipart/form-data">
         <div class="row g-3">
           <div class="col-md-6">
-          <label class="form-label small fw-semibold text-muted">Full Name<span class="text-danger">*</span></label>
+          <label class="form-label small fw-semibold text-muted">Full Name<span
+            class="text-danger">*</span></label>
           <input type="text" name="name" class="form-control bg-light border-0" placeholder="John Doe" required>
           </div>
           <div class="col-md-6">
-          <label class="form-label small fw-semibold text-muted">Mobile Number<span class="text-danger">*</span></label>
+          <label class="form-label small fw-semibold text-muted">Mobile Number<span
+            class="text-danger">*</span></label>
           <input type="number" name="phone" class="form-control bg-light border-0" placeholder="(555) 123-4567"
             required>
           </div>
           <div class="col-md-6">
-          <label class="form-label small fw-semibold text-muted">Email Address<span class="text-danger">*</span></label>
+          <label class="form-label small fw-semibold text-muted">Email Address<span
+            class="text-danger">*</span></label>
           <input type="email" name="email" class="form-control bg-light border-0" placeholder="john@example.com"
             required>
           </div>
           <div class="col-md-6">
-          <label class="form-label small fw-semibold text-muted">Suburb / Area<span class="text-danger">*</span></label>
+          <label class="form-label small fw-semibold text-muted">Suburb / Area<span
+            class="text-danger">*</span></label>
           <input type="text" name="suburb" class="form-control bg-light border-0" placeholder="e.g. Richmond, VIC"
             required>
           </div>
@@ -413,7 +417,8 @@
             placeholder="Briefly describe your cleaning needs..."></textarea>
           </div>
           <div class="col-12 text-center mt-4">
-          <button type="button" onclick="save_quote()" class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">Send
+          <button type="button" onclick="save_quote()"
+            class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">Send
             Request</button>
           </div>
         </div>
