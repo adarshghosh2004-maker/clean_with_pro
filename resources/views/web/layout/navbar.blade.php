@@ -55,9 +55,9 @@
                             <li>
                                 <hr class="dropdown-divider opacity-10">
                             </li>
-                            <li><a class="dropdown-item" href="#">Commercial Cleaning</a></li>
-                            <li><a class="dropdown-item" href="#">Residential Cleaning</a></li>
-                            <li><a class="dropdown-item" href="#">Deep Sanitization</a></li>
+                            <li><a class="dropdown-item" href="{{ route('services_detail') }}">Commercial Cleaning</a></li>
+                            <li><a class="dropdown-item" href="{{ route('services_detail') }}">Residential Cleaning</a></li>
+                            <li><a class="dropdown-item" href="{{ route('services_detail') }}">Deep Sanitization</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

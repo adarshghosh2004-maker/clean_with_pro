@@ -63,10 +63,11 @@ class WebController extends Controller
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }
     }
-    public function gallery(Request $request){
-        $params['gallery']=Gallery::get();
+    public function gallery(Request $request)
+    {
+        $params['gallery'] = Gallery::get();
         $this->common->imageNameToUrl($params['gallery'], 'before_img', 'gallery');
-        $this->common->imageNameToUrl($params['gallery'], 'after_img','gallery');
+        $this->common->imageNameToUrl($params['gallery'], 'after_img', 'gallery');
         return view('web.gallery', $params);
     }
 }

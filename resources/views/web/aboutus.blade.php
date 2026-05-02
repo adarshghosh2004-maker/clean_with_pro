@@ -14,7 +14,6 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <span class="about-hero-subtitle d-block mb-3">Established 2013</span>
                     <h1 class="display-3 fw-bold mb-4">Melbourne's Trusted Cleaning Experts Since 2013</h1>
                     <p class="fs-5 opacity-75 mb-0">We've spent the last decade perfecting the art of cleanliness,
                         transforming thousands of homes and workplaces into pristine sanctuaries.</p>
@@ -54,7 +53,7 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="passion-img-wrapper">
-                        <img src="{{ asset('images/aboutus/cleaner.png') }}" alt="CleanCare Team at Work"
+                        <img src="{{ asset('assets/imgs/CWPss.PNG') }}" alt="CleanCare Team at Work"
                             class="passion-img shadow-lg">
                     </div>
                 </div>
@@ -141,7 +140,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <img src="{{ asset('images/aboutus/professional.png') }}" alt="The Professional Edge at CleanCare"
+                    <img src="{{ asset('assets/imgs/CWPss.PNG') }}" alt="The Professional Edge at CleanCare"
                         class="img-fluid rounded-4 shadow edge-img">
                 </div>
             </div>

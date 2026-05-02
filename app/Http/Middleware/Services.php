@@ -12,7 +12,7 @@ class Services
     public function handle($request, Closure $next)
     {
         $common=new Common();
-        $services = Service::get();
+        $services = Service::where('status',1)->orderBY('id','desc')->get();
         $pages = Pages::get();
 
         $common->imageNameToUrl($pages,'img','pages');

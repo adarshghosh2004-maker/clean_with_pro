@@ -36,7 +36,7 @@ class ServiceController extends Controller
                     $query->where('name', 'LIKE', "%{$input_search}%");
                 }
 
-                $data = $query->latest()->get();
+                $data = $query->orderBy('id','desc')->get();
 
                 $data = $this->common->imageNameToUrl($data, 'banner_img', $this->folder);
 
@@ -202,4 +202,5 @@ class ServiceController extends Controller
             return response()->json(array('status' => 400, 'errors' => $e->getMessage()));
         }
     }
+    
 }

@@ -27,16 +27,25 @@
         </div>
     </section>
 
-    <!-- Filter Section -->
     <nav class="gallery-filter">
-        <div class="container">
-            <ul class="filter-nav">
+        <div class="container-fluid filter-wrapper">
+
+            <!-- Left Button -->
+            <button class="scroll-btn left" onclick="scrollFilter(-200)">&#10094;</button>
+
+            <ul class="filter-nav" id="filterNav">
                 @foreach ($services as $key => $value)
-                    <li><a href="" id="{{ $value['id'] }}"
-                            class="{{ $key == 0 ? 'active' : '' }} filter-a">{{ $value['title'] }}</a>
+                    <li>
+                        <a href="" id="{{ $value['id'] }}" class="{{ $key == 0 ? 'active' : '' }} filter-a">
+                            {{ $value['title'] }}
+                        </a>
                     </li>
                 @endforeach
             </ul>
+
+            <!-- Right Button -->
+            <button class="scroll-btn right" onclick="scrollFilter(200)">&#10095;</button>
+
         </div>
     </nav>
 
@@ -64,6 +73,36 @@
                             </div>
                         @endif
                     @endforeach
+                </div>
+                {{-- Video Thumbnails --}}
+                <div class="video-grid">
+
+                    <div class="video-card">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Steam Deep Clean">
+                        <div class="play-wrap">
+                            <button class="play-btn" aria-label="Play video">&#9654;</button>
+                        </div>
+                        <p class="video-label">Steam Deep Clean</p>
+                    </div>
+
+                    <div class="video-card">
+                        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80"
+                            alt="Chandelier Detailing">
+                        <div class="play-wrap">
+                            <button class="play-btn" aria-label="Play video">&#9654;</button>
+                        </div>
+                        <p class="video-label">Chandelier Detailing</p>
+                    </div>
+
+                    <div class="video-card">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80"
+                            alt="Industrial Sanitation">
+                        <div class="play-wrap">
+                            <button class="play-btn" aria-label="Play video">&#9654;</button>
+                        </div>
+                        <p class="video-label">Industrial Sanitation</p>
+                    </div>
+
                 </div>
             @endforeach
         </div>
@@ -118,7 +157,6 @@
                         <div class="icon-box"><i class="bi bi-magic"></i></div>
                         <h4>Carpet Deep Cleaning</h4>
                         <p>Commercial grade steam extraction that removes deep-seated dust and stubborn stains.</p>
-                        <a href="#" class="learn-more">Learn More</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -126,7 +164,6 @@
                         <div class="icon-box"><i class="bi bi-couch"></i></div>
                         <h4>Sofa & Upholstery</h4>
                         <p>Gentle yet effective treatment for delicate fabrics, including leather and velvet.</p>
-                        <a href="#" class="learn-more">Learn More</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -134,7 +171,6 @@
                         <div class="icon-box"><i class="bi bi-droplet-half"></i></div>
                         <h4>Bathroom Sanitization</h4>
                         <p>Deep scrubbing of tiles, grout whitening, and removal of limescale and mold.</p>
-                        <a href="#" class="learn-more">Learn More</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -142,7 +178,6 @@
                         <div class="icon-box"><i class="bi bi-key"></i></div>
                         <h4>End of Lease</h4>
                         <p>100% bond back guarantee cleaning following strict real-estate checklists.</p>
-                        <a href="#" class="learn-more">Learn More</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -150,7 +185,6 @@
                         <div class="icon-box"><i class="bi bi-wind"></i></div>
                         <h4>Duct Cleaning</h4>
                         <p>Improve air quality by removing dust, debris, and allergens from your HVAC system.</p>
-                        <a href="#" class="learn-more">Learn More</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -158,7 +192,6 @@
                         <div class="icon-box"><i class="bi bi-house-check"></i></div>
                         <h4>After Renovation</h4>
                         <p>Meticulous cleaning of post-construction dust and builder's residue.</p>
-                        <a href="#" class="learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -240,8 +273,15 @@
 
 @section('pagescript')
     <script>
-        $(document).ready(function () {
+        function scrollFilter(value) {
+            const container = document.getElementById('filterNav');
+            container.scrollBy({
+                left: value,
+                behavior: 'smooth'
+            });
+        }
 
+        $(document).ready(function () {
             $('.filter-a').click(function (e) {
                 e.preventDefault();
 

@@ -58,10 +58,6 @@ Route::get('/specials', function () {
     return view('web.specials');
 })->name('specials');
 
-Route::get('/care', function () {
-    return view('web.cleancare');
-})->name('care');
-
 Route::get('/contact', function () {
     return view('web.contactus');
 })->name('contact');
@@ -84,3 +80,15 @@ Route::get('/feedback2', function () {
 
 Route::resource('quote', WebController::class)->only('store');
 Route::get('gallery', [WebController::class, 'gallery'])->name('gallery');
+
+Route::get('/gallery2', function () {
+    return view('web.gallery2');
+})->name('gallery2');
+
+Route::get('/specials1', function () {
+    return view('web.specials1');
+})->name('specials1');
+
+Route::get('/detail', function () {
+    return view('web.service-detail');
+})->name('services_detail');

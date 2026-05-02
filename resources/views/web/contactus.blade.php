@@ -12,7 +12,6 @@
 
         @endforeach
         <div class="container" data-aos="fade-up">
-            <span class="about-hero-subtitle d-block mb-3">Get In Touch</span>
             <h1 class="display-3 fw-bold mb-4">We're Here to Help You Shine</h1>
             <p class="fs-5 opacity-75 mb-0 mx-auto max-w-700">Have questions about our services or want to book a
                 professional clean? Our team is ready to assist you.</p>
@@ -57,7 +56,6 @@
                         </div>
                         <h4 class="fw-bold mb-3">Our Office</h4>
                         <p class="text-muted mb-4">123 Clean Street, Melbourne VIC 3000</p>
-                        <a href="#map" class="text-secondary fw-bold fs-5 text-decoration-none">Get Directions</a>
                     </div>
                 </div>
                 <!-- Timing -->
@@ -68,7 +66,6 @@
                         </div>
                         <h4 class="fw-bold mb-3">Business Hours</h4>
                         <p class="text-muted mb-4">Monday - Friday: 8AM - 6PM<br>Saturday: 9AM - 4PM<br>Sunday: Closed</p>
-                        <a href="#" class="text-secondary fw-bold fs-5 text-decoration-none">Get Directions</a>
                     </div>
                 </div>
             </div>
@@ -161,66 +158,6 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================
-                     SECTION 4: FAQ (Following the template)
-                ======================== -->
-    <section class="section-padding bg-light" data-aos="fade-up">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="display-5 fw-bold mb-3">Common Questions</h2>
-                <p class="text-muted">Quick answers to help you get started.</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-                    <div class="accordion" id="contactFaq">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq1">
-                                    Do you provide all cleaning supplies?
-                                </button>
-                            </h2>
-                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#contactFaq">
-                                <div class="accordion-body">
-                                    Yes, we bring all necessary eco-friendly cleaning products and professional-grade
-                                    equipment to every job.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq2">
-                                    What is your cancellation policy?
-                                </button>
-                            </h2>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
-                                <div class="accordion-body">
-                                    We require at least 24 hours notice for cancellations. Cancellations within 24 hours
-                                    may incur a fee.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq3">
-                                    Are your cleaners insured?
-                                </button>
-                            </h2>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
-                                <div class="accordion-body">
-                                    Absolutely. Every member of our team is fully insured and police-checked for your
-                                    peace of mind.
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

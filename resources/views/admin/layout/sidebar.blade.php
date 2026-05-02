@@ -44,6 +44,12 @@
                 <span>{{__('label.service')}}</span>
             </a>
         </li>
+        <li class="side_line {{ request()->routeIs('admin.video*') ? 'active' : '' }}">
+            <a href="{{ route('admin.video.index') }}">
+                <i class="fa-brands fa-servicestack fa-2xl menu-icon"></i>
+                <span>{{__('label.video')}}</span>
+            </a>
+        </li>
         <li class="side_line {{ request()->routeIs('admin.gallery*') ? 'active' : '' }}">
             <a href="{{ route('admin.gallery.index') }}">
                 <i class="fa-solid fa-image fa-2xl menu-icon"></i>
@@ -92,9 +98,9 @@
                 <span>{{__('label.feedback')}}</span>
             </a>
         </li>
-                <li class="side_line {{ request()->routeIs('admin.page*') ? 'active' : '' }}">
+        <li class="side_line {{ request()->routeIs('admin.page*') ? 'active' : '' }}">
             <a href="{{ route('admin.pages.index') }}">
-               <i class="fa-solid fa-book-open fa-2xl menu-icon"></i>
+                <i class="fa-solid fa-book-open fa-2xl menu-icon"></i>
                 <span>{{__('label.pages')}}</span>
             </a>
         </li>
