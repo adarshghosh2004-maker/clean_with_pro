@@ -16,6 +16,7 @@ class Services
         $pages = Pages::get();
 
         $common->imageNameToUrl($pages,'img','pages');
+        $common->imageNameToUrl($services,'banner_img','service');
         
 
         view()->share('services', $services);

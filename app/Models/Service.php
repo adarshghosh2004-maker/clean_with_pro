@@ -19,6 +19,8 @@ class Service extends Model
         'short_title' => 'string',
         'description' => 'string',
         'banner_img' => 'string',
+        'detail_img1' => 'string',
+        'detail_img2' => 'string',
         'status' => 'integer',
     ];
 

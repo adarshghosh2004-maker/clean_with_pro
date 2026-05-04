@@ -36,7 +36,7 @@ class ServiceController extends Controller
                     $query->where('name', 'LIKE', "%{$input_search}%");
                 }
 
-                $data = $query->orderBy('id','desc')->get();
+                $data = $query->orderBy('id', 'desc')->get();
 
                 $data = $this->common->imageNameToUrl($data, 'banner_img', $this->folder);
 
@@ -94,6 +94,8 @@ class ServiceController extends Controller
                 'short_title' => 'required',
                 'description' => 'required',
                 'banner_img' => 'required|image|mimes:jpeg,jpg,png,webp',
+                'detail_img1' => 'required|image|mimes:jpeg,jpg,png,webp',
+                'detail_img2' => 'required|image|mimes:jpeg,jpg,png,webp',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -106,6 +108,17 @@ class ServiceController extends Controller
 
                 $files = $requestData['banner_img'];
                 $requestData['banner_img'] = $this->common->saveImage($files, $this->folder, "service_");
+            }
+
+            if (isset($requestData['detail_img1'])) {
+
+                $files = $requestData['detail_img1'];
+                $requestData['detail_img1'] = $this->common->saveImage($files, $this->folder, "service_");
+            }
+            if (isset($requestData['detail_img2'])) {
+
+                $files = $requestData['detail_img2'];
+                $requestData['detail_img2'] = $this->common->saveImage($files, $this->folder, "service_");
             }
 
             $service_data = Service::updateOrCreate(['id' => $requestData['id']], $requestData);
@@ -124,9 +137,9 @@ class ServiceController extends Controller
         try {
             $params['data'] = Service::where('id', $id)->first();
 
-            $temp = array($params['data']);
-            $temp = $this->common->imageNameToUrl($temp, 'banner_img', $this->folder);
-            $params['data'] = $temp[0];
+            $this->common->imageNameToUrl(array($params['data']), 'banner_img', $this->folder);
+            $this->common->imageNameToUrl(array($params['data']), 'detail_img1', $this->folder);
+            $this->common->imageNameToUrl(array($params['data']), 'detail_img2', $this->folder);
 
             if ($params['data'] != null) {
                 return view('admin.service.edit', $params);
@@ -145,6 +158,8 @@ class ServiceController extends Controller
                 'short_title' => 'required',
                 'description' => 'required',
                 'banner_img' => 'image|mimes:jpeg,jpg,png,webp',
+                'detail_img1' => 'image|mimes:jpeg,jpg,png,webp',
+                'detail_img2' => 'image|mimes:jpeg,jpg,png,webp',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -160,7 +175,20 @@ class ServiceController extends Controller
                 $this->common->deleteImageToFolder($this->folder, basename($requestData['old_banner_img']));
             }
 
-            unset($requestData['old_banner_img']);
+            if (isset($requestData['detail_img1'])) {
+                $files = $requestData['detail_img1'];
+                $requestData['detail_img1'] = $this->common->saveImage($files, $this->folder, "service_");
+
+                $this->common->deleteImageToFolder($this->folder, basename($requestData['old_detail_img1']));
+            }
+            if (isset($requestData['detail_img2'])) {
+                $files = $requestData['detail_img2'];
+                $requestData['detail_img2'] = $this->common->saveImage($files, $this->folder, "service_");
+
+                $this->common->deleteImageToFolder($this->folder, basename($requestData['old_detail_img2']));
+            }
+
+            unset($requestData['old_banner_img'], $requestData['old_detail_img1'], $requestData['old_detail_img2']);
 
             $service_data = Service::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($service_data->id)) {
@@ -202,5 +230,5 @@ class ServiceController extends Controller
             return response()->json(array('status' => 400, 'errors' => $e->getMessage()));
         }
     }
-    
+
 }

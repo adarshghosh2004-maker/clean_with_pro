@@ -89,6 +89,5 @@ Route::get('/specials1', function () {
     return view('web.specials1');
 })->name('specials1');
 
-Route::get('/detail', function () {
-    return view('web.service-detail');
-})->name('services_detail');
+
+Route::get('detail/{id}', [WebController::class, 'detail'])->name('services_detail');

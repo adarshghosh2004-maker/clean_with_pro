@@ -55,9 +55,10 @@
                             <li>
                                 <hr class="dropdown-divider opacity-10">
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('services_detail') }}">Commercial Cleaning</a></li>
-                            <li><a class="dropdown-item" href="{{ route('services_detail') }}">Residential Cleaning</a></li>
-                            <li><a class="dropdown-item" href="{{ route('services_detail') }}">Deep Sanitization</a></li>
+                           @foreach ($services as $key=>$value )
+                            <li><a class="dropdown-item" href="{{ route('services_detail', $value['id']) }}">{{ $value['title'] }}</a>
+                            </li>
+                           @endforeach
                         </ul>
                     </li>
                     <li class="nav-item">

@@ -75,92 +75,46 @@
         </div>
     </section>
 
-    <!-- Section 3: Detailed Service 1 (Carpet) -->
-    <section class="section-padding bg-light overflow-hidden">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="service-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3LJXMaW9ElZjrWPcZmEvz8tPmpL-AacytQhXOiUQ1gJ80WikZrNKoHMqFACU026cUcL0t9kfiQXw40E4Qq5G7l1NxNrT7dQNkFUJQQRbVeBOCL4FNwxojELaDAEwxnBekAzF8LkK7-KFFx6IbudaLxlvLe9GnIIAQBbjf9-r_UQrpE46qtq6WeGSWz8tev-oy0IQdcHjZFKDbdLC3vGmYEWG1QxEv_KgHOM1UCpzxrgwj93fAu_41C1NsWFEp2Ywc-YB-G1A-scE"
-                            alt="Carpet Cleaning" class="img-fluid rounded-4 shadow object-fit-cover"
-                            style="height: 400px; width: 100%;">
-                    </div>
-                </div>
-                <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
-                    <p class="text-secondary fw-bold text-uppercase mb-2">Premium Care</p>
-                    <h2 class="display-5 fw-bold text-primary mb-4">Master Steam Carpet Cleaning</h2>
-                    <p class="text-muted mb-4 fs-5">Our clinical-grade steam extraction penetrates deep into the pile,
-                        removing pollen, germs, tough stains, and bacteria for a standard surpassing vacuum suction.</p>
-                    <ul class="list-unstyled mb-5">
-                        <li class="d-flex align-items-center mb-3">
-                            <span class="material-symbols-outlined text-secondary me-3">check_circle</span>
-                            <span>Deep fiber refreshment & sanitize</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                            <span class="material-symbols-outlined text-secondary me-3">check_circle</span>
-                            <span>Eco-friendly, child & pet safe tech</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                            <span class="material-symbols-outlined text-secondary me-3">check_circle</span>
-                            <span>Advanced stain removal technology</span>
-                        </li>
-                    </ul>
-                    <div
-                        class="d-flex align-items-center justify-content-between p-4 bg-white rounded-4 shadow-sm border-start border-4 border-secondary">
-                        <div>
-                            <p class="small text-muted mb-0">Starting from</p>
-                            <h3 class="fw-bold mb-0 text-primary">$99.00</h3>
-                        </div>
-                        <a class="btn btn-primary-blue px-4 py-2 rounded-3 fw-bold" href="#EditModel"
-                            data-bs-toggle="modal">Book Service</a>
-                    </div>
+    <section class="container">
+        <div class="featured-service">
+            <div class="featured-card">
+                <div class="featured-img"></div>
+                <div class="featured-info">
+                    <span class="tag-popular">MOST POPULAR</span>
+                    <h2>End of Lease Cleaning</h2>
+                    <p>Ensure your bond return with our comprehensive move-out cleaning. We cover every corner, from
+                        ceiling fans to skirting boards, leaving the property in pristine condition for the next
+                        inspection.</p>
+                    <a href="#" class="view-details">
+                        <i class="fa-solid fa-file-invoice"></i> VIEW DETAILS <i class="fa-solid fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 4: Detailed Service 2 (Sofa) -->
-    <section class="section-padding overflow-hidden">
-        <div class="container">
-            <div class="row align-items-center g-5 flex-row-reverse">
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="service-img-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgt9du2xanHw4skZCQ-CLjbqILeegOxGFKHeHA4uf19AfdiB1NvUze-bw1Z4DeXQbg7Wwyt8Uwwd6m3l2stAlf6Huayhgwv5ywYzIREfbvB1UMxDvbzikPi7LCa5kLTbITbUM4QR7vunRJq-SdS414vEP6TMK9qvTOO-QQ0mZVbx07cotIchYJoJ1RTjUcHO2fUzO55TT-ekHAii3D28g8Jcto5TSbVUrC451eK6EEKbxgO82VLOCaUundEzaY8Q6YafSaCuZIyXc"
-                            alt="Sofa Cleaning" class="img-fluid rounded-4 shadow object-fit-cover"
-                            style="height: 400px; width: 100%;">
+
+    <div class="container-fluid service-wrapper">
+        <div class="service-grid">
+            <!-- Card 1 -->
+            @foreach ($services as $key => $value)
+                <div class="service-card">
+                    <div class="card-img" style="background-image: url('{{ $value['banner_img'] }}')">
                     </div>
-                </div>
-                <div class="col-lg-6 pe-lg-5" data-aos="fade-right">
-                    <p class="text-secondary fw-bold text-uppercase mb-2">Upholstery Specialist</p>
-                    <h2 class="display-5 fw-bold text-primary mb-4">Expert Sofa & Couch Restoration</h2>
-                    <p class="text-muted mb-4 fs-5">Whether it’s delicate velvet or durable linen, our tailored cleaning
-                        methods restore the texture and color of your favorite furniture.</p>
-                    <ul class="list-unstyled mb-5">
-                        <li class="d-flex align-items-center mb-3">
-                            <span class="material-symbols-outlined text-secondary me-3">check_circle</span>
-                            <span>Fabric-specific treatment plans</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                            <span class="material-symbols-outlined text-secondary me-3">check_circle</span>
-                            <span>Deodorizing and sanitizing included</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                            <span class="material-symbols-outlined text-secondary me-3">check_circle</span>
-                            <span>Removes oils, skin cells, and allergens</span>
-                        </li>
-                    </ul>
-                    <div class="d-flex align-items-center justify-content-between p-4 bg-white rounded-4 shadow-sm border">
-                        <div>
-                            <p class="small text-muted mb-0">Starting from</p>
-                            <h3 class="fw-bold mb-0 text-primary">$149.00</h3>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>{{ $value['title'] }}</h3>
+                            <i class="fa-solid fa-house-chimney" style="color: #27ae60"></i>
                         </div>
-                        <a class="btn btn-primary-blue px-4 py-2 rounded-3 fw-bold shadow-sm" href="#EditModel"
-                            data-bs-toggle="modal">Book Service</a>
+                        <p>{{ $value['description'] }}</p>
+                        <a href="#" class="view-details">VIEW DETAILS <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
-    </section>
+        <button class="scroll-service-btn btn-left" onclick="scrollFilter(1)">&#10095;</button>
+        <button class="scroll-service-btn btn-right" onclick="scrollFilter(0)">&#10095;</button>
+    </div>
 
     <!-- Section 5: Specialist Solutions Grid -->
     <section class="section-padding bg-light">
@@ -380,5 +334,31 @@
             <span class="material-symbols-outlined">cleaning_services</span>
         </div>
     </section>
+
+@endsection
+
+@section('pagescript')
+
+    <script>
+
+        function scrollFilter(val) {
+
+            const wrapper = document.querySelector('.service-grid');
+            const card = wrapper.querySelector('.service-card');
+
+            const gap = 25; 
+            let width = (card.offsetWidth + gap) * 3;
+
+            if(val==1){
+                width=width * -1;
+            }
+
+            wrapper.scrollBy({
+                left: width,
+                behavior: 'smooth'
+            });
+
+        }
+    </script>
 
 @endsection

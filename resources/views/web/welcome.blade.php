@@ -11,15 +11,15 @@
       <img alt="Modern luxury living room" class="w-100 h-100 object-fit-cover position-absolute"
       src="{{ $value['banner_img'] }}" />
       <div class="slide-overlay"></div>
-      <div class="container-custom position-relative px-4 px-md-5 z-2" data-aos="fade-up">
-      <div style="max-width: 700px;" data-aos="fade-up">
-      <h1 class="display-3 fw-extrabold text-white mb-4">
+      <div class="hero-container-custom position-relative px-4 px-md-5 z-2" data-aos="fade-up">
+      <div data-aos="fade-up">
+      <h1 class="display-3 fw-extrabold text-white mb-4 text-center">
       <span class="surface-container-lowest">{{ $value['title'] }}</span>
       </h1>
-      <p class="fs-5 text-white opacity-75 mb-5 lh-lg">
+      <p class="fs-5 text-white opacity-75 mb-5 lh-lg text-center">
       {{ String_Cut($value['short_title'], 70) }}
       </p>
-      <div class="d-flex flex-column flex-sm-row gap-3">
+      <div class="d-flex justify-content-center gap-3">
       <a class="btn btn-secondary py-3 px-5 d-flex align-items-center justify-content-center gap-2"
         data-bs-toggle="modal" href="#EditModel">
         Book Now <span class="material-symbols-outlined">arrow_forward</span>

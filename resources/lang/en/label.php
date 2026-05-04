@@ -241,4 +241,6 @@ return [
     'help' => 'Help',
     'logout' => 'Logout',
     'upload_file' => 'Select File',
+
+    'video'=>"Video",
 ];

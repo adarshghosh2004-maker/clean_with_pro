@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Common;
 use App\Models\Gallery;
+use App\Models\Question;
 use App\Models\Service;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Validator;
@@ -69,5 +71,38 @@ class WebController extends Controller
         $this->common->imageNameToUrl($params['gallery'], 'before_img', 'gallery');
         $this->common->imageNameToUrl($params['gallery'], 'after_img', 'gallery');
         return view('web.gallery', $params);
+    }
+
+    public function detail($id, Request $request)
+    {
+
+        $service = Service::find($id);
+        if (!$service) {
+            $service = Service::first();
+        }
+
+        $this->common->imageNameToUrl(array($service), 'banner_img', 'service');
+        $this->common->imageNameToUrl(array($service), 'detail_img1', 'service');
+        $this->common->imageNameToUrl(array($service), 'detail_img2', 'service');
+
+        $gallery = Gallery::where('service_id', $service->id)->get();
+        $this->common->imageNameToUrl($gallery, 'before_img', 'gallery');
+        $this->common->imageNameToUrl($gallery, 'after_img', 'gallery');
+
+        $videos = Video::where('service_id', $service->id)->get();
+        $this->common->imageNameToUrl($videos, 'image', 'video');
+        $this->common->fileNameToUrl($videos, 'video', 'video');
+
+        $question = Question::where('service_id', $service->id)->first();
+        $this->common->imageNameToUrl(array($question), 'img_1', 'question');
+        $this->common->imageNameToUrl(array($question), 'img_2', 'question');
+        $this->common->imageNameToUrl(array($question), 'img_3', 'question');
+
+        $params['question'] = $question;
+        $params['videos'] = $videos;
+        $params['gallery'] = $gallery;
+        $params['service'] = $service;
+        return view('web.service-detail', $params);
+
     }
 }
