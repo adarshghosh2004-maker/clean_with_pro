@@ -71,7 +71,6 @@
 												</div>
 											</div>
 											<input type="hidden" name="old_before_img" value="{{ basename($data->before_img) }}">
-											<label class="mt-3 ml-5 text-gray">{{__('label.max_size_5mb')}}</label>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -91,7 +90,6 @@
 											</div>
 											<input type="hidden" name="old_after_img"
 												value="{{ basename($data->after_img) }}">
-											<label class="mt-3 ml-5 text-gray">{{__('label.max_size_5mb')}}</label>
 										</div>
 									</div>
 								</div>

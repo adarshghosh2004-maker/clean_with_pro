@@ -14,7 +14,7 @@
             </h1>
             <div class="d-flex justify-content-center gap-3 mt-4" data-aos="fade-up" data-aos-delay="200">
                 <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-4 py-3">Book Now</a>
-                <button class="btn btn-outline-white px-4 py-3">View Our Work</button>
+                <a href="{{ route('gallery') }}" class="btn btn-outline-white px-4 py-3">View Our Work</a>
             </div>
         </div>
     </section>
@@ -78,7 +78,7 @@
     <section class="container">
         <div class="featured-service">
             <div class="featured-card">
-                <div class="featured-img"></div>
+                <div class="featured-img"><img src="assets/imgs/CWPss.PNG" alt=""></div>
                 <div class="featured-info">
                     <span class="tag-popular">MOST POPULAR</span>
                     <h2>End of Lease Cleaning</h2>
@@ -266,7 +266,7 @@
     <section class="section-padding" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold text-primary mb-3">CleanCare Success Stories</h2>
+                <h2 class="display-5 fw-bold text-primary mb-3">Clean With Professionals Success Stories</h2>
             </div>
             <div class="row g-4">
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">

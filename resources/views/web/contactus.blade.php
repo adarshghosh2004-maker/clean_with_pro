@@ -2,12 +2,12 @@
 
 @section('content')
     <!-- ========================
-                     SECTION 1: Contact Hero
-                ======================== -->
+                                 SECTION 1: Contact Hero
+                            ======================== -->
     <section class="contact-hero" data-aos="fade-up">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'contact')
-                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="contact-hero-img">
+                <img src="{{ $value['img'] }}" alt="Clean With Professionals Hero Image" class="contact-hero-img">
             @endif
 
         @endforeach
@@ -19,8 +19,8 @@
     </section>
 
     <!-- ========================
-                     SECTION 2: Contact Info Cards
-                ======================== -->
+                                 SECTION 2: Contact Info Cards
+                            ======================== -->
     <section class="contact-info-section" data-aos="fade-up">
         <div class="container">
             <div class="row g-4 justify-content-center">
@@ -44,8 +44,8 @@
                         </div>
                         <h4 class="fw-bold mb-3">Email Us</h4>
                         <p class="text-muted mb-4">Send us your details and we'll reply within 24h.</p>
-                        <a href="mailto:info@cleancare.pro"
-                            class="text-secondary fw-bold fs-5 text-decoration-none">info@cleancare.pro</a>
+                        <a href="mailto:info@cleanwithpro.com.au"
+                            class="text-secondary fw-bold fs-5 text-decoration-none">info@cleanwithpro.com.au</a>
                     </div>
                 </div>
                 <!-- Address -->
@@ -55,7 +55,9 @@
                             <span class="material-symbols-outlined">location_on</span>
                         </div>
                         <h4 class="fw-bold mb-3">Our Office</h4>
-                        <p class="text-muted mb-4">123 Clean Street, Melbourne VIC 3000</p>
+                        <p class="text-muted mb-4">21 McMillan St,<br>
+                            Clayton South, VIC 3169,<br>
+                            Australia</p>
                     </div>
                 </div>
                 <!-- Timing -->
@@ -65,7 +67,7 @@
                             <span class="material-symbols-outlined">access_time</span>
                         </div>
                         <h4 class="fw-bold mb-3">Business Hours</h4>
-                        <p class="text-muted mb-4">Monday - Friday: 8AM - 6PM<br>Saturday: 9AM - 4PM<br>Sunday: Closed</p>
+                        <p class="text-muted mb-4">Monday - Saturday: 8AM - 8PM<br>Sunday: 9AM - 5PM</p>
                     </div>
                 </div>
             </div>
@@ -73,8 +75,8 @@
     </section>
 
     <!-- ========================
-                     SECTION 3: Contact Form & Map
-                ======================== -->
+                                 SECTION 3: Contact Form & Map
+                            ======================== -->
     <section class="section-padding bg-white" data-aos="fade-up">
         <div class="container">
             <div class="row g-5 align-items-center">
@@ -165,12 +167,12 @@
     </section>
 
     <!-- ========================
-                     SECTION 5: CTA
-                ======================== -->
+                                 SECTION 5: CTA
+                            ======================== -->
     <section class="cta-section-new" data-aos="fade-up">
         <div class="container" data-aos="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Ready to Start Your Clean Journey?</h2>
-            <p class="fs-5 opacity-75 mb-5">Join 5,000+ happy Melburnians who trust CleanCare.</p>
+            <p class="fs-5 opacity-75 mb-5">Join 5,000+ happy Melburnians who trust Clean With Professionals.</p>
             <div class="cta-buttons">
                 <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-5 py-3">Book Now</a>
                 <a href="tel:0413368322" class="btn btn-outline-white px-5 py-3">Call Support</a>

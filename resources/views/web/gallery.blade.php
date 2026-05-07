@@ -11,7 +11,6 @@
 
         @endforeach
         <div class="container">
-            <span class="badge-top" data-aos="fade-up">MELBOURNE'S PREMIER CLEANING EXPERIENCE</span>
             <h1 data-aos="fade-up" data-aos-delay="100">Before &<br><span>After Cleaning Gallery</span></h1>
             <p data-aos="fade-up" data-aos-delay="200">
                 Witness the transformational power. Our editorial-standard cleaning services turn cluttered Melbourne
@@ -52,9 +51,9 @@
     <!-- Gallery Grid -->
     <section class="gallery-grid-v2" data-aos="fade-up">
         <div class="container">
+            <!-- Project 1 -->
             @foreach ($services as $key => $value)
                 <div class="row services-row" data-id="{{ $value['id'] }}" style="{{ $key == 0 ? '' : 'display:none;' }}">
-                    <!-- Project 1 -->
                     @foreach ($gallery as $item => $data)
                         @if($data['service_id'] == $value['id'])
                             <div class="col-lg-4 col-md-6 gallery-item-v2" data-aos="fade-up" data-aos-duration="800">

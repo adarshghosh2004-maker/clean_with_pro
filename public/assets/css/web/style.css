@@ -251,7 +251,7 @@ h6,
 }
 .footer a:hover {
     color: var(--secondary-green);
-    padding-left: 5px;
+    padding-left: 2.5px;
 }
 .social-icons a {
     display: inline-flex;
@@ -265,8 +265,9 @@ h6,
     color: white;
 }
 .social-icons a:hover {
-    background: var(--secondary-green);
-    color: black;
+    background: linear-gradient(90deg, #12344d, #0f9d7a) !important;
+    color: white;
+    padding-left: 2.5px;
 }
 
 /* Buttons */
@@ -1769,20 +1770,21 @@ h6,
     background-color: var(--surface);
 }
 
-.contact-card {
+.contact-info-section .contact-card {
     background: white;
     padding: 40px;
     border-radius: 20px;
     height: 100%;
+    display: block;
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
 }
-.contact-card:hover {
+.contact-info-section .contact-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
 }
 
-.contact-icon-box {
+.contact-info-section .contact-icon-box {
     width: 60px;
     height: 60px;
     background-color: rgba(0, 108, 82, 0.1);
@@ -1791,8 +1793,16 @@ h6,
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 25px;
+    margin: 0 auto 25px;
     font-size: 1.5rem;
+}
+
+.contact-info-section .contact-card a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.4;
 }
 
 .contact-form-wrapper {
@@ -3767,6 +3777,8 @@ a {
     color: var(--text-muted);
     max-width: 600px;
     margin: 0 auto 40px;
+    color: var(--accent-light-teal);
+    opacity: 0.75 !important;
 }
 
 .s2-hero-btns {
@@ -4124,16 +4136,23 @@ a {
 }
 
 .haq-content h1 {
+    font-size: 70px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--primary-blue);
+}
+.haq-content-span {
     font-size: 50px;
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 24px;
-    color: var(--primary-dark);
+    color: var(--secondary-green-hover);
 }
 
 .haq-description {
     font-size: 16px;
-    color: var(--text-muted);
+    color: var(--dark);
     margin-bottom: 40px;
 }
 
@@ -4207,14 +4226,14 @@ a {
 }
 
 .btn-secondary {
-    background-color: #f8f9fa;
-    color: var(--primary-dark);
+    /* background-color: #f8f9fa; */
+    /* color: var(--primary-dark); */
     padding: 16px 32px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
     font-size: 15px;
-    border: 1px solid #e9ecef;
+    /* border: 1px solid #e9ecef; */
 }
 
 /* Visual Area */
@@ -4454,6 +4473,7 @@ a {
     display: flex;
     gap: 2rem;
     overflow-x: auto;
+    height: 350px;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -4551,5 +4571,587 @@ a {
     }
     .video-grid {
         overflow: visible;
+    }
+}
+
+/* ============================================================
+   Service Detail Animations
+   Scroll-triggered & load animations for the service detail page
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. KEYFRAME DEFINITIONS
+   ---------------------------------------------------------- */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.88);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroTextReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) skewY(2deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) skewY(0deg);
+    }
+}
+
+@keyframes heroBgZoom {
+    from {
+        transform: scale(1.08);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes floatUpDown {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes pulseGlow {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.15);
+    }
+    50% {
+        box-shadow: 0 0 20px 6px rgba(255, 255, 255, 0.1);
+    }
+}
+
+@keyframes lineGrow {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 60px;
+        opacity: 1;
+    }
+}
+
+@keyframes staggerFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes revealMask {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0% 0 0);
+    }
+}
+
+@keyframes borderDraw {
+    from {
+        border-color: transparent;
+        box-shadow: none;
+    }
+    to {
+        border-color: inherit;
+    }
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ----------------------------------------------------------
+   2. HERO SECTION — s2-hero
+   ---------------------------------------------------------- */
+
+.s2-page .s2-hero {
+    animation: heroBgZoom 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.s2-page .s2-hero .container {
+    animation: fadeInUp 0.9s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.s2-page .s2-hero h1 {
+    animation: heroTextReveal 0.9s 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.s2-page .s2-hero p {
+    animation: fadeInUp 0.8s 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.s2-page .s2-hero-btns {
+    animation: fadeInUp 0.7s 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.s2-page .s2-hero-btns .btn {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.s2-page .s2-hero-btns .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* ----------------------------------------------------------
+   3. FEATURES SECTION — s2-features
+   ---------------------------------------------------------- */
+
+.s2-page .s2-features-text {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s2-page .s2-features-text.anim-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.s2-page .s2-features-text h2 {
+    transition:
+        opacity 0.7s 0.1s ease,
+        transform 0.7s 0.1s ease;
+}
+
+.s2-page .s2-features-text p {
+    transition:
+        opacity 0.7s 0.2s ease,
+        transform 0.7s 0.2s ease;
+}
+
+.s2-page .s2-info-box {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.7s 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s2-page .s2-info-box.anim-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.s2-page .s2-features-images .s2-img-1,
+.s2-page .s2-features-images .s2-img-2 {
+    opacity: 0;
+    transform: translateX(50px) scale(0.95);
+    transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s2-page .s2-features-images .s2-img-1.anim-visible,
+.s2-page .s2-features-images .s2-img-2.anim-visible {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+.s2-page .s2-features-images .s2-img-1:hover,
+.s2-page .s2-features-images .s2-img-2:hover {
+    transform: scale(1.03);
+    transition: transform 0.4s ease;
+}
+
+/* ----------------------------------------------------------
+   4. SECTION HEADERS (Before & After / Process Videos)
+   ---------------------------------------------------------- */
+
+.s2-page .section-header {
+    opacity: 0;
+    transform: translateY(25px);
+    transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s2-page .section-header.anim-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.s2-page .section-title::after {
+    content: "";
+    display: block;
+    height: 3px;
+    background: currentColor;
+    opacity: 0.2;
+    border-radius: 2px;
+    width: 0;
+    margin-top: 8px;
+    transition: width 0.8s 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s2-page .section-header.anim-visible .section-title::after {
+    width: 60px;
+}
+
+.s2-page .btn-nav {
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.s2-page .btn-nav:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.s2-page .btn-nav:active {
+    transform: scale(0.95);
+}
+
+/* ----------------------------------------------------------
+   5. GALLERY CARDS — Before & After
+   ---------------------------------------------------------- */
+
+.s2-page .gallery-card {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+    transition:
+        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s2-page .gallery-card.anim-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.s2-page .gallery-card:hover .comparison-container {
+    transform: scale(1.02);
+    transition: transform 0.4s ease;
+}
+
+.s2-page .comparison-container {
+    transition: transform 0.4s ease;
+}
+
+.s2-page .label-before,
+.s2-page .label-after {
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.s2-page .gallery-card:hover .label-before,
+.s2-page .gallery-card:hover .label-after {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* ----------------------------------------------------------
+   6. VIDEO CARDS — Process Videos
+   ---------------------------------------------------------- */
+
+.s2-page .video-card {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+    transition:
+        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s2-page .video-card.anim-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.s2-page .video-card:hover .video-thumbnail {
+    transform: scale(1.05);
+    filter: brightness(0.7);
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+.s2-page .video-thumbnail {
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+.s2-page .play-btn-overlay {
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.s2-page .video-card:hover .play-btn-overlay {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+}
+
+/* ----------------------------------------------------------
+   7. HAQ HERO — Questions Section
+   ---------------------------------------------------------- */
+
+.s2-page .haq-content {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition:
+        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s2-page .haq-content.anim-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.s2-page .haq-content h1 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.7s 0.15s ease,
+        transform 0.7s 0.15s ease;
+}
+
+.s2-page .haq-content.anim-visible h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.s2-page .haq-description {
+    opacity: 0;
+    transform: translateY(15px);
+    transition:
+        opacity 0.7s 0.3s ease,
+        transform 0.7s 0.3s ease;
+}
+
+.s2-page .haq-content.anim-visible .haq-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.s2-page .contact-card {
+    opacity: 0;
+    transform: translateY(25px);
+    transition:
+        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s2-page .contact-card.anim-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.s2-page .contact-card:hover {
+    transform: translateY(-4px);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.s2-page .contact-card:hover .icon-box {
+    transform: scale(1.1) rotate(-5deg);
+    transition: transform 0.3s ease;
+}
+
+.s2-page .icon-box {
+    transition: transform 0.3s ease;
+}
+
+.s2-page .haq-visual {
+    opacity: 0;
+    transform: translateX(40px);
+    transition:
+        opacity 0.85s 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.85s 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.s2-page .haq-visual.anim-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.s2-page .main-img-bg {
+    transition: transform 0.6s ease;
+}
+
+.s2-page .haq-visual:hover .main-img-bg {
+    transform: scale(1.03);
+}
+
+.s2-page .floating-card {
+    animation: floatUpDown 4s ease-in-out infinite;
+}
+
+.s2-page .floating-card.card-top {
+    animation-delay: 0s;
+}
+
+.s2-page .floating-card.card-bottom {
+    animation-delay: 1.5s;
+}
+
+.s2-page .floating-card:hover {
+    animation-play-state: paused;
+    transform: scale(1.04);
+    transition: transform 0.3s ease;
+}
+
+/* ----------------------------------------------------------
+   8. VIDEO MODAL ANIMATION
+   ---------------------------------------------------------- */
+
+.s2-page .modal.fade .modal-dialog {
+    transform: scale(0.9) translateY(-20px);
+    transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.35s ease;
+    opacity: 0;
+}
+
+.s2-page .modal.show .modal-dialog {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* ----------------------------------------------------------
+   9. STAGGER UTILITY — applied via JS to cards in a slider
+   ---------------------------------------------------------- */
+
+.s2-page .anim-stagger-1 {
+    transition-delay: 0s !important;
+}
+.s2-page .anim-stagger-2 {
+    transition-delay: 0.1s !important;
+}
+.s2-page .anim-stagger-3 {
+    transition-delay: 0.2s !important;
+}
+.s2-page .anim-stagger-4 {
+    transition-delay: 0.3s !important;
+}
+.s2-page .anim-stagger-5 {
+    transition-delay: 0.4s !important;
+}
+.s2-page .anim-stagger-6 {
+    transition-delay: 0.5s !important;
+}
+
+/* ----------------------------------------------------------
+   10. REDUCED MOTION — accessibility
+   ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .s2-page .floating-card {
+        animation: none !important;
+    }
+
+    .s2-page .s2-hero,
+    .s2-page .s2-hero .container,
+    .s2-page .s2-hero h1,
+    .s2-page .s2-hero p,
+    .s2-page .s2-hero-btns {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
     }
 }

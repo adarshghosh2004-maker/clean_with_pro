@@ -65,7 +65,6 @@
                                                     <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview">
                                                 </div>
                                             </div>
-                                            <label class="mt-3 text-gray">{{__('label.max_size_5mb')}}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -82,7 +81,6 @@
                                                     <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview2">
                                                 </div>
                                             </div>
-                                            <label class="mt-3 text-gray">{{__('label.max_size_5mb')}}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -99,7 +97,6 @@
                                                     <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview3">
                                                 </div>
                                             </div>
-                                            <label class="mt-3 text-gray">{{__('label.max_size_5mb')}}</label>
                                         </div>
                                     </div>
                                 </div>

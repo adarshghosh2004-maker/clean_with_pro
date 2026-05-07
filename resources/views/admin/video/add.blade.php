@@ -103,7 +103,6 @@
                                             id="imagePreview">
                                     </div>
                                 </div>
-                                <label class="mt-3 ml-5 text-gray">{{__('label.max_size_5mb')}}</label>
                             </div>
                         </div>
                     </div>

@@ -15,20 +15,21 @@
                         come with surprises.
                     </p>
                     <div class="d-flex flex-wrap gap-3 mb-5">
-                        <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-4 py-3 rounded-pill fw-bold">Book My Clean</a>
+                        <a href="#EditModel" data-bs-toggle="modal"
+                            class="btn btn-secondary px-4 py-3 rounded-pill fw-bold">Book My Clean</a>
                     </div>
                     <div class="d-flex flex-wrap gap-4 text-muted small fw-semibold">
                         <div class="d-flex align-items-center gap-2">
                             <span class="material-symbols-outlined text-secondary fs-5">verified_user</span>
-                            Flat rates
+                            General Clean
                         </div>
                         <div class="d-flex align-items-center gap-2">
                             <span class="material-symbols-outlined text-secondary fs-5">payments</span>
-                            Hourly rate
+                            Deep Clean
                         </div>
                         <div class="d-flex align-items-center gap-2">
                             <span class="material-symbols-outlined text-secondary fs-5">visibility</span>
-                            Transparent pricing
+                            Move IN/Move Out
                         </div>
                     </div>
                 </div>
@@ -56,15 +57,15 @@
                     <thead>
                         <tr class="bg-primary-container text-white text-center">
                             <th class="py-4 text-start ps-5">Included Features</th>
-                            <th class="py-4">Our Basic</th>
-                            <th class="py-4 bg-secondary">Spring Clean <br><span class="small fw-normal">EXTENDED
+                            <th class="py-4">General Clean</th>
+                            <th class="py-4 bg-secondary">Deep Clean <br><span class="small fw-normal">EXTENDED
                                     SERVICE</span></th>
-                            <th class="py-4">End of Lease</th>
+                            <th class="py-4">Move IN/Move Out</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
                         <tr>
-                            <td class="py-3 text-start ps-5 border-bottom">Dust and Web Removal</td>
+                            <td class="py-3 text-start ps-5 border-bottom">Light Tidy Up</td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                             <td class="py-3 border-bottom bg-light"><span
@@ -73,7 +74,7 @@
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
                         <tr>
-                            <td class="py-3 text-start ps-5 border-bottom">Deep Cleaning</td>
+                            <td class="py-3 text-start ps-5 border-bottom">Extensive Tidy Up</td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                             <td class="py-3 border-bottom bg-light"><span
@@ -82,7 +83,423 @@
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
                         <tr>
-                            <td class="py-3 text-start ps-5 border-bottom">Dust/Wipe Dusting</td>
+                            <td class="py-3 text-start ps-5 border-bottom">Cobweb Removal</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Empty Bins</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Dust Skirting/Window Sills/Doors</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Wipe Skirting/Window Sills/Doors</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Dust/Clean Doors</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Light Switches/Power Points</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Dust Reachable Surfaces</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Mirrors</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Air Freshen (optional)</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Vacuum Soft Furnishing</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Vacuum Under Furniture</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Walls</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Ceilings</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Dust Blinds</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Window Tracks</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Inside All Drawers/Cabinets</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Garages</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr class="bg-primary-container text-white text-center">
+                            <th class="py-4 text-start ps-5">Kitchen</th>
+                            <th class="py-4">General Clean</th>
+                            <th class="py-4 bg-secondary">Deep Clean <br><span class="small fw-normal">EXTENDED
+                                    SERVICE</span></th>
+                            <th class="py-4">Move IN/Move Out</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Stovetop</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Rangehood Exterior</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Underside Rangehood</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Exhaust Fans/Filters</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Wipe Benchtops</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Appliances (Exterior)</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Splashback</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Polish Tapware</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Scrub Sink</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Microwave Inside/Out</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Wipe Cupboard Exteriors</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Polish Stainless Steel</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Dust All Surfaces</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Inside Dishwasher</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Oven (Inside)</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Inside Kitchen Cabinets</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr class="bg-primary-container text-white text-center">
+                            <th class="py-4 text-start ps-5">Bathroom</th>
+                            <th class="py-4">General Clean</th>
+                            <th class="py-4 bg-secondary">Deep Clean <br><span class="small fw-normal">EXTENDED
+                                    SERVICE</span></th>
+                            <th class="py-4">Move IN/Move Out</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Scrub Bath</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Scrub Shower</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Scrub Sink</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Wipe Benches</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Mirrors</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Polish Chrome</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Wipe Cupboard Exteriors</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Empty Bins</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Toilet</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Scrub Shower Grout</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Ceiling Exhaust Fan</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom bg-light"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 text-start ps-5 border-bottom">Inside Drawers/Cabinets</td>
                             <td class="py-3 border-bottom text-muted opacity-50"><span
                                     class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom bg-light"><span
@@ -90,8 +507,19 @@
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
+                    </tbody>
+                    <thead>
+                        <tr class="bg-primary-container text-white text-center">
+                            <th class="py-4 text-start ps-5">Bedroom</th>
+                            <th class="py-4">General Clean</th>
+                            <th class="py-4 bg-secondary">Deep Clean <br><span class="small fw-normal">EXTENDED
+                                    SERVICE</span></th>
+                            <th class="py-4">Move IN/Move Out</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
                         <tr>
-                            <td class="py-3 text-start ps-5 border-bottom">Mopping</td>
+                            <td class="py-3 text-start ps-5 border-bottom">Dust/Wipe All Surfaces</td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                             <td class="py-3 border-bottom bg-light"><span
@@ -100,9 +528,9 @@
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
                         <tr>
-                            <td class="py-3 text-start ps-5 border-bottom">Clean Inside Furniture</td>
-                            <td class="py-3 border-bottom text-muted opacity-50"><span
-                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 text-start ps-5 border-bottom">Clean Inside Drawers</td>
+                            <td class="py-3 border-bottom"><span
+                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
                             <td class="py-3 border-bottom bg-light"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                             <td class="py-3 border-bottom"><span
@@ -255,7 +683,8 @@
                 <p class="fs-5 opacity-75 mb-5 mx-auto max-w-600">Join hundreds of Melbourne families who trust us as
                     their weekly sanctuary. Simple booking, professional results.</p>
                 <div class="d-flex justify-content-center flex-wrap gap-3">
-                    <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-5 py-3 rounded-pill fw-bold">Get a Free Quote</a>
+                    <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-5 py-3 rounded-pill fw-bold">Get
+                        a Free Quote</a>
                 </div>
             </div>
         </div>

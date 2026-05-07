@@ -232,7 +232,8 @@
                     <li class="mb-2"><a href="<?php echo route('about'); ?>">About Us</a></li>
                     <li class="mb-2"><a href="<?php echo route('specials'); ?>">Specials</a></li>
                     <li class="mb-2"><a href="<?php echo route('gallery'); ?>">Gallery</a></li>
-                    <li class="mb-2"><a href="#">FAQ</a></li>
+                    <li class="mb-2"><a href="<?php echo route('pricing'); ?>">Pricing</a></li>
+                    <li class="mb-2"><a href="<?php echo route('contact'); ?>">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -252,7 +253,7 @@
                 <ul class="list-unstyled mt-4">
                     <li class="mb-3 d-flex align-items-start">
                         <i class="bi bi-geo-alt-fill text-secondary-green me-3 mt-1"></i>
-                        <span class="text-white-50 small">123 CleanPro Street, Suite 100<br>Melbourne, VIC 3000</span>
+                        <span class="text-white-50 small">21 McMillan St, Clayton South<br>Melbourne, VIC 3169, Australia</span>
                     </li>
                     <li class="mb-3 d-flex align-items-center">
                         <i class="bi bi-telephone-fill text-secondary-green me-3"></i>

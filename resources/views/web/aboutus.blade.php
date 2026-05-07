@@ -231,19 +231,19 @@
         <div class="container">
             <div class="row align-items-center justify-content-center g-5">
                 <div class="col-6 col-md-3 text-center" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://placehold.co/150x50/f5faf8/004b87?text=LOGO+1" alt="Partner Logo 1"
+                    <img src="assets/imgs/CWPss.PNG" alt="Partner Logo 1"
                         class="partner-logo">
                 </div>
                 <div class="col-6 col-md-3 text-center" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://placehold.co/150x50/f5faf8/004b87?text=LOGO+2" alt="Partner Logo 2"
+                    <img src="assets/imgs/CWPss.PNG" alt="Partner Logo 2"
                         class="partner-logo">
                 </div>
                 <div class="col-6 col-md-3 text-center" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://placehold.co/150x50/f5faf8/004b87?text=LOGO+3" alt="Partner Logo 3"
+                    <img src="assets/imgs/CWPss.PNG" alt="Partner Logo 3"
                         class="partner-logo">
                 </div>
                 <div class="col-6 col-md-3 text-center" data-aos="fade-up" data-aos-delay="400">
-                    <img src="https://placehold.co/150x50/f5faf8/004b87?text=LOGO+4" alt="Partner Logo 4"
+                    <img src="assets/imgs/CWPss.PNG" alt="Partner Logo 4"
                         class="partner-logo">
                 </div>
             </div>
@@ -332,7 +332,7 @@
                 ======================== -->
     <section class="cta-section-new">
         <div class="container" data-aos="zoom-in">
-            <h2 class="display-4 fw-bold mb-4">Experience the CleanCare Standard</h2>
+            <h2 class="display-4 fw-bold mb-4">Experience the Clean With Professionals Standard</h2>
             <p class="fs-5 opacity-75 mb-5">Join thousands of Melburnians who trust us with their spaces.</p>
             <div class="cta-buttons">
                 <a href="{{ route('home') }}" class="btn btn-secondary px-5 py-3">Book Your First Clean</a>

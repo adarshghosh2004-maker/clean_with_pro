@@ -85,7 +85,6 @@
 										</div>
 									</div>
 									<input type="hidden" name="old_banner_img" value="{{ $data->banner_img }}">
-									<label class="mt-3 ml-5 text-gray">{{__('label.max_size_5mb')}}</label>
 								</div>
 							</div>
 							<div class="col-md-3">
@@ -103,7 +102,6 @@
 										</div>
 									</div>
 									<input type="hidden" name="old_detail_img1" value="{{ $data->detail_img1 }}">
-									<label class="mt-3 ml-5 text-gray">{{__('label.max_size_5mb')}}</label>
 								</div>
 							</div>
 							<div class="col-md-3">
@@ -121,7 +119,6 @@
 										</div>
 									</div>
 									<input type="hidden" name="old_detail_img2" value="{{ $data->detail_img2 }}">
-									<label class="mt-3 ml-5 text-gray">{{__('label.max_size_5mb')}}</label>
 								</div>
 							</div>
 						</div>

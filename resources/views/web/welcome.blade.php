@@ -48,12 +48,9 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6" data-aos="fade-right">
       <div class="about-images-grid position-relative">
-        <img src="https://placehold.co/600x400/004b87/FFFFFF?text=Main+Cleaning" class="about-img-main shadow"
-        alt="Cleaning Staff">
-        <img src="https://placehold.co/300x200/00b050/FFFFFF?text=Equipment" class="about-img-sub shadow"
-        alt="Equipment">
-        <img src="https://placehold.co/300x200/ffffff/004b87?text=Clean+Office" class="about-img-sub shadow"
-        alt="Clean Office">
+        <img src="assets/imgs/CWPss.PNG" class="about-img-main shadow" alt="Cleaning Staff">
+        <img src="assets/imgs/CWPss.PNG" class="about-img-sub shadow" alt="Equipment">
+        <img src="assets/imgs/CWPss.PNG" class="about-img-sub shadow" alt="Clean Office">
 
         <!-- Floating Badge -->
         <div class="position-absolute bg-primary-blue text-white p-3 rounded shadow text-center"
@@ -145,8 +142,7 @@
       <div class="col-lg-7" data-aos="fade-left">
       <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active position-relative" id="v-pills-commercial" role="tabpanel">
-        <img src="https://placehold.co/800x500/003662/FFFFFF?text=Corporate+Headquarters"
-          class="showcase-img shadow" alt="Commercial">
+        <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Commercial">
         <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
           style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
           <h4>Corporate Headquarters</h4>
@@ -154,8 +150,7 @@
         </div>
         </div>
         <div class="tab-pane fade position-relative" id="v-pills-toilet" role="tabpanel">
-        <img src="https://placehold.co/800x500/00b050/FFFFFF?text=Washroom+Hygiene" class="showcase-img shadow"
-          alt="Toilet">
+        <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Toilet">
         <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
           style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
           <h4>Washroom Hygiene</h4>
@@ -163,8 +158,7 @@
         </div>
         </div>
         <div class="tab-pane fade position-relative" id="v-pills-post" role="tabpanel">
-        <img src="https://placehold.co/800x500/f8f9fa/333333?text=Post+Construction" class="showcase-img shadow"
-          alt="Post Construction">
+        <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Post Construction">
         <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
           style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
           <h4>Site Clearance</h4>
@@ -172,8 +166,7 @@
         </div>
         </div>
         <div class="tab-pane fade position-relative" id="v-pills-window" role="tabpanel">
-        <img src="https://placehold.co/800x500/004b87/FFFFFF?text=Facade+Cleaning" class="showcase-img shadow"
-          alt="Window Cleaning">
+        <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Window Cleaning">
         <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
           style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
           <h4>High-Rise Windows</h4>
@@ -235,7 +228,7 @@
       <div>
       <h2 class="section-title mb-0">Recent <span>Success Stories</span></h2>
       </div>
-      <a href="#" class="btn btn-primary-blue  rounded-pill px-4">View All Gallery</a>
+      <a href="{{ route('gallery') }}" class="btn btn-primary-blue  rounded-pill px-4">View All Gallery</a>
     </div>
 
     <div class="row g-4">
