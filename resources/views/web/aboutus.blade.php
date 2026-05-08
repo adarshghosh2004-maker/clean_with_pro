@@ -336,7 +336,7 @@
             <p class="fs-5 opacity-75 mb-5">Join thousands of Melburnians who trust us with their spaces.</p>
             <div class="cta-buttons">
                 <a href="{{ route('home') }}" class="btn btn-secondary px-5 py-3">Book Your First Clean</a>
-                <a href="tel:0413368322" class="btn btn-outline-white px-5 py-3">Call 0413 368 322</a>
+                <a href="tel:+61468460145" class="btn btn-outline-white px-5 py-3">Call +61 468 460 145</a>
             </div>
         </div>
     </section>

@@ -73,7 +73,7 @@
         <li class="mb-2"><i class="bi bi-check-circle-fill text-secondary-green me-2"></i> Customized Cleaning
         Schedules</li>
       </ul>
-      <a href="#" class="btn btn-primary-blue py-2 px-4 rounded-pill">Read More About Us</a>
+      <a href="{{ route('about') }}" class="btn btn-primary-blue py-2 px-4 rounded-pill">Read More About Us</a>
       </div>
     </div>
     </div>

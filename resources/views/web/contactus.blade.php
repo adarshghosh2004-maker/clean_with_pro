@@ -2,8 +2,8 @@
 
 @section('content')
     <!-- ========================
-                                 SECTION 1: Contact Hero
-                            ======================== -->
+                                     SECTION 1: Contact Hero
+                                ======================== -->
     <section class="contact-hero" data-aos="fade-up">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'contact')
@@ -19,8 +19,8 @@
     </section>
 
     <!-- ========================
-                                 SECTION 2: Contact Info Cards
-                            ======================== -->
+            SECTION 2: Contact Info Cards
+            ======================== -->
     <section class="contact-info-section" data-aos="fade-up">
         <div class="container">
             <div class="row g-4 justify-content-center">
@@ -32,8 +32,8 @@
                         </div>
                         <h4 class="fw-bold mb-3">Call Us</h4>
                         <p class="text-muted mb-4">Direct line for booking and urgent inquiries.</p>
-                        <a href="tel:0413368322" class="text-secondary fw-bold fs-5 text-decoration-none">0413 368
-                            322</a>
+                        <a href="tel:+61468460145" class="text-secondary fw-bold fs-5 text-decoration-none">+61 468 460
+                            145</a>
                     </div>
                 </div>
                 <!-- Email -->
@@ -75,8 +75,8 @@
     </section>
 
     <!-- ========================
-                                 SECTION 3: Contact Form & Map
-                            ======================== -->
+                                     SECTION 3: Contact Form & Map
+                                ======================== -->
     <section class="section-padding bg-white" data-aos="fade-up">
         <div class="container">
             <div class="row g-5 align-items-center">
@@ -167,15 +167,15 @@
     </section>
 
     <!-- ========================
-                                 SECTION 5: CTA
-                            ======================== -->
+                                     SECTION 5: CTA
+                                ======================== -->
     <section class="cta-section-new" data-aos="fade-up">
         <div class="container" data-aos="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Ready to Start Your Clean Journey?</h2>
             <p class="fs-5 opacity-75 mb-5">Join 5,000+ happy Melburnians who trust Clean With Professionals.</p>
             <div class="cta-buttons">
                 <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-5 py-3">Book Now</a>
-                <a href="tel:0413368322" class="btn btn-outline-white px-5 py-3">Call Support</a>
+                <a href="tel:+61468460145" class="btn btn-outline-white px-5 py-3">Call Support</a>
             </div>
         </div>
     </section>

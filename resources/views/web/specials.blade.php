@@ -7,9 +7,9 @@
     {{-- ═══════════════════════════════════════
     HERO SECTION
     ════════════════════════════════════════ --}}
-    <section class="specials-hero">
+    <section class="specials-hero" data-aos="fade-up">
         <div class="specials-hero-overlay"></div>
-        <div class="specials-hero-content">
+        <div class="specials-hero-content" data-aos="fade-up" data-aos-delay="100">
             <div class="badge-special">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
                     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
@@ -29,7 +29,7 @@
     {{-- ═══════════════════════════════════════
     LIMITED TIME OFFERS
     ════════════════════════════════════════ --}}
-    <section class="offers-section">
+    <section class="offers-section" data-aos="fade-up">
         <div class="offers-header">
             <h2>🔥Specials Offers🔥</h2>
             <span class="offers-underline"></span>
@@ -37,7 +37,7 @@
 
         <div class="offers-grid">
             {{-- Card 1 --}}
-            <div class="offer-card">
+            <div class="offer-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="offer-card-top">
                     <div class="offer-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -106,7 +106,7 @@
             </div>
 
             {{-- Card 2 --}}
-            <div class="offer-card">
+            <div class="offer-card" data-aos="fade-up" data-aos-delay="150">
                 <div class="offer-card-top">
                     <div class="offer-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -157,7 +157,7 @@
             </div>
 
             {{-- Card 3 --}}
-            <div class="offer-card">
+            <div class="offer-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="offer-card-top">
                     <div class="offer-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -209,7 +209,7 @@
             </div>
 
             {{-- Card 4 --}}
-            <div class="offer-card">
+            <div class="offer-card" data-aos="fade-up" data-aos-delay="250">
                 <div class="offer-card-top">
                     <div class="offer-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -262,7 +262,7 @@
             </div>
 
             {{-- Card 5 (Highlighted) --}}
-            <div class="offer-card">
+            <div class="offer-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="offer-card-top">
                     <div class="offer-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -305,7 +305,7 @@
             </div>
 
             {{-- Card 6 --}}
-            <div class="offer-card">
+            <div class="offer-card" data-aos="fade-up" data-aos-delay="350">
                 <div class="offer-card-top">
                     <div class="offer-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -348,10 +348,10 @@
     {{-- ═══════════════════════════════════════
     FEATURES / GUARANTEE
     ════════════════════════════════════════ --}}
-    <section class="features-section">
+    <section class="features-section" data-aos="fade-up">
         <div class="features-grid">
 
-            <div class="feature-item-alt">
+            <div class="feature-item-alt" data-aos="fade-up" data-aos-delay="100">
                 <div class="feature-icon-alt">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -362,7 +362,7 @@
                 <p>$20M Public Liability coverage for total peace of mind.</p>
             </div>
 
-            <div class="feature-item-alt">
+            <div class="feature-item-alt" data-aos="fade-up" data-aos-delay="200">
                 <div class="feature-icon-alt">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path>
@@ -373,7 +373,7 @@
                 <p>Non-toxic, family and pet-friendly cleaning products.</p>
             </div>
 
-            <div class="feature-item-alt">
+            <div class="feature-item-alt" data-aos="fade-up" data-aos-delay="300">
                 <div class="feature-icon-alt">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="8" r="7"></circle>
@@ -384,7 +384,7 @@
                 <p>Every cleaner is police-checked and extensively trained.</p>
             </div>
 
-            <div class="feature-item-alt">
+            <div class="feature-item-alt" data-aos="fade-up" data-aos-delay="400">
                 <div class="feature-icon-alt">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path
@@ -402,16 +402,31 @@
     {{-- ═══════════════════════════════════════
     CTA SECTION
     ════════════════════════════════════════ --}}
-    <section class="cta-section">
-        <div class="cta-box-alt">
+    <section class="cta-section" data-aos="fade-up">
+        <div class="cta-box-alt" data-aos="fade-up" data-aos-delay="100">
             <div class="cta-content">
                 <h2>Ready for a spotless home?</h2>
                 <p>Join over 2,500+ satisfied Melbourne residents. Book your professional clean in under 60 seconds.</p>
             </div>
             <div class="cta-action">
-                <a href="#" class="btn-book-online">BOOK ONLINE NOW</a>
+                <a href="#EditModel" data-bs-toggle="modal" class="btn-book-online">BOOK ONLINE NOW</a>
             </div>
         </div>
     </section>
 
+@endsection
+
+@section('pagescript')
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 900,
+                    once: true,
+                    mirror: false,
+                });
+            }
+        });
+    </script>
 @endsection

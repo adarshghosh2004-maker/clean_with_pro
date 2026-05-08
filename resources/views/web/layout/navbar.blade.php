@@ -10,7 +10,7 @@
         </div>
         <div class="d-flex align-items-center gap-2">
             <span class="material-symbols-outlined fs-6">call</span>
-            <a class="text-white text-decoration-none fw-bold" href="tel:1800CLEANCARE">1800-CLEAN-CARE</a>
+            <a class="text-white text-decoration-none fw-bold" href="tel:+61468460145">+61 468 460 145 - Clean with Professionals</a>
         </div>
     </div>
 
@@ -55,10 +55,11 @@
                             <li>
                                 <hr class="dropdown-divider opacity-10">
                             </li>
-                           @foreach ($services as $key=>$value )
-                            <li><a class="dropdown-item" href="{{ route('services_detail', $value['id']) }}">{{ $value['title'] }}</a>
-                            </li>
-                           @endforeach
+                            @foreach ($services as $key => $value)
+                                <li><a class="dropdown-item"
+                                        href="{{ route('services_detail', $value['id']) }}">{{ $value['title'] }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </li>
                     <li class="nav-item">

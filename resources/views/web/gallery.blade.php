@@ -160,7 +160,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card-mini">
-                        <div class="icon-box"><i class="bi bi-couch"></i></div>
+                        <div class="icon-box"><i class="bi bi-stars"></i></div>
                         <h4>Sofa & Upholstery</h4>
                         <p>Gentle yet effective treatment for delicate fabrics, including leather and velvet.</p>
                     </div>

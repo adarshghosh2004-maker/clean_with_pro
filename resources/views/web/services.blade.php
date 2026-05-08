@@ -117,7 +117,7 @@
     </div>
 
     <!-- Section 5: Specialist Solutions Grid -->
-    <section class="section-padding bg-light">
+    <section class="section-padding bg-light" data-aos="fade-up">
         <div class="container text-center">
             <h2 class="display-5 fw-bold text-primary mb-3" data-aos="fade-up">Specialist Solutions</h2>
             <p class="text-muted mx-auto mb-5" style="max-width: 600px;" data-aos="fade-up" data-aos-delay="100">Every
@@ -326,7 +326,7 @@
             <div class="d-flex justify-content-center gap-3">
                 <a class="btn btn-secondary px-5 py-3 rounded-3 fw-bold shadow" href="#EditModel" data-bs-toggle="modal">Get
                     A Free Quote</a>
-                <a class="btn btn-outline-white px-5 py-3 rounded-3 fw-bold" href="tel:1800-CLEAN">Call 1800-CLEAN</a>
+                <a class="btn btn-outline-white px-5 py-3 rounded-3 fw-bold" href="tel:+61468460145">Call +61 468 460 145</a>
             </div>
         </div>
         <div class="position-absolute top-50 start-50 translate-middle opacity-10 z-1"

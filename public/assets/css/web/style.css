@@ -33,6 +33,13 @@
     --transition: all 0.3s ease;
 }
 
+html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 body {
     font-family:
         "Inter",
@@ -46,6 +53,10 @@ body {
     color: var(--text-dark);
     background-color: var(--surface);
     min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 h1,
@@ -127,9 +138,9 @@ h6,
 }
 
 .container-custom {
-    max-width: 1440px;
     margin: 0 auto;
     width: 100%;
+    padding: 0 15px;
 }
 
 .material-symbols-outlined {
@@ -378,12 +389,14 @@ h6,
     color: white;
 }
 
-/* Hero Slider (welcome.blade.php) */
 .hero-slider {
     position: relative;
     height: 90vh;
     background-color: var(--primary);
     overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 .slide-item {
     position: absolute;
@@ -1903,10 +1916,9 @@ h6,
 
 .process-line {
     position: absolute;
-    top: 25px;
-    left: 0;
-    right: 0;
-    width: 100%;
+    top: 28px;
+    left: calc(10% + 28px);
+    right: calc(10% + 28px);
     height: 2px;
     background: repeating-linear-gradient(
         to right,
@@ -1915,7 +1927,7 @@ h6,
         transparent 10px,
         transparent 20px
     );
-    z-index: 1;
+    z-index: 0;
 }
 
 .hover-translate-y:hover {
@@ -2812,12 +2824,19 @@ h6,
 
 html {
     scroll-behavior: smooth;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 body {
     font-family: var(--font-b);
     color: var(--dark);
     background: #fff;
     overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 img {
     display: block;
@@ -5127,6 +5146,8 @@ a {
 .s2-page .anim-stagger-6 {
     transition-delay: 0.5s !important;
 }
+
+
 
 /* ----------------------------------------------------------
    10. REDUCED MOTION — accessibility

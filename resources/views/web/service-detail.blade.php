@@ -198,8 +198,8 @@
         function initServiceDetailAnimations() {
             const revealItems = document.querySelectorAll('.s2-page .anim-trigger');
             const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -80px 0px'
+                threshold: 0.1,
+                rootMargin: '0px 10% -50px 10%'
             };
 
             if (!('IntersectionObserver' in window)) {
@@ -207,11 +207,12 @@
                 return;
             }
 
-            const revealObserver = new IntersectionObserver((entries, observer) => {
+            const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('anim-visible');
-                        observer.unobserve(entry.target);
+                    } else {
+                        entry.target.classList.remove('anim-visible');
                     }
                 });
             }, observerOptions);

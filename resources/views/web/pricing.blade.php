@@ -75,12 +75,12 @@
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Extensive Tidy Up</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom bg-light"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Cobweb Removal</td>
@@ -111,8 +111,8 @@
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Wipe Skirting/Window Sills/Doors</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom bg-light"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                             <td class="py-3 border-bottom"><span
@@ -165,12 +165,12 @@
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Vacuum Soft Furnishing</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Vacuum Under Furniture</td>
@@ -183,26 +183,26 @@
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Walls</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>>
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Clean Ceilings</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Dust Blinds</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom bg-light"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                             <td class="py-3 border-bottom"><span
@@ -210,8 +210,8 @@
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Clean Window Tracks</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom bg-light"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                             <td class="py-3 border-bottom"><span
@@ -219,21 +219,21 @@
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Inside All Drawers/Cabinets</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Garages</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                         </tr>
                     </tbody>
                     <thead>
@@ -266,19 +266,19 @@
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Clean Underside Rangehood</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Clean Exhaust Fans/Filters</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
@@ -365,28 +365,28 @@
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Clean Inside Dishwasher</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Clean Oven (Inside)</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Clean Inside Kitchen Cabinets</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
@@ -482,8 +482,8 @@
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Scrub Shower Grout</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom bg-light"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                             <td class="py-3 border-bottom"><span
@@ -491,10 +491,10 @@
                         </tr>
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Clean Ceiling Exhaust Fan</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
@@ -502,8 +502,8 @@
                             <td class="py-3 text-start ps-5 border-bottom">Inside Drawers/Cabinets</td>
                             <td class="py-3 border-bottom text-muted opacity-50"><span
                                     class="material-symbols-outlined">cancel</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
@@ -520,10 +520,10 @@
                     <tbody class="text-center">
                         <tr>
                             <td class="py-3 text-start ps-5 border-bottom">Dust/Wipe All Surfaces</td>
-                            <td class="py-3 border-bottom"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
-                            <td class="py-3 border-bottom bg-light"><span
-                                    class="material-symbols-outlined text-secondary">check_circle</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
+                            <td class="py-3 border-bottom text-muted opacity-50"><span
+                                    class="material-symbols-outlined">cancel</span></td>
                             <td class="py-3 border-bottom"><span
                                     class="material-symbols-outlined text-secondary">check_circle</span></td>
                         </tr>
