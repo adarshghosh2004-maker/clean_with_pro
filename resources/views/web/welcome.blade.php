@@ -78,7 +78,7 @@
 
 
   <!-- Section 7: How It Works -->
-  <section class="py-5 my-5 container-custom px-4 text-center" data-anim="fade-up">
+  <section class="section-padding container-custom px-4 text-center" data-anim="fade-up">
     <h2 class="display-5 fw-extrabold text-primary mb-4">A Seamless Experience</h2>
     <p class="text-on-surface-variant mx-auto mb-5" style="max-width: 500px;">From booking to the final inspection,
       we’ve refined our process for your convenience.</p>

@@ -146,7 +146,7 @@
     <!-- ========================
                              SECTION 5: How It Works
                         ======================== -->
-    <section class="how-it-works-section">
+    <section class="how-it-works-section" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-3" data-anim="fade-up">
                 <h2 class="display-5 fw-bold">How It Works</h2>
@@ -300,7 +300,7 @@
     <!-- ========================
                              SECTION 9: CTA – Experience the Standard
                         ======================== -->
-    <section class="cta-section-new">
+    <section class="cta-section-new" data-anim="fade-up">
         <div class="container" data-anim="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Experience the Clean With Professionals Standard</h2>
             <p class="fs-5 opacity-75 mb-5">Join thousands of Melburnians who trust us with their spaces.</p>

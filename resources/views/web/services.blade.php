@@ -20,7 +20,7 @@
     </section>
 
     <!-- Section 2: Service Categories Icons -->
-    <section class="service-categories-bar py-5 bg-white shadow-sm mb-4" data-anim="fade-up">
+    <section class="service-categories-bar section-padding bg-white shadow-sm mb-4" data-anim="fade-up">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-4">
                 <div class="category-item text-center" data-anim="zoom-in" data-anim-delay="100">
@@ -75,7 +75,7 @@
         </div>
     </section>
 
-    <section class="container">
+    <section class="container" data-anim="fade-up">
         <div class="featured-service">
             <div class="featured-card">
                 <div class="featured-img"><img src="{{ $services[0]['banner_img'] ?? ''}}" alt=""></div>
@@ -91,7 +91,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section-padding" data-anim="fade-up">
         <div class="section-header anim-trigger">
             <div class="section-title-wrapper">
                 <h1 class="section-title">Services</h1>
@@ -196,7 +196,7 @@
     </section>
 
     <!-- Section 6: How We Restore Your Home -->
-    <section class="section-padding">
+    <section class="section-padding" data-anim="fade-up">
         <div class="container text-center">
             <h2 class="display-5 fw-bold text-primary mb-5" data-anim="fade-up">How We Restore Your Home</h2>
             <div class="row g-4 mt-4 position-relative">
@@ -241,7 +241,7 @@
     </section>
 
     <!-- Section 8: Features Row -->
-    <section class="py-5 bg-primary text-white">
+    <section class="section-padding bg-primary text-white" data-anim="fade-up">
         <div class="container">
             <div class="row g-4 text-center">
                 <div class="col-md-3" data-anim="fade-up" data-anim-delay="100">

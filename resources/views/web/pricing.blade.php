@@ -657,7 +657,7 @@
         </section>
 
         <!-- Section 6: Trust Badges -->
-        <section class="py-5 bg-light" data-anim="fade-up">
+        <section class="section-padding bg-light" data-anim="fade-up">
                 <div class="container">
                         <div class="row g-4 text-center">
                                 <div class="col-md-3" data-anim="fade-up" data-anim-delay="100">
@@ -775,7 +775,7 @@
         </section>
 
         <!-- Section 8: Ready for a Spotless Home? -->
-        <section class="cta-section py-5" data-anim="zoom-in">
+        <section class="cta-section section-padding" data-anim="zoom-in">
                 <div class="container-fluid">
                         <div class="bg-primary-container p-5 rounded-5 text-white text-center shadow-lg">
                                 <h2 class="display-4 fw-bold mb-3">Ready for a Spotless Home?</h2>

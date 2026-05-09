@@ -47,7 +47,7 @@
     </nav>
 
     <!-- Before & After Section -->
-    <section class="section">
+    <section class="section-padding" data-anim="fade-up">
         <div class="section-header anim-trigger">
             <div class="section-title-wrapper">
                 <h1 class="section-title">Before & After</h1>
@@ -91,7 +91,7 @@
     </section>
 
     <!-- Process Videos Section -->
-    <section class="section">
+    <section class="section-padding" data-anim="fade-up">
         <div class="section-header anim-trigger">
             <div class="section-title-wrapper">
                 <h1 class="section-title">Process Videos</h1>
