@@ -21,4 +21,9 @@ class Question extends Model
         'img_3' => 'string',
         'status' => 'integer',
     ];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class, 'service_id', 'id');
+    }
 }

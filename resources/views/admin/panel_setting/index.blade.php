@@ -40,7 +40,6 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="old_panel_login_page_bg_image" value="{{ $result['panel_login_page_bg_image'] }}">
-                                <label class="mt-3 text-gray">{{__('label.size_2640_3960_pixels')}}</label>
                             </div>
                         </div>
                     </div>

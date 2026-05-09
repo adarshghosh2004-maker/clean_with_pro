@@ -1,5 +1,6 @@
 @extends('web.layout.web-layout')
 @section('content')
+    <div class="s2-page gallery-page">
 
 
     <!-- Hero Section -->
@@ -71,12 +72,12 @@
         </div>
 
         @foreach ($services as $item => $data)
-            <div class="gallery-grid services-row" data-id="{{ $data['id'] }}" style="{{ $item == 0 ? '' : 'display:none;' }}"
-                id="gallerySlider">
+            <div class="gallery-grid services-row gallerySlider" data-id="{{ $data['id'] }}" style="{{ $item == 0 ? '' : 'display:none;' }}">
                 <!-- Card 1 -->
+                @php $i = 1; @endphp
                 @foreach ($gallery as $key => $value)
                     @if($data['id'] == $value['service_id'])
-                        <div class="gallery-card anim-trigger anim-stagger-{{ ($key % 6) + 1 }}">
+                        <div class="gallery-card anim-trigger anim-stagger-{{ $i }}">
                             <div class="comparison-container">
                                 <img src="{{ $value['before_img'] }}" alt="Victorian Velvet Before" class="comparison-img"
                                     style="filter: contrast(0.8) sepia(0.3) brightness(0.8);">
@@ -85,6 +86,7 @@
                                 <span class="label-after">AFTER</span>
                             </div>
                         </div>
+                        @php $i = ($i % 6) + 1; @endphp
                     @endif
                 @endforeach
             </div>
@@ -114,18 +116,19 @@
         </div>
 
         @foreach ($services as $item => $data)
-            <div class="video-grid services-row" data-id="{{ $data['id'] }}" style="{{ $item == 0 ? '' : 'display:none;' }}"
-                id="videoSlider">
+            <div class="video-grid services-row videoSlider" data-id="{{ $data['id'] }}" style="{{ $item == 0 ? '' : 'display:none;' }}">
                 <!-- Video 1 -->
+                @php $j = 1; @endphp
                 @foreach ($videos as $key => $value)
                     @if($data['id'] == $value['service_id'])
-                        <div class="video-card anim-trigger anim-stagger-{{ ($key % 6) + 1 }}">
+                        <div class="video-card anim-trigger anim-stagger-{{ $j }}">
                             <img src="{{ $value['image'] }}" alt="Heritage Silk" class="video-thumbnail">
                             <a class="play-btn-overlay video" data-bs-toggle="modal" data-bs-target="#videoModal"
                                 data-video="{{ $value['video'] }}" data-image="{{ $value['image'] }}" title="Watch">
                                 <i class="fa-solid fa-play"></i>
                             </a>
                         </div>
+                        @php $j = ($j % 6) + 1; @endphp
                     @endif
                 @endforeach
             </div>
@@ -306,7 +309,9 @@
             </div>
         </div>
     </div>
+    </div>
 @endsection
+
 
 @section('pagescript')
     <script>
@@ -352,23 +357,61 @@
                     var target = $('.services-row[data-id="' + serviceId + '"]');
 
                     target.fadeIn(300, function () {
-                        // 🔥 Re-init AOS after DOM visibility change
+                        // 🔥 Re-init AOS and custom animations after DOM visibility change
                         AOS.refreshHard();
+                        initGalleryAnimations();
+
                     });
 
                 }, 200);
             });
         });
 
-        function scrollSlider(sliderId, direction) {
-            const slider = document.getElementById(sliderId);
+        function scrollSlider(sliderClass, direction) {
+            // Find the visible slider with the matching class
+            const slider = $('.' + sliderClass + '.services-row:visible')[0];
+            if (!slider) return;
+
             const card = slider.querySelector('.gallery-card, .video-card');
-            const scrollAmount = card.offsetWidth + parseInt(window.getComputedStyle(slider).gap);
+            if (!card) return;
+
+            const scrollAmount = card.offsetWidth + parseInt(window.getComputedStyle(slider).gap || 0);
 
             slider.scrollBy({
                 left: direction * scrollAmount,
                 behavior: 'smooth'
             });
+
+            // IntersectionObserver will handle the animations as items enter/leave the view
         }
+
+        function initGalleryAnimations() {
+            const revealItems = document.querySelectorAll('.s2-page .anim-trigger');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            if (!('IntersectionObserver' in window)) {
+                revealItems.forEach(item => item.classList.add('anim-visible'));
+                return;
+            }
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('anim-visible');
+                    } else if (entry.target.classList.contains('gallery-card') || entry.target.classList.contains('video-card')) {
+                        // Only remove for slider cards to allow re-animation on horizontal scroll
+                        entry.target.classList.remove('anim-visible');
+                    }
+                });
+            }, observerOptions);
+
+            revealItems.forEach(item => revealObserver.observe(item));
+        }
+
+        document.addEventListener('DOMContentLoaded', initGalleryAnimations);
+
     </script>
 @endsection

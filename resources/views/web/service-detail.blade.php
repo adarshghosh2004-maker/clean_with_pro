@@ -188,7 +188,7 @@
 
         function initServiceDetailAnimations() {
             // Exclude slider cards from intersection observer
-            const revealItems = document.querySelectorAll('.s2-page .anim-trigger:not(.gallery-card):not(.video-card)');
+            const revealItems = document.querySelectorAll('.s2-page .anim-trigger');
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -203,21 +203,14 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('anim-visible');
-                    } else {
+                    } else if (entry.target.classList.contains('gallery-card') || entry.target.classList.contains('video-card')) {
+                        // Only remove for slider cards to allow re-animation on horizontal scroll
                         entry.target.classList.remove('anim-visible');
                     }
                 });
             }, observerOptions);
 
             revealItems.forEach(item => revealObserver.observe(item));
-
-            // Handle slider cards manually for initial load
-            setTimeout(() => {
-                const sliderCards = document.querySelectorAll('.s2-page .gallery-card, .s2-page .video-card');
-                sliderCards.forEach(card => {
-                    card.classList.add('anim-visible');
-                });
-            }, 100);
         }
 
         function scrollSlider(sliderId, direction) {
@@ -230,18 +223,7 @@
                 behavior: 'smooth'
             });
 
-            // Retrigger animations for all cards in the slider after scroll
-            setTimeout(() => {
-                const cards = slider.querySelectorAll('.gallery-card, .video-card');
-                cards.forEach(card => {
-                    card.classList.remove('anim-visible');
-                });
-                setTimeout(() => {
-                    cards.forEach(card => {
-                        card.classList.add('anim-visible');
-                    });
-                }, 50);
-            }, 300);
+            // IntersectionObserver will handle the animations as items enter/leave the view
         }
 
         document.addEventListener('DOMContentLoaded', initServiceDetailAnimations);

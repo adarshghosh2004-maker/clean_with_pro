@@ -27,7 +27,7 @@ class QuestionController extends Controller
             $params['services'] = Service::get();
             if ($request->ajax()) {
 
-                $query = Question::query();
+                $query = Question::with('service');
                 $input_search = $request['input_search'];
                 if ($input_search != null) {
                     $query = Question::where('name', 'LIKE', "%{$input_search}%");

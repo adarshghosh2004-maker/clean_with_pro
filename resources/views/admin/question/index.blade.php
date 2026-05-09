@@ -202,7 +202,7 @@
                     data: 'service',
                     name: 'service',
                     render: function (data) {
-                        return data ? data : "-";
+                        return data ? data.title : "-";
                     }
                 },
                 {

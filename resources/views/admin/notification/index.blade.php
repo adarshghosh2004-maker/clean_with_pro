@@ -13,15 +13,15 @@
             <h1 class="page-title-sm">{{__('label.notification')}}</h1>
 
             <div class="border-bottom row mb-3">
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{__('label.dashboard')}}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{__('label.notification')}}</li>
                     </ol>
                 </div>
-                <div class="col-sm-3">
-                    <div class="d-flex justify-content-between">
-                        <a href="{{ route('admin.notification.create') }}" class="btn btn-default mw-120">{{__('label.add')}}</a>
+                <div class="col-sm-4">
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ route('admin.notification.create') }}" class="btn btn-default mw-120 mr-4">{{__('label.add')}}</a>
                         <a href="{{ route('admin.notification.setting') }}" class="btn btn-default mw-120">{{__('label.notification_setting')}}</a>
                     </div>
                 </div>

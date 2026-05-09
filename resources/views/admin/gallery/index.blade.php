@@ -107,14 +107,10 @@
                     },
                 },
                 {
-                    data: 'service_id',
-                    name: 'service_id',
-                    render: function(data, type, full, meta) {
-                        if (data) {
-                            return data;
-                        } else {
-                            return "-";
-                        }
+                    data: 'service',
+                    name: 'service',
+                    render: function(data) {
+                        return data ? data.title : "-"; 
                     }
                 },
                 {

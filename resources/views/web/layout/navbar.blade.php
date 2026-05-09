@@ -10,7 +10,9 @@
         </div>
         <div class="d-flex align-items-center gap-2">
             <span class="material-symbols-outlined fs-6">call</span>
-            <a class="text-white text-decoration-none fw-bold" href="tel:+61468460145">+61 468 460 145 - Clean with Professionals</a>
+            <a class="text-white text-decoration-none fw-bold"
+                href="tel:{{ Setting_Data()['contact'] ?? "+61468460145" }}">{{ Setting_Data()['contact'] ?? "+61468460145" }}
+                - {{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}</a>
         </div>
     </div>
 
@@ -20,7 +22,7 @@
             <a class="navbar-brand d-flex align-items-center" href="<?php echo route('home'); ?>">
                 <img src="<?php echo asset('assets/imgs/CWPss.PNG'); ?>" alt="Clean With Professionals Logo"
                     class="navbar-logo me-3">
-                <span class="m-0 fs-4 fw-bold text-primary-blue headline">Clean With Professionals</span>
+                <span class="m-0 fs-4 fw-bold text-primary-blue headline">{{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}</span>
             </a>
 
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
@@ -45,22 +47,24 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle <?php echo request()->routeIs('services') ? 'active' : ''; ?>"
-                            href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown"
+                            href="<?php echo route('services'); ?>" id="servicesDropdown" role="button"
                             aria-expanded="false">
                             Services
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="servicesDropdown">
-                            <li><a class="dropdown-item fw-bold text-primary mb-2"
-                                    href="<?php echo route('services'); ?>">All Services</a></li>
-                            <li>
-                                <hr class="dropdown-divider opacity-10">
-                            </li>
-                            @foreach ($services as $key => $value)
-                                <li><a class="dropdown-item"
-                                        href="{{ route('services_detail', $value['id']) }}">{{ $value['title'] }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
+                        <div class="dropdown-menu mega-menu shadow-lg" aria-labelledby="servicesDropdown">
+                            <div class="row g-2 flex-nowrap">
+                                @foreach (collect($services)->chunk(4) as $chunk)
+                                    <div class="col">
+                                        @foreach ($chunk as $value)
+                                            <a class="dropdown-item d-flex align-items-center"
+                                                href="{{ route('services_detail', $value['id']) }}">
+                                                <span class="fw-medium small">{{ $value['title'] }}</span>
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo request()->routeIs('pricing') ? 'active' : ''; ?>"

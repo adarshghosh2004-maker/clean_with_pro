@@ -30,7 +30,7 @@ class GalleryController extends Controller
 
                 $input_search = $request['input_search'];
 
-                $query = Gallery::where('status', 1);
+                $query = Gallery::with('service')->where('status', 1);
 
                 if (!empty($input_search)) {
                     $query->where('name', 'LIKE', "%{$input_search}%");
