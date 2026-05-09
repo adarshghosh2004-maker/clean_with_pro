@@ -27,10 +27,10 @@ function Tab_Icon()
         if (Storage::disk('public')->exists($folder . '/' . $app_logo)) {
             $app_logo = $img_base_url . $folder . '/' . $app_logo;
         } else {
-            $app_logo = "";
+            $app_logo = asset('assets/imgs/CWPss.png');
         }
     } else {
-        $app_logo = "";
+        $app_logo = asset('assets/imgs/CWPss.png');
     }
     return $app_logo;
 }
@@ -145,7 +145,7 @@ function Set_Environment_Value($envKey, $envValue)
 }
 function seconds_to_hm($time)
 {
-    $hours   = floor($time / 3600);
+    $hours = floor($time / 3600);
     $minutes = floor(($time % 3600) / 60);
     $seconds = $time % 60;
     $hours = $hours < 10 ? "0" . $hours : $hours;

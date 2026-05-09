@@ -20,54 +20,54 @@
     </section>
 
     <!-- Section 2: Service Categories Icons -->
-    <section class="service-categories-bar py-5 bg-white shadow-sm" data-aos="fade-up">
+    <section class="service-categories-bar py-5 bg-white shadow-sm mb-4" data-aos="fade-up">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-4">
                 <div class="category-item text-center" data-aos="zoom-in" data-aos-delay="100">
                     <div class="category-icon-circle">
-                        <span class="material-symbols-outlined">cleaning_services</span>
+                        <i class="fa-solid fa-rug fa-xl"></i>
                     </div>
                     <p class="small fw-bold mt-2 mb-0">CARPET</p>
                 </div>
                 <div class="category-item text-center" data-aos="zoom-in" data-aos-delay="150">
                     <div class="category-icon-circle">
-                        <span class="material-symbols-outlined">chair</span>
+                        <i class="fa-solid fa-couch fa-xl"></i>
                     </div>
                     <p class="small fw-bold mt-2 mb-0">SOFA</p>
                 </div>
                 <div class="category-item text-center" data-aos="zoom-in" data-aos-delay="200">
                     <div class="category-icon-circle">
-                        <span class="material-symbols-outlined">bed</span>
+                        <i class="fa-solid fa-mattress-pillow fa-xl"></i>
                     </div>
                     <p class="small fw-bold mt-2 mb-0">MATTRESS</p>
                 </div>
                 <div class="category-item text-center" data-aos="zoom-in" data-aos-delay="250">
                     <div class="category-icon-circle">
-                        <span class="material-symbols-outlined">layers</span>
+                        <i class="fa-solid fa-rug fa-xl"></i>
                     </div>
                     <p class="small fw-bold mt-2 mb-0">RUGS</p>
                 </div>
                 <div class="category-item text-center" data-aos="zoom-in" data-aos-delay="300">
                     <div class="category-icon-circle">
-                        <span class="material-symbols-outlined">kitchen</span>
+                        <i class="fa-solid fa-kitchen-set fa-xl"></i>
                     </div>
                     <p class="small fw-bold mt-2 mb-0">COMMERCIAL</p>
                 </div>
                 <div class="category-item text-center" data-aos="zoom-in" data-aos-delay="350">
                     <div class="category-icon-circle">
-                        <span class="material-symbols-outlined">curtains</span>
+                        <i class="fa-solid fa-file-lines fa-xl"></i>
                     </div>
                     <p class="small fw-bold mt-2 mb-0">CURTAINS</p>
                 </div>
                 <div class="category-item text-center" data-aos="zoom-in" data-aos-delay="350">
                     <div class="category-icon-circle">
-                        <span class="material-symbols-outlined">tile_lamp</span>
+                        <i class="fa-solid fa-lines-leaning fa-xl"></i>
                     </div>
                     <p class="small fw-bold mt-2 mb-0">TILE</p>
                 </div>
                 <div class="category-item text-center" data-aos="zoom-in" data-aos-delay="450">
                     <div class="category-icon-circle">
-                        <span class="material-symbols-outlined">sanitizer</span>
+                        <i class="fa-solid fa-hand-sparkles fa-xl"></i>
                     </div>
                     <p class="small fw-bold mt-2 mb-0">HYGIENE</p>
                 </div>
@@ -81,11 +81,9 @@
                 <div class="featured-img"><img src="assets/imgs/CWPss.PNG" alt=""></div>
                 <div class="featured-info">
                     <span class="tag-popular">MOST POPULAR</span>
-                    <h2>End of Lease Cleaning</h2>
-                    <p>Ensure your bond return with our comprehensive move-out cleaning. We cover every corner, from
-                        ceiling fans to skirting boards, leaving the property in pristine condition for the next
-                        inspection.</p>
-                    <a href="#" class="view-details">
+                    <h2>{{ $services[0]['title'] }}</h2>
+                    <p>{{ $services[0]['description'] }}</p>
+                    <a href="{{ route('services_detail', $services[0]['id']) }}" class="view-details">
                         <i class="fa-solid fa-file-invoice"></i> VIEW DETAILS <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
@@ -93,28 +91,45 @@
         </div>
     </section>
 
-
-    <div class="container-fluid service-wrapper">
-        <div class="service-grid">
+    <section class="section">
+        <div class="section-header anim-trigger">
+            <div class="section-title-wrapper">
+                <h1 class="section-title">Services</h1>
+            </div>
+            <div class="slider-controls">
+                <button class="btn-nav" onclick="scrollSlider('gallerySlider', -1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="btn-nav" onclick="scrollSlider('gallerySlider', 1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="gallery-grid" id="gallerySlider">
             <!-- Card 1 -->
             @foreach ($services as $key => $value)
-                <div class="service-card">
+                <div class="service-card anim-trigger anim-stagger-{{ ($key % 6) + 1 }}">
                     <div class="card-img" style="background-image: url('{{ $value['banner_img'] }}')">
                     </div>
                     <div class="card-body">
                         <div class="card-header">
                             <h3>{{ $value['title'] }}</h3>
-                            <i class="fa-solid fa-house-chimney" style="color: #27ae60"></i>
                         </div>
                         <p>{{ $value['description'] }}</p>
-                        <a href="#" class="view-details">VIEW DETAILS <i class="fa-solid fa-chevron-right"></i></a>
+                        <a href="{{ route('services_detail', $value['id']) }}" class="view-details">VIEW DETAILS <i
+                                class="fa-solid fa-chevron-right"></i></a>
+
                     </div>
                 </div>
             @endforeach
         </div>
-        <button class="scroll-service-btn btn-left" onclick="scrollFilter(1)">&#10095;</button>
-        <button class="scroll-service-btn btn-right" onclick="scrollFilter(0)">&#10095;</button>
-    </div>
+    </section>
 
     <!-- Section 5: Specialist Solutions Grid -->
     <section class="section-padding bg-light" data-aos="fade-up">
@@ -326,7 +341,8 @@
             <div class="d-flex justify-content-center gap-3">
                 <a class="btn btn-secondary px-5 py-3 rounded-3 fw-bold shadow" href="#EditModel" data-bs-toggle="modal">Get
                     A Free Quote</a>
-                <a class="btn btn-outline-white px-5 py-3 rounded-3 fw-bold" href="tel:+61468460145">Call +61 468 460 145</a>
+                <a class="btn btn-outline-white px-5 py-3 rounded-3 fw-bold" href="tel:+61468460145">Call +61 468 460
+                    145</a>
             </div>
         </div>
         <div class="position-absolute top-50 start-50 translate-middle opacity-10 z-1"
@@ -340,24 +356,15 @@
 @section('pagescript')
 
     <script>
+        function scrollSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const card = slider.querySelector('.service-card');
+            const scrollAmount = card.offsetWidth + parseInt(window.getComputedStyle(slider).gap);
 
-        function scrollFilter(val) {
-
-            const wrapper = document.querySelector('.service-grid');
-            const card = wrapper.querySelector('.service-card');
-
-            const gap = 25; 
-            let width = (card.offsetWidth + gap) * 3;
-
-            if(val==1){
-                width=width * -1;
-            }
-
-            wrapper.scrollBy({
-                left: width,
+            slider.scrollBy({
+                left: direction * scrollAmount,
                 behavior: 'smooth'
             });
-
         }
     </script>
 

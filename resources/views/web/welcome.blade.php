@@ -21,7 +21,7 @@
       </p>
       <div class="d-flex justify-content-center gap-3">
       <a class="btn btn-secondary py-3 px-5 d-flex align-items-center justify-content-center gap-2"
-        data-bs-toggle="modal" href="#EditModel">
+        data-bs-toggle="modal" href="#EditModel" data-id="{{ $value['id'] ?? "" }}">
         Book Now <span class="material-symbols-outlined">arrow_forward</span>
       </a>
       </div>
@@ -232,42 +232,58 @@
     </div>
 
     <div class="row g-4">
+      @foreach ($videos as $key => $value)
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
       <div class="video-card shadow-sm">
-        <img src="https://placehold.co/600x400/004b87/FFFFFF?text=Corporate+HQ" alt="Video Thumb">
-        <div class="play-btn"><i class="bi bi-play-fill"></i></div>
-        <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-50 text-white">
-        <h6 class="mb-0 fw-bold">Corporate Office - Deep Clean</h6>
-        </div>
+      <img src="{{ $value->image }}" alt="Video Thumb">
+      <a class="play-btn video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="{{ $value->video }}"
+      data-image="{{ $value->image }}" title="Watch">
+      <i class="bi bi-play-fill"></i>
+      </a>
+      <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-50 text-white">
+      <h6 class="mb-0 fw-bold">{{ $value->service?->title ?? 'Video Title' }}</h6>
       </div>
       </div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-      <div class="video-card shadow-sm">
-        <img src="https://placehold.co/600x400/00b050/FFFFFF?text=Retail+Store" alt="Video Thumb">
-        <div class="play-btn"><i class="bi bi-play-fill"></i></div>
-        <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-50 text-white">
-        <h6 class="mb-0 fw-bold">Retail Store - Floor Polishing</h6>
-        </div>
       </div>
-      </div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-      <div class="video-card shadow-sm">
-        <img src="https://placehold.co/600x400/f8f9fa/333333?text=Luxury+Villa" alt="Video Thumb">
-        <div class="play-btn"><i class="bi bi-play-fill"></i></div>
-        <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-50 text-white">
-        <h6 class="mb-0 fw-bold">Luxury Villa - Move-in Clean</h6>
-        </div>
-      </div>
-      </div>
+    @endforeach
     </div>
     </div>
   </section>
+
+  <div class="modal fade" id="videoModal" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body p-0 bg-transparent">
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      <video controls width="100%" height="500px" poster="" id="theVideo">
+        <source src="" type="video/mp4">
+      </video>
+      </div>
+    </div>
+    </div>
+  </div>
 
 @endsection
 
 @section('pagescript')
 
   <script>
+
+    $(document).on('click', '.video', function () {
+    let videoSRC = $(this).data("video");
+    let videoPoster = $(this).data("image");
+
+    $('#videoModal source').attr('src', videoSRC);
+    $('#videoModal video').attr('poster', videoPoster);
+    $('#videoModal video')[0].load();
+    });
+
+    $('#videoModal').on('hidden.bs.modal', function () {
+    let video = document.getElementById("theVideo");
+    video.pause();
+    video.currentTime = 0;
+    });
+
     // Hero Slider Logic (Unique to this page)
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide-item');

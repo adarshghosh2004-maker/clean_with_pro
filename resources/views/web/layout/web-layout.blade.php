@@ -167,6 +167,16 @@
     <script src="{{ asset('assets/js/toastr.min.js')}}"></script>
 
     <script>
+
+        $(document).on('click', '[data-bs-toggle="modal"]', function () {
+
+            let serviceId = $(this).data('id');
+
+            // set selected option
+            $('#EditModel select[name="service_id"]').val(serviceId);
+
+        });
+        
         function get_responce_message(resp, form_name = "", url = "") {
             if (resp.status == '200') {
                 toastr.success(resp.success);

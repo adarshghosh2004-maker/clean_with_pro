@@ -48,63 +48,88 @@
         </div>
     </nav>
 
-    <!-- Gallery Grid -->
-    <section class="gallery-grid-v2" data-aos="fade-up">
-        <div class="container">
-            <!-- Project 1 -->
-            @foreach ($services as $key => $value)
-                <div class="row services-row" data-id="{{ $value['id'] }}" style="{{ $key == 0 ? '' : 'display:none;' }}">
-                    @foreach ($gallery as $item => $data)
-                        @if($data['service_id'] == $value['id'])
-                            <div class="col-lg-4 col-md-6 gallery-item-v2" data-aos="fade-up" data-aos-duration="800">
-                                <div class="ba-card-v2">
-                                    <div class="ba-images-container">
-                                        <div class="ba-side-v2">
-                                            <span class="ba-label before">Before</span>
-                                            <img src="{{ $data['before_img'] }}" alt="Before Cleaning">
-                                        </div>
-                                        <div class="ba-side-v2">
-                                            <span class="ba-label after">After</span>
-                                            <img src="{{ $data['after_img'] }}" alt="After Cleaning">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-                {{-- Video Thumbnails --}}
-                <div class="video-grid">
-
-                    <div class="video-card">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Steam Deep Clean">
-                        <div class="play-wrap">
-                            <button class="play-btn" aria-label="Play video">&#9654;</button>
-                        </div>
-                        <p class="video-label">Steam Deep Clean</p>
-                    </div>
-
-                    <div class="video-card">
-                        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80"
-                            alt="Chandelier Detailing">
-                        <div class="play-wrap">
-                            <button class="play-btn" aria-label="Play video">&#9654;</button>
-                        </div>
-                        <p class="video-label">Chandelier Detailing</p>
-                    </div>
-
-                    <div class="video-card">
-                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80"
-                            alt="Industrial Sanitation">
-                        <div class="play-wrap">
-                            <button class="play-btn" aria-label="Play video">&#9654;</button>
-                        </div>
-                        <p class="video-label">Industrial Sanitation</p>
-                    </div>
-
-                </div>
-            @endforeach
+    <!-- Before & After Section -->
+    <section class="section">
+        <div class="section-header anim-trigger">
+            <div class="section-title-wrapper">
+                <h1 class="section-title">Before & After</h1>
+            </div>
+            <div class="slider-controls">
+                <button class="btn-nav" onclick="scrollSlider('gallerySlider', -1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="btn-nav" onclick="scrollSlider('gallerySlider', 1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
         </div>
+
+        @foreach ($services as $item => $data)
+            <div class="gallery-grid services-row" data-id="{{ $data['id'] }}" style="{{ $item == 0 ? '' : 'display:none;' }}"
+                id="gallerySlider">
+                <!-- Card 1 -->
+                @foreach ($gallery as $key => $value)
+                    @if($data['id'] == $value['service_id'])
+                        <div class="gallery-card anim-trigger anim-stagger-{{ ($key % 6) + 1 }}">
+                            <div class="comparison-container">
+                                <img src="{{ $value['before_img'] }}" alt="Victorian Velvet Before" class="comparison-img"
+                                    style="filter: contrast(0.8) sepia(0.3) brightness(0.8);">
+                                <img src="{{ $value['after_img'] }}" alt="Victorian Velvet After" class="comparison-img">
+                                <span class="label-before">BEFORE</span>
+                                <span class="label-after">AFTER</span>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        @endforeach
+    </section>
+
+    <!-- Process Videos Section -->
+    <section class="section">
+        <div class="section-header anim-trigger">
+            <div class="section-title-wrapper">
+                <h1 class="section-title">Process Videos</h1>
+            </div>
+            <div class="slider-controls">
+                <button class="btn-nav" onclick="scrollSlider('videoSlider', -1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="btn-nav" onclick="scrollSlider('videoSlider', 1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        @foreach ($services as $item => $data)
+            <div class="video-grid services-row" data-id="{{ $data['id'] }}" style="{{ $item == 0 ? '' : 'display:none;' }}"
+                id="videoSlider">
+                <!-- Video 1 -->
+                @foreach ($videos as $key => $value)
+                    @if($data['id'] == $value['service_id'])
+                        <div class="video-card anim-trigger anim-stagger-{{ ($key % 6) + 1 }}">
+                            <img src="{{ $value['image'] }}" alt="Heritage Silk" class="video-thumbnail">
+                            <a class="play-btn-overlay video" data-bs-toggle="modal" data-bs-target="#videoModal"
+                                data-video="{{ $value['video'] }}" data-image="{{ $value['image'] }}" title="Watch">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        @endforeach
     </section>
 
     <!-- Stats Section -->
@@ -268,10 +293,39 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade" id="videoModal" data-bs-backdrop="static" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0 bg-transparent">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <video controls width="100%" height="500px" poster="" id="theVideo">
+                        <source src="" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('pagescript')
     <script>
+
+        $(document).on('click', '.video', function () {
+            let videoSRC = $(this).data("video");
+            let videoPoster = $(this).data("image");
+
+            $('#videoModal source').attr('src', videoSRC);
+            $('#videoModal video').attr('poster', videoPoster);
+            $('#videoModal video')[0].load();
+        });
+
+        $('#videoModal').on('hidden.bs.modal', function () {
+            let video = document.getElementById("theVideo");
+            video.pause();
+            video.currentTime = 0;
+        });
+
         function scrollFilter(value) {
             const container = document.getElementById('filterNav');
             container.scrollBy({
@@ -304,7 +358,17 @@
 
                 }, 200);
             });
-
         });
+
+        function scrollSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const card = slider.querySelector('.gallery-card, .video-card');
+            const scrollAmount = card.offsetWidth + parseInt(window.getComputedStyle(slider).gap);
+
+            slider.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
     </script>
 @endsection

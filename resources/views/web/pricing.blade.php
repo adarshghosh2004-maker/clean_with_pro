@@ -542,24 +542,6 @@
         </div>
     </section>
 
-    <!-- Section 5: Save More Banner -->
-    <section class="save-more-banner py-4 bg-secondary text-white" data-aos="zoom-in">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-4">
-                <div class="d-flex align-items-center gap-3">
-                    <span class="material-symbols-outlined fs-1">loyalty</span>
-                    <div>
-                        <h4 class="fw-bold mb-1">Save More with Regular Visits</h4>
-                        <p class="mb-0 opacity-75">Enjoy exclusive discounts and the same trusted cleaner every single
-                            time.</p>
-                    </div>
-                </div>
-                <button class="btn btn-primary-container text-white px-4 py-2 rounded-pill fw-bold border-0">Claim My
-                    Discount</button>
-            </div>
-        </div>
-    </section>
-
     <!-- Section 6: Trust Badges -->
     <section class="py-5 bg-light" data-aos="fade-up">
         <div class="container">

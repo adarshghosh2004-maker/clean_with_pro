@@ -213,8 +213,8 @@
     <div class="container">
         <div class="row g-4 justify-content-between">
             <div class="col-lg-3 col-md-6">
-                <a class="navbar-brand text-white fs-3 mb-4 d-block" href="#">
-                    <img src="<?php echo asset('assets/imgs/CWPss.PNG'); ?>" alt="Clean With Professionals" height="60">
+                <a class="footer-img text-white fs-3 mb-4 d-block" href="#">
+                    <img src="<?php echo asset('assets/imgs/CWPss.PNG'); ?>" alt="Clean With Professionals">
                 </a>
                 <p class="small text-white-50 mb-4">Premium cleaning services tailored to your specific needs.
                     Experience excellence and reliability.</p>
@@ -240,11 +240,9 @@
             <div class="col-lg-2 col-md-6">
                 <h5>Our Services</h5>
                 <ul class="list-unstyled mt-4">
-                    <li class="mb-2"><a href="#">Commercial Cleaning</a></li>
-                    <li class="mb-2"><a href="#">Residential Cleaning</a></li>
-                    <li class="mb-2"><a href="#">Deep Sanitization</a></li>
-                    <li class="mb-2"><a href="#">Carpet Cleaning</a></li>
-                    <li class="mb-2"><a href="#">Window Cleaning</a></li>
+                    @foreach ($services as $key => $value)
+                        <li class="mb-2"><a href="{{ route('services_detail',$value['id']) }}">{{ $value['title'] }}</a></li>
+                    @endforeach
                 </ul>
             </div>
 
@@ -253,16 +251,19 @@
                 <ul class="list-unstyled mt-4">
                     <li class="mb-3 d-flex align-items-start">
                         <i class="bi bi-geo-alt-fill text-secondary-green me-3 mt-1"></i>
-                        <span class="text-white-50 small">21 McMillan St, Clayton South<br>Melbourne, VIC 3169,
-                            Australia</span>
+                        <span class="text-white-50 small">{{ Setting_Data()['address'] ?? "" }}</span>
                     </li>
                     <li class="mb-3 d-flex align-items-center">
                         <i class="bi bi-telephone-fill text-secondary-green me-3"></i>
-                        <span class="text-white-50 small">1-800-CLEAN-PRO</span>
+                        <span class="text-white-50 small"> <span
+                                class="text-white-50 small">{{ Setting_Data()['contact'] ?? "" }}</span>
+                        </span>
                     </li>
                     <li class="mb-3 d-flex align-items-center">
                         <i class="bi bi-envelope-fill text-secondary-green me-3"></i>
-                        <span class="text-white-50 small">info@cleanwithprofessionals.com</span>
+                        <span class="text-white-50 small"> <span
+                                class="text-white-50 small">{{ Setting_Data()['email'] ?? "" }}</span>
+                        </span>
                     </li>
                 </ul>
             </div>

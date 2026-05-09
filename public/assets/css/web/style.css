@@ -4066,10 +4066,12 @@ a {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    
 }
 
 .card-header h3 {
-    font-size: 18px;
+    font-size: 26px;
+      font-weight: 700;
     color: var(--primary-blue);
 }
 

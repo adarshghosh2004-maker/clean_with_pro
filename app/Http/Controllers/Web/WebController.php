@@ -27,6 +27,10 @@ class WebController extends Controller
         try {
             $params['services'] = Service::get();
             $this->common->imageNameToUrl($params['services'], 'banner_img', $this->folder);
+            $params['videos'] = Video::with('service:id,title')->orderBy('id', 'desc')->take(3)->get();
+            $this->common->imageNameToUrl($params['videos'], 'image', 'video');
+            $this->common->fileNameToUrl($params['videos'], 'video', 'video');
+
             return view('web.welcome', $params);
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
@@ -70,6 +74,10 @@ class WebController extends Controller
         $params['gallery'] = Gallery::get();
         $this->common->imageNameToUrl($params['gallery'], 'before_img', 'gallery');
         $this->common->imageNameToUrl($params['gallery'], 'after_img', 'gallery');
+        $params['videos']=Video::get();
+        $this->common->imageNameToUrl($params['videos'], 'image', 'video');
+        $this->common->fileNameToUrl($params['videos'], 'video', 'video');
+        
         return view('web.gallery', $params);
     }
 

@@ -7,10 +7,11 @@
         <section class="s2-hero" style="background-image: url('{{ $service['banner_img'] }}');">
             <div class="container">
                 <!-- <span class="s2-badge">BEYOND CLEAN ON THE LEVEL</span> -->
-                <h1>The Science of <span>Spotless</span><br>Living.</h1>
+                <h1>{{ $service['title'] ?? '' }}.</h1>
                 <p>{{ $service['short_title'] ?? ''}}</p>
                 <div class="s2-hero-btns">
-                    <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-4 py-3">BOOK NOW</a>
+                    <a href="#EditModel" data-bs-toggle="modal" data-id="{{ $service['id'] ?? '' }}"
+                        class="btn btn-secondary px-4 py-3">BOOK NOW</a>
                 </div>
             </div>
         </section>
@@ -20,18 +21,8 @@
             <div class="container">
                 <div class="s2-features-grid">
                     <div class="s2-features-text anim-trigger">
-                        <h2>Beyond Surface Clean: Your Home's Lungs.</h2>
-                        <p>Carpets act as a giant air filter, trapping dust, pollen, and volatile organic compounds. Over
-                            time,
-                            these pollutants saturate the fibers, affecting your home's air quality and the longevity of
-                            your
-                            investment.</p>
-                        <!-- <a href="#" class="s2-methodology-link">See Our Methodology</a> -->
-                        <div class="s2-info-box anim-trigger">
-                            <h4>Meticulous Attention</h4>
-                            <p>Our process starts with a deep fiber analysis to ensure only safe, PH-balanced solutions are
-                                used.</p>
-                        </div>
+                        <h2>More About {{ $service['title'] ?? '' }}</h2>
+                        <p>{{ $service['description'] ?? '' }}</p>
                     </div>
                     <div class="s2-features-images">
                         <div class="s2-img-1 anim-trigger" style="background-image: url('{{ $service['detail_img1'] }}');">
@@ -196,10 +187,11 @@
         });
 
         function initServiceDetailAnimations() {
-            const revealItems = document.querySelectorAll('.s2-page .anim-trigger');
+            // Exclude slider cards from intersection observer
+            const revealItems = document.querySelectorAll('.s2-page .anim-trigger:not(.gallery-card):not(.video-card)');
             const observerOptions = {
                 threshold: 0.1,
-                rootMargin: '0px 10% -50px 10%'
+                rootMargin: '0px 0px -50px 0px'
             };
 
             if (!('IntersectionObserver' in window)) {
@@ -218,6 +210,14 @@
             }, observerOptions);
 
             revealItems.forEach(item => revealObserver.observe(item));
+
+            // Handle slider cards manually for initial load
+            setTimeout(() => {
+                const sliderCards = document.querySelectorAll('.s2-page .gallery-card, .s2-page .video-card');
+                sliderCards.forEach(card => {
+                    card.classList.add('anim-visible');
+                });
+            }, 100);
         }
 
         function scrollSlider(sliderId, direction) {
@@ -229,6 +229,19 @@
                 left: direction * scrollAmount,
                 behavior: 'smooth'
             });
+
+            // Retrigger animations for all cards in the slider after scroll
+            setTimeout(() => {
+                const cards = slider.querySelectorAll('.gallery-card, .video-card');
+                cards.forEach(card => {
+                    card.classList.remove('anim-visible');
+                });
+                setTimeout(() => {
+                    cards.forEach(card => {
+                        card.classList.add('anim-visible');
+                    });
+                }, 50);
+            }, 300);
         }
 
         document.addEventListener('DOMContentLoaded', initServiceDetailAnimations);
