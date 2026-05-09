@@ -176,7 +176,7 @@
             $('#EditModel select[name="service_id"]').val(serviceId);
 
         });
-        
+
         function get_responce_message(resp, form_name = "", url = "") {
             if (resp.status == '200') {
                 toastr.success(resp.success);
@@ -241,35 +241,23 @@
         // Global Scroll Reveal Animation Logic
         document.addEventListener('DOMContentLoaded', () => {
             const revealOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+                threshold: 0.25,
+                rootMargin: '0px 0px -20px 0px'
             };
 
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
                         entry.target.classList.add('anim-visible');
-                        // Optional: unobserve after reveal
-                        // observer.unobserve(entry.target);
+                    } else {
+                        entry.target.classList.remove('anim-visible');
                     }
                 });
             }, revealOptions);
 
-            // Targets all elements that have hidden styles in style.css
-            const animatedSelectors = [
-                '.s2-features-text', '.s2-info-box', '.s2-img-1', '.s2-img-2',
-                '.section-header', '.gallery-card', '.video-card', '.haq-content',
-                '.haq-description', '.contact-card', '.haq-visual', '.quote-card'
-            ];
-
+            // Observe all anim-trigger and data-anim elements globally
             const observeElements = () => {
-                animatedSelectors.forEach(selector => {
-                    document.querySelectorAll(selector).forEach(el => {
-                        revealObserver.observe(el);
-                    });
-                });
-                // Also observe our custom data-anim elements
-                document.querySelectorAll('[data-anim]').forEach(el => {
+                document.querySelectorAll('.anim-trigger, [data-anim]').forEach(el => {
                     revealObserver.observe(el);
                 });
             };

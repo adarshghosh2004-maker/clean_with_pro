@@ -18,20 +18,20 @@ class User extends Authenticatable
 
     protected $casts = [
         'id' => 'integer',
-        'name'=>'string',
-        'email'=>'string',
-        'phone'=>'string',
-        'suburb'=>'string',
-        'date'=>'string',
-        'time'=>'string',
-        'service_id'=>'integer',
-        'msg'=>'string',
+        'name' => 'string',
+        'email' => 'string',
+        'phone' => 'string',
+        'suburb' => 'string',
+        'date' => 'string',
+        'time' => 'string',
+        'service_id' => 'integer',
+        'msg' => 'string',
         'status' => 'integer',
     ];
 
-    public function author_request()
+    public function service()
     {
-        return $this->belongsTo(Author_Request::class, 'id', 'user_id');
+        return $this->belongsTo(Service::class, 'service_id', 'id');
     }
     public function novel()
     {

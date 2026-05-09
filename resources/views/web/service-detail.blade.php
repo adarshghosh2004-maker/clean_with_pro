@@ -7,7 +7,16 @@
         <section class="hero-section">
             <img src="{{ $service['banner_img'] }}" alt="{{ $service['title'] ?? '' }}" class="hero-img">
             <div class="container">
-                <h1>{{ $service['title'] ?? '' }}.</h1>
+                  @php
+      $middleWord = getMiddleWord($service['title']);
+      @endphp
+      <h1>
+        {!! str_replace(
+      $middleWord,
+      '<span class="surface-container-lowest">' . $middleWord . '</span>',
+      $service['title']
+      ) !!}
+      </h1>
                 <p>{{ $service['short_title'] ?? ''}}</p>
                 <div class="d-flex justify-content-center gap-3">
                     <a href="#EditModel" data-bs-toggle="modal" data-id="{{ $service['id'] ?? '' }}"
@@ -21,6 +30,7 @@
             <div class="container">
                 <div class="s2-features-grid">
                     <div class="s2-features-text anim-trigger">
+                        <p class="eyebrow-label">About the Service</p>
                         <h2>More About {{ $service['title'] ?? '' }}</h2>
                         <p>{{ $service['description'] ?? '' }}</p>
                     </div>
@@ -109,47 +119,53 @@
         </section>
 
         <!-- Questions Section -->
-        <section class="haq-hero">
-            <div class="haq-content anim-trigger">
-                <h1>Have <span class="haq-content-span">Questions?</span></h1>
-                <p class="haq-description">
-                    {{ $question['description'] ?? '' }}
-                </p>
+        <section class="section-padding bg-light-gray haq-hero">
+            <div class="container haq-grid">
+                <div class="haq-left anim-trigger anim-trigger-left">
+                    <div class="haq-content">
+                        <h1>Have <span class="haq-content-span">Questions?</span></h1>
+                        <p class="haq-description">
+                            {{ $question['description'] ?? '' }}
+                        </p>
 
-                <!-- Call Card -->
-                <div class="contact-card anim-trigger">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-phone"></i>
-                    </div>
-                    <div class="card-info">
-                        <h3>Call Our Specialists</h3>
-                        <p>Monday — Friday, 9am — 6pm</p>
-                        <a href="tel:+1800Clean With Professionals" class="contact-value">+1 (800) CLEAN-CARE</a>
+                        <!-- Call Card -->
+                        <div class="contact-card anim-trigger">
+                            <div class="icon-box">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="card-info">
+                                <h3>Call Our Specialists</h3>
+                                <p>Monday — Friday, 9am — 6pm</p>
+                                <a href="tel:{{ Setting_Data()['contact'] ?? '+61468460145' }}" class="contact-value">{{ Setting_Data()['contact'] ?? '+61468460145' }}</a>
+                            </div>
+                        </div>
+
+                        <!-- Email Card -->
+                        <div class="contact-card anim-trigger">
+                            <div class="icon-box email">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="card-info">
+                                <h3>Email Consultation</h3>
+                                <p>Response within 2 hours</p>
+                                <a href="mailto:{{ Setting_Data()['email'] ?? 'info@cleanwithpro.com.au' }}" class="contact-value">{{ Setting_Data()['email'] ?? 'info@cleanwithpro.com.au' }}</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Email Card -->
-                <div class="contact-card anim-trigger">
-                    <div class="icon-box email">
-                        <i class="fa-solid fa-envelope"></i>
+                <div class="haq-right anim-trigger anim-trigger-right">
+                    <div class="haq-visual">
+                        <img src="{{ $question['img_1'] ?? '' }}" alt="Fabric Texture Background" class="main-img-bg">
+
+                        <div class="floating-card card-top">
+                            <img src="{{ $question['img_2'] ?? '' }}" alt="Cleaning Products">
+                        </div>
+
+                        <div class="floating-card card-bottom">
+                            <img src="{{ $question['img_3'] ?? '' }}" alt="Teal Sofa">
+                        </div>
                     </div>
-                    <div class="card-info">
-                        <h3>Email Consultation</h3>
-                        <p>Response within 2 hours</p>
-                        <a href="mailto:info@cleanwithpro.com.au" class="contact-value">info@cleanwithpro.com.au</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="haq-visual anim-trigger">
-                <img src="{{ $question['img_1'] ?? '' }}" alt="Fabric Texture Background" class="main-img-bg">
-
-                <div class="floating-card card-top">
-                    <img src="{{ $question['img_2'] ?? '' }}" alt="Cleaning Products">
-                </div>
-
-                <div class="floating-card card-bottom">
-                    <img src="{{ $question['img_3'] ?? '' }}" alt="Teal Sofa">
                 </div>
             </div>
         </section>

@@ -1,136 +1,138 @@
 @extends('web.layout.web-layout')
 @section('content')
-    <!-- Hero Section -->
-    <section class="hero-section">
-        @foreach ($pages as $key => $value)
-            @if ($value['name'] == 'gallery')
-                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
-            @endif  
+    <div class="gallery-page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            @foreach ($pages as $key => $value)
+                @if ($value['name'] == 'gallery')
+                    <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
+                @endif
 
-        @endforeach
-        <div class="container">
-            <h1>Before &<br><span>After Cleaning Gallery</span></h1>
-            <p>
-                Witness the transformational power. Our editorial-standard cleaning services turn cluttered Melbourne
-                homes into pristine sanctuaries.
-            </p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#EditModel" data-bs-toggle="modal"
-                    class="btn btn-secondary px-4 py-3">Get a Free Quote</a>
-                <a href="{{ route('pricing') }}"
-                    class="btn btn-outline-white px-4 py-3">View
-                    Pricing</a>
+            @endforeach
+            <div class="container">
+                <h1>Before &<br><span>After Cleaning Gallery</span></h1>
+                <p>
+                    Witness the transformational power. Our editorial-standard cleaning services turn cluttered Melbourne
+                    homes into pristine sanctuaries.
+                </p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-4 py-3">Get a Free Quote</a>
+                    <a href="{{ route('pricing') }}" class="btn btn-outline-white px-4 py-3">View
+                        Pricing</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <nav class="gallery-filter">
-        <div class="container-fluid filter-wrapper">
+        <nav class="gallery-filter">
+            <div class="container-fluid filter-wrapper">
 
-            <!-- Left Button -->
-            <button class="scroll-btn left" onclick="scrollFilter(-200)">&#10094;</button>
+                <!-- Left Button -->
+                <button class="scroll-btn left" onclick="scrollFilter(-200)">&#10094;</button>
 
-            <ul class="filter-nav" id="filterNav">
-                @foreach ($services as $key => $value)
-                    <li>
-                        <a href="" id="{{ $value['id'] }}" class="{{ $key == 0 ? 'active' : '' }} filter-a">
-                            {{ $value['title'] }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-
-            <!-- Right Button -->
-            <button class="scroll-btn right" onclick="scrollFilter(200)">&#10095;</button>
-
-        </div>
-    </nav>
-
-    <!-- Before & After Section -->
-    <section class="section-padding" data-anim="fade-up">
-        <div class="section-header anim-trigger">
-            <div class="section-title-wrapper">
-                <h1 class="section-title">Before & After</h1>
-            </div>
-            <div class="slider-controls">
-                <button class="btn-nav" onclick="scrollSlider('gallerySlider', -1)">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                <button class="btn-nav" onclick="scrollSlider('gallerySlider', 1)">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        @foreach ($services as $item => $data)
-            <div class="gallery-grid services-row gallerySlider" data-id="{{ $data['id'] }}" style="{{ $item == 0 ? '' : 'display:none;' }}">
-                <!-- Card 1 -->
-                @php $i = 1; @endphp
-                @foreach ($gallery as $key => $value)
-                    @if($data['id'] == $value['service_id'])
-                        <div class="gallery-card anim-trigger anim-stagger-{{ $i }}">
-                            <div class="comparison-container">
-                                <img src="{{ $value['before_img'] }}" alt="Victorian Velvet Before" class="comparison-img"
-                                    style="filter: contrast(0.8) sepia(0.3) brightness(0.8);">
-                                <img src="{{ $value['after_img'] }}" alt="Victorian Velvet After" class="comparison-img">
-                                <span class="label-before">BEFORE</span>
-                                <span class="label-after">AFTER</span>
-                            </div>
-                        </div>
-                        @php $i = ($i % 6) + 1; @endphp
-                    @endif
-                @endforeach
-            </div>
-        @endforeach
-    </section>
-
-    <!-- Process Videos Section -->
-    <section class="section-padding" data-anim="fade-up">
-        <div class="section-header anim-trigger">
-            <div class="section-title-wrapper">
-                <h1 class="section-title">Process Videos</h1>
-            </div>
-            <div class="slider-controls">
-                <button class="btn-nav" onclick="scrollSlider('videoSlider', -1)">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
-                <button class="btn-nav" onclick="scrollSlider('videoSlider', 1)">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        @foreach ($services as $item => $data)
-            <div class="video-grid services-row videoSlider" data-id="{{ $data['id'] }}" style="{{ $item == 0 ? '' : 'display:none;' }}">
-                <!-- Video 1 -->
-                @php $j = 1; @endphp
-                @foreach ($videos as $key => $value)
-                    @if($data['id'] == $value['service_id'])
-                        <div class="video-card anim-trigger anim-stagger-{{ $j }}">
-                            <img src="{{ $value['image'] }}" alt="Heritage Silk" class="video-thumbnail">
-                            <a class="play-btn-overlay video" data-bs-toggle="modal" data-bs-target="#videoModal"
-                                data-video="{{ $value['video'] }}" data-image="{{ $value['image'] }}" title="Watch">
-                                <i class="fa-solid fa-play"></i>
+                <ul class="filter-nav" id="filterNav">
+                    @foreach ($services as $key => $value)
+                        <li>
+                            <a href="" id="{{ $value['id'] }}" class="{{ $key == 0 ? 'active' : '' }} filter-a">
+                                {{ $value['title'] }}
                             </a>
-                        </div>
-                        @php $j = ($j % 6) + 1; @endphp
-                    @endif
-                @endforeach
+                        </li>
+                    @endforeach
+                </ul>
+
+                <!-- Right Button -->
+                <button class="scroll-btn right" onclick="scrollFilter(200)">&#10095;</button>
+
             </div>
-        @endforeach
-    </section>
+        </nav>
+
+        <!-- Before & After Section -->
+        <section class="section-padding" data-anim="fade-up">
+            <div class="section-header anim-trigger">
+                <div class="section-title-wrapper">
+                    <h1 class="section-title">Before & After</h1>
+                </div>
+                <div class="slider-controls">
+                    <button class="btn-nav" onclick="scrollSlider('gallerySlider', -1)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="btn-nav" onclick="scrollSlider('gallerySlider', 1)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            @foreach ($services as $item => $data)
+                <div class="gallery-grid services-row gallerySlider" data-id="{{ $data['id'] }}"
+                    style="{{ $item == 0 ? '' : 'display:none;' }}">
+                    <!-- Card 1 -->
+                    @php $i = 1; @endphp
+                    @foreach ($gallery as $key => $value)
+                        @if($data['id'] == $value['service_id'])
+                            <div class="gallery-card anim-trigger anim-stagger-{{ $i }}">
+                                <div class="comparison-container">
+                                    <img src="{{ $value['before_img'] }}" alt="Victorian Velvet Before" class="comparison-img"
+                                        style="filter: contrast(0.8) sepia(0.3) brightness(0.8);">
+                                    <img src="{{ $value['after_img'] }}" alt="Victorian Velvet After" class="comparison-img">
+                                    <span class="label-before">BEFORE</span>
+                                    <span class="label-after">AFTER</span>
+                                </div>
+                            </div>
+                            @php $i = ($i % 6) + 1; @endphp
+                        @endif
+                    @endforeach
+                </div>
+            @endforeach
+        </section>
+
+        <!-- Process Videos Section -->
+        <section class="section-padding" data-anim="fade-up">
+            <div class="section-header anim-trigger">
+                <div class="section-title-wrapper">
+                    <h1 class="section-title">Process Videos</h1>
+                </div>
+                <div class="slider-controls">
+                    <button class="btn-nav" onclick="scrollSlider('videoSlider', -1)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="btn-nav" onclick="scrollSlider('videoSlider', 1)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            @foreach ($services as $item => $data)
+                <div class="video-grid services-row videoSlider" data-id="{{ $data['id'] }}"
+                    style="{{ $item == 0 ? '' : 'display:none;' }}">
+                    <!-- Video 1 -->
+                    @php $j = 1; @endphp
+                    @foreach ($videos as $key => $value)
+                        @if($data['id'] == $value['service_id'])
+                            <div class="video-card anim-trigger anim-stagger-{{ $j }}">
+                                <img src="{{ $value['image'] }}" alt="Heritage Silk" class="video-thumbnail">
+                                <a class="play-btn-overlay video" data-bs-toggle="modal" data-bs-target="#videoModal"
+                                    data-video="{{ $value['video'] }}" data-image="{{ $value['image'] }}" title="Watch">
+                                    <i class="fa-solid fa-play"></i>
+                                </a>
+                            </div>
+                            @php $j = ($j % 6) + 1; @endphp
+                        @endif
+                    @endforeach
+                </div>
+            @endforeach
+        </section>
+    </div>
 
     <!-- Stats Section -->
     <section class="stats-banner-v2" data-anim="fade-up">
@@ -363,6 +365,8 @@
             });
         });
 
+        let galleryRevealObserver;
+
         function scrollSlider(sliderClass, direction) {
             // Find the visible slider with the matching class
             const slider = $('.' + sliderClass + '.services-row:visible')[0];
@@ -388,23 +392,26 @@
                 rootMargin: '0px 0px -50px 0px'
             };
 
+            if (galleryRevealObserver) {
+                galleryRevealObserver.disconnect();
+            }
+
             if (!('IntersectionObserver' in window)) {
                 revealItems.forEach(item => item.classList.add('anim-visible'));
                 return;
             }
 
-            const revealObserver = new IntersectionObserver((entries) => {
+            galleryRevealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('anim-visible');
-                    } else if (entry.target.classList.contains('gallery-card') || entry.target.classList.contains('video-card')) {
-                        // Only remove for slider cards to allow re-animation on horizontal scroll
+                    } else {
                         entry.target.classList.remove('anim-visible');
                     }
                 });
             }, observerOptions);
 
-            revealItems.forEach(item => revealObserver.observe(item));
+            revealItems.forEach(item => galleryRevealObserver.observe(item));
         }
 
         document.addEventListener('DOMContentLoaded', initGalleryAnimations);

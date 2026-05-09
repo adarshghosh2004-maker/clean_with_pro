@@ -154,3 +154,18 @@ function seconds_to_hm($time)
 
     return $hours . ":" . $minutes . ":" . $seconds;
 }
+
+function getMiddleWord($string)
+{
+    $words = explode(' ', trim($string));
+    $count = count($words);
+
+    if ($count == 0) {
+        return '';
+    }
+
+    // For even words take left-middle
+    $middleIndex = floor(($count - 1) / 2);
+
+    return $words[$middleIndex];
+}

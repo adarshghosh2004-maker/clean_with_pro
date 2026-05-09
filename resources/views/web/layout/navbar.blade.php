@@ -22,7 +22,8 @@
             <a class="navbar-brand d-flex align-items-center" href="<?php echo route('home'); ?>">
                 <img src="<?php echo asset('assets/imgs/CWPss.PNG'); ?>" alt="Clean With Professionals Logo"
                     class="navbar-logo me-3">
-                <span class="m-0 fs-4 fw-bold text-primary-blue headline">{{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}</span>
+                <span
+                    class="m-0 fs-4 fw-bold text-primary-blue headline">{{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}</span>
             </a>
 
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
@@ -51,17 +52,13 @@
                             aria-expanded="false">
                             Services
                         </a>
-                        <div class="dropdown-menu mega-menu shadow-lg" aria-labelledby="servicesDropdown">
-                            <div class="row g-2 flex-nowrap">
-                                @foreach (collect($services)->chunk(4) as $chunk)
-                                    <div class="col">
-                                        @foreach ($chunk as $value)
-                                            <a class="dropdown-item d-flex align-items-center"
-                                                href="{{ route('services_detail', $value['id']) }}">
-                                                <span class="fw-medium small">{{ $value['title'] }}</span>
-                                            </a>
-                                        @endforeach
-                                    </div>
+                        <div class="dropdown-menu mega-menu dropdown-menu-custom shadow-lg"
+                            aria-labelledby="servicesDropdown">
+                            <div class="dropdown-grid">
+                                @foreach ($services as $value)
+                                    <a class="dropdown-item" href="{{ route('services_detail', $value['id']) }}">
+                                        {{ $value['title'] }}
+                                    </a>
                                 @endforeach
                             </div>
                         </div>
