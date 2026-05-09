@@ -2,29 +2,25 @@
 
 @section('content')
     <!-- ========================
-                         SECTION 1: Hero
-                    ======================== -->
-    <section class="about-hero-new" data-aos="fade-up">
+                             SECTION 1: Hero
+                        ======================== -->
+    <section class="hero-section">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'about')
-                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="about-hero-img">
+                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
             @endif
 
         @endforeach
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <h1 class="display-3 fw-bold mb-4">Melbourne's Trusted Cleaning Experts Since 2013</h1>
-                    <p class="fs-5 opacity-75 mb-0">We've spent the last decade perfecting the art of cleanliness,
-                        transforming thousands of homes and workplaces into pristine sanctuaries.</p>
-                </div>
-            </div>
+            <h1>Melbourne's Trusted <span>Cleaning Experts</span> Since 2013</h1>
+            <p>We've spent the last decade perfecting the art of cleanliness,
+                transforming thousands of homes and workplaces into pristine sanctuaries.</p>
         </div>
     </section>
 
     <!-- ========================
-                         SECTION 2: Passion / Our Story
-                    ======================== -->
+                             SECTION 2: Passion / Our Story
+                        ======================== -->
     <section class="passion-section" data-aos="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -62,8 +58,8 @@
     </section>
 
     <!-- ========================
-                         SECTION 3: Core Pillars
-                    ======================== -->
+                             SECTION 3: Core Pillars
+                        ======================== -->
     <section class="pillars-section" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -121,8 +117,8 @@
     </section>
 
     <!-- ========================
-                         SECTION 4: Professional Edge
-                    ======================== -->
+                             SECTION 4: Professional Edge
+                        ======================== -->
     <section class="edge-section" data-aos="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -148,8 +144,8 @@
     </section>
 
     <!-- ========================
-                         SECTION 5: How It Works
-                    ======================== -->
+                             SECTION 5: How It Works
+                        ======================== -->
     <section class="how-it-works-section">
         <div class="container">
             <div class="text-center mb-3" data-aos="fade-up">
@@ -181,8 +177,8 @@
     </section>
 
     <!-- ========================
-                         SECTION 6: Team – Faces Behind the Shine
-                    ======================== -->
+                             SECTION 6: Team – Faces Behind the Shine
+                        ======================== -->
     <section class="team-section-new" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -225,8 +221,8 @@
     </section>
 
     <!-- ========================
-                         SECTION 8: Testimonials
-                    ======================== -->
+                             SECTION 8: Testimonials
+                        ======================== -->
     <section class="about-testimonials-section" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -302,15 +298,15 @@
     </section>
 
     <!-- ========================
-                         SECTION 9: CTA – Experience the Standard
-                    ======================== -->
+                             SECTION 9: CTA – Experience the Standard
+                        ======================== -->
     <section class="cta-section-new">
         <div class="container" data-aos="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Experience the Clean With Professionals Standard</h2>
             <p class="fs-5 opacity-75 mb-5">Join thousands of Melburnians who trust us with their spaces.</p>
             <div class="cta-buttons">
-                <a href="#EditModel" data-bs-toggle="modal" data-id=""
-                    class="btn btn-secondary px-4 py-3">Book Your First Clean</a>
+                <a href="#EditModel" data-bs-toggle="modal" data-id="" class="btn btn-secondary px-4 py-3">Book Your First
+                    Clean</a>
                 <a href="tel:{{ Setting_Data()['contact'] ?? "+61468460145" }}" class="btn btn-outline-white px-5 py-3">Call
                     {{ Setting_Data()['contact'] ?? "+61 468 460 145" }}</a>
             </div>

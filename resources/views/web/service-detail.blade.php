@@ -4,12 +4,12 @@
     <div class="s2-page">
 
         <!-- Hero Section -->
-        <section class="s2-hero" style="background-image: url('{{ $service['banner_img'] }}');">
+        <section class="hero-section">
+            <img src="{{ $service['banner_img'] }}" alt="{{ $service['title'] ?? '' }}" class="hero-img">
             <div class="container">
-                <!-- <span class="s2-badge">BEYOND CLEAN ON THE LEVEL</span> -->
                 <h1>{{ $service['title'] ?? '' }}.</h1>
                 <p>{{ $service['short_title'] ?? ''}}</p>
-                <div class="s2-hero-btns">
+                <div class="d-flex justify-content-center gap-3">
                     <a href="#EditModel" data-bs-toggle="modal" data-id="{{ $service['id'] ?? '' }}"
                         class="btn btn-secondary px-4 py-3">BOOK NOW</a>
                 </div>

@@ -2,14 +2,14 @@
 @section('content')
 
     <!-- Hero Section -->
-    <div class="feedback2-hero">
+    <section class="hero-section">
         <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2000&auto=format&fit=crop"
-            alt="Luxury Interior" class="feedback2-hero-img">
-        <div class="feedback2-hero-overlay">
-            <div class="editorial-badge" data-aos="fade-right">Editorial Experience</div>
-            <h1 class="hero-heading-v2" data-aos="fade-up" data-aos-delay="100">Your Voice, Our Standard.</h1>
+            alt="Luxury Interior" class="hero-img">
+        <div class="container">
+            <div class="hero-section-subtitle">Editorial Experience</div>
+            <h1 class="hero-heading-v2">Your Voice, Our Standard.</h1>
         </div>
-    </div>
+    </section>
 
     <!-- Feedback Form Card -->
     <div class="feedback-form-container-v2">

@@ -4,16 +4,16 @@
     <!-- ========================
                                      SECTION 1: Contact Hero
                                 ======================== -->
-    <section class="contact-hero" data-aos="fade-up">
+    <section class="hero-section">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'contact')
-                <img src="{{ $value['img'] }}" alt="Clean With Professionals Hero Image" class="contact-hero-img">
+                <img src="{{ $value['img'] }}" alt="Clean With Professionals Hero Image" class="hero-img">
             @endif
 
         @endforeach
-        <div class="container" data-aos="fade-up">
-            <h1 class="display-3 fw-bold mb-4">We're Here to Help You Shine</h1>
-            <p class="fs-5 opacity-75 mb-0 mx-auto max-w-700">Have questions about our services or want to book a
+        <div class="container">
+            <h1>We're Here to Help You <span>Shine</span></h1>
+            <p>Have questions about our services or want to book a
                 professional clean? Our team is ready to assist you.</p>
         </div>
     </section>

@@ -2,11 +2,13 @@
 @section('content')
 
     <main class="feedback-container">
-        <div class="feedback-hero-wrapper" data-aos="fade-up">
+        <section class="hero-section" data-aos="fade-up">
             <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
-                alt="Luxury Interior" class="feedback-hero-img">
-            <div class="feedback-badge">Service Quality</div>
-        </div>
+                alt="Luxury Interior" class="hero-img">
+            <div class="container">
+                <div class="hero-section-subtitle">Service Quality</div>
+            </div>
+        </section>
 
         <div class="feedback-main-form-wrapper">
             <div class="feedback-content" data-aos="fade-up" data-aos-delay="100">

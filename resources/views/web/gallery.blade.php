@@ -1,27 +1,24 @@
 @extends('web.layout.web-layout')
 @section('content')
-    <div class="s2-page gallery-page">
-
-
     <!-- Hero Section -->
-    <section class="gallery-hero-v2" data-aos="fade-up">
+    <section class="hero-section">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'gallery')
-                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="gallery-hero-v2-img">
-            @endif
+                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
+            @endif  
 
         @endforeach
         <div class="container">
-            <h1 data-aos="fade-up" data-aos-delay="100">Before &<br><span>After Cleaning Gallery</span></h1>
-            <p data-aos="fade-up" data-aos-delay="200">
+            <h1>Before &<br><span>After Cleaning Gallery</span></h1>
+            <p>
                 Witness the transformational power. Our editorial-standard cleaning services turn cluttered Melbourne
                 homes into pristine sanctuaries.
             </p>
-            <div class="d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="d-flex justify-content-center gap-3">
                 <a href="#EditModel" data-bs-toggle="modal"
-                    class="btn-secondary-green rounded-pill px-4 py-3 text-decoration-none fw-bold">Get a Free Quote</a>
+                    class="btn btn-secondary px-4 py-3">Get a Free Quote</a>
                 <a href="{{ route('pricing') }}"
-                    class="btn-outline-white rounded-pill px-4 py-3 text-decoration-none fw-bold">View
+                    class="btn btn-outline-white px-4 py-3">View
                     Pricing</a>
             </div>
         </div>
@@ -309,7 +306,6 @@
             </div>
         </div>
     </div>
-    </div>
 @endsection
 
 
@@ -386,7 +382,7 @@
         }
 
         function initGalleryAnimations() {
-            const revealItems = document.querySelectorAll('.s2-page .anim-trigger');
+            const revealItems = document.querySelectorAll('.anim-trigger');
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'

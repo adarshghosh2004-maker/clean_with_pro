@@ -1,18 +1,18 @@
 @extends('web.layout.web-layout')
 @section('content')
     <!-- Section 1: Services Hero -->
-    <section class="services-hero" data-aos="fade">
+    <section class="hero-section">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'service')
-                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="services-hero-img">
+                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
             @endif
 
         @endforeach
-        <div class="container text-center">
-            <h1 class="display-3 fw-extrabold text-white mb-4" data-aos="fade-up" data-aos-delay="100">
-                Professional Cleaning <br> Services Across Melbourne
+        <div class="container">
+            <h1>
+                Professional <span>Cleaning Services</span> Across Melbourne
             </h1>
-            <div class="d-flex justify-content-center gap-3 mt-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="d-flex justify-content-center gap-3 mt-4">
                 <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-4 py-3">Book Now</a>
                 <a href="{{ route('gallery') }}" class="btn btn-outline-white px-4 py-3">View Our Work</a>
             </div>

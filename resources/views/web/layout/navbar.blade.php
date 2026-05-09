@@ -17,7 +17,7 @@
     </div>
 
     <!-- Section 2: Main Navbar -->
-    <nav class="navbar navbar-expand-lg py-3" aria-label="Main navigation">
+    <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="<?php echo route('home'); ?>">
                 <img src="<?php echo asset('assets/imgs/CWPss.PNG'); ?>" alt="Clean With Professionals Logo"

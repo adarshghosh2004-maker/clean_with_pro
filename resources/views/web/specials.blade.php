@@ -7,21 +7,19 @@
     {{-- ═══════════════════════════════════════
     HERO SECTION
     ════════════════════════════════════════ --}}
-    <section class="specials-hero" data-aos="fade-up">
-        <div class="specials-hero-overlay"></div>
-        <div class="specials-hero-content" data-aos="fade-up" data-aos-delay="100">
-            <div class="badge-special">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
-                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                </svg>
-                BEST VALUE SPECIALS
-            </div>
+    <section class="hero-section">
+        @foreach ($pages as $key => $value)
+            @if ($value['name'] == 'specials')
+                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
+            @endif
+        @endforeach
+        <div class="container">
             <h1>Pristine Results.<br><span class="text-highlight">Exclusive Rates.</span></h1>
             <p>Experience Melbourne's premier cleaning standard with our curated seasonal specials. Limited time offers for
                 homeowners who demand excellence.</p>
-            <div class="specials-hero-buttons">
-                <a href="#EditModel" data-bs-toggle="modal" class="btn-book-special">BOOK YOUR SPECIAL</a>
-                <a href="{{ route('services') }}" class="btn-view-services">VIEW ALL SERVICES</a>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-5 py-3">BOOK YOUR SPECIAL</a>
+                <a href="{{ route('services') }}" class="btn btn-outline-white px-5 py-3">VIEW ALL SERVICES</a>
             </div>
         </div>
     </section>

@@ -7,16 +7,14 @@
     <div id="heroSlider">
       <!-- Slide 1 -->
       @foreach ($services as $key => $value)
-        <div class="slide-item {{ $key == 0 ? "active" : "" }}">
-          <img alt="Modern luxury living room" class="hero-section-img"
+        <div class="slide-item {{ $key == 0 ? "active" : "" }} hero-section">
+          <img alt="Modern luxury living room" class="hero-img"
             src="{{ $value['banner_img'] }}" />
-          <div class="slide-overlay"></div>
-          <div class="hero-container-custom position-relative px-4 px-md-5 z-2">
-            <div>
-              <h1 class="display-3 fw-extrabold text-white mb-4 text-center">
+          <div class="container">
+              <h1>
                 <span class="surface-container-lowest">{{ $value['title'] }}</span>
               </h1>
-              <p class="fs-5 text-white opacity-75 mb-5 lh-lg text-center">
+              <p>
                 {{ String_Cut($value['short_title'], 70) }}
               </p>
               <div class="d-flex justify-content-center gap-3">
@@ -25,7 +23,6 @@
                   Book Now <span class="material-symbols-outlined">arrow_forward</span>
                 </a>
               </div>
-            </div>
           </div>
         </div>
       @endforeach
