@@ -26,7 +26,7 @@
         </section>
 
         <!-- Section 4: Service Comparison -->
-        <section class="service-comparison section-padding bg-white" data-aos="fade-up">
+        <section class="service-comparison section-padding bg-white" data-anim="fade-up">
                 <div class="container">
                         <div class="text-center mb-5">
                                 <h2 class="display-5 fw-bold text-primary">Service Comparison</h2>
@@ -657,10 +657,10 @@
         </section>
 
         <!-- Section 6: Trust Badges -->
-        <section class="py-5 bg-light" data-aos="fade-up">
+        <section class="py-5 bg-light" data-anim="fade-up">
                 <div class="container">
                         <div class="row g-4 text-center">
-                                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                                <div class="col-md-3" data-anim="fade-up" data-anim-delay="100">
                                         <div class="trust-badge-item">
                                                 <div class="badge-icon-circle mx-auto mb-3">
                                                         <span class="material-symbols-outlined fs-2">verified_user</span>
@@ -668,7 +668,7 @@
                                                 <p class="fw-bold mb-0">Police Checked</p>
                                         </div>
                                 </div>
-                                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                                <div class="col-md-3" data-anim="fade-up" data-anim-delay="200">
                                         <div class="trust-badge-item">
                                                 <div class="badge-icon-circle mx-auto mb-3">
                                                         <span class="material-symbols-outlined fs-2">shield</span>
@@ -676,7 +676,7 @@
                                                 <p class="fw-bold mb-0">Fully Insured</p>
                                         </div>
                                 </div>
-                                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                                <div class="col-md-3" data-anim="fade-up" data-anim-delay="300">
                                         <div class="trust-badge-item">
                                                 <div class="badge-icon-circle mx-auto mb-3">
                                                         <span class="material-symbols-outlined fs-2">eco</span>
@@ -684,7 +684,7 @@
                                                 <p class="fw-bold mb-0">Eco-Friendly</p>
                                         </div>
                                 </div>
-                                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                                <div class="col-md-3" data-anim="fade-up" data-anim-delay="400">
                                         <div class="trust-badge-item">
                                                 <div class="badge-icon-circle mx-auto mb-3">
                                                         <span class="material-symbols-outlined fs-2">thumb_up</span>
@@ -697,11 +697,11 @@
         </section>
 
         <!-- Section 7: Testimonials -->
-        <section class="section-padding bg-white" data-aos="fade-up">
+        <section class="section-padding bg-white" data-anim="fade-up">
                 <div class="container text-center">
                         <h2 class="display-5 fw-bold text-primary mb-5">Trusted by Melbourne Locals</h2>
                         <div class="row g-4">
-                                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                                <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
                                         <div class="testimonial-card p-4 rounded-4 border h-100 text-start">
                                                 <div class="stars mb-3 text-secondary">
                                                         <span class="material-symbols-outlined fs-6">star</span>
@@ -724,7 +724,7 @@
                                                 </div>
                                         </div>
                                 </div>
-                                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                                <div class="col-md-4" data-anim="fade-up" data-anim-delay="200">
                                         <div class="testimonial-card p-4 rounded-4 border h-100 text-start">
                                                 <div class="stars mb-3 text-secondary">
                                                         <span class="material-symbols-outlined fs-6">star</span>
@@ -747,7 +747,7 @@
                                                 </div>
                                         </div>
                                 </div>
-                                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                                <div class="col-md-4" data-anim="fade-up" data-anim-delay="300">
                                         <div class="testimonial-card p-4 rounded-4 border h-100 text-start">
                                                 <div class="stars mb-3 text-secondary">
                                                         <span class="material-symbols-outlined fs-6">star</span>
@@ -775,7 +775,7 @@
         </section>
 
         <!-- Section 8: Ready for a Spotless Home? -->
-        <section class="cta-section py-5" data-aos="zoom-in">
+        <section class="cta-section py-5" data-anim="zoom-in">
                 <div class="container-fluid">
                         <div class="bg-primary-container p-5 rounded-5 text-white text-center shadow-lg">
                                 <h2 class="display-4 fw-bold mb-3">Ready for a Spotless Home?</h2>

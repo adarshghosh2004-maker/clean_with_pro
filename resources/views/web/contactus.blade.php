@@ -21,11 +21,11 @@
     <!-- ========================
             SECTION 2: Contact Info Cards
             ======================== -->
-    <section class="contact-info-section" data-aos="fade-up">
+    <section class="contact-info-section" data-anim="fade-up">
         <div class="container">
             <div class="row g-4 justify-content-center">
                 <!-- Phone -->
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-3" data-anim="fade-up" data-anim-delay="100">
                     <div class="contact-card text-center">
                         <div class="contact-icon-box mx-auto">
                             <span class="material-symbols-outlined">call</span>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <!-- Email -->
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-3" data-anim="fade-up" data-anim-delay="200">
                     <div class="contact-card text-center">
                         <div class="contact-icon-box mx-auto">
                             <span class="material-symbols-outlined">mail</span>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <!-- Address -->
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-3" data-anim="fade-up" data-anim-delay="300">
                     <div class="contact-card text-center">
                         <div class="contact-icon-box mx-auto">
                             <span class="material-symbols-outlined">location_on</span>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <!-- Timing -->
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-3" data-anim="fade-up" data-anim-delay="300">
                     <div class="contact-card text-center">
                         <div class="contact-icon-box mx-auto">
                             <span class="material-symbols-outlined">access_time</span>
@@ -77,11 +77,11 @@
     <!-- ========================
                                      SECTION 3: Contact Form & Map
                                 ======================== -->
-    <section class="section-padding bg-white" data-aos="fade-up">
+    <section class="section-padding bg-white" data-anim="fade-up">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <!-- Contact Form -->
-                <div class="col-lg-12" data-aos="fade-right">
+                <div class="col-lg-12" data-anim="fade-right">
                     <div class="contact-form-wrapper">
                         <h2 class="display-5 fw-bold mb-4">Send Us a Message</h2>
                         <p class="text-muted mb-5">Fill out the form below and one of our cleaning specialists will get
@@ -169,8 +169,8 @@
     <!-- ========================
                                      SECTION 5: CTA
                                 ======================== -->
-    <section class="cta-section-new" data-aos="fade-up">
-        <div class="container" data-aos="zoom-in">
+    <section class="cta-section-new" data-anim="fade-up">
+        <div class="container" data-anim="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Ready to Start Your Clean Journey?</h2>
             <p class="fs-5 opacity-75 mb-5">Join 5,000+ happy Melburnians who trust Clean With Professionals.</p>
             <div class="cta-buttons">

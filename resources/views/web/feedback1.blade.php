@@ -2,7 +2,7 @@
 @section('content')
 
     <main class="feedback-container">
-        <section class="hero-section" data-aos="fade-up">
+        <section class="hero-section" data-anim="fade-up">
             <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
                 alt="Luxury Interior" class="hero-img">
             <div class="container">
@@ -11,12 +11,12 @@
         </section>
 
         <div class="feedback-main-form-wrapper">
-            <div class="feedback-content" data-aos="fade-up" data-aos-delay="100">
+            <div class="feedback-content" data-anim="fade-up" data-anim-delay="100">
                 <h1>Leave Your Feedback</h1>
                 <p>Your insights help us maintain the editorial standards of pristine living.</p>
             </div>
 
-            <form action="#" class="feedback-form" data-aos="fade-up" data-aos-delay="200">
+            <form action="#" class="feedback-form" data-anim="fade-up" data-anim-delay="200">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>

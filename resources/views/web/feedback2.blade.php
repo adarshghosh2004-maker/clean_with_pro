@@ -13,7 +13,7 @@
 
     <!-- Feedback Form Card -->
     <div class="feedback-form-container-v2">
-        <div class="feedback-card-v2" data-aos="fade-up" data-aos-delay="200">
+        <div class="feedback-card-v2" data-anim="fade-up" data-anim-delay="200">
             <span class="step-indicator-v2">Step 1 of 1</span>
             <h2 class="card-title-v2">Service Feedback</h2>
 
@@ -79,7 +79,7 @@
     </div>
 
     <!-- Privacy Section -->
-    <div class="privacy-section" data-aos="fade-up">
+    <div class="privacy-section" data-anim="fade-up">
         <h3 class="privacy-title">Your privacy is our priority.</h3>
         <p class="privacy-text">
             Data submitted through this portal is used exclusively to refine our concierge standards.

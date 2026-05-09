@@ -1,8 +1,8 @@
 <!-- 10. FAQ SECTION -->
-<section class="section-padding bg-light-gray" data-aos="fade-up">
+<section class="section-padding bg-light-gray" data-anim="fade-up">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8" data-aos="fade-up">
+            <div class="col-lg-8" data-anim="fade-up">
                 <div class="text-center mb-5">
                     <h2 class="section-title">Know More About <span>Clean With Professionals</span></h2>
                     <p class="text-muted">Frequently Asked Questions</p>
@@ -118,10 +118,10 @@
 </section>
 
 <!-- 12. GET A QUOTE SECTION -->
-<section class="quote-form-section" id="quote" style="margin-top: 80px;" data-aos="fade-up">
+<section class="quote-form-section" id="quote" style="margin-top: 80px;" data-anim="fade-up">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-10" data-aos="fade-up">
+            <div class="col-lg-10" data-anim="fade-up">
                 <div class="quote-card border border-light">
                     <div class="text-center mb-4">
                         <h3 class="fw-bold text-primary-blue">Get Your Free Quote</h3>
@@ -287,13 +287,7 @@
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({
-        duration: 800,
-        once: true
-    });
-
     // Scroll to Top Functionality
     const scrollTopBtn = document.getElementById("scrollTopBtn");
     if (scrollTopBtn) {

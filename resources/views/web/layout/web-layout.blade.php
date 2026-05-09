@@ -15,8 +15,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- AOS CSS removed -->
+
     <link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css">
 
 
@@ -56,10 +56,10 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <section class="quote-form-section m-0" id="quote" style="margin-top: 80px;" data-aos="fade-up">
+                <section class="quote-form-section m-0" id="quote" style="margin-top: 80px;" data-anim="fade-up">
                     <div class="container p-0">
                         <div class="row justify-content-center">
-                            <div class="col-lg-12" data-aos="fade-up">
+                            <div class="col-lg-12" data-anim="fade-up">
                                 <div class="quote-card border border-light">
                                     <div class="text-center mb-4">
                                         <h3 class="fw-bold text-primary-blue">Get Your Free Quote</h3>
@@ -236,6 +236,49 @@
                 showError();
             }
         }
+    </script>
+    <script>
+        // Global Scroll Reveal Animation Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('anim-visible');
+                        // Optional: unobserve after reveal
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            // Targets all elements that have hidden styles in style.css
+            const animatedSelectors = [
+                '.s2-features-text', '.s2-info-box', '.s2-img-1', '.s2-img-2',
+                '.section-header', '.gallery-card', '.video-card', '.haq-content',
+                '.haq-description', '.contact-card', '.haq-visual', '.quote-card'
+            ];
+
+            const observeElements = () => {
+                animatedSelectors.forEach(selector => {
+                    document.querySelectorAll(selector).forEach(el => {
+                        revealObserver.observe(el);
+                    });
+                });
+                // Also observe our custom data-anim elements
+                document.querySelectorAll('[data-anim]').forEach(el => {
+                    revealObserver.observe(el);
+                });
+            };
+
+            observeElements();
+
+            // Re-run if content changes (e.g., gallery filtering)
+            window.addEventListener('contentUpdated', observeElements);
+        });
     </script>
     @yield('pagescript')
 </body>

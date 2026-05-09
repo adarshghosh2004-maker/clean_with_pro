@@ -21,10 +21,10 @@
     <!-- ========================
                              SECTION 2: Passion / Our Story
                         ======================== -->
-    <section class="passion-section" data-aos="fade-up">
+    <section class="passion-section" data-anim="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
-                <div class="col-lg-6" data-aos="fade-right">
+                <div class="col-lg-6" data-anim="fade-right">
                     <h2 class="display-5 fw-bold mb-4">Driven by a Passion for Perfection</h2>
                     <p class="text-muted mb-4">Founded in the heart of Melbourne, CleanCare began with a simple mission:
                         to provide the highest standard of professional cleaning without compromising on the health of
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
+                <div class="col-lg-6" data-anim="fade-left">
                     <div class="passion-img-wrapper">
                         <img src="{{ asset('assets/imgs/CWPss.PNG') }}" alt="CleanCare Team at Work"
                             class="passion-img shadow-lg">
@@ -60,16 +60,16 @@
     <!-- ========================
                              SECTION 3: Core Pillars
                         ======================== -->
-    <section class="pillars-section" data-aos="fade-up">
+    <section class="pillars-section" data-anim="fade-up">
         <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
+            <div class="text-center mb-5" data-anim="fade-up">
                 <h2 class="display-5 fw-bold mb-3">The Core Pillars of CleanCare</h2>
                 <p class="text-muted pillars-subtitle mx-auto">Our values define every interaction, every service, and
                     every clean.</p>
             </div>
             <div class="row g-4">
                 <!-- Pillar 1 -->
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-6 col-lg-3" data-anim="fade-up" data-anim-delay="100">
                     <div class="pillar-card">
                         <div class="pillar-icon">
                             <span class="material-symbols-outlined">eco</span>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <!-- Pillar 2 -->
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-6 col-lg-3" data-anim="fade-up" data-anim-delay="200">
                     <div class="pillar-card">
                         <div class="pillar-icon">
                             <span class="material-symbols-outlined">verified_user</span>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <!-- Pillar 3 -->
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-6 col-lg-3" data-anim="fade-up" data-anim-delay="300">
                     <div class="pillar-card">
                         <div class="pillar-icon">
                             <span class="material-symbols-outlined">schedule</span>
@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <!-- Pillar 4 -->
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-md-6 col-lg-3" data-anim="fade-up" data-anim-delay="400">
                     <div class="pillar-card">
                         <div class="pillar-icon">
                             <span class="material-symbols-outlined">person_pin_circle</span>
@@ -119,10 +119,10 @@
     <!-- ========================
                              SECTION 4: Professional Edge
                         ======================== -->
-    <section class="edge-section" data-aos="fade-up">
+    <section class="edge-section" data-anim="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
-                <div class="col-lg-6" data-aos="fade-right">
+                <div class="col-lg-6" data-anim="fade-right">
                     <h2 class="display-5 fw-bold mb-4">The Professional Edge You Deserve</h2>
                     <p class="text-muted mb-4">We don't just offer cleaning; we offer a seamless, high-end service
                         experience that takes the stress out of maintaining your space.</p>
@@ -135,7 +135,7 @@
                         <li>Transparent Pricing</li>
                     </ul>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
+                <div class="col-lg-6" data-anim="fade-left">
                     <img src="{{ asset('assets/imgs/CWPss.PNG') }}" alt="The Professional Edge at CleanCare"
                         class="img-fluid rounded-4 shadow edge-img">
                 </div>
@@ -148,26 +148,26 @@
                         ======================== -->
     <section class="how-it-works-section">
         <div class="container">
-            <div class="text-center mb-3" data-aos="fade-up">
+            <div class="text-center mb-3" data-anim="fade-up">
                 <h2 class="display-5 fw-bold">How It Works</h2>
             </div>
             <div class="row timeline-row">
-                <div class="col-md-3 timeline-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-3 timeline-item" data-anim="fade-up" data-anim-delay="100">
                     <div class="timeline-step">1</div>
                     <h5 class="fw-bold">Book Online</h5>
                     <p class="text-muted small">Choose your service and date in 60 seconds.</p>
                 </div>
-                <div class="col-md-3 timeline-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-3 timeline-item" data-anim="fade-up" data-anim-delay="200">
                     <div class="timeline-step">2</div>
                     <h5 class="fw-bold">We Notice</h5>
                     <p class="text-muted small">We assign the best cleaning specialist for your home.</p>
                 </div>
-                <div class="col-md-3 timeline-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-3 timeline-item" data-anim="fade-up" data-anim-delay="300">
                     <div class="timeline-step">3</div>
                     <h5 class="fw-bold">The Clean</h5>
                     <p class="text-muted small">Our team performs their magic with surgical precision.</p>
                 </div>
-                <div class="col-md-3 timeline-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-md-3 timeline-item" data-anim="fade-up" data-anim-delay="400">
                     <div class="timeline-step">4</div>
                     <h5 class="fw-bold">Relax</h5>
                     <p class="text-muted small">Enjoy your pristine home and the CleanCare guarantee.</p>
@@ -179,15 +179,15 @@
     <!-- ========================
                              SECTION 6: Team – Faces Behind the Shine
                         ======================== -->
-    <section class="team-section-new" data-aos="fade-up">
+    <section class="team-section-new" data-anim="fade-up">
         <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
+            <div class="text-center mb-5" data-anim="fade-up">
                 <h2 class="display-5 fw-bold mb-3">The Faces Behind the Shine</h2>
                 <p class="text-muted">Meet the experts leading Melbourne's cleaning revolution.</p>
             </div>
             <div class="row g-4">
                 <!-- Member 1 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
                     <div class="team-member-card">
                         <div class="team-initials">DM</div>
                         <h4 class="fw-bold mb-1">Daniel Mira</h4>
@@ -197,7 +197,7 @@
                     </div>
                 </div>
                 <!-- Member 2 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-4" data-anim="fade-up" data-anim-delay="200">
                     <div class="team-member-card">
                         <div class="team-initials">SR</div>
                         <h4 class="fw-bold mb-1">Sarah Reynolds</h4>
@@ -207,7 +207,7 @@
                     </div>
                 </div>
                 <!-- Member 3 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-4" data-anim="fade-up" data-anim-delay="300">
                     <div class="team-member-card">
                         <div class="team-initials">MT</div>
                         <h4 class="fw-bold mb-1">Marisa Thompson</h4>
@@ -223,15 +223,15 @@
     <!-- ========================
                              SECTION 8: Testimonials
                         ======================== -->
-    <section class="about-testimonials-section" data-aos="fade-up">
+    <section class="about-testimonials-section" data-anim="fade-up">
         <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
+            <div class="text-center mb-5" data-anim="fade-up">
                 <h2 class="display-5 fw-bold mb-3">What Our Clients Say</h2>
                 <p class="text-muted">Real reviews from real Melburnians who trust us every day.</p>
             </div>
             <div class="row g-4">
                 <!-- Testimonial 1 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
                     <div class="about-testimonial-card">
                         <div class="about-testimonial-stars">
                             <i class="bi bi-star-fill"></i>
@@ -252,7 +252,7 @@
                     </div>
                 </div>
                 <!-- Testimonial 2 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-4" data-anim="fade-up" data-anim-delay="200">
                     <div class="about-testimonial-card">
                         <div class="about-testimonial-stars">
                             <i class="bi bi-star-fill"></i>
@@ -273,7 +273,7 @@
                     </div>
                 </div>
                 <!-- Testimonial 3 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-md-4" data-anim="fade-up" data-anim-delay="300">
                     <div class="about-testimonial-card">
                         <div class="about-testimonial-stars">
                             <i class="bi bi-star-fill"></i>
@@ -301,7 +301,7 @@
                              SECTION 9: CTA – Experience the Standard
                         ======================== -->
     <section class="cta-section-new">
-        <div class="container" data-aos="zoom-in">
+        <div class="container" data-anim="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Experience the Clean With Professionals Standard</h2>
             <p class="fs-5 opacity-75 mb-5">Join thousands of Melburnians who trust us with their spaces.</p>
             <div class="cta-buttons">
