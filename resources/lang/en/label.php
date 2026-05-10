@@ -255,4 +255,9 @@ return [
     'logout' => 'Logout',
     'upload_file' => 'Select File',
 
+    'videos'=>"Videos",
+    'requests'=>"Requests",
+    'active_services'=>"Active Services", 
+    'recent_users'=>"Recent Users"  
+
 ];

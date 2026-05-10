@@ -38,7 +38,7 @@ class ServiceController extends Controller
 
                 $data = $query->orderBy('id', 'desc')->get();
 
-                $data = $this->common->imageNameToUrl($data, 'banner_img', $this->folder);
+              $this->common->imageNameToUrl($data, 'banner_img', $this->folder);
 
                 return DataTables()::of($data)
                     ->addIndexColumn()

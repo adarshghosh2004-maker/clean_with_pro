@@ -46,30 +46,48 @@ class DashboardController extends Controller
             $data['total_requests'] = User::whereNotNull('service_id')->count();
             $data['active_services'] = Service::where('status', 1)->count();
 
-            // User requests chart - assuming requests are users with service_id
-            $userRequests = User::selectRaw('DATE(created_at) as date, COUNT(*) as count')
-                ->whereNotNull('service_id')
-                ->groupBy('date')
-                ->orderBy('date')
-                ->get();
+            // User requests chart
+            $user_year = [];
+            $user_month = [];
 
-            $data['user_request_dates'] = $userRequests->pluck('date')->toArray();
-            $data['user_request_counts'] = $userRequests->pluck('count')->toArray();
+            // Year Data
+            for ($i = 1; $i <= 12; $i++) {
+
+                $sum = User::whereMonth('created_at', $i)
+                    ->whereNotNull('service_id')
+                    ->count();
+
+                $user_year[] = $sum; // use [] instead of [$i]
+            }
+
+            // Month Data
+            $d = date('t');
+
+            for ($i = 1; $i <= $d; $i++) {
+
+                $sum = User::whereYear('created_at', date('Y'))
+                    ->whereMonth('created_at', date('m'))
+                    ->whereDay('created_at', $i)
+                    ->whereNotNull('service_id')
+                    ->count();
+
+                $user_month[] = $sum; // use []
+            }
+
+            $data['user_year'] = $user_year;
+            $data['user_month'] = $user_month;
 
             // Top services with most requests
-            $topServices = User::selectRaw('service_id, COUNT(*) as request_count')
-                ->whereNotNull('service_id')
-                ->groupBy('service_id')
-                ->orderBy('request_count', 'desc')
-                ->limit(10)
-                ->with('service')
-                ->get();
+            $topServices = Service::withCount([
+                'user_requests' => function ($query) {
+                    $query->whereNotNull('service_id');
+                }
+            ])->orderBy('user_requests_count', 'desc')->limit(5)->get();
 
+            $this->common->imageNameToUrl($topServices, 'banner_img', 'service');
             $data['top_services'] = $topServices;
-            $data['top_services_labels'] = $topServices->map(function ($item) {
-                return $item->service ? $item->service->title : 'Service ' . $item->service_id;
-            })->toArray();
-            $data['top_services_counts'] = $topServices->pluck('request_count')->toArray();
+
+            $data['recent_users'] = User::orderBy('created_at', 'desc')->limit(6)->get();
 
             return view('admin.dashboard.dashboard', $data);
         } catch (Exception $e) {

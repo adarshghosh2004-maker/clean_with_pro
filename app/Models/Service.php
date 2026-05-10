@@ -24,4 +24,9 @@ class Service extends Model
         'status' => 'integer',
     ];
 
+    public function user_requests()
+    {
+        return $this->hasMany(User::class, 'service_id');
+    }
+
 }

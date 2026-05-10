@@ -271,7 +271,7 @@
 
         <hr class="mt-5 mb-4 border-secondary">
         <div class="text-center text-white-50 small">
-            &copy; 2026 Clean With Professionals. All rights reserved.
+            &copy; 2026 {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}}. All rights reserved.
         </div>
     </div>
 </footer>

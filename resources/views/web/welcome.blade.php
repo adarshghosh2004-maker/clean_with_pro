@@ -227,7 +227,7 @@
 
   <!-- 7. RECENT WORK (VIDEOS) -->
   <section class="section-padding bg-light-gray" data-anim="fade-up">
-    <div class="container">
+    <div class="container-fluid px-4">
     <div class="d-flex justify-content-between align-items-end mb-5" data-anim="fade-up">
       <div>
       <h2 class="section-title mb-0">Recent <span>Success Stories</span></h2>
@@ -235,7 +235,7 @@
       <a href="{{ route('gallery') }}" class="btn btn-primary-blue  rounded-pill px-4">View All Gallery</a>
     </div>
 
-    <div class="row g-4">
+    <div class="row">
       @foreach ($videos as $key => $value)
       <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
       <div class="video-card shadow-sm">

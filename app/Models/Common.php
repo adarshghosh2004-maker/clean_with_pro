@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Intervention\Image\Laravel\Facades\Image;
 
 class Common extends Model
 {
@@ -22,13 +23,35 @@ class Common extends Model
     public function saveImage($org_name, $folder, $prefix = "")
     {
         try {
-            $img_ext = $org_name->getClientOriginalExtension();
-            $filename = $prefix . date('d_m_Y_') . rand(1111, 9999) . '.' . $img_ext;
-            $org_name->move(base_path('storage/app/public/' . $folder), $filename);
+
+            // Generate filename
+            $filename = $prefix . date('d_m_Y_') . rand(1111, 9999) . '.webp';
+
+            // Storage path
+            $path = storage_path('app/public/' . $folder);
+
+            // Create folder if not exists
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+
+            // Read image
+            $image = Image::read($org_name);
+
+            // Resize large images automatically
+            $image->scaleDown(width: 1600);
+
+            // Save as optimized webp
+            $image->toWebp(80)->save($path . '/' . $filename);
 
             return $filename;
+
         } catch (Exception $e) {
-            return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
+
+            return response()->json([
+                'status' => 400,
+                'errors' => $e->getMessage()
+            ]);
         }
     }
     public function imageNameToUrl($array, $column, $folder)
