@@ -38,7 +38,7 @@ class UserController extends Controller
                 $input_search = $request['input_search'];
                 $input_type = $request['input_type'];
 
-                $query = User::query();
+                $query = User::with('service');
                 if (!empty($input_search)) {
                     $query->where(function ($q) use ($input_search) {
                         $q->where('name', 'LIKE', "%{$input_search}%")->orWhere('email', 'LIKE', "%{$input_search}%")
@@ -66,8 +66,8 @@ class UserController extends Controller
                         <button type="submit" class="edit-delete-btn" title=' . __('label.delete') . '><i class="fa-solid fa-trash-can fa-xl"></i></button></form>';
 
                         $btn = '<div class="d-flex justify-content-center">';
-                        $btn .= '<a href="' . route('admin.user.edit', [$row->id]) . '" class="edit-delete-btn mr-4" title=' . __('label.edit') . '>';
-                        $btn .= '<i class="fa-solid fa-pen-to-square fa-xl"></i>';
+                        $btn .= '<a href="' . route('admin.user.details', [$row->id]) . '" class="edit-delete-btn mr-4" title=' . __('label.view_details') . '>';
+                        $btn .= '<i class="fa-solid fa-eye fa-xl"></i>';
                         $btn .= '</a>';
                         $btn .= $delete;
                         $btn .= '</div>';
@@ -75,13 +75,18 @@ class UserController extends Controller
                     })
                     ->addColumn('status', function ($row) {
                         $status = $row->status == 1 ? "checked" : "";
-                        return '<div class="switch">
-                                    <input class="status-checkbox" id="checkbox' . $row->id . '" data-id="' . $row->id . '" type="checkbox" ' . $status . '>
-                                    <label for="checkbox' . $row->id . '"></label>
-                                      <span class="toggle-text"
-                                        data-on="' . __('label.active') . '"
-                                        data-off="' . __('label.inactive') . '"></span>
-                                    </div>';
+
+                        if($row->status==1){
+                            $class='show-btn';
+                            $label=__('label.confiremed');
+                        }elseif($row->status==2){
+                            $class='primary-btn';
+                            $label=__('label.completed');
+                        }else{
+                            $class='upcoming-btn';
+                            $label=__('label.pending');
+                        }
+                        return '<button class="' . $class . '">' . $label . '</button>';
                     })
                     ->addColumn('date', function ($row) {
                         $date = date("d M Y", strtotime($row->created_at));
@@ -171,9 +176,7 @@ class UserController extends Controller
                 'phone' => 'required|numeric',
                 'suburb' => 'required',
                 'date' => 'required',
-                'time' => 'required',
                 'service_id' => 'required',
-                'msg' => 'required',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -182,6 +185,11 @@ class UserController extends Controller
 
             $requestData = $request->all();
             $requestData['date'] = isset($request['date']) ? date('Y-m-d', strtotime($request['date'])) : "";
+
+            $requestData['time'] = $requestData['time'] ?? "";
+            $requestData['msg'] = $requestData['msg'] ?? "";
+            $requestData['amount'] = $requestData['amount'] ?? 0;
+            $requestData['reply'] = $requestData['reply'] ?? "";
 
             $data = User::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($data->id)) {
@@ -226,4 +234,19 @@ class UserController extends Controller
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }
     }
+
+    public function details($id,Request $request)
+    {
+        try {
+            $params['quote'] = User::where('id', $id)->with('service')->first();
+
+            if ($params['quote'] != null) {
+
+                return view('admin.user.detail', $params);
+            } else {
+                return redirect()->back()->with('error', __('label.data_not_found'));
+            }
+        } catch (Exception $e) {
+            return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
+        }}
 }

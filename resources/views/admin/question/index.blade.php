@@ -32,11 +32,11 @@
                             <div class="col-md-5 mr-4">
                                 <div class="form-row">
                                     <div class="col-md-12">
-                                         <div class="form-group">
+                                        <div class="form-group">
                                             <label>{{__('label.service')}}<span class="text-danger">*</span></label>
                                             <select class="form-control" name="service_id">
                                                 <option value="">{{__('label.select_service')}}</option>
-                                                @foreach ($services as $key=>$value)
+                                                @foreach ($services as $key => $value)
                                                     <option value="{{$value->id}}">{{$value->title}}</option>
                                                 @endforeach
                                             </select>
@@ -53,8 +53,7 @@
                                 <div class="form-row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label >{{__('label.image_1')}}<span
-                                                    class="text-danger">*</span></label>
+                                            <label>{{__('label.image_1')}}<span class="text-danger">*</span></label>
                                             <div class="avatar-upload">
                                                 <div class="avatar-edit">
                                                     <input type='file' name="img_1" id="imageUpload"
@@ -63,14 +62,16 @@
                                                 </div>
                                                 <div class="avatar-preview">
                                                     <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview">
+                                                    <small class="text-muted text-center font-weight-bold"
+                                                        title="{{__('label.max_size_10mb')}}">Max size:
+                                                        10MB</small>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>{{__('label.image_2')}}<span
-                                                    class="text-danger">*</span></label>
+                                            <label>{{__('label.image_2')}}<span class="text-danger">*</span></label>
                                             <div class="avatar-upload">
                                                 <div class="avatar-edit">
                                                     <input type='file' name="img_2" id="imageUpload2"
@@ -85,8 +86,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label >{{__('label.image_3')}}<span
-                                                    class="text-danger">*</span></label>
+                                            <label>{{__('label.image_3')}}<span class="text-danger">*</span></label>
                                             <div class="avatar-upload ">
                                                 <div class="avatar-edit">
                                                     <input type='file' name="img_3" id="imageUpload3"
@@ -172,30 +172,27 @@
                     searchable: false,
                     render: function (data, type, full, meta) {
                         return `<a href='${data}' target='_blank'>
-                                                <img src='${data}' class='img-thumbnail size-55'>
-                                            </a>`;
+                                            <img src='${data}' class='img-thumbnail size-55'></a>`;
                     },
                 },
-                 {
+                {
                     data: 'img_2',
                     name: 'img_2',
                     orderable: false,
                     searchable: false,
                     render: function (data, type, full, meta) {
                         return `<a href='${data}' target='_blank'>
-                                                <img src='${data}' class='img-thumbnail size-55'>
-                                            </a>`;
+                                    <img src='${data}' class='img-thumbnail size-55'></a>`;
                     },
                 },
-                 {
+                {
                     data: 'img_3',
                     name: 'img_3',
                     orderable: false,
                     searchable: false,
                     render: function (data, type, full, meta) {
                         return `<a href='${data}' target='_blank'>
-                                                <img src='${data}' class='img-thumbnail size-55'>
-                                            </a>`;
+                                    <img src='${data}' class='img-thumbnail size-55'></a>`;
                     },
                 },
                 {
@@ -252,7 +249,7 @@
                 showError();
             }
         }
-    
+
         function update_question() {
 
             var Demo_Mode = '<?php echo Demo_Mode(); ?>';

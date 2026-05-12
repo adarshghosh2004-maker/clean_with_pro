@@ -1,9 +1,13 @@
 @extends('web.layout.web-layout')
 
+@section('title', 'Contact | Clean With Professionals')
+@section('description', 'Get in touch with Clean With Professionals for professional cleaning services in Melbourne. Call or email us today.')
+@section('keywords', 'contact cleaning company, Melbourne cleaners contact, cleaning services phone')
+
 @section('content')
     <!-- ========================
-                                     SECTION 1: Contact Hero
-                                ======================== -->
+                                             SECTION 1: Contact Hero
+                                        ======================== -->
     <section class="hero-section">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'contact')
@@ -19,8 +23,8 @@
     </section>
 
     <!-- ========================
-            SECTION 2: Contact Info Cards
-            ======================== -->
+                    SECTION 2: Contact Info Cards
+                    ======================== -->
     <section class="contact-info-section" data-anim="fade-up">
         <div class="container">
             <div class="row g-4 justify-content-center">
@@ -32,8 +36,8 @@
                         </div>
                         <h4 class="fw-bold mb-3">Call Us</h4>
                         <p class="text-muted mb-4">Direct line for booking and urgent inquiries.</p>
-                        <a href="tel:+61468460145" class="text-secondary fw-bold fs-5 text-decoration-none">+61 468 460
-                            145</a>
+                        <a href="tel:{{ Setting_Data()['contact'] ?? "+61468460145"}}"
+                            class="text-secondary fw-bold fs-5 text-decoration-none">{{ Setting_Data()['contact'] ?? "+61468460145" }}</a>
                     </div>
                 </div>
                 <!-- Email -->
@@ -44,8 +48,10 @@
                         </div>
                         <h4 class="fw-bold mb-3">Email Us</h4>
                         <p class="text-muted mb-4">Send us your details and we'll reply within 24h.</p>
-                        <a href="mailto:info@cleanwithpro.com.au"
-                            class="text-secondary fw-bold fs-5 text-decoration-none">info@cleanwithpro.com.au</a>
+                        <a href="https://mail.google.com/mail/?view=cm&to={{ Setting_Data()['email'] ?? 'info@cleanwithpro.com.au' }}"
+                            target="_blank" class="text-secondary fw-bold fs-5 text-decoration-none">
+                            {{ Setting_Data()['email'] ?? "info@cleanwithpro.com.au" }}
+                        </a>
                     </div>
                 </div>
                 <!-- Address -->
@@ -55,9 +61,9 @@
                             <span class="material-symbols-outlined">location_on</span>
                         </div>
                         <h4 class="fw-bold mb-3">Our Office</h4>
-                        <p class="text-muted mb-4">21 McMillan St,<br>
-                            Clayton South, VIC 3169,<br>
-                            Australia</p>
+                        <p class="text-muted mb-4">
+                            {{ Setting_Data()['address'] ?? "21 McMillan St, Clayton South, VIC 3169, Australia" }}
+                        </p>
                     </div>
                 </div>
                 <!-- Timing -->
@@ -75,8 +81,8 @@
     </section>
 
     <!-- ========================
-                                     SECTION 3: Contact Form & Map
-                                ======================== -->
+                                             SECTION 3: Contact Form & Map
+                                        ======================== -->
     <section class="section-padding bg-white" data-anim="fade-up">
         <div class="container">
             <div class="row g-5 align-items-center">
@@ -167,8 +173,8 @@
     </section>
 
     <!-- ========================
-                                     SECTION 5: CTA
-                                ======================== -->
+                                             SECTION 5: CTA
+                                        ======================== -->
     <section class="cta-section-new" data-anim="fade-up">
         <div class="container" data-anim="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Ready to Start Your Clean Journey?</h2>

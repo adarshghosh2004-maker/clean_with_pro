@@ -219,9 +219,9 @@
                 <p class="small text-white-50 mb-4">Premium cleaning services tailored to your specific needs.
                     Experience excellence and reliability.</p>
                 <div class="social-icons">
-                    <a href="#"><i class="bi bi-facebook"></i></a>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-twitter-x"></i></a>
+                    <a href="https://www.facebook.com/share/18juoSnKYm/"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/cleanwithpro/"><i class="bi bi-instagram"></i></a>
+                    <!-- <a href="#"><i class="bi bi-twitter-x"></i></a> -->
                 </div>
             </div>
 
@@ -234,6 +234,8 @@
                     <li class="mb-2"><a href="<?php echo route('gallery'); ?>">Gallery</a></li>
                     <li class="mb-2"><a href="<?php echo route('pricing'); ?>">Pricing</a></li>
                     <li class="mb-2"><a href="<?php echo route('contact'); ?>">Contact Us</a></li>
+                    <li class="mb-2"><a href="#">Privacy Policy</a></li>
+                    <li class="mb-2"><a href="#">Terms & Conditions</a></li>
                 </ul>
             </div>
 
@@ -241,7 +243,8 @@
                 <h5>Our Services</h5>
                 <ul class="list-unstyled mt-4">
                     @foreach ($services as $key => $value)
-                        <li class="mb-2"><a href="{{ route('services_detail',$value['id']) }}">{{ $value['title'] }}</a></li>
+                        <li class="mb-2"><a href="{{ route('services_detail', $value['id']) }}">{{ $value['title'] }}</a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -255,15 +258,16 @@
                     </li>
                     <li class="mb-3 d-flex align-items-center">
                         <i class="bi bi-telephone-fill text-secondary-green me-3"></i>
-                        <span class="text-white-50 small"> <span
-                                class="text-white-50 small">{{ Setting_Data()['contact'] ?? "" }}</span>
-                        </span>
+                        <a href="tel:{{ Setting_Data()['contact'] ?? '' }}"
+                            class="text-white-50 small text-decoration-none">
+                            {{ Setting_Data()['contact'] ?? "" }}
+                        </a>
                     </li>
                     <li class="mb-3 d-flex align-items-center">
                         <i class="bi bi-envelope-fill text-secondary-green me-3"></i>
-                        <span class="text-white-50 small"> <span
-                                class="text-white-50 small">{{ Setting_Data()['email'] ?? "" }}</span>
-                        </span>
+                        <a href="https://mail.google.com/mail/?view=cm&to={{ Setting_Data()['email'] ?? 'info@cleanwithpro.com.au' }}"
+                            target="_blank" class="text-white-50 small text-decoration-none">
+                            {{ Setting_Data()['email'] ?? "" }} </a>
                     </li>
                 </ul>
             </div>
@@ -276,7 +280,8 @@
     </div>
 </footer>
 
-<a href="https://wa.me/61468460145" class="floating-whatsapp" target="_blank" title="Chat on WhatsApp">
+<a href="https://wa.me/{{ Setting_Data()['whatsapp_number'] ?? '+61468460145' }}" class="floating-whatsapp"
+    target="_blank" title="Chat on WhatsApp">
     <i class="bi bi-whatsapp"></i>
 </a>
 

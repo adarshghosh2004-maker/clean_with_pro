@@ -1,5 +1,9 @@
 @extends('web.layout.web-layout')
 
+@section('title', 'Special Cleaning Offers | Clean With Professionals')
+@section('description', 'Discover our latest cleaning deals and discounts for homes and offices in Melbourne.')
+@section('keywords', 'cleaning offers, cleaning discounts, Melbourne cleaning deals')
+
 @section('title', 'Specials – CleanCare')
 
 @section('content')
@@ -100,7 +104,8 @@
                         Dusting throughout
                     </li>
                 </ul>
-                <a href="#" class="btn-select-offer">SELECT OFFER</a>
+                <a class="btn-select-offer" data-bs-toggle="modal" href="#EditModel" data-id="0"
+                    data-name="3-Hour Domestic Cleaning Special">SELECT OFFER</a>
             </div>
 
             {{-- Card 2 --}}
@@ -151,7 +156,8 @@
                         Mirrors, Taps & Sinks polished to a shine
                     </li>
                 </ul>
-                <a href="#" class="btn-select-offer">SELECT OFFER</a>
+                <a class="btn-select-offer" data-bs-toggle="modal" href="#EditModel" data-name="Deep Bath Clean"
+                    data-id="0">SELECT OFFER</a>
             </div>
 
             {{-- Card 3 --}}
@@ -203,7 +209,8 @@
                         Sinks & Taps scrubbed to a shine
                     </li>
                 </ul>
-                <a href="#" class="btn-select-offer">SELECT OFFER</a>
+                <a class="btn-select-offer" data-bs-toggle="modal" href="#EditModel" data-id="0"
+                    data-name="KITCHEN DEEP CLEAN SPECIAL">SELECT OFFER</a>
             </div>
 
             {{-- Card 4 --}}
@@ -256,7 +263,8 @@
                         BONUS: Rangehood & Filters degreased for FREE!
                     </li>
                 </ul>
-                <a href="#" class="btn-select-offer">SELECT OFFER</a>
+                <a class="btn-select-offer" data-bs-toggle="modal" href="#EditModel"
+                    data-name="OVEN SPECIAL + FREE RANGEHOOD CLEAN!" data-id="0">SELECT OFFER</a>
             </div>
 
             {{-- Card 5 (Highlighted) --}}
@@ -299,7 +307,8 @@
                         Fast Drying & Fresh Scent
                     </li>
                 </ul>
-                <a href="#" class="btn-select-offer">BOOK BEST DEAL</a>
+                <a class="btn-select-offer" data-bs-toggle="modal" href="#EditModel"
+                    data-name="CARPET STEAM CLEANING SPECIAL" data-id="0">SELECT OFFER</a>
             </div>
 
             {{-- Card 6 --}}
@@ -338,7 +347,8 @@
                         Standard oven deep cleaning – degreasing and restoring your oven to a fresh, clean finish
                     </li>
                 </ul>
-                <a href="#" class="btn-select-offer">SELECT OFFER</a>
+                <a class="btn-select-offer" data-bs-toggle="modal" href="#EditModel"
+                    data-name="Oven + Bathroom Deep Clean Special" data-id="0">SELECT OFFER</a>
             </div>
         </div>
     </section>
@@ -391,7 +401,7 @@
                     </svg>
                 </div>
                 <h3>Satisfaction</h3>
-                <p>100% money-back guarantee if you aren't delighted.</p>
+                <p>100% bond-back guarantee.</p>
             </div>
 
         </div>

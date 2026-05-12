@@ -59,7 +59,7 @@
         <li class="side_line {{ request()->routeIs('admin.user*') ? 'active' : '' }}">
             <a href="{{ route('admin.user.index') }}">
                 <i class="fa-solid fa-users fa-2xl menu-icon"></i>
-                <span>{{__('label.user')}}</span>
+                <span>{{__('label.quotes')}}</span>
             </a>
         </li>
         <li class="side_line {{ request()->routeIs('admin.appsetting*') ? 'active' : '' }}">

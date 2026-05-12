@@ -43,16 +43,9 @@ Route::get('/lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('change.language');
 
-
-Route::get('/', function () {
-    return view('web.welcome');
-})->name('home');
-
 Route::get('/', [WebController::class, 'index'])->name('home');
 
-Route::get('/about', function () {
-    return view('web.aboutus');
-})->name('about');
+Route::get('/about', [WebController::class, 'about'])->name('about');
 
 Route::get('/specials', function () {
     return view('web.specials');
@@ -70,24 +63,11 @@ Route::get('/pricing', function () {
     return view('web.pricing');
 })->name('pricing');
 
-Route::get('/feedback1', function () {
-    return view('web.feedback1');
-})->name('feedback1');
-
 Route::get('/feedback2', function () {
     return view('web.feedback2');
 })->name('feedback2');
 
 Route::resource('quote', WebController::class)->only('store');
 Route::get('gallery', [WebController::class, 'gallery'])->name('gallery');
-
-Route::get('/gallery2', function () {
-    return view('web.gallery2');
-})->name('gallery2');
-
-Route::get('/specials1', function () {
-    return view('web.specials1');
-})->name('specials1');
-
 
 Route::get('detail/{id}', [WebController::class, 'detail'])->name('services_detail');

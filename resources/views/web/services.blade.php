@@ -1,4 +1,9 @@
 @extends('web.layout.web-layout')
+
+@section('title', 'Our Cleaning Services | Clean With Professionals')
+@section('description', 'Explore our wide range of cleaning services including home, office, and end-of-lease cleaning in Melbourne.')
+@section('keywords', 'cleaning services, home cleaning, office cleaning, Melbourne cleaners')
+
 @section('content')
     <!-- Section 1: Services Hero -->
     <section class="hero-section">
@@ -147,9 +152,6 @@
                         <h4 class="fw-bold mb-3">Tile & Grout</h4>
                         <p class="small text-muted mb-4">Deep pressure extraction to lift stains from between tiles and
                             restore natural shine.</p>
-                        <a href="#"
-                            class="text-secondary fw-bold text-decoration-none small d-flex align-items-center gap-2">Learn
-                            More <span class="material-symbols-outlined fs-6">arrow_forward</span></a>
                     </div>
                 </div>
                 <div class="col-md-3" data-anim="fade-up" data-anim-delay="200">
@@ -160,9 +162,6 @@
                         <h4 class="fw-bold mb-3">Leather Care</h4>
                         <p class="small text-muted mb-4">Specialized moisturizing and PH-balanced treatment to prevent
                             cracking and restore suppleness.</p>
-                        <a href="#"
-                            class="text-secondary fw-bold text-decoration-none small d-flex align-items-center gap-2">Learn
-                            More <span class="material-symbols-outlined fs-6">arrow_forward</span></a>
                     </div>
                 </div>
                 <div class="col-md-3" data-anim="fade-up" data-anim-delay="300">
@@ -173,9 +172,6 @@
                         <h4 class="fw-bold mb-3">Oriental Rugs</h4>
                         <p class="small text-muted mb-4">Delicate immersion and hand-wash procedures for your antique
                             fibers and tribal rugs.</p>
-                        <a href="#"
-                            class="text-secondary fw-bold text-decoration-none small d-flex align-items-center gap-2">Learn
-                            More <span class="material-symbols-outlined fs-6">arrow_forward</span></a>
                     </div>
                 </div>
                 <div class="col-md-3" data-anim="fade-up" data-anim-delay="400">
@@ -186,10 +182,44 @@
                         <h4 class="fw-bold mb-3">Disinfection</h4>
                         <p class="small text-muted mb-4">Hospital-grade fogging for surfaces and fabrics. To eliminate
                             viral and bacterial pathogens.</p>
-                        <a href="#"
-                            class="text-secondary fw-bold text-decoration-none small d-flex align-items-center gap-2">Learn
-                            More <span class="material-symbols-outlined fs-6">arrow_forward</span></a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Features Row -->
+    <section class="section-padding bg-primary text-white" data-anim="fade-up">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-3" data-anim="fade-up" data-anim-delay="100">
+                    <div class="feature-icon-box mb-3">
+                        <span class="material-symbols-outlined fs-1 text-secondary">verified_user</span>
+                    </div>
+                    <h5 class="fw-bold mb-1">Fully Insured</h5>
+                    <p class="small opacity-75 mb-0">Complete protection for all residential and commercial jobs.</p>
+                </div>
+                <div class="col-md-3" data-anim="fade-up" data-anim-delay="200">
+                    <div class="feature-icon-box mb-3">
+                        <span class="material-symbols-outlined fs-1 text-secondary">eco</span>
+                    </div>
+                    <h5 class="fw-bold mb-1">Eco-Friendly</h5>
+                    <p class="small opacity-75 mb-0">Non-toxic, bio-degradable solutions safe for children and pets.</p>
+                </div>
+                <div class="col-md-3" data-anim="fade-up" data-anim-delay="300">
+                    <div class="feature-icon-box mb-3">
+                        <span class="material-symbols-outlined fs-1 text-secondary">event_available</span>
+                    </div>
+                    <h5 class="fw-bold mb-1">Same-Day</h5>
+                    <p class="small opacity-75 mb-0">Urgent cleaning services available 7 days a week in Melbourne.</p>
+                </div>
+                <div class="col-md-3" data-anim="fade-up" data-anim-delay="400">
+                    <div class="feature-icon-box mb-3">
+                        <span class="material-symbols-outlined fs-1 text-secondary">thumb_up</span>
+                    </div>
+                    <h5 class="fw-bold mb-1">Guarantee</h5>
+                    <p class="small opacity-75 mb-0">If you're not happy, we re-clean for free. Professional excellence.
+                    </p>
                 </div>
             </div>
         </div>
@@ -240,100 +270,11 @@
         </div>
     </section>
 
-    <!-- Section 8: Features Row -->
-    <section class="section-padding bg-primary text-white" data-anim="fade-up">
-        <div class="container">
-            <div class="row g-4 text-center">
-                <div class="col-md-3" data-anim="fade-up" data-anim-delay="100">
-                    <div class="feature-icon-box mb-3">
-                        <span class="material-symbols-outlined fs-1 text-secondary">verified_user</span>
-                    </div>
-                    <h5 class="fw-bold mb-1">Fully Insured</h5>
-                    <p class="small opacity-75 mb-0">Complete protection for all residential and commercial jobs.</p>
-                </div>
-                <div class="col-md-3" data-anim="fade-up" data-anim-delay="200">
-                    <div class="feature-icon-box mb-3">
-                        <span class="material-symbols-outlined fs-1 text-secondary">eco</span>
-                    </div>
-                    <h5 class="fw-bold mb-1">Eco-Friendly</h5>
-                    <p class="small opacity-75 mb-0">Non-toxic, bio-degradable solutions safe for children and pets.</p>
-                </div>
-                <div class="col-md-3" data-anim="fade-up" data-anim-delay="300">
-                    <div class="feature-icon-box mb-3">
-                        <span class="material-symbols-outlined fs-1 text-secondary">event_available</span>
-                    </div>
-                    <h5 class="fw-bold mb-1">Same-Day</h5>
-                    <p class="small opacity-75 mb-0">Urgent cleaning services available 7 days a week in Melbourne.</p>
-                </div>
-                <div class="col-md-3" data-anim="fade-up" data-anim-delay="400">
-                    <div class="feature-icon-box mb-3">
-                        <span class="material-symbols-outlined fs-1 text-secondary">thumb_up</span>
-                    </div>
-                    <h5 class="fw-bold mb-1">Guarantee</h5>
-                    <p class="small opacity-75 mb-0">If you're not happy, we re-clean for free. Professional excellence.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Section 9: Success Stories -->
-    <section class="section-padding" data-anim="fade-up">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold text-primary mb-3">Clean With Professionals Success Stories</h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
-                    <div class="testimonial-card p-4 rounded-4 shadow-sm border h-100 transition-all hover-translate-y">
-                        <div class="stars mb-3 text-secondary">
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                        </div>
-                        <p class="fst-italic text-muted mb-4">"The steam cleaning they did on my 10-year-old sofa was
-                            unbelievable. It looks like it just came out of the showroom. Highly recommended for
-                            Melbourne residents."</p>
-                        <h6 class="fw-bold mb-0 text-primary">— Sarah J., Brighton</h6>
-                    </div>
-                </div>
-                <div class="col-md-4" data-anim="fade-up" data-anim-delay="200">
-                    <div
-                        class="testimonial-card p-4 rounded-4 shadow-sm border h-100 bg-light transition-all hover-translate-y">
-                        <div class="stars mb-3 text-secondary">
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                        </div>
-                        <p class="fst-italic text-muted mb-4">"Called them for an emergency water damage cleanup. They
-                            were there within an hour and saved my expensive wool rugs. Lifesavers!"</p>
-                        <h6 class="fw-bold mb-0 text-primary">— Michael T., Southbank</h6>
-                    </div>
-                </div>
-                <div class="col-md-4" data-anim="fade-up" data-anim-delay="300">
-                    <div class="testimonial-card p-4 rounded-4 shadow-sm border h-100 transition-all hover-translate-y">
-                        <div class="stars mb-3 text-secondary">
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                            <span class="material-symbols-outlined fs-6">star</span>
-                        </div>
-                        <p class="fst-italic text-muted mb-4">"Their commercial service is the best we've used for our
-                            office. They are punctual, professional, and the carpets look pristine every morning."</p>
-                        <h6 class="fw-bold mb-0 text-primary">— David R., Collins St.</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Section 10: Ready to Book? -->
-    <section class="section-padding bg-primary text-white text-center position-relative overflow-hidden" data-anim="zoom-in">
+    <section class="section-padding bg-primary text-white text-center position-relative overflow-hidden"
+        data-anim="zoom-in">
         <div class="container position-relative z-2">
             <h2 class="display-4 fw-bold mb-3">Ready to Book?</h2>
             <p class="fs-5 opacity-75 mb-5 mx-auto" style="max-width: 600px;">Restore the life and health of your space
@@ -359,13 +300,133 @@
         function scrollSlider(sliderId, direction) {
             const slider = document.getElementById(sliderId);
             const card = slider.querySelector('.service-card');
-            const scrollAmount = card.offsetWidth + parseInt(window.getComputedStyle(slider).gap);
+            const gap = parseInt(window.getComputedStyle(slider).gap) || 0;
+            const scrollAmount = card.offsetWidth + gap;
 
             slider.scrollBy({
                 left: direction * scrollAmount,
                 behavior: 'smooth'
             });
         }
+
+        (function () {
+
+            // ── Slider wheel fix with smooth handoff ───────────────────────────
+            const slider = document.getElementById('gallerySlider');
+
+            if (slider) {
+                let overflowAccumulator = 0;   // carries leftover delta after boundary hit
+                let handoffFrame = null;        // rAF handle for smooth page scroll
+                let isInsideSlider = false;
+
+                function atStart() {
+                    return slider.scrollLeft <= 0;
+                }
+
+                function atEnd() {
+                    return slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1;
+                }
+
+                // Smoothly scroll the page using accumulated momentum
+                function smoothPageScroll(delta) {
+                    cancelAnimationFrame(handoffFrame);
+
+                    let remaining = delta * 6; // amplify so it feels natural
+                    const FRICTION = 0.88;     // decay rate — lower = stops faster
+
+                    function step() {
+                        if (Math.abs(remaining) < 0.5) return;
+                        window.scrollBy({ top: remaining * (1 - FRICTION), behavior: 'instant' });
+                        remaining *= FRICTION;
+                        handoffFrame = requestAnimationFrame(step);
+                    }
+
+                    handoffFrame = requestAnimationFrame(step);
+                }
+
+                slider.addEventListener('mouseenter', () => { isInsideSlider = true; });
+                slider.addEventListener('mouseleave', () => {
+                    isInsideSlider = false;
+                    overflowAccumulator = 0;
+                    cancelAnimationFrame(handoffFrame);
+                });
+
+                slider.addEventListener('wheel', function (e) {
+                    const scrollingVertically = Math.abs(e.deltaY) > Math.abs(e.deltaX);
+                    if (!scrollingVertically) return; // leave trackpad horizontal alone
+
+                    const goingDown = e.deltaY > 0;
+                    const goingUp = e.deltaY < 0;
+                    const hitEnd = goingDown && atEnd();
+                    const hitStart = goingUp && atStart();
+
+                    if (hitEnd || hitStart) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Accumulate delta until enough momentum to hand off to page
+                        overflowAccumulator += e.deltaY;
+
+                        if (Math.abs(overflowAccumulator) > 40) {
+                            smoothPageScroll(overflowAccumulator);
+                            overflowAccumulator = 0;
+                        }
+                        return;
+                    }
+
+                    // Still inside slider — scroll it
+                    e.preventDefault();
+                    e.stopPropagation();
+                    overflowAccumulator = 0;
+                    cancelAnimationFrame(handoffFrame);
+                    slider.scrollBy({ left: e.deltaY, behavior: 'smooth' });
+
+                }, { passive: false, capture: false });
+            }
+
+            // ── Keyframe-based elements ([data-anim]) ─────────────────────────
+            function observeKeyframeElements() {
+                const elements = document.querySelectorAll('[data-anim]');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const el = entry.target;
+                            el.classList.remove('anim-visible');
+                            requestAnimationFrame(() => {
+                                void el.offsetWidth;
+                                el.classList.add('anim-visible');
+                            });
+                        } else {
+                            entry.target.classList.remove('anim-visible');
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                elements.forEach(el => observer.observe(el));
+            }
+
+            // ── Transition-based elements (.anim-trigger) ─────────────────────
+            function observeTransitionElements() {
+                const elements = document.querySelectorAll('.anim-trigger:not([data-anim])');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('anim-visible');
+                        } else {
+                            entry.target.classList.remove('anim-visible');
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                elements.forEach(el => observer.observe(el));
+            }
+
+            observeKeyframeElements();
+            observeTransitionElements();
+
+        })();
     </script>
 
 @endsection

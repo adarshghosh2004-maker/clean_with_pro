@@ -81,9 +81,10 @@ class QuestionController extends Controller
             $validator = Validator::make($request->all(), [
                 'service_id' => 'required',
                 'description' => 'required|min:2',
-                'img_1' => 'required|image|mimes:jpeg,png,jpg,webp',
-                'img_2' => 'required|image|mimes:jpeg,png,jpg,webp',
-                'img_3' => 'required|image|mimes:jpeg,png,jpg,webp',
+                'img_1' => 'required|image|mimes:jpeg,png,jpg,webp|max:10240',
+                'img_2' => 'required|image|mimes:jpeg,png,jpg,webp|max:10240',
+                'img_3' => 'required|image|mimes:jpeg,png,jpg,webp|max:10240',
+
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -133,9 +134,9 @@ class QuestionController extends Controller
             $validator = Validator::make($request->all(), [
                 'service_id' => 'required',
                 'description' => 'required|min:2',
-                'img_1' => 'image|mimes:jpeg,png,jpg,webp',
-                'img_2' => 'image|mimes:jpeg,png,jpg,webp',
-                'img_3' => 'image|mimes:jpeg,png,jpg,webp',
+                'img_1' => 'image|mimes:jpeg,png,jpg,webp|max:10240',
+                'img_2' => 'image|mimes:jpeg,png,jpg,webp|max:10240',
+                'img_3' => 'image|mimes:jpeg,png,jpg,webp|max:10240',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();

@@ -66,6 +66,7 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
     Route::post('gallery/change_status', [GalleryController::class, 'change_status'])->name('gallery.change.status');
     // User
     Route::resource('user', UserController::class)->only(['index', 'create', 'store', 'edit', 'update', 'show']);
+    Route::get('user/details/{id}', [UserController::class, 'details'])->name('user.details');
     Route::resource('feedback', FeedbackController::class)->only(['index', 'store', 'update', 'show']);
     // Notification
     Route::resource('notification', NotificationController::class)->only(['index', 'create', 'store']);

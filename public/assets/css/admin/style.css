@@ -11,6 +11,7 @@
     --dark-color: rgba(0, 0, 0, 0.08);
     --light-color: #f5f5f5;
     --sidebar-color: #f9faff;
+    --assest-color: #e9ecef;
     --sidebar-a-color: #000000;
     --sidebar-icon-color: #636267;
     --input-group-color: #010101;
@@ -863,7 +864,7 @@ a {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background: var(--sidebar-color);
+    background: var(--assest-color);
     border-radius: 8px;
     padding: 7px;
 }
@@ -1888,8 +1889,8 @@ div.table-responsive
 .category-image {
     border-radius: 10px;
     object-fit: cover;
-    filter: brightness(0.40) !important;
-    -webkit-filter: brightness(0.40) !important;
+    filter: brightness(0.4) !important;
+    -webkit-filter: brightness(0.4) !important;
     transition: filter 0.25s ease;
     max-height: 105px;
     height: 105px;
@@ -1897,8 +1898,8 @@ div.table-responsive
     border-radius: 8px;
 }
 .content-box:hover .category-image {
-    filter: brightness(0.80) !important;
-    -webkit-filter: brightness(0.80) !important;
+    filter: brightness(0.8) !important;
+    -webkit-filter: brightness(0.8) !important;
 }
 .centered {
     position: absolute;
@@ -1916,10 +1917,10 @@ div.table-responsive
     width: 100%;
     color: var(--white-color);
     text-shadow:
-    0 1px 1px rgba(0, 0, 0, 0.15),
-    0 2px 4px rgba(0, 0, 0, 0.18),
-    0 4px 10px rgba(0, 0, 0, 0.22),
-    0 8px 18px rgba(0, 0, 0, 0.28);
+        0 1px 1px rgba(0, 0, 0, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.18),
+        0 4px 10px rgba(0, 0, 0, 0.22),
+        0 8px 18px rgba(0, 0, 0, 0.28);
 }
 /* Dashboard Hashtag */
 .hashtag-card {
@@ -2115,7 +2116,8 @@ div.table-responsive
 /* Hide-Show Btn */
 .show-btn,
 .hide-btn,
-.upcoming-btn {
+.upcoming-btn,
+.primary-btn {
     font-weight: bold;
     border: none;
     color: var(--white-color);
@@ -2131,6 +2133,9 @@ div.table-responsive
     background: var(--green-color);
 }
 
+.primary-btn {
+    background: var(--primary-color);
+}
 .hide-btn {
     background: var(--red-color);
 }
@@ -2141,7 +2146,8 @@ div.table-responsive
 
 .show-btn:focus,
 .hide-btn:focus,
-.upcoming-btn:focus {
+.upcoming-btn:focus,
+.priamry-btn:focus {
     outline: none;
     box-shadow: none;
 }
@@ -2740,4 +2746,116 @@ div.table-responsive
 }
 .dash-chart-btn:focus {
     outline: none;
+}
+
+.detail-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+    padding: 28px 28px 20px;
+    margin-bottom: 24px;
+}
+
+.detail-card h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-field label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.detail-field {
+    margin-bottom: 20px;
+}
+
+.detail-field .form-control-static {
+    background: #f7f7f8;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #333;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    word-break: break-all;
+    width: 100%;
+}
+
+.detail-field .form-control,
+.detail-field .form-select,
+.detail-field textarea.form-control {
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+}
+
+.detail-field textarea.form-control {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.detail-field .form-control:focus,
+.detail-field .form-select:focus,
+.detail-field textarea.form-control:focus {
+    border-color: #c9913d;
+    box-shadow: 0 0 0 3px rgba(201, 145, 61, 0.12);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-0 {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-1 {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+.status-2 {
+    background: #d1e7dd;
+    color: #0a3622;
+}
+
+.status-3 {
+    background: #d3d3d3;
+    color: #333;
+}
+
+.section-divider {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 0 0 20px;
+}
+
+.msg-box {
+    background: #f7f7f8;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 14px;
+    color: #444;
+    white-space: pre-line;
+    min-height: 70px;
 }

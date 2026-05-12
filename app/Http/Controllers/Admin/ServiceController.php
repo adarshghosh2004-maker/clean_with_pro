@@ -38,7 +38,7 @@ class ServiceController extends Controller
 
                 $data = $query->orderBy('id', 'desc')->get();
 
-              $this->common->imageNameToUrl($data, 'banner_img', $this->folder);
+                $this->common->imageNameToUrl($data, 'banner_img', $this->folder);
 
                 return DataTables()::of($data)
                     ->addIndexColumn()
@@ -93,9 +93,9 @@ class ServiceController extends Controller
                 'title' => 'required|min:2',
                 'short_title' => 'required',
                 'description' => 'required',
-                'banner_img' => 'required|image|mimes:jpeg,jpg,png,webp',
-                'detail_img1' => 'required|image|mimes:jpeg,jpg,png,webp',
-                'detail_img2' => 'required|image|mimes:jpeg,jpg,png,webp',
+                'banner_img' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
+                'detail_img1' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
+                'detail_img2' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -157,9 +157,9 @@ class ServiceController extends Controller
                 'title' => 'required|min:2',
                 'short_title' => 'required',
                 'description' => 'required',
-                'banner_img' => 'image|mimes:jpeg,jpg,png,webp',
-                'detail_img1' => 'image|mimes:jpeg,jpg,png,webp',
-                'detail_img2' => 'image|mimes:jpeg,jpg,png,webp',
+                'banner_img' => 'image|mimes:jpeg,jpg,png,webp|max:10240',
+                'detail_img1' => 'image|mimes:jpeg,jpg,png,webp|max:10240',
+                'detail_img2' => 'image|mimes:jpeg,jpg,png,webp|max:10240',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();

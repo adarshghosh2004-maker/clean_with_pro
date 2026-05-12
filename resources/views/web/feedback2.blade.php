@@ -1,4 +1,9 @@
 @extends('web.layout.web-layout')
+
+@section('title', 'Customer Feedback - Clean With Professionals')
+@section('description', 'Read customer feedback and reviews about our professional cleaning services in Melbourne.')
+@section('keywords', 'customer feedback, cleaning reviews, Melbourne cleaners testimonials')
+
 @section('content')
 
     <!-- Hero Section -->
@@ -14,11 +19,40 @@
     <!-- Feedback Form Card -->
     <div class="feedback-form-container-v2">
         <div class="feedback-card-v2" data-anim="fade-up" data-anim-delay="200">
-            <span class="step-indicator-v2">Step 1 of 1</span>
             <h2 class="card-title-v2">Service Feedback</h2>
 
-            <form action="#" method="POST" id="feedbackForm">
+            <form method="POST" id="feedback">
                 @csrf
+                <input type="hidden" name="id" value="">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex gap-4 pb-4">
+                            <div class="col-md-6">
+                                <label for="full_name">Full Name</label>
+                                <input type="text" id="full_name" name="name" class="form-control-v2"
+                                    placeholder="Julianne Smith" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-control-v2"
+                                    placeholder="julianne.smith@example.com" required>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-4 pb-4">
+                            <div class="col-md-6">
+                                <label for="mobile_number">Mobile Number</label>
+                                <input type="text" id="mobile_number" name="mobile_no" class="form-control-v2"
+                                    placeholder="679869756" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="area">Area</label>
+                                <input type="text" id="area" name="area_name" class="form-control-v2"
+                                    placeholder="Enter your area" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Rating -->
                 <div class="rating-section-v2">
                     <label class="rating-label-v2">How would you rate the experience?</label>
@@ -42,52 +76,21 @@
                     <input type="hidden" name="rating" id="ratingInput" value="4">
                 </div>
 
-                <!-- Full Name -->
-                <div class="form-group-v2">
-                    <label for="full_name">Full Name</label>
-                    <input type="text" id="full_name" name="full_name" class="form-control-v2"
-                        placeholder="Julianne Smith" required>
-                </div>
-
-                <!-- Select Service -->
-                <div class="form-group-v2">
-                    <label for="service">Select Service</label>
-                    <div class="select-wrapper-v2">
-                        <select id="service" name="service" class="form-control-v2 select-v2" required>
-                            <option value="" disabled selected>Deep Cleaning Package</option>
-                            <option value="basic">Basic Cleaning</option>
-                            <option value="deep">Deep Cleaning</option>
-                            <option value="move">Move-In/Out Cleaning</option>
-                        </select>
-                    </div>
-                </div>
-
                 <!-- Specific Details -->
                 <div class="form-group-v2">
-                    <label for="details">Specific Details</label>
-                    <textarea id="details" name="details" class="form-control-v2 textarea-v2"
+                    <label for="details">Your Experience</label>
+                    <textarea id="details" name="feedback" class="form-control-v2 textarea-v2"
                         placeholder="Share your experience with us..."></textarea>
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn-submit-v2">
+                <button type="button" onclick="save_feedback()" class="btn-submit-v2">
                     Submit Feedback
                     <span class="material-symbols-outlined">arrow_forward</span>
                 </button>
             </form>
         </div>
     </div>
-
-    <!-- Privacy Section -->
-    <div class="privacy-section" data-anim="fade-up">
-        <h3 class="privacy-title">Your privacy is our priority.</h3>
-        <p class="privacy-text">
-            Data submitted through this portal is used exclusively to refine our concierge standards.
-            Your editorial contribution helps us maintain Atmospheric Clarity for all our clients.
-        </p>
-        <a href="#" class="btn-view-policy">View Policy</a>
-    </div>
-
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -121,6 +124,34 @@
                 });
             });
         });
+
+        function save_feedback() {
+
+            var Demo_Mode = '<?php echo Demo_Mode(); ?>';
+            if (Demo_Mode == 1) {
+
+                $("#dvloader").show();
+                var formData = new FormData($("#feedback")[0]);
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route("admin.feedback.store") }}',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (resp) {
+                        $("#dvloader").hide();
+                        get_responce_message(resp, 'feedback', '');
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $("#dvloader").hide();
+                        toastr.error(errorThrown, textStatus);
+                    }
+                });
+            } else {
+                showError();
+            }
+        }
     </script>
 
 @endsection

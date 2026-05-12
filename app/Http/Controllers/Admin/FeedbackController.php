@@ -42,13 +42,7 @@ class FeedbackController extends Controller
                             <input type="hidden" name="_token" value="' . csrf_token() . '">
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="edit-delete-btn" title="' . __('label.delete') . '"><i class="fa-solid fa-trash-can fa-xl"></i></button></form>';
-
-                        $btn = '<div class="d-flex justify-content-center">';
-                        $btn .= '<a class="edit-delete-btn edit_feedback mr-4" data-toggle="modal" href="#EditModel" data-id="' . $row->id . '" data-name="' . $row->name . '" data-email="' . $row->email . '" data-mobile_no="' . $row->mobile_no . '" data-area_name="' . $row->area_name . '" data-feedback="' . $row->feedback . '"     title="' . __('label.edit') . '">';
-                        $btn .= '<i class="fa-solid fa-pen-to-square fa-xl"></i>';
-                        $btn .= '</a>';
-                        $btn .= $delete;
-                        $btn .= '</a></div>';
+                        $btn = $delete;
                         return $btn;
                     })
                     ->addColumn('status', function ($row) {
@@ -78,6 +72,7 @@ class FeedbackController extends Controller
                 'mobile_no' => 'required',
                 'area_name' => 'required',
                 'feedback' => 'required',
+                'rating' => 'required|integer|min:1|max:5',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -92,33 +87,6 @@ class FeedbackController extends Controller
                 return response()->json(['status' => 200, 'success' => __('label.success_add_feedback')]);
             } else {
                 return response()->json(['status' => 400, 'errors' => __('label.error_add_feedback')]);
-            }
-        } catch (Exception $e) {
-            return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
-        }
-    }
-    public function update($id, Request $request)
-    {
-        try {
-            $validator = Validator::make($request->all(), [
-                'name' => 'required|min:2',
-                'email' => 'required|email',
-                'mobile_no' => 'required',
-                'area_name' => 'required',
-                'feedback' => 'required',
-            ]);
-            if ($validator->fails()) {
-                $errs = $validator->errors()->all();
-                return response()->json(['status' => 400, 'errors' => $errs]);
-            }
-
-            $requestData = $request->all();
-
-            $data = Feedback::updateOrCreate(['id' => $requestData['id']], $requestData);
-            if (isset($data->id)) {
-                return response()->json(['status' => 200, 'success' => __('label.success_edit_feedback')]);
-            } else {
-                return response()->json(['status' => 400, 'errors' => __('label.error_edit_feedback')]);
             }
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);

@@ -202,46 +202,163 @@
             video.currentTime = 0;
         });
 
-        function initServiceDetailAnimations() {
-            // Exclude slider cards from intersection observer
-            const revealItems = document.querySelectorAll('.s2-page .anim-trigger');
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            if (!('IntersectionObserver' in window)) {
-                revealItems.forEach(item => item.classList.add('anim-visible'));
-                return;
-            }
-
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('anim-visible');
-                    } else if (entry.target.classList.contains('gallery-card') || entry.target.classList.contains('video-card')) {
-                        // Only remove for slider cards to allow re-animation on horizontal scroll
-                        entry.target.classList.remove('anim-visible');
-                    }
-                });
-            }, observerOptions);
-
-            revealItems.forEach(item => revealObserver.observe(item));
-        }
-
         function scrollSlider(sliderId, direction) {
             const slider = document.getElementById(sliderId);
             const card = slider.querySelector('.gallery-card, .video-card');
-            const scrollAmount = card.offsetWidth + parseInt(window.getComputedStyle(slider).gap);
+            const gap = parseInt(window.getComputedStyle(slider).gap) || 0;
+            const scrollAmount = card.offsetWidth + gap;
 
             slider.scrollBy({
                 left: direction * scrollAmount,
                 behavior: 'smooth'
             });
-
-            // IntersectionObserver will handle the animations as items enter/leave the view
         }
 
-        document.addEventListener('DOMContentLoaded', initServiceDetailAnimations);
+        (function () {
+
+            // ── Smooth wheel handoff for each slider ───────────────────────
+            function initSliderWheel(sliderId) {
+                const slider = document.getElementById(sliderId);
+                if (!slider) return;
+
+                let overflowAccumulator = 0;
+                let handoffFrame = null;
+
+                function atStart() {
+                    return slider.scrollLeft <= 0;
+                }
+
+                function atEnd() {
+                    return slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1;
+                }
+
+                function smoothPageScroll(delta) {
+                    cancelAnimationFrame(handoffFrame);
+                    let remaining = delta * 6;
+                    const FRICTION = 0.88;
+
+                    function step() {
+                        if (Math.abs(remaining) < 0.5) return;
+                        window.scrollBy({ top: remaining * (1 - FRICTION), behavior: 'instant' });
+                        remaining *= FRICTION;
+                        handoffFrame = requestAnimationFrame(step);
+                    }
+
+                    handoffFrame = requestAnimationFrame(step);
+                }
+
+                slider.addEventListener('mouseleave', () => {
+                    overflowAccumulator = 0;
+                    cancelAnimationFrame(handoffFrame);
+                });
+
+                slider.addEventListener('wheel', function (e) {
+                    const scrollingVertically = Math.abs(e.deltaY) > Math.abs(e.deltaX);
+                    if (!scrollingVertically) return;
+
+                    const goingDown = e.deltaY > 0;
+                    const goingUp   = e.deltaY < 0;
+                    const hitEnd    = goingDown && atEnd();
+                    const hitStart  = goingUp  && atStart();
+
+                    if (hitEnd || hitStart) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        overflowAccumulator += e.deltaY;
+
+                        if (Math.abs(overflowAccumulator) > 40) {
+                            smoothPageScroll(overflowAccumulator);
+                            overflowAccumulator = 0;
+                        }
+                        return;
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                    overflowAccumulator = 0;
+                    cancelAnimationFrame(handoffFrame);
+                    slider.scrollBy({ left: e.deltaY, behavior: 'auto' });
+
+                }, { passive: false, capture: false });
+            }
+
+            // Init both sliders
+            initSliderWheel('gallerySlider');
+            initSliderWheel('videoSlider');
+
+            // ── Keyframe-based elements ([data-anim]) ─────────────────────
+            function observeKeyframeElements() {
+                const elements = document.querySelectorAll('.s2-page [data-anim]');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const el = entry.target;
+                            el.classList.remove('anim-visible');
+                            requestAnimationFrame(() => {
+                                void el.offsetWidth;
+                                el.classList.add('anim-visible');
+                            });
+                        } else {
+                            entry.target.classList.remove('anim-visible');
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                elements.forEach(el => observer.observe(el));
+            }
+
+            // ── Transition-based elements (.anim-trigger) ─────────────────
+            function observeTransitionElements() {
+                // All regular anim-trigger elements (not slider cards)
+                const elements = document.querySelectorAll(
+                    '.s2-page .anim-trigger:not([data-anim]):not(.gallery-card):not(.video-card)'
+                );
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('anim-visible');
+                        } else {
+                            entry.target.classList.remove('anim-visible');
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                elements.forEach(el => observer.observe(el));
+            }
+
+            // ── Slider cards (.gallery-card, .video-card) ─────────────────
+            // Observed separately with a lower threshold so they animate
+            // as they scroll into view horizontally inside the slider
+            function observeSliderCards() {
+                const elements = document.querySelectorAll(
+                    '.s2-page .gallery-card, .s2-page .video-card'
+                );
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('anim-visible');
+                        } else {
+                            entry.target.classList.remove('anim-visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -20px 0px'
+                });
+
+                elements.forEach(el => observer.observe(el));
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                observeKeyframeElements();
+                observeTransitionElements();
+                observeSliderCards();
+            });
+
+        })();
     </script>
 @endsection

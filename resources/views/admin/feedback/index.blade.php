@@ -34,20 +34,22 @@
                         <div class="form-row">
                             <div class="col-md-12">
                                 <div class="form-row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{__('label.name')}}<span class="text-danger">*</span></label>
                                             <input type="text" name="name" class="form-control"
                                                 placeholder="{{__('label.name_here')}}" autofocus>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{__('label.email')}}<span class="text-danger">*</span></label>
                                             <input type="text" name="email" class="form-control"
                                                 placeholder="{{__('label.email_here')}}" autofocus>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{__('label.mobile_no')}}<span class="text-danger">*</span></label>
@@ -55,8 +57,6 @@
                                                 placeholder="{{__('label.mobile_no_here')}}" autofocus>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{__('label.area_name')}}<span class="text-danger">*</span></label>
@@ -64,11 +64,20 @@
                                                 placeholder="{{__('label.area_name_here')}}" autofocus>
                                         </div>
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>{{__('label.rating')}}<span class="text-danger">*</span></label>
+                                            <input type="number" name="rating" class="form-control"
+                                                placeholder="{{__('label.rating_here')}}" autofocus>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12   ">
                                         <div class="form-group">
                                             <label>{{__('label.feedback')}}<span class="text-danger">*</span></label>
                                             <textarea name="feedback" class="form-control"
-                                                placeholder="{{__('label.feedback_here')}}" rows="1"></textarea>
+                                                placeholder="{{__('label.feedback_here')}}"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -105,85 +114,12 @@
                                 <th>{{__('label.email')}}</th>
                                 <th>{{__('label.mobile_no')}}</th>
                                 <th>{{__('label.area_name')}}</th>
-                                <th>{{__('label.feedback')}}</th>
                                 <th>{{__('label.status')}}</th>
                                 <th>{{__('label.action')}}</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
-                </div>
-            </div>
-
-            <!-- Edit Model -->
-            <div class="modal fade" id="EditModel" tabindex="-1" data-backdrop="static" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{__('label.edit_feedback')}}</h5>
-                            <button type="button" class="close text-dark" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form id="edit_feedback" enctype="multipart/form-data">
-                            <div class="modal-body">
-                                <input type="hidden" name="id" id="edit_id">
-                                <div class="form-row">
-                                    <div class="col-md-12">
-                                        <div class="form-row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>{{__('label.name')}}<span class="text-danger">*</span></label>
-                                                    <input type="text" name="name" id="edit_name" class="form-control"
-                                                        placeholder="{{__('label.name_here')}}">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>{{__('label.email')}}<span class="text-danger">*</span></label>
-                                                    <input type="text" name="email" id="edit_email" class="form-control"
-                                                        placeholder="{{__('label.email_here')}}">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>{{__('label.mobile_no')}}<span
-                                                            class="text-danger">*</span></label>
-                                                    <input type="text" name="mobile_no" id="edit_mobile_no"
-                                                        class="form-control" placeholder="{{__('label.mobile_no_here')}}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>{{__('label.area_name')}}<span class="text-danger">*</span></label>
-                                                    <input type="text" name="area_name" id="edit_area_name" class="form-control"
-                                                        placeholder="{{__('label.area_name_here')}}">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="form-group">
-                                                    <label>{{__('label.feedback')}}<span
-                                                            class="text-danger">*</span></label>
-                                                    <textarea name="feedback" id="edit_feedback" class="form-control"
-                                                        placeholder="{{__('label.feedback_here')}}" rows="1"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default mw-120"
-                                    onclick="update_feedback()">{{__('label.update')}}</button>
-                                <button type="button" class="btn btn-cancel mw-120"
-                                    data-dismiss="modal">{{__('label.close')}}</button>
-                                <input type="hidden" name="_method" value="PATCH">
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>
@@ -211,37 +147,30 @@
                     orderable: false,
                     searchable: false
                 },
-                 {
+                {
                     data: 'name',
                     name: 'name',
                     render: function (data) {
                         return data ? data : "-";
                     }
                 },
-                   {
+                {
                     data: 'email',
                     name: 'email',
                     render: function (data) {
                         return data ? data : "-";
                     }
                 },
-                 {
+                {
                     data: 'mobile_no',
                     name: 'mobile_no',
                     render: function (data) {
                         return data ? data : "-";
                     }
                 },
-                 {
+                {
                     data: 'area_name',
                     name: 'area_name',
-                    render: function (data) {
-                        return data ? data : "-";
-                    }
-                },
-                 {
-                    data: 'feedback',
-                    name: 'feedback',
                     render: function (data) {
                         return data ? data : "-";
                     }
@@ -294,59 +223,6 @@
             }
         }
 
-        $(document).on("click", ".edit_feedback", function () {
-            var id = $(this).data('id');
-            var name = $(this).data('name');
-            var email = $(this).data('email');
-            var mobile_no = $(this).data('mobile_no');
-            var area_name = $(this).data('area_name');
-            var feedback = $(this).data('feedback');
-
-            $(".modal-body #edit_id").val(id);
-            $(".modal-body #edit_name").val(name);
-            $(".modal-body #edit_email").val(email);
-            $(".modal-body #edit_mobile_no").val(mobile_no);
-            $(".modal-body #edit_area_name").val(area_name);
-            $(".modal-body #edit_feedback").val(feedback);
-        });
-
-        function update_feedback() {
-
-            var Demo_Mode = '<?php echo Demo_Mode(); ?>';
-            if (Demo_Mode == 1) {
-
-                $("#dvloader").show();
-                var formData = new FormData($("#edit_feedback")[0]);
-
-                var Edit_Id = $("#edit_id").val();
-                var url = '{{ route("admin.feedback.update", ":id") }}';
-                url = url.replace(':id', Edit_Id);
-
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function (resp) {
-
-                        $("#dvloader").hide();
-                        if (resp.status == 200) {
-                            $('#EditModel').modal('toggle');
-                        }
-                        get_responce_message(resp, 'edit_feedback', '{{ route("admin.feedback.index") }}');
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        $("#dvloader").hide();
-                        toastr.error(errorThrown, textStatus);
-                    }
-                });
-            } else {
-                showError();
-            }
-        }
-
         function change_status(id) {
 
             var Demo_Mode = '<?php echo Demo_Mode(); ?>';
@@ -365,11 +241,6 @@
                         $("#dvloader").hide();
 
                         if (resp.status == 200) {
-                            if (resp.status_code == 1) {
-                                $('#' + id).text('{{__("label.show")}}').removeClass('hide-btn').addClass('show-btn').attr('title', "{{__('label.click_to_hide')}}");
-                            } else {
-                                $('#' + id).text('{{__("label.hide")}}').removeClass('show-btn').addClass('hide-btn').attr('title', "{{__('label.click_to_show')}}");
-                            }
                             toastr.success(resp.success);
                         } else {
                             toastr.error(resp.errors);

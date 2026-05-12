@@ -38,8 +38,8 @@ class GalleryController extends Controller
 
                 $data = $query->latest()->get();
 
-                 $this->common->imageNameToUrl($data, 'before_img', $this->folder);
-                 $this->common->imageNameToUrl($data, 'after_img', $this->folder);
+                $this->common->imageNameToUrl($data, 'before_img', $this->folder);
+                $this->common->imageNameToUrl($data, 'after_img', $this->folder);
 
                 return DataTables()::of($data)
                     ->addIndexColumn()
@@ -93,8 +93,8 @@ class GalleryController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'service_id' => 'required',
-                'before_img' => 'required|image|mimes:jpeg,jpg,png,webp',
-                'after_img' => 'required|image|mimes:jpeg,jpg,png,webp',
+                'before_img' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
+                'after_img' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -150,8 +150,8 @@ class GalleryController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'service_id' => 'required',
-                'before_img' => 'image|mimes:jpeg,jpg,png,webp',
-                'after_img' => 'image|mimes:jpeg,jpg,png,webp',
+                'before_img' => 'image|mimes:jpeg,jpg,png,webp|max:10240',
+                'after_img' => 'image|mimes:jpeg,jpg,png,webp|max:10240',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();

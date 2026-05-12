@@ -1,5 +1,5 @@
 @extends('admin.layout.page-app')
-@section('page_title', __('label.user'))
+@section('page_title', __('label.quotes'))
 
 @section('content')
     @include('admin.layout.sidebar')
@@ -12,18 +12,14 @@
             <h1 class="page-title-sm"> {{__('label.user')}} </h1>
 
             <div class="border-bottom row mb-3">
-                <div class="col-sm-10">
+                <div class="col-sm-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{__('label.dashboard')}}</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            {{__('label.user')}}
+                            {{__('label.quotes')}}
                         </li>
                     </ol>
-                </div>
-                <div class="col-sm-2 d-flex align-items-center justify-content-end">
-                    <a href="{{ route('admin.user.create') }}"
-                        class="btn btn-default mw-120 mt-14">{{__('label.add_user')}}</a>
                 </div>
             </div>
 
@@ -50,7 +46,7 @@
                             <th> {{__('label.suburb')}} </th>
                             <th> {{__('label.date')}} </th>
                             <th> {{__('label.time')}} </th>
-                            <th> {{__('label.service_id')}} </th>
+                            <th> {{__('label.service')}} </th>
                             <th> {{__('label.msg')}} </th>
                             <th>{{__('label.status')}}</th>
                             <th> {{__('label.action')}} </th>
@@ -151,10 +147,10 @@
                     },
                 },
                 {
-                    data: 'service_id',
-                    name: 'service_id',
+                    data: 'service',
+                    name: 'service',
                     render: function (data, type, full, meta) {
-                        return data ? data : '-';
+                        return data ? data.title : '-';
 
                     }
                 },

@@ -103,6 +103,21 @@ return [
     'gallery_delete' => 'Gallery deleted successfully',
     'delete_gallery_msg' => 'Delete Gallery Message',
 
+    'quote' => 'Quote',
+    'quotes' => 'Quotes',
+    'confiremed' => 'Confirmed',
+    'add_quote' => 'Add Quote',
+    'completed' => 'Completed',
+    'pending' => 'Pending',
+    'quote_details' => 'Quote Details',
+    'write_reply' => 'Write Reply',
+    'view_details' => 'View Details',
+    'amount' => 'Amount',
+    'reply' => 'Reply',
+    'current_status' => 'Current Status',
+    'update_quote' => 'Update Quote',
+    'quote_list' => 'Quote List',
+
     'users' => 'Users',
     'user' => 'User',
     'add_user' => 'Add User',
@@ -215,6 +230,8 @@ return [
     'success_edit_feedback' => 'Feedback Updated Successfully',
     'feedback_delete' => 'Feedback Deleted Successfully',
     'delete_feedback' => 'Delete Feedback',
+    'rating' => 'Rating',
+    'rating_here' => 'Here...',
 
     'pages' => 'Pages',
     'edit_pages' => 'Edit page',
@@ -255,9 +272,9 @@ return [
     'logout' => 'Logout',
     'upload_file' => 'Select File',
 
-    'videos'=>"Videos",
-    'requests'=>"Requests",
-    'active_services'=>"Active Services", 
-    'recent_users'=>"Recent Users"  
+    'videos' => "Videos",
+    'requests' => "Requests",
+    'active_services' => "Active Services",
+    'recent_users' => "Recent Users"
 
 ];

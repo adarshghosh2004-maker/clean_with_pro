@@ -1,4 +1,9 @@
 @extends('web.layout.web-layout')
+
+@section('title', 'Cleaning Gallery - Before & After | Clean With Professionals')
+@section('description', 'View our cleaning gallery showcasing before and after results of homes and offices in Melbourne.')
+@section('keywords', 'cleaning gallery, before after cleaning, Melbourne cleaning photos')
+
 @section('content')
     <div class="gallery-page">
         <!-- Hero Section -->
@@ -141,14 +146,14 @@
                 <div class="col-md-3 col-6">
                     <div class="stat-item-v2">
                         <div class="icon-circle"><i class="bi bi-award"></i></div>
-                        <h3>10+ Years</h3>
+                        <h3>6+ Years</h3>
                         <p>Delivering Excellence</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="stat-item-v2">
                         <div class="icon-circle"><i class="bi bi-people"></i></div>
-                        <h3>500+ Clients</h3>
+                        <h3>5000+ Clients</h3>
                         <p>Happy Households</p>
                     </div>
                 </div>
@@ -231,57 +236,25 @@
                 <h2 class="fw-extrabold">What Our Clients Say</h2>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="testimonial-card-v2">
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                        <p>"The before and after was incredible. I didn't think my 10-year-old carpets could look this
-                            new again. Worth every cent."</p>
-                        <div class="testimonial-user">
-                            <img src="https://i.pravatar.cc/150?u=sarah" alt="Sarah J.">
-                            <div>
-                                <h5>Sarah J.</h5>
-                                <span>Southbank</span>
+                @foreach ($feedbacks as $key => $value)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="testimonial-card-v2">
+                            <div class="stars">
+                                @for ($i = 0; $i < $value['rating']; $i++)
+                                    <i class="bi bi-star-fill"></i>
+                                @endfor
+                            </div>
+                            <p>"{{ $value['feedback'] }}"</p>
+                            <div class="testimonial-user">
+                                <div class="about-testimonial-initials">{{ substr($value['name'], 0, 2) }}</div>
+                                <div>
+                                    <h5>{{ $value['name'] }}</h5>
+                                    <span>{{ $value['area_name'] }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="testimonial-card-v2">
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                        <p>"Extremely professional. They arrived on time, used high-quality equipment, and were very
-                            respectful of our home."</p>
-                        <div class="testimonial-user">
-                            <img src="https://i.pravatar.cc/150?u=michael" alt="Michael K.">
-                            <div>
-                                <h5>Michael K.</h5>
-                                <span>Docklands</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="testimonial-card-v2">
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                        <p>"Seamless experience from booking to execution. The end-of-lease clean was perfect and we got
-                            our full bond back."</p>
-                        <div class="testimonial-user">
-                            <img src="https://i.pravatar.cc/150?u=elena" alt="Elena R.">
-                            <div>
-                                <h5>Elena R.</h5>
-                                <span>Brighton</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -291,7 +264,7 @@
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <h2>Ready for a Spotless Home? Book Today!</h2>
-                <a href="<?php echo route('contact'); ?>" class="btn-white">Secure My Spot</a>
+                <a href="#EditModel" data-bs-toggle="modal" class="btn-white">Secure My Spot</a>
             </div>
         </div>
     </section>
@@ -329,79 +302,141 @@
             video.currentTime = 0;
         });
 
+        // ── Filter nav scroll (arrow buttons) ─────────────────────────────
         function scrollFilter(value) {
             const container = document.getElementById('filterNav');
-            container.scrollBy({
-                left: value,
-                behavior: 'smooth'
-            });
+            container.scrollBy({ left: value, behavior: 'smooth' });
         }
 
-        $(document).ready(function () {
-            $('.filter-a').click(function (e) {
+        // ── Filter nav mouse wheel scroll ──────────────────────────────────
+        (function () {
+            const filterNav = document.getElementById('filterNav');
+            const filterWrapper = filterNav ? filterNav.closest('.filter-wrapper') : null;
+            if (!filterNav || !filterWrapper) return;
+
+            filterWrapper.addEventListener('wheel', function (e) {
+                const scrollingVertically = Math.abs(e.deltaY) > Math.abs(e.deltaX);
+                if (!scrollingVertically) return;
+
                 e.preventDefault();
+                e.stopPropagation();
+                filterNav.scrollBy({ left: e.deltaY, behavior: 'smooth' });
 
-                var serviceId = $(this).attr('id');
+            }, { passive: false });
+        })();
 
-                // Active button
-                $('.filter-a').removeClass('active');
-                $(this).addClass('active');
-
-                // Hide all rows smoothly
-                $('.services-row').fadeOut(200);
-
-                // Show selected with delay
-                setTimeout(function () {
-                    var target = $('.services-row[data-id="' + serviceId + '"]');
-
-                    target.fadeIn(300, function () {
-                        // 🔥 Re-init AOS and custom animations after DOM visibility change
-                        AOS.refreshHard();
-                        initGalleryAnimations();
-
-                    });
-
-                }, 200);
-            });
-        });
-
-        let galleryRevealObserver;
-
+        // ── Slider arrow buttons ───────────────────────────────────────────
         function scrollSlider(sliderClass, direction) {
-            // Find the visible slider with the matching class
             const slider = $('.' + sliderClass + '.services-row:visible')[0];
             if (!slider) return;
 
             const card = slider.querySelector('.gallery-card, .video-card');
             if (!card) return;
 
-            const scrollAmount = card.offsetWidth + parseInt(window.getComputedStyle(slider).gap || 0);
+            const gap = parseInt(window.getComputedStyle(slider).gap) || 0;
+            const scrollAmount = card.offsetWidth + gap;
 
-            slider.scrollBy({
-                left: direction * scrollAmount,
-                behavior: 'smooth'
-            });
-
-            // IntersectionObserver will handle the animations as items enter/leave the view
+            slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
 
-        function initGalleryAnimations() {
-            const revealItems = document.querySelectorAll('.anim-trigger');
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+        // ── Wheel fix — attach/reattach on each visible slider ────────────
+        const wheelListeners = new WeakMap();
+
+        function attachSliderWheel(slider) {
+            if (!slider || wheelListeners.has(slider)) return;
+
+            let overflowAccumulator = 0;
+            let handoffFrame = null;
+
+            function atStart() { return slider.scrollLeft <= 0; }
+            function atEnd() { return slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1; }
+
+            function smoothPageScroll(delta) {
+                cancelAnimationFrame(handoffFrame);
+                let remaining = delta * 6;
+                const FRICTION = 0.88;
+                function step() {
+                    if (Math.abs(remaining) < 0.5) return;
+                    window.scrollBy({ top: remaining * (1 - FRICTION), behavior: 'instant' });
+                    remaining *= FRICTION;
+                    handoffFrame = requestAnimationFrame(step);
+                }
+                handoffFrame = requestAnimationFrame(step);
+            }
+
+            slider.addEventListener('mouseleave', () => {
+                overflowAccumulator = 0;
+                cancelAnimationFrame(handoffFrame);
+            });
+
+            const handler = function (e) {
+                const scrollingVertically = Math.abs(e.deltaY) > Math.abs(e.deltaX);
+                if (!scrollingVertically) return;
+
+                const hitEnd = e.deltaY > 0 && atEnd();
+                const hitStart = e.deltaY < 0 && atStart();
+
+                if (hitEnd || hitStart) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    overflowAccumulator += e.deltaY;
+                    if (Math.abs(overflowAccumulator) > 40) {
+                        smoothPageScroll(overflowAccumulator);
+                        overflowAccumulator = 0;
+                    }
+                    return;
+                }
+
+                e.preventDefault();
+                e.stopPropagation();
+                overflowAccumulator = 0;
+                cancelAnimationFrame(handoffFrame);
+                slider.scrollBy({ left: e.deltaY, behavior: 'auto' });
             };
 
-            if (galleryRevealObserver) {
-                galleryRevealObserver.disconnect();
-            }
+            slider.addEventListener('wheel', handler, { passive: false, capture: false });
+            wheelListeners.set(slider, handler);
+        }
 
-            if (!('IntersectionObserver' in window)) {
-                revealItems.forEach(item => item.classList.add('anim-visible'));
-                return;
-            }
+        function attachAllVisibleSliderWheels() {
+            document.querySelectorAll('.gallerySlider.services-row, .videoSlider.services-row').forEach(slider => {
+                if (slider.style.display !== 'none') {
+                    attachSliderWheel(slider);
+                }
+            });
+        }
 
-            galleryRevealObserver = new IntersectionObserver((entries) => {
+        // ── Intersection observers ─────────────────────────────────────────
+        let pageObserver = null;
+        let sliderObserver = null;
+
+        function observePageElements() {
+            if (pageObserver) pageObserver.disconnect();
+
+            const keyframeEls = document.querySelectorAll(
+                '.gallery-page [data-anim], .stats-banner-v2[data-anim], .specialized-services[data-anim], .testimonials-v2[data-anim], .cta-v2[data-anim]'
+            );
+
+            pageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        el.classList.remove('anim-visible');
+                        requestAnimationFrame(() => {
+                            void el.offsetWidth;
+                            el.classList.add('anim-visible');
+                        });
+                    } else {
+                        entry.target.classList.remove('anim-visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            keyframeEls.forEach(el => pageObserver.observe(el));
+
+            const triggerEls = document.querySelectorAll('.anim-trigger:not(.gallery-card):not(.video-card)');
+
+            const triggerObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('anim-visible');
@@ -409,12 +444,64 @@
                         entry.target.classList.remove('anim-visible');
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.15 });
 
-            revealItems.forEach(item => galleryRevealObserver.observe(item));
+            triggerEls.forEach(el => triggerObserver.observe(el));
         }
 
-        document.addEventListener('DOMContentLoaded', initGalleryAnimations);
+        function observeSliderCards() {
+            if (sliderObserver) sliderObserver.disconnect();
+
+            const cards = document.querySelectorAll(
+                '.gallerySlider.services-row:not([style*="display:none"]) .gallery-card, ' +
+                '.gallerySlider.services-row:not([style*="display: none"]) .gallery-card, ' +
+                '.videoSlider.services-row:not([style*="display:none"]) .video-card, ' +
+                '.videoSlider.services-row:not([style*="display: none"]) .video-card'
+            );
+
+            sliderObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('anim-visible');
+                    } else {
+                        entry.target.classList.remove('anim-visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
+            cards.forEach(el => {
+                el.classList.remove('anim-visible');
+                sliderObserver.observe(el);
+            });
+        }
+
+        // ── Filter tab switch ──────────────────────────────────────────────
+        $(document).ready(function () {
+            $('.filter-a').click(function (e) {
+                e.preventDefault();
+
+                const serviceId = $(this).attr('id');
+
+                $('.filter-a').removeClass('active');
+                $(this).addClass('active');
+
+                $('.services-row').fadeOut(200);
+
+                setTimeout(function () {
+                    $('.services-row[data-id="' + serviceId + '"]').fadeIn(300, function () {
+                        attachAllVisibleSliderWheels();
+                        observeSliderCards();
+                    });
+                }, 200);
+            });
+        });
+
+        // ── Init on load ───────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', function () {
+            observePageElements();
+            observeSliderCards();
+            attachAllVisibleSliderWheels();
+        });
 
     </script>
 @endsection

@@ -1,5 +1,9 @@
 @extends('web.layout.web-layout')
 
+@section('title', 'Clean With Professionals | Professional Cleaning Services in Melbourne')
+@section('description', 'Clean With Professionals offers reliable and affordable cleaning services in Melbourne. Book same-day service now.')
+@section('keywords', 'cleaning services, professional cleaners, Melbourne cleaning')
+
 @section('content')
 
   <!-- Section 3: Hero Slider -->
@@ -267,11 +271,98 @@
     </div>
   </div>
 
+  <div class="marquee-section">
+
+    <!-- Row 1 -->
+    <div class="marquee-track">
+    <div class="marquee-inner">
+      @foreach ($feedbacks_reverse as $key => $value)
+      <div class="pill">
+      <span class="quote-text">"{{ String_Cut($value->feedback, 20) }}"</span>
+      <span class="dot"></span>
+      <span class="name">{{ $value->name }}</span>
+      </div>
+    @endforeach
+    </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="marquee-track reverse">
+    <div class="marquee-inner">
+      @foreach ($feedbacks as $key => $value)
+      <div class="pill">
+      <span class="quote-text">"{{ String_Cut($value->feedback, 20) }}"</span>
+      <span class="dot"></span>
+      <span class="name">{{ $value->name }}</span>
+      </div>
+    @endforeach
+    </div>
+    </div>
+
+  </div>
 @endsection
 
 @section('pagescript')
 
   <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const tracks = document.querySelectorAll('.marquee-track');
+
+    tracks.forEach(function (track) {
+      const inner = track.querySelector('.marquee-inner');
+      const isReverse = track.classList.contains('reverse');
+      let offset = 0;
+      let animationId;
+
+      function getSpeed() {
+      return 0.5;
+      }
+
+      function step() {
+      const pills = inner.querySelectorAll('.pill');
+      if (pills.length === 0) return;
+
+      if (!isReverse) {
+        offset += getSpeed();
+
+        const firstPill = pills[0];
+        const firstPillWidth = firstPill.offsetWidth + 16;
+
+        if (offset >= firstPillWidth) {
+        offset -= firstPillWidth;
+        inner.appendChild(firstPill);
+        }
+
+        inner.style.transform = `translateX(${-offset}px)`;
+      } else {
+        offset += getSpeed();
+
+        const lastPill = pills[pills.length - 1];
+        const lastPillWidth = lastPill.offsetWidth + 16;
+
+        if (offset >= lastPillWidth) {
+        offset -= lastPillWidth;
+        inner.prepend(lastPill);
+        }
+
+        inner.style.transform = `translateX(${offset - lastPill.offsetWidth - 16}px)`;
+      }
+
+      animationId = requestAnimationFrame(step);
+      }
+
+      track.addEventListener('mouseenter', function () {
+      cancelAnimationFrame(animationId);
+      });
+
+      track.addEventListener('mouseleave', function () {
+      animationId = requestAnimationFrame(step);
+      });
+
+      animationId = requestAnimationFrame(step);
+    });
+    });
 
     $(document).on('click', '.video', function () {
     let videoSRC = $(this).data("video");

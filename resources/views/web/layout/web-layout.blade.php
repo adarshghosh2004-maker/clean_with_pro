@@ -4,6 +4,29 @@
 <head>
     <!-- Meta Tag -->
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Dynamic SEO Tags -->
+    <title>@yield('title', 'Default Site Title')</title>
+    <meta name="description" content="@yield('description', 'Default description here')">
+    <meta name="keywords" content="@yield('keywords', 'cleaning, services, melbourne')">
+    <link rel="canonical" href="@yield('canonical', url()->current())">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('assets/imgs/CWPss.PNG') }}">
+
+    <!-- Social Sharing (Open Graph) -->
+    <meta property="og:title" content="@yield('title', 'Default Site Title')">
+    <meta property="og:description" content="@yield('description', 'Default description here')">
+    <meta property="og:url" content="@yield('canonical', url()->current())">
+    <meta property="og:image" content="@yield('og_image', asset('assets/imgs/CWPss.PNG'))">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', 'Default Site Title')">
+    <meta name="twitter:description" content="@yield('description', 'Default description here')">
+    <meta name="twitter:image" content="@yield('og_image', asset('assets/imgs/CWPss.PNG'))">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
@@ -15,16 +38,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
-    <!-- AOS CSS removed -->
 
     <link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css">
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/web/style.css') }}">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo asset('assets/css/web/style.css'); ?>">
-    <!-- Custom CSS -->
+    <!-- Loader CSS -->
     <style>
-        /* Loader */
         #dvloader {
             width: 100%;
             height: 100%;
@@ -46,6 +67,7 @@
         }
     </style>
 </head>
+
 
 <body>
     <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}" /></div>
@@ -125,6 +147,7 @@
                                                 <select name="service_id" class="form-control bg-light border-0"
                                                     required>
                                                     <option value="">Select a service</option>
+                                                    <option value="0">Special Offers</option>
                                                     @foreach ($services as $key => $value)
                                                         <option value="{{ $value->id }}">{{ $value->title }}</option>
                                                     @endforeach
@@ -171,9 +194,12 @@
         $(document).on('click', '[data-bs-toggle="modal"]', function () {
 
             let serviceId = $(this).data('id');
+            let serviceName = $(this).data('name') ?? '';
+            console.log(serviceName);
 
             // set selected option
             $('#EditModel select[name="service_id"]').val(serviceId);
+            $('#EditModel textarea[name="msg"]').val(serviceName);
 
         });
 
@@ -240,20 +266,20 @@
     <script>
         // Global Scroll Reveal Animation Logic
         document.addEventListener('DOMContentLoaded', () => {
-            const revealOptions = {
-                threshold: 0.25,
-                rootMargin: '0px 0px -20px 0px'
-            };
 
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
+                    const threshold = parseFloat(entry.target.dataset.animThreshold || 0.25);
+                    if (entry.isIntersecting && entry.intersectionRatio >= threshold) {
                         entry.target.classList.add('anim-visible');
                     } else {
                         entry.target.classList.remove('anim-visible');
                     }
                 });
-            }, revealOptions);
+            }, {
+                threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25], // observe all levels
+                rootMargin: '0px 0px -20px 0px'
+            });
 
             // Observe all anim-trigger and data-anim elements globally
             const observeElements = () => {

@@ -19,6 +19,7 @@ class Feedback extends Model
         'mobile_no' => 'string',
         'area_name' => 'string',
         'feedback' => 'string',
+        'rating' => 'integer',
         'status' => 'integer',
     ];
 }

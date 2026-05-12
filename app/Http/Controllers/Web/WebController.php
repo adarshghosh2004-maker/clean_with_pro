@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Common;
+use App\Models\Feedback;
 use App\Models\Gallery;
 use App\Models\Question;
 use App\Models\Service;
@@ -30,6 +31,9 @@ class WebController extends Controller
             $params['videos'] = Video::with('service:id,title')->orderBy('id', 'desc')->take(3)->get();
             $this->common->imageNameToUrl($params['videos'], 'image', 'video');
             $this->common->fileNameToUrl($params['videos'], 'video', 'video');
+
+            $params['feedbacks'] = Feedback::orderBy('id', 'desc')->get();
+            $params['feedbacks_reverse'] = Feedback::orderBy('id', 'asc')->get();
 
             return view('web.welcome', $params);
         } catch (Exception $e) {
@@ -62,6 +66,9 @@ class WebController extends Controller
             $quote->date = date('Y-m-d', strtotime($request->date));
             $quote->time = $request->time ?? '';
             $quote->msg = $request->msg ?? '';
+            $quote->reply = $request->reply ?? '';
+            $quote->amount = $request->amount ?? 0;
+            $quote->status = 0;
             $quote->save();
 
             return response()->json(['status' => 200, 'success' => 'Quote request sent successfully.']);
@@ -74,10 +81,12 @@ class WebController extends Controller
         $params['gallery'] = Gallery::get();
         $this->common->imageNameToUrl($params['gallery'], 'before_img', 'gallery');
         $this->common->imageNameToUrl($params['gallery'], 'after_img', 'gallery');
-        $params['videos']=Video::get();
+        $params['videos'] = Video::get();
         $this->common->imageNameToUrl($params['videos'], 'image', 'video');
         $this->common->fileNameToUrl($params['videos'], 'video', 'video');
-        
+
+        $params['feedbacks'] = Feedback::latest()->offset(3)->take(3)->get();
+
         return view('web.gallery', $params);
     }
 
@@ -113,4 +122,11 @@ class WebController extends Controller
         return view('web.service-detail', $params);
 
     }
+
+    public function about(Request $request)
+    {
+        $params['feedbacks'] = Feedback::latest()->take(3)->get();
+        return view('web.aboutus', $params);
+    }
 }
+

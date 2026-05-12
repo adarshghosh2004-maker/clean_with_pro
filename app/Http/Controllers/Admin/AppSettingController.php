@@ -54,6 +54,8 @@ class AppSettingController extends Controller
             $data['website'] = isset($data['website']) ? $data['website'] : '';
             $data['app_description'] = isset($data['app_description']) ? $data['app_description'] : '';
             $data['address'] = isset($data['address']) ? $data['address'] : '';
+            $data['abn_number'] = isset($data['abn_number']) ? $data['abn_number'] : '';
+            $data['whatsapp_number'] = isset($data['whatsapp_number']) ? $data['whatsapp_number'] : '';
 
             if (isset($data['app_logo'])) {
                 $files = $data['app_logo'];

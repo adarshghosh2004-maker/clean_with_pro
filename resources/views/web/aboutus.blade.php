@@ -1,8 +1,12 @@
 @extends('web.layout.web-layout')
 
+@section('title', 'About Us - Clean With Professionals')
+@section('description', 'Learn more about Clean With Professionals, our mission, and our expert cleaning team in Melbourne.')
+@section('keywords', 'about us, cleaning company, professional cleaners, Melbourne')
+
 @section('content')
     <!-- ========================
-                             SECTION 1: Hero
+                        SECTION 1: Hero
                         ======================== -->
     <section class="hero-section">
         @foreach ($pages as $key => $value)
@@ -19,7 +23,7 @@
     </section>
 
     <!-- ========================
-                             SECTION 2: Passion / Our Story
+                        SECTION 2: Passion / Our Story
                         ======================== -->
     <section class="passion-section" data-anim="fade-up">
         <div class="container">
@@ -38,7 +42,7 @@
                     </div>
                     <div class="row g-4 passion-stat">
                         <div class="col-6">
-                            <span class="passion-stat-number">10+</span>
+                            <span class="passion-stat-number">6+</span>
                             <span class="passion-stat-label">Years Experience</span>
                         </div>
                         <div class="col-6">
@@ -58,12 +62,12 @@
     </section>
 
     <!-- ========================
-                             SECTION 3: Core Pillars
+                        SECTION 3: Core Pillars
                         ======================== -->
     <section class="pillars-section" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-anim="fade-up">
-                <h2 class="display-5 fw-bold mb-3">The Core Pillars of CleanCare</h2>
+                <h2 class="display-5 fw-bold mb-3">The Core Pillars of Clean With Professionals</h2>
                 <p class="text-muted pillars-subtitle mx-auto">Our values define every interaction, every service, and
                     every clean.</p>
             </div>
@@ -117,7 +121,7 @@
     </section>
 
     <!-- ========================
-                             SECTION 4: Professional Edge
+                        SECTION 4: Professional Edge
                         ======================== -->
     <section class="edge-section" data-anim="fade-up">
         <div class="container">
@@ -144,7 +148,7 @@
     </section>
 
     <!-- ========================
-                             SECTION 5: How It Works
+                        SECTION 5: How It Works
                         ======================== -->
     <section class="how-it-works-section" data-anim="fade-up">
         <div class="container">
@@ -177,7 +181,7 @@
     </section>
 
     <!-- ========================
-                             SECTION 6: Team – Faces Behind the Shine
+                        SECTION 6: Team – Faces Behind the Shine
                         ======================== -->
     <section class="team-section-new" data-anim="fade-up">
         <div class="container">
@@ -189,8 +193,8 @@
                 <!-- Member 1 -->
                 <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
                     <div class="team-member-card">
-                        <div class="team-initials">DM</div>
-                        <h4 class="fw-bold mb-1">Daniel Mira</h4>
+                        <div class="team-initials">CP</div>
+                        <h4 class="fw-bold mb-1">Charmy Patel</h4>
                         <p class="text-secondary fw-semibold mb-3">Founder &amp; Director</p>
                         <p class="text-muted small mb-0">"My goal is to bring five-star hotel standards to every home in
                             Melbourne."</p>
@@ -199,8 +203,8 @@
                 <!-- Member 2 -->
                 <div class="col-md-4" data-anim="fade-up" data-anim-delay="200">
                     <div class="team-member-card">
-                        <div class="team-initials">SR</div>
-                        <h4 class="fw-bold mb-1">Sarah Reynolds</h4>
+                        <div class="team-initials">RP</div>
+                        <h4 class="fw-bold mb-1">Rajveer Patel</h4>
                         <p class="text-secondary fw-semibold mb-3">Operations Manager</p>
                         <p class="text-muted small mb-0">"I ensure our cleaners are as dedicated to your home's health
                             as we are."</p>
@@ -221,7 +225,7 @@
     </section>
 
     <!-- ========================
-                             SECTION 8: Testimonials
+                        SECTION 8: Testimonials
                         ======================== -->
     <section class="about-testimonials-section" data-anim="fade-up">
         <div class="container">
@@ -231,81 +235,38 @@
             </div>
             <div class="row g-4">
                 <!-- Testimonial 1 -->
-                <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
-                    <div class="about-testimonial-card">
-                        <div class="about-testimonial-stars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                        </div>
-                        <p class="about-testimonial-text">"CleanCare transformed our office space. The team was
-                            punctual, thorough, and incredibly professional. We've never looked back!"</p>
-                        <div class="about-testimonial-author">
-                            <div class="about-testimonial-initials">JM</div>
-                            <div>
-                                <span class="about-testimonial-name">James Miller</span>
-                                <span class="about-testimonial-role">— Richmond</span>
+                @foreach($feedbacks as $key => $value)
+                    <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
+                        <div class="about-testimonial-card">
+                            <div class="about-testimonial-stars">
+                                @for ($i = 0; $i < $value['rating']; $i++)
+                                    <i class="bi bi-star-fill"></i>
+                                @endfor
+                            </div>
+                            <p class="about-testimonial-text">"{{ $value['feedback'] }}"</p>
+                            <div class="about-testimonial-author">
+                                <div class="about-testimonial-initials">{{ substr($value['name'], 0, 2) }}</div>
+                                <div>
+                                    <span class="about-testimonial-name">{{ $value['name'] }}</span>
+                                    <span class="about-testimonial-role">— {{ $value['email'] }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="col-md-4" data-anim="fade-up" data-anim-delay="200">
-                    <div class="about-testimonial-card">
-                        <div class="about-testimonial-stars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                        </div>
-                        <p class="about-testimonial-text">"Absolutely amazing service. My home has never felt cleaner.
-                            The eco-friendly products are a huge bonus for our family with young kids."</p>
-                        <div class="about-testimonial-author">
-                            <div class="about-testimonial-initials">SB</div>
-                            <div>
-                                <span class="about-testimonial-name">Sophie Barker</span>
-                                <span class="about-testimonial-role">— Fitzroy</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Testimonial 3 -->
-                <div class="col-md-4" data-anim="fade-up" data-anim-delay="300">
-                    <div class="about-testimonial-card">
-                        <div class="about-testimonial-stars">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                        </div>
-                        <p class="about-testimonial-text">"Reliable, affordable, and always on time. I've been using
-                            CleanCare for two years now and won't go anywhere else. Highly recommend!"</p>
-                        <div class="about-testimonial-author">
-                            <div class="about-testimonial-initials">MT</div>
-                            <div>
-                                <span class="about-testimonial-name">Mark Thompson</span>
-                                <span class="about-testimonial-role">— Brunswick</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
     <!-- ========================
-                             SECTION 9: CTA – Experience the Standard
+                        SECTION 9: CTA – Experience the Standard
                         ======================== -->
     <section class="cta-section-new" data-anim="fade-up">
         <div class="container" data-anim="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Experience the Clean With Professionals Standard</h2>
             <p class="fs-5 opacity-75 mb-5">Join thousands of Melburnians who trust us with their spaces.</p>
             <div class="cta-buttons">
-                <a href="#EditModel" data-bs-toggle="modal" data-id="" class="btn btn-secondary px-4 py-3">Book Your First
+                <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-4 py-3">Book Your First
                     Clean</a>
                 <a href="tel:{{ Setting_Data()['contact'] ?? "+61468460145" }}" class="btn btn-outline-white px-5 py-3">Call
                     {{ Setting_Data()['contact'] ?? "+61 468 460 145" }}</a>
