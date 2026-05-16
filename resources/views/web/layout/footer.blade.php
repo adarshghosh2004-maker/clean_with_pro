@@ -28,14 +28,14 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#faq2">
-                                How long does carpet cleaning take?
+                                How long does End of Lease cleaning take?
                             </button>
                         </h2>
                         <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                             <div class="accordion-body text-muted">
-                                On average, it takes about 20-30 minutes per room. Drying times vary between 2-6 hours
-                                depending on
-                                airflow and humidity.
+                                End of Lease / Bond Cleaning time depends on the size and condition of the property. Our
+                                cleaners will provide an estimated completion time after inspecting the property on
+                                arrival.
                             </div>
                         </div>
                     </div>

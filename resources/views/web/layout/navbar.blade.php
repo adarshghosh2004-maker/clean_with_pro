@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="<?php echo route('home'); ?>">
-                <img src="<?php echo asset('assets/imgs/CWPss.PNG'); ?>" alt="Clean With Professionals Logo"
+                <img src="{{ asset('assets/imgs/CWPss.PNG') }}" alt="Clean With Professionals Logo"
                     class="navbar-logo me-3">
                 <span
                     class="m-0 fs-4 fw-bold text-primary-blue headline">{{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}</span>
@@ -35,8 +35,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link <?php echo request()->routeIs('home') ? 'active' : ''; ?>"
-                            href="<?php echo route('home'); ?>">Home</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"
+                            @if(request()->routeIs('home')) aria-current="page" @endif>
+                            Home
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php echo request()->routeIs('about') ? 'active' : ''; ?>"
@@ -56,7 +58,7 @@
                             aria-labelledby="servicesDropdown">
                             <div class="dropdown-grid">
                                 @foreach ($services as $value)
-                                    <a class="dropdown-item" href="{{ route('services_detail', $value['id']) }}">
+                                    <a class="dropdown-item" href="{{ route('services_detail', $value['slug']) }}">
                                         {{ $value['title'] }}
                                     </a>
                                 @endforeach

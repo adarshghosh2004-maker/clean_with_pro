@@ -91,36 +91,35 @@
   <!-- Section 7: How It Works -->
   <section class="section-padding container-custom px-4 text-center" data-anim="fade-up">
     <h2 class="display-5 fw-extrabold text-primary mb-4">A Seamless Experience</h2>
-    <p class="text-on-surface-variant mx-auto mb-5" style="max-width: 500px;">From booking to the final inspection,
-    we’ve refined our process for your convenience.</p>
+    <p class="text-on-surface-variant mx-auto mb-5" style="max-width: 500px;">From booking to final inspection, we make moving out simple with a professional cleaning process designed to help you leave your property spotless and inspection-ready.</p>
     <div class="row g-4 mt-5">
     <div class="col-md-3">
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">1</div>
       <h4 class="fw-bold text-primary fs-5 mb-2">Easy Booking</h4>
-      <p class="small text-on-surface-variant">Get an instant quote online or via a quick phone call.</p>
+      <p class="small text-on-surface-variant">Book your end of lease clean online or over the phone with a fast, hassle-free quote tailored to your property size and requirements.</p>
     </div>
     <div class="col-md-3">
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">2</div>
-      <h4 class="fw-bold text-primary fs-5 mb-2">Inspection</h4>
-      <p class="small text-on-surface-variant">Our experts analyze fabric type and stain levels before starting.</p>
+      <h4 class="fw-bold text-primary fs-5 mb-2">Property Inspection</h4>
+      <p class="small text-on-surface-variant">Our experienced team assesses every room, identifying high-traffic areas, stains, and agent checklist requirements before cleaning begins.</p>
     </div>
     <div class="col-md-3">
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">3</div>
-      <h4 class="fw-bold text-primary fs-5 mb-2">Deep Clean</h4>
-      <p class="small text-on-surface-variant">Precision treatment using professional-grade machinery.</p>
+      <h4 class="fw-bold text-primary fs-5 mb-2">Deep End of Lease Clean</h4>
+      <p class="small text-on-surface-variant">We thoroughly clean kitchens, bathrooms, floors, windows, and all living spaces using professional-grade equipment and products for a real estate standard finish.</p>
     </div>
     <div class="col-md-3">
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">4</div>
-      <h4 class="fw-bold text-primary fs-5 mb-2">Fresh Finish</h4>
-      <p class="small text-on-surface-variant">Final grooming and inspection to ensure the pristine standard.</p>
+      <h4 class="fw-bold text-primary fs-5 mb-2">Final Touch & Approval</h4>
+      <p class="small text-on-surface-variant">Before we leave, we complete a detailed final inspection to ensure your property is fresh, spotless, and ready for handover.</p>
     </div>
     </div>
   </section>
@@ -138,13 +137,13 @@
         aria-orientation="vertical">
         <button class="nav-link active" id="v-pills-commercial-tab" data-bs-toggle="pill"
         data-bs-target="#v-pills-commercial" type="button" role="tab" data-anim="fade-up"
-        data-anim-delay="100">Commercial Cleaning</button>
+        data-anim-delay="100">Domestic cleaning </button>
         <button class="nav-link" id="v-pills-toilet-tab" data-bs-toggle="pill" data-bs-target="#v-pills-toilet"
-        type="button" role="tab" data-anim="fade-up" data-anim-delay="150">Daily Basic Toilet Wash</button>
+        type="button" role="tab" data-anim="fade-up" data-anim-delay="150">End of lease Cleaning/ Bond Cleaning</button>
         <button class="nav-link" id="v-pills-post-tab" data-bs-toggle="pill" data-bs-target="#v-pills-post"
-        type="button" role="tab" data-anim="fade-up" data-anim-delay="200">Post Construction Cleaning</button>
+        type="button" role="tab" data-anim="fade-up" data-anim-delay="200">Bathroom/Kitchen cleaning</button>
         <button class="nav-link" id="v-pills-window-tab" data-bs-toggle="pill" data-bs-target="#v-pills-window"
-        type="button" role="tab" data-anim="fade-up" data-anim-delay="250">Window & Facade Cleaning</button>
+        type="button" role="tab" data-anim="fade-up" data-anim-delay="250">Oven cleaning</button>
       </div>
       </div>
       <div class="col-lg-7" data-anim="fade-left">
@@ -153,32 +152,32 @@
         <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Commercial">
         <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
           style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-          <h4>Corporate Headquarters</h4>
-          <p class="mb-0">Daily upkeep programs for large enterprise environments.</p>
+          <h4>Domestic cleaning </h4>
+          <p class="mb-0">We offer a range of domestic cleaning services tailored to your lifestyle, from regular weekly or fortnightly cleans to one-time deep cleans for busy households.</p>
         </div>
         </div>
         <div class="tab-pane fade position-relative" id="v-pills-toilet" role="tabpanel">
         <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Toilet">
         <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
           style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-          <h4>Washroom Hygiene</h4>
-          <p class="mb-0">Deep sanitization and odor control for public restrooms.</p>
+          <h4>End of lease Cleaning/ Bond Cleaning</h4>
+          <p class="mb-0">Ideal for tenants moving out, this service ensures your rental property is cleaned to real estate standards, helping you get your bond back without hassle.</p>
         </div>
         </div>
         <div class="tab-pane fade position-relative" id="v-pills-post" role="tabpanel">
         <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Post Construction">
         <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
           style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-          <h4>Site Clearance</h4>
-          <p class="mb-0">Removal of dust, debris, and marks after renovation.</p>
+          <h4>Bathroom/Kitchen cleaning</h4>
+          <p class="mb-0">We specialize in deep cleaning for kitchens and bathrooms, tackling grease, grime, tiles, grout, and fixtures to restore hygiene and shine.</p>
         </div>
         </div>
         <div class="tab-pane fade position-relative" id="v-pills-window" role="tabpanel">
         <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Window Cleaning">
         <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
           style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-          <h4>High-Rise Windows</h4>
-          <p class="mb-0">Streak-free results for exterior glass and facades.</p>
+          <h4>Oven cleaning</h4>
+          <p class="mb-0">We offer specialized oven cleaning services to remove baked-on grease and grime, leaving your oven sparkling and hygienic.</p>
         </div>
         </div>
       </div>

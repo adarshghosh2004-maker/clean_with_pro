@@ -45,13 +45,13 @@ Route::get('/lang/{locale}', function ($locale) {
 
 Route::get('/', [WebController::class, 'index'])->name('home');
 
-Route::get('/about', [WebController::class, 'about'])->name('about');
+Route::get('/about-us', [WebController::class, 'about'])->name('about');
 
 Route::get('/specials', function () {
     return view('web.specials');
 })->name('specials');
 
-Route::get('/contact', function () {
+Route::get('/contact-us', function () {
     return view('web.contactus');
 })->name('contact');
 
@@ -63,11 +63,11 @@ Route::get('/pricing', function () {
     return view('web.pricing');
 })->name('pricing');
 
-Route::get('/feedback2', function () {
+Route::get('/feedback', function () {
     return view('web.feedback2');
 })->name('feedback2');
 
 Route::resource('quote', WebController::class)->only('store');
 Route::get('gallery', [WebController::class, 'gallery'])->name('gallery');
 
-Route::get('detail/{id}', [WebController::class, 'detail'])->name('services_detail');
+Route::get('/services/{slug}', [WebController::class, 'serviceDetail'])->name('services_detail');

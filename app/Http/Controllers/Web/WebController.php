@@ -13,37 +13,58 @@ use App\Models\Video;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
 
 class WebController extends Controller
 {
     private $folder = "service";
     public $common;
+
     public function __construct()
     {
         $this->common = new Common;
     }
 
+    // ✅ Home Page with Cache
     public function index(Request $request)
     {
         try {
-            $params['services'] = Service::get();
-            $this->common->imageNameToUrl($params['services'], 'banner_img', $this->folder);
-            $params['videos'] = Video::with('service:id,title')->orderBy('id', 'desc')->take(3)->get();
+
+            // Cache videos
+            $params['videos'] = Cache::remember('home_videos', 60, function () {
+                return Video::with('service:id,title')->orderBy('id', 'desc')->take(3)->get();
+            });
             $this->common->imageNameToUrl($params['videos'], 'image', 'video');
             $this->common->fileNameToUrl($params['videos'], 'video', 'video');
 
-            $params['feedbacks'] = Feedback::orderBy('id', 'desc')->get();
-            $params['feedbacks_reverse'] = Feedback::orderBy('id', 'asc')->get();
+            // Cache feedbacks
+            $params['feedbacks'] = Cache::remember('feedbacks_desc', 60, function () {
+                return Feedback::orderBy('id', 'desc')->get();
+            });
+            $params['feedbacks_reverse'] = Cache::remember('feedbacks_asc', 60, function () {
+                return Feedback::orderBy('id', 'asc')->get();
+            });
 
             return view('web.welcome', $params);
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }
     }
+
+    // ✅ Services Page with Cache
+    public function services(Request $request)
+    {
+        try {
+            return view('web.services');
+        } catch (Exception $e) {
+            return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
+        }
+    }
+
+    // ✅ Store Quote Request (no cache needed here)
     public function store(Request $request)
     {
         try {
-
             $validation = Validator::make($request->all(), [
                 'name' => 'required|string',
                 'email' => 'required|email',
@@ -76,57 +97,78 @@ class WebController extends Controller
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }
     }
+
+    // ✅ Gallery Page with Cache
     public function gallery(Request $request)
     {
-        $params['gallery'] = Gallery::get();
+        $params['gallery'] = Cache::rememberForever('gallery_list', function () {
+            return Gallery::get();
+        });
         $this->common->imageNameToUrl($params['gallery'], 'before_img', 'gallery');
         $this->common->imageNameToUrl($params['gallery'], 'after_img', 'gallery');
-        $params['videos'] = Video::get();
+
+        $params['videos'] = Cache::rememberForever('gallery_videos', function () {
+            return Video::get();
+        });
         $this->common->imageNameToUrl($params['videos'], 'image', 'video');
         $this->common->fileNameToUrl($params['videos'], 'video', 'video');
 
-        $params['feedbacks'] = Feedback::latest()->offset(3)->take(3)->get();
+        $params['feedbacks'] = Cache::rememberForever('gallery_feedbacks', function () {
+            return Feedback::latest()->offset(3)->take(3)->get();
+        });
 
         return view('web.gallery', $params);
     }
 
-    public function detail($id, Request $request)
+    // ✅ Service Detail Page with Cache
+    public function serviceDetail($id, Request $request)
     {
+        $service = Cache::rememberForever("service_detail_$id", function () use ($id) {
+            return Service::find($id);
+        });
 
-        $service = Service::find($id);
+        // Agar service null ho to fallback
         if (!$service) {
-            $service = Service::first();
+            $service = Service::first(); // koi default service le lo
         }
 
-        $this->common->imageNameToUrl(array($service), 'banner_img', 'service');
-        $this->common->imageNameToUrl(array($service), 'detail_img1', 'service');
-        $this->common->imageNameToUrl(array($service), 'detail_img2', 'service');
+        $this->common->imageNameToUrl([$service], 'banner_img', 'service');
+        $this->common->imageNameToUrl([$service], 'detail_img1', 'service');
+        $this->common->imageNameToUrl([$service], 'detail_img2', 'service');
 
-        $gallery = Gallery::where('service_id', $service->id)->get();
+        $gallery = Cache::rememberForever("service_gallery_$id", function () use ($service) {
+            return Gallery::where('service_id', $service->id)->get();
+        });
         $this->common->imageNameToUrl($gallery, 'before_img', 'gallery');
         $this->common->imageNameToUrl($gallery, 'after_img', 'gallery');
 
-        $videos = Video::where('service_id', $service->id)->get();
+        $videos = Cache::rememberForever("service_videos_$id", function () use ($service) {
+            return Video::where('service_id', $service->id)->get();
+        });
         $this->common->imageNameToUrl($videos, 'image', 'video');
         $this->common->fileNameToUrl($videos, 'video', 'video');
 
-        $question = Question::where('service_id', $service->id)->first();
-        $this->common->imageNameToUrl(array($question), 'img_1', 'question');
-        $this->common->imageNameToUrl(array($question), 'img_2', 'question');
-        $this->common->imageNameToUrl(array($question), 'img_3', 'question');
+        $question = Cache::rememberForever("service_question_$id", function () use ($service) {
+            return Question::where('service_id', $service->id)->first();
+        });
+        $this->common->imageNameToUrl([$question], 'img_1', 'question');
+        $this->common->imageNameToUrl([$question], 'img_2', 'question');
+        $this->common->imageNameToUrl([$question], 'img_3', 'question');
 
         $params['question'] = $question;
         $params['videos'] = $videos;
         $params['gallery'] = $gallery;
         $params['service'] = $service;
-        return view('web.service-detail', $params);
 
+        return view('web.service-detail', $params);
     }
 
+    // ✅ About Page with Cache
     public function about(Request $request)
     {
-        $params['feedbacks'] = Feedback::latest()->take(3)->get();
+        $params['feedbacks'] = Cache::rememberForever('about_feedbacks', function () {
+            return Feedback::latest()->take(3)->get();
+        });
         return view('web.aboutus', $params);
     }
 }
-

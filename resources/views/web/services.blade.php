@@ -235,35 +235,35 @@
                     <div class="step-item">
                         <div class="step-number-circle mx-auto mb-3">1</div>
                         <h5 class="fw-bold mb-2">Inspection</h5>
-                        <p class="small text-muted">We identify fabric types and spot specific stains.</p>
+                        <p class="small text-muted">We assess the property before starting the clean.</p>
                     </div>
                 </div>
                 <div class="col" data-anim="fade-up" data-anim-delay="200">
                     <div class="step-item">
                         <div class="step-number-circle mx-auto mb-3">2</div>
-                        <h5 class="fw-bold mb-2">Pre-Treatment</h5>
-                        <p class="small text-muted">Application of professional solutions to loosen deep dirt.</p>
+                        <h5 class="fw-bold mb-2">Deep Cleaning</h5>
+                        <p class="small text-muted">Complete cleaning of all rooms, kitchen, bathrooms, and floors.</p>
                     </div>
                 </div>
                 <div class="col" data-anim="fade-up" data-anim-delay="300">
                     <div class="step-item">
                         <div class="step-number-circle mx-auto mb-3">3</div>
-                        <h5 class="fw-bold mb-2">Extraction</h5>
-                        <p class="small text-muted">High-pressure, low-moisture extraction for deep cleaning.</p>
+                        <h5 class="fw-bold mb-2">Detailed Finish</h5>
+                        <p class="small text-muted">We remove dust, stains, grease, and marks for a spotless result.</p>
                     </div>
                 </div>
                 <div class="col" data-anim="fade-up" data-anim-delay="400">
                     <div class="step-item">
                         <div class="step-number-circle mx-auto mb-3">4</div>
-                        <h5 class="fw-bold mb-2">Sanitization</h5>
-                        <p class="small text-muted">Eliminating allergens and bacteria for a healthy home.</p>
+                        <h5 class="fw-bold mb-2">Final Check</h5>
+                        <p class="small text-muted">Quality inspection to ensure real estate standards are met.</p>
                     </div>
                 </div>
                 <div class="col" data-anim="fade-up" data-anim-delay="500">
                     <div class="step-item">
                         <div class="step-number-circle mx-auto mb-3">5</div>
-                        <h5 class="fw-bold mb-2">Final Review</h5>
-                        <p class="small text-muted">A walkthrough to ensure 100% satisfaction.</p>
+                        <h5 class="fw-bold mb-2">Bond Back Guarantee</h5>
+                        <p class="small text-muted">We’ll return to fix any cleaning issues if required.</p>
                     </div>
                 </div>
             </div>

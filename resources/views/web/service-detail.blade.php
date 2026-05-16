@@ -148,7 +148,7 @@
                             <div class="card-info">
                                 <h3>Email Consultation</h3>
                                 <p>Response within 2 hours</p>
-                                <a href="mailto:{{ Setting_Data()['email'] ?? 'info@cleanwithpro.com.au' }}" class="contact-value">{{ Setting_Data()['email'] ?? 'info@cleanwithpro.com.au' }}</a>
+                                <a href="https://mail.google.com/mail/?view=cm&to={{ Setting_Data()['email'] ?? 'info@cleanwithpro.com.au' }}" target="_blank" class="contact-value">{{ Setting_Data()['email'] ?? 'info@cleanwithpro.com.au' }}</a>
                             </div>
                         </div>
                     </div>
