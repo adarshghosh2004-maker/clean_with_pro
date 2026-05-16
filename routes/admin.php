@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\FeedbackController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -80,7 +81,10 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
     Route::post('systemsetting/cleandatabase', [SystemSettingController::class, 'CleanDatabase'])->name('system.setting.cleandatabase');
     // Notification Configurations
     Route::resource('notificationconfigurations', NotificationConfigurationsController::class)->only(['index', 'store']);
-    Route::resource('pages', PageController::class)->only('index', 'store', 'edit', 'update');
+    Route::resource('pages', PagesController::class)->only('index', 'store', 'edit', 'update');
+    // Pages
+    Route::resource('page', PageController::class)->only(['index', 'create', 'store', 'edit', 'update', 'show']);
+    Route::post('page/layout', [PageController::class, 'layout'])->name('page.layout');
 
 
     Route::group(['middleware' => 'checkadmin'], function () {
@@ -101,7 +105,8 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
         Route::post('notification/setting', [NotificationController::class, 'settingsave'])->name('notification.setting.save');
         // System Setting
         Route::get('systemsetting/downloaddb', [SystemSettingController::class, 'DownloadDB'])->name('system.setting.downloaddb');
-        Route::resource('pages', PageController::class)->only(['destroy']);
+        Route::resource('pages', PagesController::class)->only(['destroy']);   // Pages
+        Route::resource('page', PageController::class)->only(['destroy']);
         Route::resource('video', VideoController::class)->only(['destroy']);
 
     });

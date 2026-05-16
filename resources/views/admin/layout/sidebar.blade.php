@@ -86,8 +86,14 @@
                 <span>{{__('label.feedback')}}</span>
             </a>
         </li>
-        <li class="side_line {{ request()->routeIs('admin.page*') ? 'active' : '' }}">
+        <li class="side_line {{ request()->routeIs('admin.pages*') ? 'active' : '' }}">
             <a href="{{ route('admin.pages.index') }}">
+                <i class="fa-solid fa-book-open fa-2xl menu-icon"></i>
+                <span>{{__('label.hero_images')}}</span>
+            </a>
+        </li>
+        <li class="side_line {{ request()->routeIs('admin.page.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.page.index') }}">
                 <i class="fa-solid fa-book-open fa-2xl menu-icon"></i>
                 <span>{{__('label.pages')}}</span>
             </a>

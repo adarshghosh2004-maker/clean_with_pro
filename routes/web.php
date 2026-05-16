@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\Admin\PageController;
 use App\Models\Gallery;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
@@ -27,6 +28,9 @@ Route::get('clearcache', function () {
     Artisan::call('route:clear');
     return "<h1>All Config Cache Clear Successfully.</h1>";
 });
+
+    Route::get('pages/{page_name}', [PageController::class, 'page_view'])->name('page.view');
+
 // Version
 Route::get('version', function () {
     return "<h1>
