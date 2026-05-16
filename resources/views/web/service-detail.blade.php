@@ -1,4 +1,5 @@
 @extends('web.layout.web-layout')
+@section('title', $service['title'] . ' | Clean With Professionals' ?? 'Clean With Professionals')
 
 @section('content')
     <div class="s2-page">

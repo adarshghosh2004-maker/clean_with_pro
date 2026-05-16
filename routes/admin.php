@@ -48,12 +48,8 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
     // Profile
     Route::resource('profile', ProfileController::class)->only(['index', 'store']);
     Route::post('profile/changepassword', [ProfileController::class, 'ChangePassword'])->name('profile.changepassword');
-    // Feature
-    Route::resource('feature', FeatureController::class)->only(['index', 'store', 'update', 'show']);
     // Question
     Route::resource('question', QuestionController::class)->only(['index', 'store', 'edit', 'update', 'show']);
-    // Package
-    Route::resource('package', PackageController::class)->only(['index', 'store', 'update', 'show']);
     // Service
     Route::resource('service', ServiceController::class)->only(['index', 'create', 'store', 'edit', 'update', 'show']);
     Route::post('service/change_status', [ServiceController::class, 'change_status'])->name('service.change.status');
@@ -89,12 +85,8 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
 
     Route::group(['middleware' => 'checkadmin'], function () {
 
-        // Feature
-        Route::resource('feature', FeatureController::class)->only(['destroy']);
         // Question
         Route::resource('question', QuestionController::class)->only(['destroy']);
-        // Plan
-        Route::resource('package', PackageController::class)->only(['destroy']);
         // Service
         Route::resource('service', ServiceController::class)->only(['destroy']);
         // Gallery

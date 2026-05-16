@@ -162,8 +162,7 @@
                                             <div class="col-12 mt-4">
                                                 <div class="row justify-content-end">
                                                     <div class="col-md-3">
-                                                        <button type="button" onclick="save_quote(
-                                                        )"
+                                                        <button type="button" onclick="save_quote('quote_form')"
                                                             class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">Send</button>
                                                     </div>
                                                     <div class="col-md-3">
@@ -233,15 +232,13 @@
             toastr.success('{{ Session::get("success") }}');
         @endif
 
-        function save_quote() {
+        function save_quote(form) {
 
             var Demo_Mode = '<?php echo Demo_Mode(); ?>';
             if (Demo_Mode == 1) {
 
-                $('#dvloader').show();
-
                 $("#dvloader").show();
-                var formData = new FormData($("#quote_form")[0]);
+                var formData = new FormData($("#" + form)[0]);
                 $.ajax({
                     type: 'POST',
                     url: '{{ route("quote.store") }}',
@@ -251,7 +248,11 @@
                     processData: false,
                     success: function (resp) {
                         $("#dvloader").hide();
-                        get_responce_message(resp);
+                        get_responce_message(resp, form);
+
+                        if (resp.status == '200') {
+                            $('#EditModel').modal('hide');
+                        }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         $("#dvloader").hide();

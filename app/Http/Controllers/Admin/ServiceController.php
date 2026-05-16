@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Common;
 use App\Models\Service;
+use Cache;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Exception;
@@ -120,10 +121,12 @@ class ServiceController extends Controller
                 $files = $requestData['detail_img2'];
                 $requestData['detail_img2'] = $this->common->saveImage($files, $this->folder, "service_");
             }
+            $requestData['slug'] = $this->common->create_slug($requestData['title']);
 
             $service_data = Service::updateOrCreate(['id' => $requestData['id']], $requestData);
 
             if (isset($service_data->id)) {
+                Cache::forget('services_list');
                 return response()->json(array('status' => 200, 'success' => __('label.service_save')));
             } else {
                 return response()->json(array('status' => 400, 'errors' => __('label.service_not_save')));
@@ -188,10 +191,13 @@ class ServiceController extends Controller
                 $this->common->deleteImageToFolder($this->folder, basename($requestData['old_detail_img2']));
             }
 
+            $requestData['slug'] = $this->common->create_slug($requestData['title']);
+
             unset($requestData['old_banner_img'], $requestData['old_detail_img1'], $requestData['old_detail_img2']);
 
             $service_data = Service::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($service_data->id)) {
+                Cache::forget('services_list');
                 return response()->json(array('status' => 200, 'success' => __('label.service_update')));
             } else {
                 return response()->json(array('status' => 400, 'errors' => __('label.service_not_update')));
@@ -208,6 +214,7 @@ class ServiceController extends Controller
                 $this->common->deleteImageToFolder($this->folder, $data['image']);
                 $data->delete();
             }
+            Cache::forget('services_list');
             return redirect()->back()->with('success', __('label.service_delete'));
         } catch (Exception $e) {
             return response()->json(array('status' => 400, 'errors' => $e->getMessage()));
@@ -224,6 +231,8 @@ class ServiceController extends Controller
 
             $data->status = $data->status ? 0 : 1;
             $data->save();
+
+            Cache::forget('services_list');
 
             return response()->json(['status' => 200, 'success' => __('label.status_changed'), 'status_code' => $data->status]);
         } catch (Exception $e) {

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Common;
 use App\Models\Gallery;
 use App\Models\Service;
+use Cache;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Validator;
@@ -117,6 +118,8 @@ class GalleryController extends Controller
             $gallery_data = Gallery::updateOrCreate(['id' => $requestData['id']], $requestData);
 
             if (isset($gallery_data->id)) {
+                Cache::forget('gallery_list');
+                Cache::forget('service_gallery_' . $requestData['service_id']);
                 return response()->json(array('status' => 200, 'success' => __('label.gallery_save')));
             } else {
                 return response()->json(array('status' => 400, 'errors' => __('label.gallery_not_save')));
@@ -177,6 +180,10 @@ class GalleryController extends Controller
 
             $gallery_data = Gallery::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($gallery_data->id)) {
+
+                Cache::forget('gallery_list');
+                Cache::forget('service_gallery_' . $requestData['service_id']);
+
                 return response()->json(array('status' => 200, 'success' => __('label.gallery_update')));
             } else {
                 return response()->json(array('status' => 400, 'errors' => __('label.gallery_not_update')));
@@ -190,8 +197,13 @@ class GalleryController extends Controller
         try {
             $data = Gallery::where('id', $id)->first();
             if ($data) {
+
+                Cache::forget('gallery_list');
+                Cache::forget('service_gallery_' . $data['service_id']);
+
                 $this->common->deleteImageToFolder($this->folder, $data['image']);
                 $data->delete();
+
             }
             return redirect()->back()->with('success', __('label.gallery_delete'));
         } catch (Exception $e) {
@@ -209,6 +221,9 @@ class GalleryController extends Controller
 
             $data->status = $data->status ? 0 : 1;
             $data->save();
+
+            Cache::forget('gallery_list');
+            Cache::forget('service_gallery_' . $data['service_id']);
 
             return response()->json(['status' => 200, 'success' => __('label.status_changed'), 'status_code' => $data->status]);
         } catch (Exception $e) {

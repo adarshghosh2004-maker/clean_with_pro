@@ -590,4 +590,11 @@ class Common extends Model
         $names = Feature::whereIn('id', $array)->pluck('name')->toArray();
         return $names;
     }
+    public function create_slug($string)
+    {
+        $slug = Str::slug($string, '-');
+        $count = Service::where('slug', 'LIKE', "{$slug}%")->count();
+        return $count ? "{$slug}-{$count}" : $slug;
+    }
 }
+

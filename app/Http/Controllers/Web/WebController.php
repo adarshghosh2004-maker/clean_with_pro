@@ -121,10 +121,10 @@ class WebController extends Controller
     }
 
     // ✅ Service Detail Page with Cache
-    public function serviceDetail($id, Request $request)
+    public function serviceDetail($slug, Request $request)
     {
-        $service = Cache::rememberForever("service_detail_$id", function () use ($id) {
-            return Service::find($id);
+        $service = Cache::rememberForever("service_detail_$slug", function () use ($slug) {
+            return Service::where('slug', $slug)->where('status', 1)->first();
         });
 
         // Agar service null ho to fallback
@@ -136,19 +136,19 @@ class WebController extends Controller
         $this->common->imageNameToUrl([$service], 'detail_img1', 'service');
         $this->common->imageNameToUrl([$service], 'detail_img2', 'service');
 
-        $gallery = Cache::rememberForever("service_gallery_$id", function () use ($service) {
+        $gallery = Cache::rememberForever("service_gallery_$slug", function () use ($service) {
             return Gallery::where('service_id', $service->id)->get();
         });
         $this->common->imageNameToUrl($gallery, 'before_img', 'gallery');
         $this->common->imageNameToUrl($gallery, 'after_img', 'gallery');
 
-        $videos = Cache::rememberForever("service_videos_$id", function () use ($service) {
+        $videos = Cache::rememberForever("service_videos_$slug", function () use ($service) {
             return Video::where('service_id', $service->id)->get();
         });
         $this->common->imageNameToUrl($videos, 'image', 'video');
         $this->common->fileNameToUrl($videos, 'video', 'video');
 
-        $question = Cache::rememberForever("service_question_$id", function () use ($service) {
+        $question = Cache::rememberForever("service_question_$slug", function () use ($service) {
             return Question::where('service_id', $service->id)->first();
         });
         $this->common->imageNameToUrl([$question], 'img_1', 'question');

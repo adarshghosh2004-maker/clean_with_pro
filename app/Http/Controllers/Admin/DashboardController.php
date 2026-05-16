@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Content_Transaction;
 use App\Models\Feature;
 use App\Models\Feedback;
+use App\Models\Gallery;
 use App\Models\Magazine;
 use App\Models\Package;
 use App\Models\Question;
@@ -40,7 +41,7 @@ class DashboardController extends Controller
             $data['total_users'] = User::count();
             $data['total_services'] = Service::count();
             $data['total_videos'] = Video::count();
-            $data['total_packages'] = Package::count();
+            $data['total_images'] = Gallery::count();
             $data['total_feedbacks'] = Feedback::count();
             $data['total_questions'] = Question::count();
             $data['total_requests'] = User::whereNotNull('service_id')->count();

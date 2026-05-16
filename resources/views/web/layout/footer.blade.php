@@ -129,7 +129,7 @@
                             PM.</p>
                     </div>
 
-                    <form id="quote_form" enctype="multipart/form-data">
+                    <form id="quote_form_save" enctype="multipart/form-data">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label small fw-semibold text-muted">Full Name<span
@@ -183,7 +183,7 @@
                             <div class="col-md-12">
                                 <label class="form-label small fw-semibold text-muted">Service<span
                                         class="text-danger">*</span></label>
-                                <select name="service" class="form-control bg-light border-0">
+                                <select name="service_id" class="form-control bg-light border-0">
                                     <option value="">Select Service</option>
                                     @foreach ($services as $key => $value)
                                         <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
@@ -196,7 +196,7 @@
                                     placeholder="Briefly describe your cleaning needs..."></textarea>
                             </div>
                             <div class="col-12 text-center mt-4">
-                                <button type="button" onclick="save_quote()"
+                                <button type="button" onclick="save_quote('quote_form_save')"
                                     class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">Send
                                     Request</button>
                             </div>

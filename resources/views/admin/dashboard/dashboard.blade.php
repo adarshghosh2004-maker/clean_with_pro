@@ -59,8 +59,8 @@
                                 <i class="fa-solid fa-list fa-2x"></i>
                             </div>
                             <div class="card-stat-content">
-                                <span>{{ __('label.packages') }}</span>
-                                <h3>{{ No_Format($total_packages) }}</h3>
+                                <span>{{ __('label.images') }}</span>
+                                <h3>{{ No_Format($total_images) }}</h3>
                             </div>
                         </div>
                     </div>

@@ -20,22 +20,10 @@
             </a>
         </li>
         <p class="partition"><span>{{__('label.basic_data')}}</span></p>
-        <li class="side_line {{ request()->routeIs('admin.feature*') ? 'active' : '' }}">
-            <a href="{{ route('admin.feature.index') }}">
-                <i class="fa-solid fa-list fa-2xl menu-icon"></i>
-                <span>{{__('label.features')}}</span>
-            </a>
-        </li>
         <li class="side_line {{ request()->routeIs('admin.question*') ? 'active' : '' }}">
             <a href="{{ route('admin.question.index') }}">
                 <i class="fa-solid fa-question fa-2xl menu-icon"></i>
                 <span>{{__('label.question')}}</span>
-            </a>
-        </li>
-        <li class="side_line {{ request()->routeIs('admin.package*') ? 'active' : '' }}">
-            <a href="{{ route('admin.package.index') }}">
-                <i class="fa-solid fa-box fa-2xl menu-icon"></i>
-                <span>{{__('label.package')}}</span>
             </a>
         </li>
         <li class="side_line {{ request()->routeIs('admin.service*') ? 'active' : '' }}">

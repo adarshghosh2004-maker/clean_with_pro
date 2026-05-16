@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Common;
 use App\Models\Service;
 use App\Models\Video;
+use Cache;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Validator;
@@ -118,6 +119,12 @@ class VideoController extends Controller
             $video_data = Video::updateOrCreate(['id' => $requestData['id']], $requestData);
 
             if (isset($video_data->id)) {
+                $service = Service::find($requestData['service_id']);
+
+                Cache::forget('home_videos');
+                Cache::forget('gallery_videos');
+                Cache::forget("service_videos_" . $service->slug);
+
                 return response()->json(array('status' => 200, 'success' => __('label.video_save')));
             } else {
                 return response()->json(array('status' => 400, 'errors' => __('label.video_not_save')));
@@ -174,6 +181,12 @@ class VideoController extends Controller
 
             $video_data = Video::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($video_data->id)) {
+                $service = Service::find($requestData['service_id']);
+
+                Cache::forget('home_videos');
+                Cache::forget('gallery_videos');
+                Cache::forget("service_videos_" . $service->slug);
+
                 return response()->json(array('status' => 200, 'success' => __('label.video_update')));
             } else {
                 return response()->json(array('status' => 400, 'errors' => __('label.video_not_update')));
@@ -187,6 +200,12 @@ class VideoController extends Controller
         try {
             $data = Video::where('id', $id)->first();
             if ($data) {
+                $service = Service::find($data['service_id']);
+
+                Cache::forget('home_videos');
+                Cache::forget('gallery_videos');
+                Cache::forget("service_videos_" . $service->slug);
+                
                 $this->common->deleteImageToFolder($this->folder, $data['image']);
                 $data->delete();
             }

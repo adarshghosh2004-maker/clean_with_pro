@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Common;
 use App\Models\Feature;
 use App\Models\Feedback;
+use Cache;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Validator;
@@ -84,6 +85,11 @@ class FeedbackController extends Controller
 
             $data = Feedback::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($data->id)) {
+                Cache::forget('feedbacks_desc');
+                Cache::forget('feedbacks_asc');
+                Cache::forget('about_feedbacks');
+                Cache::forget('gallery_feedbacks');
+                
                 return response()->json(['status' => 200, 'success' => __('label.success_add_feedback')]);
             } else {
                 return response()->json(['status' => 400, 'errors' => __('label.error_add_feedback')]);
@@ -99,6 +105,10 @@ class FeedbackController extends Controller
             $data = Feedback::where('id', $id)->first();
             if (isset($data)) {
                 $data->delete();
+                Cache::forget('feedbacks_desc');
+                Cache::forget('feedbacks_asc');
+                Cache::forget('about_feedbacks');
+                Cache::forget('gallery_feedbacks');
             }
             return redirect()->route('admin.feedback.index')->with('success', __('label.feedback_delete'));
         } catch (Exception $e) {
@@ -114,6 +124,12 @@ class FeedbackController extends Controller
 
                 $data->status = $data->status === 1 ? 0 : 1;
                 $data->save();
+
+                Cache::forget('feedbacks_desc');
+                Cache::forget('feedbacks_asc');
+                Cache::forget('about_feedbacks');
+                Cache::forget('gallery_feedbacks');
+
                 return response()->json(['status' => 200, 'success' => __('label.status_changed'), 'status_code' => $data->status]);
             } else {
                 return response()->json(['status' => 400, 'errors' => __('label.data_not_found')]);

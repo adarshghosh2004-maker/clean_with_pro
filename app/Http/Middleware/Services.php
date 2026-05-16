@@ -15,7 +15,7 @@ class Services
     {
         $common = new Common();
         $services = Cache::rememberForever('services_list', function () {
-            return Service::get();
+            return Service::where('status',1)->get();
         });
         $common->imageNameToUrl($services, 'banner_img', 'service');
         $pages = Cache::rememberForever('pages_list', function () {
