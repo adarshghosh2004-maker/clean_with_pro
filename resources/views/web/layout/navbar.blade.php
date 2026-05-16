@@ -8,7 +8,7 @@
                 SERVICE</span>
             <span class="d-none d-sm-inline opacity-75">Expert fabric care across Melbourne metropolitan areas.</span>
         </div>
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex align-items-center">
             <span class="material-symbols-outlined fs-6">call</span>
             <a class="text-white text-decoration-none fw-bold"
                 href="tel:{{ Setting_Data()['contact'] ?? "+61468460145" }}">{{ Setting_Data()['contact'] ?? "+61468460145" }}
@@ -29,7 +29,7 @@
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"><span></span></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -48,12 +48,17 @@
                         <a class="nav-link <?php echo request()->routeIs('specials') ? 'active' : ''; ?>"
                             href="<?php echo route('specials'); ?>">Specials</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown dropdown-button">
                         <a class="nav-link dropdown-toggle <?php echo request()->routeIs('services') ? 'active' : ''; ?>"
                             href="<?php echo route('services'); ?>" id="servicesDropdown" role="button"
                             aria-expanded="false">
                             Services
                         </a>
+                        <button class="dropdown-toggle-icon" type="button" aria-label="Toggle services dropdown" aria-expanded="false">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
                         <div class="dropdown-menu mega-menu dropdown-menu-custom shadow-lg"
                             aria-labelledby="servicesDropdown">
                             <div class="dropdown-grid">

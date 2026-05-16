@@ -22,8 +22,8 @@
             <p>Experience Melbourne's premier cleaning standard with our curated seasonal specials. Limited time offers for
                 homeowners who demand excellence.</p>
             <div class="d-flex justify-content-center gap-3">
-                <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary px-5 py-3">BOOK YOUR SPECIAL</a>
-                <a href="{{ route('services') }}" class="btn btn-outline-white px-5 py-3">VIEW ALL SERVICES</a>
+                <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary">BOOK YOUR SPECIAL</a>
+                <a href="{{ route('services') }}" class="btn btn-outline-white">VIEW ALL SERVICES</a>
             </div>
         </div>
     </section>

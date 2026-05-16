@@ -176,7 +176,7 @@
     </section>
 
     <!-- Specialized Services -->
-    <section class="specialized-services" data-anim="fade-up">
+    <section class="section-padding" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-5">
                 <span class="text-secondary-green fw-bold text-uppercase small letter-spacing-1">Our Expertise</span>
@@ -230,7 +230,7 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonials-v2" data-anim="fade-up">
+    <section class="section-padding" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="fw-extrabold">What Our Clients Say</h2>
@@ -262,7 +262,7 @@
     <!-- CTA Section -->
     <section class="cta-v2" data-anim="fade-up">
         <div class="container">
-            <div class="d-flex flex-wrap justify-content-between align-items-center">
+            <div class="gallery-cta">
                 <h2>Ready for a Spotless Home? Book Today!</h2>
                 <a href="#EditModel" data-bs-toggle="modal" class="btn-white">Secure My Spot</a>
             </div>

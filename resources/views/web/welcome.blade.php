@@ -29,7 +29,7 @@
         {{ String_Cut($value['short_title'], 70) }}
       </p>
       <div class="d-flex justify-content-center gap-3">
-        <a class="btn btn-secondary py-3 px-5 d-flex align-items-center justify-content-center gap-2"
+        <a class="btn btn-secondary d-flex align-items-center justify-content-center gap-2"
         data-bs-toggle="modal" href="#EditModel" data-id="{{ $value['id'] ?? "" }}">
         Book Now <span class="material-symbols-outlined">arrow_forward</span>
         </a>
@@ -50,12 +50,12 @@
 
     <!-- Mobile slider navigation -->
     <div class="slider-nav-mobile d-md-none">
-      <button class="slider-arrow" id="prevBtnMobile" aria-label="Previous slide">
-        <span class="material-symbols-outlined">West</span>
-      </button>
-      <button class="slider-arrow" id="nextBtnMobile" aria-label="Next slide">
-        <span class="material-symbols-outlined">East</span>
-      </button>
+    <button class="slider-arrow" id="prevBtnMobile" aria-label="Previous slide">
+      <span class="material-symbols-outlined">West</span>
+    </button>
+    <button class="slider-arrow" id="nextBtnMobile" aria-label="Next slide">
+      <span class="material-symbols-outlined">East</span>
+    </button>
     </div>
   </section>
 
@@ -101,35 +101,41 @@
   <!-- Section 7: How It Works -->
   <section class="section-padding container-custom px-4 text-center" data-anim="fade-up">
     <h2 class="display-5 fw-extrabold text-primary mb-4">A Seamless Experience</h2>
-    <p class="text-on-surface-variant mx-auto mb-5" style="max-width: 500px;">From booking to final inspection, we make moving out simple with a professional cleaning process designed to help you leave your property spotless and inspection-ready.</p>
+    <p class="text-on-surface-variant mx-auto mb-5" style="max-width: 500px;">From booking to final inspection, we make
+    moving out simple with a professional cleaning process designed to help you leave your property spotless and
+    inspection-ready.</p>
     <div class="row g-4 mt-5">
     <div class="col-md-3">
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">1</div>
       <h4 class="fw-bold text-primary fs-5 mb-2">Easy Booking</h4>
-      <p class="small text-on-surface-variant">Book your end of lease clean online or over the phone with a fast, hassle-free quote tailored to your property size and requirements.</p>
+      <p class="small text-on-surface-variant">Book your end of lease clean online or over the phone with a fast,
+      hassle-free quote tailored to your property size and requirements.</p>
     </div>
     <div class="col-md-3">
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">2</div>
       <h4 class="fw-bold text-primary fs-5 mb-2">Property Inspection</h4>
-      <p class="small text-on-surface-variant">Our experienced team assesses every room, identifying high-traffic areas, stains, and agent checklist requirements before cleaning begins.</p>
+      <p class="small text-on-surface-variant">Our experienced team assesses every room, identifying high-traffic areas,
+      stains, and agent checklist requirements before cleaning begins.</p>
     </div>
     <div class="col-md-3">
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">3</div>
       <h4 class="fw-bold text-primary fs-5 mb-2">Deep End of Lease Clean</h4>
-      <p class="small text-on-surface-variant">We thoroughly clean kitchens, bathrooms, floors, windows, and all living spaces using professional-grade equipment and products for a real estate standard finish.</p>
+      <p class="small text-on-surface-variant">We thoroughly clean kitchens, bathrooms, floors, windows, and all living
+      spaces using professional-grade equipment and products for a real estate standard finish.</p>
     </div>
     <div class="col-md-3">
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">4</div>
       <h4 class="fw-bold text-primary fs-5 mb-2">Final Touch & Approval</h4>
-      <p class="small text-on-surface-variant">Before we leave, we complete a detailed final inspection to ensure your property is fresh, spotless, and ready for handover.</p>
+      <p class="small text-on-surface-variant">Before we leave, we complete a detailed final inspection to ensure your
+      property is fresh, spotless, and ready for handover.</p>
     </div>
     </div>
   </section>
@@ -137,62 +143,83 @@
   <!-- 5. SERVICES SHOWCASE (INTERACTIVE) -->
   <section class="section-padding services-showcase" data-anim="fade-up">
     <div class="container">
+
+    <!-- Section Heading -->
     <div class="text-center mb-5" data-anim="fade-up">
-      <p class="text-secondary-green fw-bold text-uppercase mb-2">Our Services</p>
-      <h2 class="section-title">Tailored Solutions for Every Need</h2>
+      <p class="text-secondary-green fw-bold text-uppercase mb-2">
+      Our Services
+      </p>
+      <h2 class="section-title">
+      Tailored Solutions for Every Need
+      </h2>
     </div>
+
     <div class="row align-items-center g-5">
+
+      <!-- Left Side Tabs -->
       <div class="col-lg-5" data-anim="fade-right">
+
       <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist"
         aria-orientation="vertical">
-        <button class="nav-link active" id="v-pills-commercial-tab" data-bs-toggle="pill"
-        data-bs-target="#v-pills-commercial" type="button" role="tab" data-anim="fade-up"
-        data-anim-delay="100">Domestic cleaning </button>
-        <button class="nav-link" id="v-pills-toilet-tab" data-bs-toggle="pill" data-bs-target="#v-pills-toilet"
-        type="button" role="tab" data-anim="fade-up" data-anim-delay="150">End of lease Cleaning/ Bond Cleaning</button>
-        <button class="nav-link" id="v-pills-post-tab" data-bs-toggle="pill" data-bs-target="#v-pills-post"
-        type="button" role="tab" data-anim="fade-up" data-anim-delay="200">Bathroom/Kitchen cleaning</button>
-        <button class="nav-link" id="v-pills-window-tab" data-bs-toggle="pill" data-bs-target="#v-pills-window"
-        type="button" role="tab" data-anim="fade-up" data-anim-delay="250">Oven cleaning</button>
+
+        @foreach ($services->take(4) as $key => $value)
+
+      <button class="nav-link {{ $key == 0 ? 'active' : '' }}" id="v-pills-tab-{{ $key }}" data-bs-toggle="pill"
+      data-bs-target="#v-pills-content-{{ $key }}" type="button" role="tab"
+      aria-controls="v-pills-content-{{ $key }}" aria-selected="{{ $key == 0 ? 'true' : 'false' }}"
+      data-anim="fade-up" data-anim-delay="{{ ($key + 1) * 100 }}">
+
+      {{ $value['title'] ?? '' }}
+
+      </button>
+
+      @endforeach
+
       </div>
+
       </div>
+
+      <!-- Right Side Content -->
       <div class="col-lg-7" data-anim="fade-left">
+
       <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active position-relative" id="v-pills-commercial" role="tabpanel">
-        <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Commercial">
-        <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
-          style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-          <h4>Domestic cleaning </h4>
-          <p class="mb-0">We offer a range of domestic cleaning services tailored to your lifestyle, from regular weekly or fortnightly cleans to one-time deep cleans for busy households.</p>
+
+        @foreach ($services->take(4) as $key => $value)
+
+      <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}" id="v-pills-content-{{ $key }}"
+      role="tabpanel" aria-labelledby="v-pills-tab-{{ $key }}">
+
+      <div class="position-relative overflow-hidden rounded-4">
+
+        <!-- Service Image -->
+        <img src="{{ $value['banner_img'] }}" class="showcase-img shadow w-100"
+        alt="{{ $value['title'] ?? 'Service Image' }}">
+
+        <!-- Overlay Content -->
+        <div class="position-absolute bottom-0 start-0 w-100 p-4 text-white overlay">
+
+        <h4 class="fw-bold mb-2">
+        {{ $value['title'] ?? '' }}
+        </h4>
+
+        <p class="mb-0">
+        {{ $value['description'] ?? '' }}
+        </p>
+
         </div>
-        </div>
-        <div class="tab-pane fade position-relative" id="v-pills-toilet" role="tabpanel">
-        <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Toilet">
-        <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
-          style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-          <h4>End of lease Cleaning/ Bond Cleaning</h4>
-          <p class="mb-0">Ideal for tenants moving out, this service ensures your rental property is cleaned to real estate standards, helping you get your bond back without hassle.</p>
-        </div>
-        </div>
-        <div class="tab-pane fade position-relative" id="v-pills-post" role="tabpanel">
-        <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Post Construction">
-        <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
-          style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-          <h4>Bathroom/Kitchen cleaning</h4>
-          <p class="mb-0">We specialize in deep cleaning for kitchens and bathrooms, tackling grease, grime, tiles, grout, and fixtures to restore hygiene and shine.</p>
-        </div>
-        </div>
-        <div class="tab-pane fade position-relative" id="v-pills-window" role="tabpanel">
-        <img src="assets/imgs/hero.jpg" class="showcase-img shadow" alt="Window Cleaning">
-        <div class="position-absolute bottom-0 start-0 w-100 p-4 bg-dark bg-opacity-50 text-white"
-          style="border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
-          <h4>Oven cleaning</h4>
-          <p class="mb-0">We offer specialized oven cleaning services to remove baked-on grease and grime, leaving your oven sparkling and hygienic.</p>
-        </div>
-        </div>
+
       </div>
+
       </div>
+
+      @endforeach
+
+      </div>
+
+      </div>
+
     </div>
+
     </div>
   </section>
 
@@ -241,14 +268,14 @@
   <!-- 7. RECENT WORK (VIDEOS) -->
   <section class="section-padding bg-light-gray" data-anim="fade-up">
     <div class="container-fluid px-4">
-    <div class="d-flex justify-content-between align-items-end mb-5" data-anim="fade-up">
+    <div class="d-flex justify-content-between align-items-center mb-5" data-anim="fade-up">
       <div>
       <h2 class="section-title mb-0">Recent <span>Success Stories</span></h2>
       </div>
-      <a href="{{ route('gallery') }}" class="btn btn-primary-blue  rounded-pill px-4">View All Gallery</a>
+      <a href="{{ route('gallery') }}" class="btn btn-primary-blue  rounded-pill px-4">View All</a>
     </div>
 
-    <div class="row">
+    <div class="row g-4">
       @foreach ($videos as $key => $value)
       <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
       <div class="video-card shadow-sm">
@@ -395,57 +422,57 @@
     let isTransitioning = false;
 
     function showSlide(index) {
-      if (slides.length === 0 || isTransitioning) return;
+    if (slides.length === 0 || isTransitioning) return;
 
-      const prevSlide = slides[currentSlide];
-      const nextSlide = slides[index];
+    const prevSlide = slides[currentSlide];
+    const nextSlide = slides[index];
 
-      if (prevSlide === nextSlide) return;
+    if (prevSlide === nextSlide) return;
 
-      isTransitioning = true;
+    isTransitioning = true;
 
-      // Fade out current
-      prevSlide.classList.remove('active');
-      prevSlide.style.opacity = '0';
+    // Fade out current
+    prevSlide.classList.remove('active');
+    prevSlide.style.opacity = '0';
 
-      // Fade in next
-      nextSlide.style.opacity = '0';
-      nextSlide.classList.add('active');
+    // Fade in next
+    nextSlide.style.opacity = '0';
+    nextSlide.classList.add('active');
 
-      // Trigger reflow
-      void nextSlide.offsetWidth;
+    // Trigger reflow
+    void nextSlide.offsetWidth;
 
-      // Animate in
-      requestAnimationFrame(() => {
-        nextSlide.style.opacity = '1';
-      });
+    // Animate in
+    requestAnimationFrame(() => {
+      nextSlide.style.opacity = '1';
+    });
 
-      // Update dots
-      slides.forEach((_, i) => {
-        if (dots[i]) dots[i].classList.remove('active');
-      });
-      if (dots[index]) dots[index].classList.add('active');
+    // Update dots
+    slides.forEach((_, i) => {
+      if (dots[i]) dots[i].classList.remove('active');
+    });
+    if (dots[index]) dots[index].classList.add('active');
 
-      currentSlide = index;
+    currentSlide = index;
 
-      // Reset transition lock
-      setTimeout(() => {
-        isTransitioning = false;
-      }, 600);
+    // Reset transition lock
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 600);
     }
 
     function nextSlide() {
-      let next = (currentSlide + 1) % slides.length;
-      showSlide(next);
+    let next = (currentSlide + 1) % slides.length;
+    showSlide(next);
     }
 
     function prevSlide() {
-      let prev = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(prev);
+    let prev = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(prev);
     }
 
     function goToSlide(index) {
-      showSlide(index);
+    showSlide(index);
     }
 
     // Event Listeners - desktop
@@ -466,21 +493,21 @@
     const slider = document.querySelector('.hero-slider');
 
     if (slider) {
-      slider.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-      }, { passive: true });
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
 
-      slider.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-        if (Math.abs(diff) > 50) {
-          if (diff > 0) {
-            nextSlide();
-          } else {
-            prevSlide();
-          }
-        }
-      }, { passive: true });
+    slider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+      }
+    }, { passive: true });
     }
 
     // Auto-play
@@ -488,8 +515,8 @@
 
     // Pause on hover
     if (slider) {
-      slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-      slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 6000));
+    slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 6000));
     }
   </script>
 @endsection

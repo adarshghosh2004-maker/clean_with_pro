@@ -21,31 +21,31 @@
         <div class="feedback-card-v2" data-anim="fade-up" data-anim-delay="200">
             <h2 class="card-title-v2">Service Feedback</h2>
 
-            <form method="POST" id="feedback">
+            <form method="POST" class="px-3" id="feedback">
                 @csrf
                 <input type="hidden" name="id" value="">
                 <div class="row">
                     <div class="col-12">
                         <div class="d-flex gap-4 pb-4">
                             <div class="col-md-6">
-                                <label for="full_name">Full Name</label>
+                                <label for="full_name" class="mb-2">Full Name</label>
                                 <input type="text" id="full_name" name="name" class="form-control-v2"
                                     placeholder="Julianne Smith" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="email">Email</label>
+                                <label for="email" class="mb-2">Email</label>
                                 <input type="email" id="email" name="email" class="form-control-v2"
                                     placeholder="julianne.smith@example.com" required>
                             </div>
                         </div>
                         <div class="d-flex gap-4 pb-4">
                             <div class="col-md-6">
-                                <label for="mobile_number">Mobile Number</label>
+                                <label for="mobile_number" class="mb-2">Mobile Number</label>
                                 <input type="text" id="mobile_number" name="mobile_no" class="form-control-v2"
                                     placeholder="679869756" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="area">Area</label>
+                                <label for="area" class="mb-2">Area</label>
                                 <input type="text" id="area" name="area_name" class="form-control-v2"
                                     placeholder="Enter your area" required>
                             </div>

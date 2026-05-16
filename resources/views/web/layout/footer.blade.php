@@ -118,7 +118,7 @@
 </section>
 
 <!-- 12. GET A QUOTE SECTION -->
-<section class="quote-form-section" id="quote" style="margin-top: 80px;" data-anim="fade-up">
+<section class="quote-form-section" id="quote" data-anim="fade-up">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10" data-anim="fade-up">

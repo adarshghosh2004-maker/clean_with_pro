@@ -280,10 +280,10 @@
             <p class="fs-5 opacity-75 mb-5 mx-auto" style="max-width: 600px;">Restore the life and health of your space
                 today with Melbourne's fabric specialists.</p>
             <div class="d-flex justify-content-center gap-3">
-                <a class="btn btn-secondary px-5 py-3 rounded-3 fw-bold shadow" href="#EditModel" data-bs-toggle="modal">Get
+                <a class="btn btn-secondary rounded-3 fw-bold shadow" href="#EditModel" data-bs-toggle="modal">Get
                     A Free Quote</a>
-                <a class="btn btn-outline-white px-5 py-3 rounded-3 fw-bold" href="tel:+61468460145">Call +61 468 460
-                    145</a>
+                <a class="btn btn-outline-white rounded-3 fw-bold"
+                    href="tel:{{ Setting_Data()['contact'] ?? "61468460145" }}">Call {{ Setting_Data()['contact'] ?? "61468460145" }}</a>
             </div>
         </div>
         <div class="position-absolute top-50 start-50 translate-middle opacity-10 z-1"
@@ -312,7 +312,7 @@
             const visibleCards = Array.from(cards).filter(c => {
                 const rect = c.getBoundingClientRect();
                 return rect.left >= slider.getBoundingClientRect().left - 50 &&
-                       rect.right <= slider.getBoundingClientRect().right + 50;
+                    rect.right <= slider.getBoundingClientRect().right + 50;
             });
 
             visibleCards.forEach(c => {

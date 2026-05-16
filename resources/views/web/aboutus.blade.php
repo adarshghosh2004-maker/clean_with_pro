@@ -25,7 +25,7 @@
     <!-- ========================
                         SECTION 2: Passion / Our Story
                         ======================== -->
-    <section class="passion-section" data-anim="fade-up">
+    <section class="section-padding" data-anim="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6" data-anim="fade-right">
@@ -64,7 +64,7 @@
     <!-- ========================
                         SECTION 3: Core Pillars
                         ======================== -->
-    <section class="pillars-section" data-anim="fade-up">
+    <section class="section-padding" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-anim="fade-up">
                 <h2 class="display-5 fw-bold mb-3">The Core Pillars of Clean With Professionals</h2>
@@ -123,7 +123,7 @@
     <!-- ========================
                         SECTION 4: Professional Edge
                         ======================== -->
-    <section class="edge-section" data-anim="fade-up">
+    <section class="section-padding" data-anim="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6" data-anim="fade-right">

@@ -27,7 +27,7 @@
         </section>
 
         <!-- Features Section -->
-        <section class="s2-features" data-anim="fade-up">
+        <section class="section-padding" data-anim="fade-up">
             <div class="container">
                 <div class="s2-features-grid">
                     <div class="s2-features-text anim-trigger">

@@ -160,7 +160,7 @@
                                                     placeholder="Briefly describe your cleaning needs..."></textarea>
                                             </div>
                                             <div class="col-12 mt-4">
-                                                <div class="row justify-content-end">
+                                                <div class="row justify-content-end g-3">
                                                     <div class="col-md-3">
                                                         <button type="button" onclick="save_quote('quote_form')"
                                                             class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">Send</button>
@@ -288,25 +288,42 @@
             dropdowns.forEach(dropdown => {
                 const toggle = dropdown.querySelector('.dropdown-toggle');
                 const menu = dropdown.querySelector('.dropdown-menu');
+                const iconBtn = dropdown.querySelector('.dropdown-toggle-icon');
 
                 if (!toggle || !menu) return;
 
+                // Text link always navigates (default behavior)
+                // Only intercept on mobile to prevent navigation when clicking text
+                // But we want text to navigate, icon to toggle dropdown
+
+                // Icon button toggles dropdown
+                if (iconBtn) {
+                    iconBtn.addEventListener('click', (e) => {
+                        if (!isMobile()) return;
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const isOpen = dropdown.classList.contains('mobile-open');
+
+                        // Close all other dropdowns
+                        dropdowns.forEach(d => {
+                            if (d !== dropdown) {
+                                d.classList.remove('mobile-open');
+                                const otherIcon = d.querySelector('.dropdown-toggle-icon');
+                                if (otherIcon) otherIcon.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+
+                        // Toggle current
+                        dropdown.classList.toggle('mobile-open', !isOpen);
+                        iconBtn.setAttribute('aria-expanded', !isOpen);
+                    });
+                }
+
+                // Text link on mobile: navigate, don't toggle dropdown
                 toggle.addEventListener('click', (e) => {
                     if (!isMobile()) return;
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    const isOpen = dropdown.classList.contains('mobile-open');
-
-                    // Close all other dropdowns
-                    dropdowns.forEach(d => {
-                        if (d !== dropdown) {
-                            d.classList.remove('mobile-open');
-                        }
-                    });
-
-                    // Toggle current
-                    dropdown.classList.toggle('mobile-open', !isOpen);
+                    // Allow default navigation - do NOT toggle dropdown
                 });
             });
 
@@ -314,7 +331,11 @@
             document.addEventListener('click', (e) => {
                 if (!isMobile()) return;
                 if (!e.target.closest('.nav-item.dropdown')) {
-                    dropdowns.forEach(d => d.classList.remove('mobile-open'));
+                    dropdowns.forEach(d => {
+                        d.classList.remove('mobile-open');
+                        const icon = d.querySelector('.dropdown-toggle-icon');
+                        if (icon) icon.setAttribute('aria-expanded', 'false');
+                    });
                 }
             });
 
@@ -322,7 +343,11 @@
             document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)').forEach(link => {
                 link.addEventListener('click', () => {
                     if (!isMobile()) return;
-                    dropdowns.forEach(d => d.classList.remove('mobile-open'));
+                    dropdowns.forEach(d => {
+                        d.classList.remove('mobile-open');
+                        const icon = d.querySelector('.dropdown-toggle-icon');
+                        if (icon) icon.setAttribute('aria-expanded', 'false');
+                    });
                 });
             });
 
@@ -330,42 +355,91 @@
             const navbarCollapse = document.getElementById('navbarNav');
             if (navbarCollapse) {
                 navbarCollapse.addEventListener('hidden.bs.collapse', () => {
-                    dropdowns.forEach(d => d.classList.remove('mobile-open'));
+                    dropdowns.forEach(d => {
+                        d.classList.remove('mobile-open');
+                        const icon = d.querySelector('.dropdown-toggle-icon');
+                        if (icon) icon.setAttribute('aria-expanded', 'false');
+                    });
                 });
             }
 
-            // ── Animation observer with fallback ──
+            // ── Animation observer with robust fallback ──
+            const animElements = document.querySelectorAll('.anim-trigger, [data-anim]');
+
+            // Show all elements immediately if no observer support
+            if (!('IntersectionObserver' in window)) {
+                animElements.forEach(el => el.classList.add('anim-visible'));
+                return;
+            }
+
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    const threshold = parseFloat(entry.target.dataset.animThreshold || 0.25);
-                    if (entry.isIntersecting && entry.intersectionRatio >= threshold) {
+                    if (entry.isIntersecting) {
                         entry.target.classList.add('anim-visible');
                         observer.unobserve(entry.target); // Only animate once
                     }
                 });
             }, {
                 threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25],
-                rootMargin: '0px 0px -20px 0px'
+                rootMargin: '0px 0px -10px 0px'
             });
 
-            // Observe all anim-trigger and data-anim elements
-            const observeElements = () => {
-                document.querySelectorAll('.anim-trigger, [data-anim]').forEach(el => {
+            // Observe all anim elements
+            let observedCount = 0;
+            animElements.forEach(el => {
+                // If element is already in viewport, show immediately
+                const rect = el.getBoundingClientRect();
+                const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+                if (isInViewport) {
+                    el.classList.add('anim-visible');
+                    observedCount++;
+                } else {
                     revealObserver.observe(el);
-                });
-            };
-
-            observeElements();
+                }
+            });
 
             // Fallback: show all animated elements after timeout if observer hasn't fired
-            setTimeout(() => {
+            const fallbackTimeout = setTimeout(() => {
                 document.querySelectorAll('[data-anim]:not(.anim-visible), .anim-trigger:not(.anim-visible)').forEach(el => {
                     el.classList.add('anim-visible');
+                    revealObserver.unobserve(el);
                 });
-            }, 2000);
+            }, 3000);
+
+            // Also trigger on scroll as additional fallback
+            let scrollFallbackApplied = false;
+            const scrollCheck = () => {
+                if (scrollFallbackApplied) return;
+                const remaining = document.querySelectorAll('[data-anim]:not(.anim-visible), .anim-trigger:not(.anim-visible)');
+                if (remaining.length === 0) {
+                    scrollFallbackApplied = true;
+                    window.removeEventListener('scroll', scrollCheck);
+                    clearTimeout(fallbackTimeout);
+                    return;
+                }
+                // If user scrolled past most of the page, show remaining
+                const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                if (scrollPercent > 0.7) {
+                    remaining.forEach(el => el.classList.add('anim-visible'));
+                    scrollFallbackApplied = true;
+                    window.removeEventListener('scroll', scrollCheck);
+                    clearTimeout(fallbackTimeout);
+                }
+            };
+            window.addEventListener('scroll', scrollCheck, { passive: true });
 
             // Re-run if content changes
-            window.addEventListener('contentUpdated', observeElements);
+            window.addEventListener('contentUpdated', () => {
+                const newElements = document.querySelectorAll('.anim-trigger:not(.anim-visible), [data-anim]:not(.anim-visible)');
+                newElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        el.classList.add('anim-visible');
+                    } else {
+                        revealObserver.observe(el);
+                    }
+                });
+            });
         });
     </script>
     @yield('pagescript')
