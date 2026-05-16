@@ -47,6 +47,16 @@
       <span class="material-symbols-outlined">East</span>
     </button>
     </div>
+
+    <!-- Mobile slider navigation -->
+    <div class="slider-nav-mobile d-md-none">
+      <button class="slider-arrow" id="prevBtnMobile" aria-label="Previous slide">
+        <span class="material-symbols-outlined">West</span>
+      </button>
+      <button class="slider-arrow" id="nextBtnMobile" aria-label="Next slide">
+        <span class="material-symbols-outlined">East</span>
+      </button>
+    </div>
   </section>
 
 
@@ -382,46 +392,104 @@
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide-item');
     const dots = document.querySelectorAll('.slider-dot');
+    let isTransitioning = false;
 
     function showSlide(index) {
-    if (slides.length === 0) return;
-    slides.forEach((slide, i) => {
-      slide.classList.remove('active');
-      if (dots[i]) dots[i].classList.remove('active');
-    });
-    slides[index].classList.add('active');
-    if (dots[index]) dots[index].classList.add('active');
-    currentSlide = index;
+      if (slides.length === 0 || isTransitioning) return;
+
+      const prevSlide = slides[currentSlide];
+      const nextSlide = slides[index];
+
+      if (prevSlide === nextSlide) return;
+
+      isTransitioning = true;
+
+      // Fade out current
+      prevSlide.classList.remove('active');
+      prevSlide.style.opacity = '0';
+
+      // Fade in next
+      nextSlide.style.opacity = '0';
+      nextSlide.classList.add('active');
+
+      // Trigger reflow
+      void nextSlide.offsetWidth;
+
+      // Animate in
+      requestAnimationFrame(() => {
+        nextSlide.style.opacity = '1';
+      });
+
+      // Update dots
+      slides.forEach((_, i) => {
+        if (dots[i]) dots[i].classList.remove('active');
+      });
+      if (dots[index]) dots[index].classList.add('active');
+
+      currentSlide = index;
+
+      // Reset transition lock
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 600);
     }
 
     function nextSlide() {
-    let next = (currentSlide + 1) % slides.length;
-    showSlide(next);
+      let next = (currentSlide + 1) % slides.length;
+      showSlide(next);
     }
 
     function prevSlide() {
-    let prev = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(prev);
+      let prev = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(prev);
     }
 
     function goToSlide(index) {
-    showSlide(index);
+      showSlide(index);
     }
 
-    // Event Listeners
+    // Event Listeners - desktop
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
     if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
+    // Event Listeners - mobile
+    const nextBtnMobile = document.getElementById('nextBtnMobile');
+    const prevBtnMobile = document.getElementById('prevBtnMobile');
+    if (nextBtnMobile) nextBtnMobile.addEventListener('click', nextSlide);
+    if (prevBtnMobile) prevBtnMobile.addEventListener('click', prevSlide);
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const slider = document.querySelector('.hero-slider');
+
+    if (slider) {
+      slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+      }, { passive: true });
+    }
+
     // Auto-play
     let slideInterval = setInterval(nextSlide, 6000);
 
     // Pause on hover
-    const slider = document.querySelector('.hero-slider');
     if (slider) {
-    slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-    slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 6000));
+      slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+      slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 6000));
     }
   </script>
 @endsection

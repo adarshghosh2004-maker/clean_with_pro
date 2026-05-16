@@ -268,21 +268,87 @@
         // Global Scroll Reveal Animation Logic
         document.addEventListener('DOMContentLoaded', () => {
 
+            // ── Dynamic header height for hero sections ──
+            function updateHeaderHeight() {
+                const header = document.querySelector('.header-main');
+                if (header) {
+                    const height = header.offsetHeight;
+                    document.documentElement.style.setProperty('--header-height', height + 'px');
+                }
+            }
+            updateHeaderHeight();
+            window.addEventListener('resize', updateHeaderHeight);
+            // Re-measure after fonts/images load
+            window.addEventListener('load', updateHeaderHeight);
+
+            // ── Mobile dropdown navigation ──
+            const isMobile = () => window.innerWidth < 992;
+            const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+
+                if (!toggle || !menu) return;
+
+                toggle.addEventListener('click', (e) => {
+                    if (!isMobile()) return;
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const isOpen = dropdown.classList.contains('mobile-open');
+
+                    // Close all other dropdowns
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) {
+                            d.classList.remove('mobile-open');
+                        }
+                    });
+
+                    // Toggle current
+                    dropdown.classList.toggle('mobile-open', !isOpen);
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!isMobile()) return;
+                if (!e.target.closest('.nav-item.dropdown')) {
+                    dropdowns.forEach(d => d.classList.remove('mobile-open'));
+                }
+            });
+
+            // Close dropdowns on nav link click (non-toggle)
+            document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!isMobile()) return;
+                    dropdowns.forEach(d => d.classList.remove('mobile-open'));
+                });
+            });
+
+            // Close dropdowns when navbar collapses
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse) {
+                navbarCollapse.addEventListener('hidden.bs.collapse', () => {
+                    dropdowns.forEach(d => d.classList.remove('mobile-open'));
+                });
+            }
+
+            // ── Animation observer with fallback ──
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     const threshold = parseFloat(entry.target.dataset.animThreshold || 0.25);
                     if (entry.isIntersecting && entry.intersectionRatio >= threshold) {
                         entry.target.classList.add('anim-visible');
-                    } else {
-                        entry.target.classList.remove('anim-visible');
+                        observer.unobserve(entry.target); // Only animate once
                     }
                 });
             }, {
-                threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25], // observe all levels
+                threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25],
                 rootMargin: '0px 0px -20px 0px'
             });
 
-            // Observe all anim-trigger and data-anim elements globally
+            // Observe all anim-trigger and data-anim elements
             const observeElements = () => {
                 document.querySelectorAll('.anim-trigger, [data-anim]').forEach(el => {
                     revealObserver.observe(el);
@@ -291,7 +357,14 @@
 
             observeElements();
 
-            // Re-run if content changes (e.g., gallery filtering)
+            // Fallback: show all animated elements after timeout if observer hasn't fired
+            setTimeout(() => {
+                document.querySelectorAll('[data-anim]:not(.anim-visible), .anim-trigger:not(.anim-visible)').forEach(el => {
+                    el.classList.add('anim-visible');
+                });
+            }, 2000);
+
+            // Re-run if content changes
             window.addEventListener('contentUpdated', observeElements);
         });
     </script>

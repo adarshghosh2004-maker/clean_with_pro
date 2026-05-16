@@ -299,14 +299,40 @@
     <script>
         function scrollSlider(sliderId, direction) {
             const slider = document.getElementById(sliderId);
-            const card = slider.querySelector('.service-card');
+            if (!slider) return;
+
+            const cards = slider.querySelectorAll('.service-card');
+            if (cards.length === 0) return;
+
+            const card = cards[0];
             const gap = parseInt(window.getComputedStyle(slider).gap) || 0;
             const scrollAmount = card.offsetWidth + gap;
+
+            // Add fade transition to visible cards
+            const visibleCards = Array.from(cards).filter(c => {
+                const rect = c.getBoundingClientRect();
+                return rect.left >= slider.getBoundingClientRect().left - 50 &&
+                       rect.right <= slider.getBoundingClientRect().right + 50;
+            });
+
+            visibleCards.forEach(c => {
+                c.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                c.style.opacity = '0.6';
+                c.style.transform = direction > 0 ? 'translateX(-15px)' : 'translateX(15px)';
+            });
 
             slider.scrollBy({
                 left: direction * scrollAmount,
                 behavior: 'smooth'
             });
+
+            // Restore opacity after scroll
+            setTimeout(() => {
+                visibleCards.forEach(c => {
+                    c.style.opacity = '1';
+                    c.style.transform = 'translateX(0)';
+                });
+            }, 400);
         }
 
         (function () {
@@ -315,8 +341,8 @@
             const slider = document.getElementById('gallerySlider');
 
             if (slider) {
-                let overflowAccumulator = 0;   // carries leftover delta after boundary hit
-                let handoffFrame = null;        // rAF handle for smooth page scroll
+                let overflowAccumulator = 0;
+                let handoffFrame = null;
                 let isInsideSlider = false;
 
                 function atStart() {
@@ -327,12 +353,11 @@
                     return slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1;
                 }
 
-                // Smoothly scroll the page using accumulated momentum
                 function smoothPageScroll(delta) {
                     cancelAnimationFrame(handoffFrame);
 
-                    let remaining = delta * 6; // amplify so it feels natural
-                    const FRICTION = 0.88;     // decay rate — lower = stops faster
+                    let remaining = delta * 6;
+                    const FRICTION = 0.88;
 
                     function step() {
                         if (Math.abs(remaining) < 0.5) return;
@@ -353,7 +378,7 @@
 
                 slider.addEventListener('wheel', function (e) {
                     const scrollingVertically = Math.abs(e.deltaY) > Math.abs(e.deltaX);
-                    if (!scrollingVertically) return; // leave trackpad horizontal alone
+                    if (!scrollingVertically) return;
 
                     const goingDown = e.deltaY > 0;
                     const goingUp = e.deltaY < 0;
@@ -364,7 +389,6 @@
                         e.preventDefault();
                         e.stopPropagation();
 
-                        // Accumulate delta until enough momentum to hand off to page
                         overflowAccumulator += e.deltaY;
 
                         if (Math.abs(overflowAccumulator) > 40) {
@@ -374,7 +398,6 @@
                         return;
                     }
 
-                    // Still inside slider — scroll it
                     e.preventDefault();
                     e.stopPropagation();
                     overflowAccumulator = 0;
@@ -397,8 +420,7 @@
                                 void el.offsetWidth;
                                 el.classList.add('anim-visible');
                             });
-                        } else {
-                            entry.target.classList.remove('anim-visible');
+                            observer.unobserve(el);
                         }
                     });
                 }, { threshold: 0.15 });
@@ -414,8 +436,7 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('anim-visible');
-                        } else {
-                            entry.target.classList.remove('anim-visible');
+                            observer.unobserve(entry.target);
                         }
                     });
                 }, { threshold: 0.15 });
@@ -425,6 +446,13 @@
 
             observeKeyframeElements();
             observeTransitionElements();
+
+            // Fallback: show all animated elements after timeout
+            setTimeout(() => {
+                document.querySelectorAll('[data-anim]:not(.anim-visible), .anim-trigger:not(.anim-visible)').forEach(el => {
+                    el.classList.add('anim-visible');
+                });
+            }, 2000);
 
         })();
     </script>
