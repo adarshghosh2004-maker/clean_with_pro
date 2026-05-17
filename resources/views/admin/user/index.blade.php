@@ -65,126 +65,178 @@
     INVOICE MODAL
     ════════════════════════════════════════════════ --}}
    <div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 70%;">
     <div class="modal-content invoice-modal-content">
 
       {{-- Header --}}
       <div class="modal-header invoice-modal-header">
         <h5 class="modal-title mb-0" id="invoiceModalLabel">
-          <i class="fa-solid fa-file-invoice me-2"></i> MAD ABOUT CLEANING
+          <i class="fa-solid fa-file-invoice me-2"></i> Invoice
         </h5>
-        <small>Invoice Form</small>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       {{-- Body --}}
       <div class="modal-body p-4">
-
-        {{-- Company Info (static) --}}
-        <div class="mb-3">
-          <strong>S & N MAINTENANCE PTY LTD</strong><br>
-          ABN: 123456789<br>
-          Address: Melbourne VIC<br>
-          Phone: 0400 000 000<br>
-          Bank: BSB 013593 | ACC 80571526
+        
+        {{-- Loading Spinner --}}
+        <div id="invoiceSpinner" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-2">Loading invoice data...</p>
         </div>
 
-        {{-- Customer Info --}}
-        <h6>Customer Details</h6>
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label>Name</label>
-            <input type="text" class="form-control" name="customer_name" value="Tozan">
-          </div>
-          <div class="col-md-6">
-            <label>Address</label>
-            <input type="text" class="form-control" name="customer_address" value="8 Pisa St, Fraser Rise">
-          </div>
-          <div class="col-md-6 mt-2">
-            <label>Phone</label>
-            <input type="text" class="form-control" name="customer_phone">
-          </div>
-          <div class="col-md-6 mt-2">
-            <label>Email</label>
-            <input type="email" class="form-control" name="customer_email">
-          </div>
+        {{-- Error Message --}}
+        <div id="invoiceError" class="alert alert-danger d-none">
+          <i class="fa-solid fa-triangle-exclamation me-2"></i> Failed to load invoice data.
         </div>
 
-        {{-- Technician Info --}}
-        <h6>Technician</h6>
-        <input type="text" class="form-control mb-3" name="technician_name" value="Charmy">
-
-        {{-- Services List with Checkboxes --}}
-        <h6>Select Services</h6>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Select</th>
-              <th>Service</th>
-              <th>Hours</th>
-              <th>Price</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><input type="checkbox" name="services[]" value="Domestic Cleaning" checked></td>
-              <td>Domestic Cleaning</td>
-              <td><input type="number" class="form-control" name="hours_domestic" value="3"></td>
-              <td><input type="number" class="form-control" name="price_domestic" value="174"></td>
-              <td><input type="number" class="form-control" name="total_domestic" value="174"></td>
-            </tr>
-            <tr>
-              <td><input type="checkbox" name="services[]" value="Carpet Cleaning"></td>
-              <td>Carpet Cleaning</td>
-              <td><input type="number" class="form-control" name="hours_carpet"></td>
-              <td><input type="number" class="form-control" name="price_carpet"></td>
-              <td><input type="number" class="form-control" name="total_carpet"></td>
-            </tr>
-            <!-- Add more services as needed -->
-          </tbody>
-        </table>
-
-        {{-- Payment Info --}}
-        <h6>Payment</h6>
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label>Payment Method</label>
-            <select class="form-select" name="payment_method">
-              <option>Cash</option>
-              <option>Card</option>
-              <option>Bank Transfer</option>
-            </select>
+        {{-- Invoice Content --}}
+        <div id="invoiceContent" class="d-none">
+          
+          {{-- Top Section: Logo & Company Info --}}
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="company-logo-section">
+                <img src="{{ asset('assets/imgs/CWPss.png') }}" alt="Mad About Cleaning" class="company-logo" style="max-height: 80px;">
+                <div class="mt-2">
+                  <strong id="company_phone_1">Ph. {{ Setting_Data()['contact'] ?? '0435811838' }}</strong><br>
+                  <a href="http://www.madaboutcleaning.com.au" id="company_website">www.madaboutcleaning.com.au</a><br>
+                  <a href="mailto:{{ Setting_Data()['email'] ?? 'info@madaboutcleaning.com.au' }}" id="company_email">{{ Setting_Data()['email'] ?? 'info@madaboutcleaning.com.au' }}</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 text-end">
+              <div class="company-details-section">
+                <h4 class="company-name-header" id="company_name">{{ Setting_Data()['company_name'] ?? 'MAD ABOUT CLEANING' }}</h4>
+                <p class="mb-1">REGISTERED TO S & N MAINTENANCE PTY. LTD.</p>
+                <p class="mb-1" id="company_abn">ABN 44481703275</p>
+                <p class="mb-1" id="company_acn">ACN 681703275</p>
+                <p class="mb-1" id="company_address">{{ Setting_Data()['address'] ?? '1/22 SHEPPARSON AVE CARNEGIE VIC3163' }}</p>
+                <p class="mb-0">Date : <input type="date" id="inv_date" class="form-control d-inline-block" style="width: auto;"></p>
+                <p class="mb-0">Invoice No: <span id="modalInvoiceNumber"></span></p>
+              </div>
+            </div>
           </div>
-          <div class="col-md-6">
-            <label>Total Amount</label>
-            <input type="number" class="form-control" name="grand_total" value="174">
+
+          <hr>
+
+          {{-- Customer & Technician Details --}}
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <div class="info-box">
+                <h6 class="section-title">CUSTOMER DETAILS</h6>
+                <div class="mb-2">
+                  <label class="form-label small">Name:</label>
+                  <input type="text" class="form-control form-control-sm" id="inv_customer_name" readonly>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label small">Address:</label>
+                  <textarea class="form-control form-control-sm" id="inv_customer_address" rows="2" readonly></textarea>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label small">Ph:</label>
+                  <input type="text" class="form-control form-control-sm" id="inv_customer_phone" readonly>
+                </div>
+                <div>
+                  <label class="form-label small">Booking Date:</label>
+                  <input type="text" class="form-control form-control-sm" id="inv_booking_date" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-box">
+                <h6 class="section-title">TECHNICIAN NAME:</h6>
+                <input type="text" class="form-control form-control-sm mb-2" id="inv_technician_name" readonly>
+                
+                <h6 class="section-title mt-3">BANK DETAILS:</h6>
+                <p class="mb-1"><strong>S & N MAINTENANCE PTY LTD</strong></p>
+                <p class="mb-1">BSB:- <span id="bank_bsb">013593</span></p>
+                <p class="mb-0">ACC:- <span id="bank_acc">805715126</span></p>
+              </div>
+            </div>
           </div>
+
+          <hr>
+
+          {{-- Services Section --}}
+          <div class="services-section mb-3">
+            <h6 class="section-title">SELECT SERVICES</h6>
+            <div class="table-responsive">
+              <table class="table table-bordered table-sm services-table">
+                <thead>
+                  <tr>
+                    <th style="width: 8%;">✓</th>
+                    <th style="width: 62%;">Service</th>
+                    <th style="width: 30%;">Price</th>
+                  </tr>
+                </thead>
+                <tbody id="services_tbody">
+                  {{-- Static services populated by JS --}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <hr>
+
+          {{-- Total Hours & Payment Section --}}
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <div class="info-box">
+                <h6 class="section-title">TIME SPEND (HOURS)</h6>
+                <input type="number" class="form-control form-control-sm" id="inv_total_hours" value="0" min="0" step="0.5" placeholder="e.g. 2, 3, 2.5">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="info-box">
+                <h6 class="section-title">PAYMENT METHOD</h6>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="payment_method" id="pay_cash" value="cash" checked>
+                  <label class="form-check-label" for="pay_cash">CASH</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="payment_method" id="pay_card" value="card">
+                  <label class="form-check-label" for="pay_card">CARD</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="info-box">
+                <h6 class="section-title">GRAND TOTAL</h6>
+                <input type="number" class="form-control form-control-sm" id="inv_grand_total" value="0" step="0.01" readonly>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          {{-- Description Section --}}
+          <div class="mb-4">
+            <h6 class="section-title">DESCRIPTION / NOTES</h6>
+            <textarea class="form-control" id="inv_description" rows="3" placeholder="Add any notes or description here..."></textarea>
+          </div>
+
+          <hr>
+
+          {{-- Signature Section --}}
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="signature-box">
+                <p class="text-center mb-2">Customer Signature</p>
+                <div class="signature-line"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="signature-box">
+                <p class="text-center mb-2">Technician Signature (Sign after print)</p>
+                <div class="signature-line"></div>
+              </div>
+            </div>
+          </div>
+
         </div>
-
-        {{-- Carpet Condition --}}
-        <h6>Carpet Condition</h6>
-        <textarea class="form-control mb-3" name="carpet_condition">No stains, no damage</textarea>
-
-        {{-- Contract Terms --}}
-        <h6>Condition of Contract</h6>
-        <textarea class="form-control mb-3" name="contract_terms">
-Customer responsible for valuables.
-Technician not liable for pre-existing damage.
-Payment due immediately after service.
-        </textarea>
-
-        {{-- Signatures --}}
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <label>Customer Signature</label>
-            <input type="text" class="form-control" name="customer_signature">
-          </div>
-          <div class="col-md-6">
-            <label>Technician Signature</label>
-            <input type="text" class="form-control" name="technician_signature">
-          </div>
-        </div>
-
       </div>
 
       {{-- Footer --}}
@@ -192,8 +244,11 @@ Payment due immediately after service.
         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
           <i class="fa-solid fa-xmark me-1"></i> Close
         </button>
-        <button type="submit" class="btn btn-primary btn-sm">
-          <i class="fa-solid fa-save me-1"></i> Save Invoice
+        <a href="#" id="btnDownloadPdf" class="btn btn-success btn-sm d-none" target="_blank">
+          <i class="fa-solid fa-download me-1"></i> Download Invoice
+        </a>
+        <button type="button" class="btn btn-primary btn-sm" id="btnSaveInvoice">
+          <i class="fa-solid fa-save me-1"></i> Save & Download
         </button>
       </div>
 
@@ -210,13 +265,14 @@ Payment due immediately after service.
         /* ── Invoice Modal Styles ── */
         .invoice-modal-content {
             border: none;
-            border-radius: 14px;
+            border-radius: 8px;
             overflow: hidden;
         }
 
         .invoice-modal-header {
-            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            background: #0f3460;
             color: #fff;
+            border-bottom: 2px solid #1a4a7a;
         }
 
         .invoice-modal-footer {
@@ -224,40 +280,83 @@ Payment due immediately after service.
             border-top: 1px solid #e9ecef;
         }
 
-        .inv-top-banner {
-            background: linear-gradient(135deg, #1a1a2e, #0f3460);
-            color: #fff;
+        .company-logo-section {
+            padding: 10px;
         }
 
-        .inv-company-name {
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 1px;
+        .company-logo {
+            max-height: 80px;
         }
 
-        .inv-company-url {
-            font-size: 11px;
-            opacity: .65;
-        }
-
-        .inv-meta-table {
-            border-collapse: collapse;
-        }
-
-        .inv-meta-table td {
-            padding: 2px 8px;
-            font-size: 12px;
-            color: #fff;
-        }
-
-        .inv-meta-label {
-            opacity: .65;
+        .company-details-section {
             text-align: right;
         }
 
-        .inv-meta-value {
+        .company-name-header {
+            color: #0f3460;
             font-weight: 700;
-            text-align: left;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            height: 100%;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #0f3460;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 5px;
+        }
+
+        .services-table {
+            font-size: 13px;
+        }
+
+        .services-table thead th {
+            background: #0f3460;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .services-table tbody td {
+            vertical-align: middle;
+        }
+
+        .services-table input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .services-table input[type="number"] {
+            text-align: right;
+        }
+
+        .signature-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .signature-line {
+            border-top: 2px solid #333;
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 5px;
+        }
+
+        .form-control-sm, .form-select-sm {
+            font-size: 13px;
         }
 
         .inv-status-badge {
@@ -281,117 +380,6 @@ Payment due immediately after service.
         .badge-completed {
             background: #cfe2ff;
             color: #084298;
-        }
-
-        .inv-info-card {
-            background: #f8f9fa;
-            border-left: 4px solid #0f3460;
-            border-radius: 0 8px 8px 0;
-            padding: 14px 18px;
-            height: 100%;
-        }
-
-        .inv-section-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: .08em;
-            color: #0f3460;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .inv-client-name {
-            font-size: 15px;
-            font-weight: 700;
-            color: #1a1a2e;
-            margin-bottom: 4px;
-        }
-
-        .inv-client-detail {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .inv-summary-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            padding: 4px 0;
-            border-bottom: 1px dashed #dee2e6;
-        }
-
-        .inv-summary-row:last-child {
-            border-bottom: none;
-        }
-
-        .inv-summary-row span {
-            color: #888;
-        }
-
-        .inv-items-table {
-            border-collapse: collapse;
-        }
-
-        .inv-items-table thead th {
-            background: #0f3460;
-            color: #fff;
-            font-size: 12px;
-            padding: 10px 14px;
-            border: none;
-        }
-
-        .inv-items-table tbody td {
-            padding: 10px 14px;
-            border-bottom: 1px solid #e9ecef;
-            font-size: 13px;
-        }
-
-        .inv-items-table tbody tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .inv-total-box {
-            width: 250px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 14px 18px;
-        }
-
-        .inv-total-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            padding: 4px 0;
-        }
-
-        .inv-total-row.total {
-            border-top: 2px solid #0f3460;
-            margin-top: 6px;
-            padding-top: 10px;
-            font-size: 15px;
-            font-weight: 700;
-            color: #0f3460;
-        }
-
-        .inv-msg-box {
-            background: #f0f4ff;
-            border-left: 4px solid #0f3460;
-            border-radius: 0 8px 8px 0;
-            padding: 12px 16px;
-            font-size: 13px;
-            color: #444;
-            line-height: 1.7;
-        }
-
-        .inv-reply-box {
-            background: #fff8e1;
-            border-left: 4px solid #f59e0b;
-            border-radius: 0 8px 8px 0;
-            padding: 12px 16px;
-            font-size: 13px;
-            color: #555;
-            line-height: 1.7;
         }
     </style>
 
@@ -438,9 +426,11 @@ Payment due immediately after service.
             });
 
             // ── Invoice Modal Trigger ──────────────────────────────────────
+            var currentQuoteId = null;
+
             $(document).on('click', '.btn-open-invoice', function () {
 
-                var userId = $(this).data('id');
+                currentQuoteId = $(this).data('id');
 
                 // Reset modal state
                 $('#invoiceSpinner').removeClass('d-none');
@@ -457,66 +447,86 @@ Payment due immediately after service.
                 $.ajax({
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
                     type: 'GET',
-                    url: '{{ url("admin/user") }}/' + userId + '/invoice-data',
+                    url: '{{ url("admin/user") }}/' + currentQuoteId + '/invoice-data',
                     success: function (resp) {
                         if (resp.status == 200) {
 
-                            // Header
+                            // Set invoice number
                             $('#modalInvoiceNumber').text(resp.invoice_number);
-                            $('#mInvNumber').text(resp.invoice_number);
-                            $('#mInvDate').text(resp.invoice_date);
-                            $('#mDueDate').text(resp.due_date);
+                            
+                            // Set date to today
+                            var today = new Date().toISOString().split('T')[0];
+                            $('#inv_date').val(today);
 
-                            // Status badge
-                            $('#mStatus')
-                                .text(resp.status_label)
-                                .attr('class', 'inv-status-badge ' + resp.status_class);
+                            // Customer details (readonly)
+                            $('#inv_customer_name').val(resp.name || '');
+                            $('#inv_customer_address').val(resp.suburb || '');
+                            $('#inv_customer_phone').val(resp.phone || '-');
 
-                            // Client info
-                            $('#mName').text(resp.name);
-                            $('#mEmail').text(resp.email);
-                            $('#mPhone').text(resp.phone);
-                            $('#mSuburb').text(resp.suburb);
+                            // Technician details (readonly)
+                            $('#inv_technician_name').val(resp.technician_name || 'N/A');
 
-                            // Summary
-                            $('#mService').text(resp.service);
-                            $('#mDate').text(resp.date);
-                            $('#mTime').text(resp.time);
+                            // Populate services (9 static services)
+                            var staticServices = [
+                                { title: 'Carpet Cleaning' },
+                                { title: 'Rug Cleaning' },
+                                { title: 'Upholstery Cleaning' },
+                                { title: 'Mattress Cleaning' },
+                                { title: 'Tile & Grout Cleaning' },
+                                { title: 'Stain Removal' },
+                                { title: 'Odour Removal' },
+                                { title: 'Steam Cleaning' },
+                                { title: 'End of Lease Cleaning' }
+                            ];
+                            
+                            var servicesHtml = '';
+                            staticServices.forEach(function(service, index) {
+                                var apiService = resp.services && resp.services[index] ? resp.services[index] : {};
+                                var isChecked = apiService.is_selected ? 'checked' : '';
+                                var price = apiService.price || 0;
+                                
+                                servicesHtml += '<tr data-service-index="' + index + '">';
+                                servicesHtml += '<td class="text-center"><input type="checkbox" class="service-checkbox" data-index="' + index + '" ' + isChecked + '></td>';
+                                servicesHtml += '<td>' + service.title + '</td>';
+                                servicesHtml += '<td><input type="number" class="form-control form-control-sm service-price" data-index="' + index + '" value="' + price + '" min="0" step="0.01"></td>';
+                                servicesHtml += '</tr>';
+                            });
+                            $('#services_tbody').html(servicesHtml);
 
-                            // Table row
-                            $('#tService').text(resp.service);
-                            $('#tSuburb').text(resp.suburb);
-                            $('#tDate').text(resp.date);
-                            $('#tTime').text(resp.time);
-                            $('#tAmount').text(resp.amount ? '$' + resp.amount : '-');
+                            // Set booking date
+                            $('#inv_booking_date').val(resp.booking_date || '-');
 
-                            // Amount block
-                            if (resp.amount) {
-                                $('#totalSubtotal').text('$' + resp.amount);
-                                $('#totalDue').text('$' + resp.amount);
-                                $('#amountBlock').removeClass('d-none');
+                            // Set total hours (time_spend)
+                            $('#inv_total_hours').val(resp.time_spend || 0);
+
+                            // Set payment method
+                            if (resp.payment_method == 'card') {
+                                $('#pay_card').prop('checked', true);
                             } else {
-                                $('#amountBlock').addClass('d-none');
+                                $('#pay_cash').prop('checked', true);
                             }
 
-                            // Message
-                            if (resp.msg) {
-                                $('#mMsg').text(resp.msg);
-                                $('#msgBlock').removeClass('d-none');
-                            } else {
-                                $('#msgBlock').addClass('d-none');
-                            }
+                            // Set grand total
+                            $('#inv_grand_total').val(resp.total || 0);
 
-                            // Reply
-                            if (resp.reply) {
-                                $('#mReply').text(resp.reply);
-                                $('#replyBlock').removeClass('d-none');
-                            } else {
-                                $('#replyBlock').addClass('d-none');
-                            }
+                            // Calculate totals on input change
+                            $('.service-price, .service-checkbox').on('input change', function() {
+                                calculateGrandTotal();
+                            });
 
-                            // Download button
-                            $('#btnDownloadPdf').attr('href', resp.download_url).removeClass('d-none');
+                            function calculateGrandTotal() {
+                                var grandTotal = 0;
+                                
+                                $('.service-checkbox').each(function() {
+                                    var index = $(this).data('index');
+                                    if ($(this).is(':checked')) {
+                                        var price = parseFloat($('.service-price[data-index="' + index + '"]').val()) || 0;
+                                        grandTotal += price;
+                                    }
+                                });
+                                
+                                $('#inv_grand_total').val(grandTotal.toFixed(2));
+                            }
 
                             // Show content
                             $('#invoiceSpinner').addClass('d-none');
@@ -530,6 +540,107 @@ Payment due immediately after service.
                     error: function () {
                         $('#invoiceSpinner').addClass('d-none');
                         $('#invoiceError').removeClass('d-none');
+                    }
+                });
+            });
+
+            // ─ Save Invoice Button ──────────────────────────────────────
+            $('#btnSaveInvoice').on('click', function() {
+                if (!currentQuoteId) {
+                    alert('No quote selected');
+                    return;
+                }
+
+                var staticServices = [
+                    { title: 'Carpet Cleaning' },
+                    { title: 'Rug Cleaning' },
+                    { title: 'Upholstery Cleaning' },
+                    { title: 'Mattress Cleaning' },
+                    { title: 'Tile & Grout Cleaning' },
+                    { title: 'Stain Removal' },
+                    { title: 'Odour Removal' },
+                    { title: 'Steam Cleaning' },
+                    { title: 'End of Lease Cleaning' }
+                ];
+
+                // Collect services data
+                var services = [];
+                var grandTotal = 0;
+                
+                $('.service-checkbox').each(function() {
+                    var index = $(this).data('index');
+                    var isChecked = $(this).is(':checked');
+                    var price = parseFloat($('.service-price[data-index="' + index + '"]').val()) || 0;
+                    
+                    if (isChecked) {
+                        grandTotal += price;
+                    }
+                    
+                    services.push({
+                        service_id: null,
+                        title: staticServices[index] ? staticServices[index].title : '',
+                        is_selected: isChecked,
+                        price: price
+                    });
+                });
+
+                // Collect form data
+                var invoiceData = {
+                    quote_id: currentQuoteId,
+                    invoice_date: $('#inv_date').val(),
+                    time_spend: parseFloat($('#inv_total_hours').val()) || 0,
+                    payment_method: $('input[name="payment_method"]:checked').val(),
+                    grand_total: grandTotal,
+                    description: $('#inv_description').val(),
+                    services: services
+                };
+
+                // Show loader
+                $('#dvloader').show();
+
+                // Save invoice
+                $.ajax({
+                    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                    type: 'POST',
+                    url: '{{ route("admin.user.invoice.save") }}',
+                    data: invoiceData,
+                    success: function (resp) {
+                        if (resp.status == 200) {
+                            // Download PDF as blob in same page
+                            fetch(resp.download_url, {
+                                headers: {
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                                }
+                            })
+                            .then(response => response.blob())
+                            .then(blob => {
+                                const url = window.URL.createObjectURL(blob);
+                                const a = document.createElement('a');
+                                a.href = url;
+                                a.download = resp.download_url.split('/').pop() || 'invoice.pdf';
+                                document.body.appendChild(a);
+                                a.click();
+                                window.URL.revokeObjectURL(url);
+                                document.body.removeChild(a);
+                                
+                                // Close modal after download
+                                var modal = bootstrap.Modal.getInstance(document.getElementById('invoiceModal'));
+                                modal.hide();
+                                
+                                $('#dvloader').hide();
+                            })
+                            .catch(err => {
+                                alert('Error downloading PDF. Please try again.');
+                                $('#dvloader').hide();
+                            });
+                        } else {
+                            alert('Error saving invoice: ' + (resp.errors || 'Unknown error'));
+                            $('#dvloader').hide();
+                        }
+                    },
+                    error: function () {
+                        alert('Error saving invoice. Please try again.');
+                        $('#dvloader').hide();
                     }
                 });
             });

@@ -122,5 +122,11 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
             [UserController::class, 'downloadInvoice']
         )->name('user.invoice.download');
 
+        // Route 3 — saves invoice to database
+        Route::post(
+            'user/invoice-save',
+            [UserController::class, 'saveInvoice']
+        )->name('user.invoice.save');
+
     });
 });

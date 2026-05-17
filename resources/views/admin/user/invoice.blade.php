@@ -1,312 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Invoice {{ $invoice_number }}</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<title>Invoice {{ $invoice_number }}</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: DejaVu Sans, Arial, sans-serif;
-            font-size: 13px;
-            color: #333;
-            background: #fff;
-        }
+  @page {
+    size: A4 portrait;
+    margin-top: 12mm;
+    margin-bottom: 12mm;
+    margin-left: 14mm;
+    margin-right: 14mm;
+  }
 
-        /* ── Header ── */
-        .inv-header {
-            background: #0f3460;
-            color: #fff;
-            padding: 30px 40px;
-        }
-        .inv-header-row {
-            width: 100%;
-        }
-        .inv-header-row td {
-            vertical-align: top;
-        }
-        .company-name {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .company-url {
-            font-size: 11px;
-            opacity: .7;
-            margin-top: 3px;
-        }
-        .inv-title {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            text-align: right;
-        }
-        .inv-meta {
-            margin-top: 8px;
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .inv-meta td {
-            padding: 2px 6px;
-            font-size: 12px;
-            color: #fff;
-        }
-        .inv-meta .label { opacity: .65; text-align: right; }
-        .inv-meta .value { font-weight: 700; text-align: left; }
+  html, body {
+    font-family: DejaVu Sans, Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.4;
+    color: #222;
+    margin: 20px;
+  }
 
-        /* ── Status pill ── */
-        .status-pill {
-            display: inline-block;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-        }
-        .status-0 { background: #fff3cd; color: #856404; }
-        .status-1 { background: #d1e7dd; color: #0f5132; }
-        .status-2 { background: #cfe2ff; color: #084298; }
+  /* ── HEADER ── */
+  .header-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #003366;
+  }
 
-        /* ── Body ── */
-        .body-wrap { padding: 28px 40px; }
+  .header-table td {
+    vertical-align: middle;
+    padding: 0 3px 6px 3px;
+  }
 
-        /* ── Info grid ── */
-        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
-        .info-table td { vertical-align: top; width: 50%; padding-right: 16px; }
-        .info-table td:last-child { padding-right: 0; }
+  .header-logo-cell {
+    text-align: center;
+    vertical-align: middle;
+  }
 
-        .info-card {
-            background: #f8f9fa;
-            border-left: 4px solid #0f3460;
-            padding: 14px 16px;
-        }
-        .section-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: .08em;
-            color: #0f3460;
-            font-weight: 700;
-            margin-bottom: 8px;
-            padding-bottom: 4px;
-            border-bottom: 1px solid #dee2e6;
-        }
-        .client-name   { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
-        .client-detail { font-size: 12px; color: #555; line-height: 1.8; }
+  .header-logo-cell img {
+    max-height: 34px;
+    max-width: 90px;
+  }
 
-        .summary-row {
-            display: table;
-            width: 100%;
-            font-size: 12px;
-            padding: 4px 0;
-            border-bottom: 1px dashed #dee2e6;
-        }
-        .summary-row:last-child { border-bottom: none; }
-        .summary-label { display: table-cell; color: #888; width: 50%; }
-        .summary-value { display: table-cell; font-weight: 600; color: #222; text-align: right; }
+  .contact-info {
+    font-size: 7px;
+    color: #444;
+    line-height: 1.75;
+  }
 
-        /* ── Items table ── */
-        .items-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
-        .items-table thead th {
-            background: #0f3460;
-            color: #fff;
-            padding: 9px 12px;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: .05em;
-            text-align: left;
-        }
-        .items-table thead th:last-child { text-align: right; }
-        .items-table tbody td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #e9ecef;
-            font-size: 13px;
-        }
-        .items-table tbody td:last-child { text-align: right; font-weight: 700; }
-        .items-table tbody tr:nth-child(even) { background: #f8f9fa; }
+  .company-block {
+    text-align: right;
+  }
 
-        /* ── Total box ── */
-        .total-wrap { text-align: right; margin-bottom: 24px; }
-        .total-box  {
-            display: inline-block;
-            width: 240px;
-            background: #f8f9fa;
-            padding: 14px 16px;
-        }
-        .total-row {
-            display: table;
-            width: 100%;
-            font-size: 13px;
-            padding: 4px 0;
-        }
-        .total-row .tl { display: table-cell; color: #888; }
-        .total-row .tr { display: table-cell; text-align: right; font-weight: 600; }
-        .total-row.grand {
-            border-top: 2px solid #0f3460;
-            margin-top: 6px;
-            padding-top: 10px;
-            font-size: 15px;
-        }
-        .total-row.grand .tl,
-        .total-row.grand .tr { font-weight: 700; color: #0f3460; }
+  .company-block h2 {
+    color: #003366;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
 
-        /* ── Message / Reply ── */
-        .msg-label  { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: #0f3460; font-weight: 700; margin-bottom: 6px; }
-        .msg-box    { background: #f0f4ff; border-left: 4px solid #0f3460; padding: 12px 14px; font-size: 13px; color: #444; line-height: 1.7; margin-bottom: 16px; }
-        .reply-box  { background: #fff8e1; border-left: 4px solid #f59e0b; padding: 12px 14px; font-size: 13px; color: #555; line-height: 1.7; margin-bottom: 16px; }
+  .company-block p {
+    font-size: 7px;
+    color: #444;
+    line-height: 1.75;
+  }
 
-        /* ── Footer ── */
-        .inv-footer {
-            border-top: 1px solid #e9ecef;
-            padding: 14px 40px;
-            font-size: 11px;
-            color: #aaa;
-        }
-        .inv-footer table { width: 100%; border-collapse: collapse; }
-        .inv-footer td:last-child { text-align: right; }
-    </style>
+  .invoice-meta {
+    margin-top: 4px;
+    font-size: 7.5px;
+    line-height: 1.75;
+  }
+
+  /* ── BOX ── */
+  .box {
+    border: 1px solid #999;
+    padding: 6px 8px;
+    vertical-align: top;
+  }
+
+  .box-title {
+    font-size: 6.5px;
+    font-weight: bold;
+    color: #003366;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+  }
+
+  .box p {
+    font-size: 7.5px;
+    line-height: 1.75;
+  }
+
+  /* ── SECTION TABLES ── */
+  .section-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 6px;
+  }
+
+  .section-table td {
+    vertical-align: top;
+  }
+
+  /* ── SERVICES TABLE ── */
+  .services-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .services-table thead tr {
+    background-color: #003366;
+    color: #fff;
+  }
+
+  .services-table th {
+    padding: 4px 6px;
+    font-size: 6.5px;
+    border: 0.5px solid #002244;
+    text-align: left;
+  }
+
+  .services-table th:first-child,
+  .services-table td:first-child {
+    text-align: center;
+    width: 22px;
+  }
+
+  .services-table th:last-child,
+  .services-table td:last-child {
+    text-align: right;
+    width: 50px;
+  }
+
+  .services-table td {
+    padding: 4px 6px;
+    font-size: 7.5px;
+    border: 0.5px solid #ddd;
+  }
+
+  .services-table tbody tr:nth-child(even) {
+    background: #f7f9fc;
+  }
+
+  .services-table tfoot td {
+    background: #edf2f7;
+    font-weight: bold;
+    padding: 5px 6px;
+    border: 0.5px solid #aaa;
+    font-size: 7.5px;
+  }
+
+  .services-table tfoot td:last-child {
+    color: #003366;
+  }
+
+  .checkbox {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border: 1px solid #555;
+    text-align: center;
+    line-height: 8px;
+    font-size: 7px;
+  }
+
+  /* ── SIGNATURE ── */
+  .sig-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 4px;
+    margin-bottom: 6px;
+  }
+
+  .sig-table td {
+    text-align: center;
+    padding-top: 18px;
+    width: 50%;
+  }
+
+  .sig-line {
+    width: 70%;
+    margin: 0 auto;
+    border-top: 1px solid #333;
+    padding-top: 3px;
+    font-size: 7px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  /* ── CONDITIONS ── */
+  .conditions {
+    border: 1px solid #999;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+  }
+
+  .conditions ol {
+    padding-left: 13px;
+    font-size: 7px;
+    color: #444;
+    line-height: 1.9;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    border-top: 1px solid #ddd;
+    padding-top: 5px;
+    font-size: 7px;
+    color: #999;
+    line-height: 1.7;
+  }
+</style>
 </head>
 <body>
 
-{{-- ── HEADER ── --}}
-<div class="inv-header">
-    <table class="inv-header-row" style="width:100%; border-collapse:collapse;">
-        <tr>
-            <td>
-                <div class="company-name">{{ config('app.name', 'Your Company') }}</div>
-                <div class="company-url">{{ config('app.url') }}</div>
-            </td>
-            <td style="text-align:right;">
-                <div class="inv-title">Invoice</div>
-                <table class="inv-meta" style="margin-left:auto;">
-                    <tr>
-                        <td class="label">Invoice No.</td>
-                        <td class="value">{{ $invoice_number }}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Date</td>
-                        <td class="value">{{ $invoice_date }}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Due Date</td>
-                        <td class="value">{{ $due_date }}</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Status</td>
-                        <td class="value">
-                            <span class="status-pill status-{{ $quote->status }}">
-                                {{ $status_label }}
-                            </span>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-</div>
+<!-- ══ HEADER ══ -->
+<table class="header-table">
+  <tr>
+    <td width="28%">
+      <div class="contact-info">
+        <div><strong>Ph:</strong> {{ Setting_Data()['contact'] ?? '' }}</div>
+        <div>{{ Setting_Data()['email'] ?? '' }}</div>
+        <div>{{ Setting_Data()['website'] ?? '' }}</div>
+      </div>
+    </td>
+    <td width="44%" class="header-logo-cell">
+      <img src="{{ Tab_Icon() }}" alt="Company Logo">
+    </td>
+    <td width="28%" class="company-block">
+      <h2>{{ Setting_Data()['company_name'] ?? '' }}</h2>
+      <p>ABN {{ Setting_Data()['abn_number'] ?? '' }} | ACN 681703275</p>
+      <p>{{ Setting_Data()['address'] ?? '' }}</p>
+      <div class="invoice-meta">
+        <div><strong>Date:</strong> {{ $invoice_date }}</div>
+        <div><strong>Invoice:</strong> {{ $invoice_number }}</div>
+      </div>
+    </td>
+  </tr>
+</table>
 
-{{-- ── BODY ── --}}
-<div class="body-wrap">
-
-    {{-- Bill-To + Summary --}}
-    <table class="info-table">
-        <tr>
-            <td>
-                <div class="info-card">
-                    <div class="section-label">Bill To</div>
-                    <div class="client-name">{{ $quote->name }}</div>
-                    <div class="client-detail">{{ $quote->email }}</div>
-                    <div class="client-detail">{{ $quote->phone ?? '-' }}</div>
-                    <div class="client-detail">{{ $quote->suburb ?? '-' }}</div>
-                </div>
-            </td>
-            <td>
-                <div class="info-card">
-                    <div class="section-label">Quote Summary</div>
-                    <div class="summary-row">
-                        <span class="summary-label">Service</span>
-                        <span class="summary-value">{{ $quote->service->title ?? '-' }}</span>
-                    </div>
-                    <div class="summary-row">
-                        <span class="summary-label">Scheduled Date</span>
-                        <span class="summary-value">
-                            {{ $quote->date ? \Carbon\Carbon::parse($quote->date)->format('d M Y') : '-' }}
-                        </span>
-                    </div>
-                    <div class="summary-row">
-                        <span class="summary-label">Scheduled Time</span>
-                        <span class="summary-value">{{ $quote->time ?? '-' }}</span>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </table>
-
-    {{-- Service Items Table --}}
-    <div class="section-label" style="margin-bottom:8px;">Service Details</div>
-    <table class="items-table">
-        <thead>
-            <tr>
-                <th style="width:35%;">Service</th>
-                <th>Suburb</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ $quote->service->title ?? '-' }}</td>
-                <td>{{ $quote->suburb ?? '-' }}</td>
-                <td>{{ $quote->date ? \Carbon\Carbon::parse($quote->date)->format('d M Y') : '-' }}</td>
-                <td>{{ $quote->time ?? '-' }}</td>
-                <td>{{ $quote->amount ? '$' . number_format($quote->amount, 2) : '-' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    {{-- Total --}}
-    @if($quote->amount)
-    <div class="total-wrap">
-        <div class="total-box">
-            <div class="total-row">
-                <span class="tl">Subtotal</span>
-                <span class="tr">${{ number_format($quote->amount, 2) }}</span>
-            </div>
-            <div class="total-row">
-                <span class="tl">Tax (0%)</span>
-                <span class="tr">$0.00</span>
-            </div>
-            <div class="total-row grand">
-                <span class="tl">Total Due</span>
-                <span class="tr">${{ number_format($quote->amount, 2) }}</span>
-            </div>
+<!-- ══ CUSTOMER + TECHNICIAN ══ -->
+<table class="section-table">
+  <tr>
+    <td width="50%" style="padding-right:4px;">
+      <div class="box">
+        <div class="box-title">Customer Details</div>
+        <p><strong>Name:</strong> {{ $quote->name }}</p>
+        <p><strong>Address:</strong> {{ $quote->suburb ?? '-' }}</p>
+        <p><strong>Ph:</strong> {{ $quote->phone ?? '-' }}</p>
+        <p><strong>Booking:</strong> {{ $quote->date ? \Carbon\Carbon::parse($quote->date)->format('d M Y') : '-' }}</p>
+      </div>
+    </td>
+    <td width="50%" style="padding-left:4px;">
+      <div class="box">
+        <div class="box-title">Technician</div>
+        <p>{{ $admin ? $admin->user_name : 'N/A' }}</p>
+        <div style="margin-top:6px;">
+          <div class="box-title">Bank Details</div>
+          <p><strong>S &amp; N MAINTENANCE PTY LTD</strong></p>
+          <p>BSB : 013593 &nbsp;&nbsp; ACC : 805715126</p>
         </div>
-    </div>
-    @endif
+      </div>
+    </td>
+  </tr>
+</table>
 
-    {{-- Customer Message --}}
-    @if($quote->msg)
-    <div class="msg-label">Customer Message</div>
-    <div class="msg-box">{{ $quote->msg }}</div>
-    @endif
+<!-- ══ ACKNOWLEDGEMENT + SERVICES ══ -->
+<table class="section-table">
+  <tr>
+    <td width="33%" style="padding-right:4px;">
+      <div class="box">
+        <p style="margin-bottom:5px;">(1) I acknowledge pre-existing damage and accept responsibility.</p>
+        <p style="margin-bottom:5px;">(2) Services completed satisfactorily.</p>
+        <p>Customer Signature: ____________</p>
+        <p style="text-align:center; color:#cc0000; font-weight:bold; margin-top:8px; font-size:7px;">Thank you for your business.</p>
+      </div>
+    </td>
+    <td width="67%" style="padding-left:4px;">
+      <div class="box">
+        <div class="box-title">Select Services</div>
+        <table class="services-table">
+          <thead>
+            <tr>
+              <th>&#10003;</th>
+              <th>Service</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            @php
+            $staticServices=[
+              ['title'=>'Carpet Cleaning'],
+              ['title'=>'Rug Cleaning'],
+              ['title'=>'Upholstery Cleaning'],
+              ['title'=>'Mattress Cleaning'],
+              ['title'=>'Tile & Grout Cleaning'],
+              ['title'=>'Stain Removal'],
+              ['title'=>'Odour Removal'],
+              ['title'=>'Steam Cleaning'],
+              ['title'=>'End of Lease Cleaning']
+            ];
+            $grandTotal=0;
+            @endphp
+            @foreach($staticServices as $index=>$service)
+            @php
+            $val=$services[$index]['is_selected'] ?? 0;
+            $isChecked=($val==1 || $val==="1");
+            $price=(float)($services[$index]['price'] ?? 0);
+            if($isChecked){$grandTotal+=$price;}
+            @endphp
+            <tr>
+              <td>@if($isChecked)<span class="checkbox">&#10003;</span>@else<span class="checkbox"></span>@endif</td>
+              <td>{{ $service['title'] }}</td>
+              <td>{{ $isChecked ? '$'.number_format($price,2) : '' }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2" style="text-align:right;">Grand Total</td>
+              <td>${{ number_format($invoice ? $invoice->total : $grandTotal, 2) }}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
 
-    {{-- Admin Reply --}}
-    @if($quote->reply)
-    <div class="msg-label">Admin Reply / Notes</div>
-    <div class="reply-box">{{ $quote->reply }}</div>
-    @endif
+<!-- ══ PAYMENT + TIME ══ -->
+<table class="section-table">
+  <tr>
+    <td width="50%" style="padding-right:4px;">
+      <div class="box">
+        <div class="box-title">Payment Method</div>
+        <p style="font-size:9px; margin-top:2px;">
+          @if($invoice && $invoice->payment_type==1)
+            &#9746; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9744; CARD
+          @else
+            &#9744; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9746; CARD
+          @endif
+        </p>
+      </div>
+    </td>
+    <td width="50%" style="padding-left:4px;">
+      <div class="box">
+        <div class="box-title">Time Spent</div>
+        <p style="font-size:11px; font-weight:bold; color:#003366; margin-top:2px;">{{ $invoice ? $invoice->time_spend : '0' }} hrs</p>
+      </div>
+    </td>
+  </tr>
+</table>
 
+@if($invoice && $invoice->description)
+<div class="box" style="margin-bottom:6px;">
+  <div class="box-title">Description</div>
+  <p>{{ $invoice->description }}</p>
+</div>
+@endif
+
+<!-- ══ SIGNATURES ══ -->
+<table class="sig-table">
+  <tr>
+    <td><div class="sig-line">Customer Signature</div></td>
+    <td><div class="sig-line">Technician Signature</div></td>
+  </tr>
+</table>
+
+<!-- ══ CONDITIONS ══ -->
+<div class="conditions">
+  <div class="box-title">Condition of Contract</div>
+  <ol>
+    <li>Company means cleaner and agents.</li>
+    <li>Work carried out to highest standards.</li>
+    <li>Company not liable for shrinkage.</li>
+    <li>Colour fading cannot be restored.</li>
+    <li>Quotes by phone are estimates.</li>
+    <li>Complaints not accepted after 7 days.</li>
+  </ol>
 </div>
 
-{{-- ── FOOTER ── --}}
-<div class="inv-footer">
-    <table>
-        <tr>
-            <td>Generated on {{ now()->format('d M Y, H:i') }}</td>
-            <td>{{ $invoice_number }} &bull; {{ config('app.name') }}</td>
-        </tr>
-    </table>
+<!-- ══ FOOTER ══ -->
+<div class="footer">
+  <p>Thank you for choosing Mad About Cleaning</p>
+  <p>Generated: {{ now()->format('d M Y H:i') }}</p>
 </div>
 
 </body>

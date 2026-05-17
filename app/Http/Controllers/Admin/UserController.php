@@ -7,6 +7,7 @@ use App\Models\Author_Request;
 use App\Models\Bookmark;
 use App\Models\Common;
 use App\Models\Content_View;
+use App\Models\Invoice;
 use App\Models\Notification;
 use App\Models\Read_Notification;
 use App\Models\Refer_Earn;
@@ -283,6 +284,8 @@ class UserController extends Controller
     {
         try {
             $quote = User::where('id', $id)->with('service')->firstOrFail();
+            $settings = Setting_Data();
+            $admin = Admin_Data();
 
             $statusLabels = [
                 0 => 'Pending',
@@ -296,6 +299,35 @@ class UserController extends Controller
                 2 => 'badge-completed',
             ];
 
+            // Get all services
+            $services = Service::where('status', 1)->get();
+            $servicesData = [];
+            
+            foreach ($services as $service) {
+                $is_selected = ($quote->service_id == $service->id) ? 1 : 0;
+                $price = $is_selected ? $quote->amount : 0;
+                
+                $servicesData[] = [
+                    'id' => $service->id,
+                    'title' => $service->title,
+                    'is_selected' => (int)$is_selected,
+                    'price' => (float)$price,
+                ];
+            }
+
+            // Check if invoice exists
+            $invoice = Invoice::where('quote_id', $id)->first();
+            
+            $time_spend = '00:00:00';
+            $payment_method = 'cash';
+            $total = 0;
+            
+            if ($invoice) {
+                $time_spend = $invoice->time_spend;
+                $payment_method = $invoice->payment_type == 1 ? 'card' : 'cash';
+                $total = $invoice->total;
+            }
+
             return response()->json([
                 'status' => 200,
                 'invoice_number' => 'INV-' . str_pad($quote->id, 6, '0', STR_PAD_LEFT),
@@ -308,12 +340,18 @@ class UserController extends Controller
                 'service' => $quote->service->title ?? '-',
                 'date' => $quote->date ? \Carbon\Carbon::parse($quote->date)->format('d M Y') : '-',
                 'time' => $quote->time ?? '-',
+                'booking_date' => $quote->date ? \Carbon\Carbon::parse($quote->date)->format('d M Y') : '-',
                 'amount' => $quote->amount ? number_format($quote->amount, 2) : null,
                 'msg' => $quote->msg ?? null,
                 'reply' => $quote->reply ?? null,
                 'status_label' => $statusLabels[$quote->status] ?? 'Unknown',
                 'status_class' => $statusClasses[$quote->status] ?? 'badge-pending',
                 'download_url' => route('admin.user.invoice.download', $quote->id),
+                'technician_name' => $admin ? $admin->user_name : 'N/A',
+                'services' => $servicesData,
+                'time_spend' => $time_spend,
+                'payment_method' => $payment_method,
+                'total' => $total,
             ]);
 
         } catch (Exception $e) {
@@ -329,6 +367,8 @@ class UserController extends Controller
     {
         try {
             $quote = User::where('id', $id)->with('service')->firstOrFail();
+            $settings = Setting_Data();
+            $admin = Admin_Data();
 
             $statusLabels = [
                 0 => 'Pending',
@@ -336,12 +376,60 @@ class UserController extends Controller
                 2 => 'Completed',
             ];
 
+            // Get invoice data if exists
+            $invoice = Invoice::where('quote_id', $id)->first();
+            
+            $services = Service::where('status', 1)->get();
+            $servicesData = [];
+            
+            // Build map from saved invoice services
+            $savedMap = [];
+            if ($invoice && !empty($invoice->service_json)) {
+                $decoded = json_decode($invoice->service_json, true);
+                if (is_array($decoded)) {
+                    foreach ($decoded as $s) {
+                        $sid = $s['service_id'] ?? $s['id'] ?? null;
+                        if ($sid !== null) {
+                            $savedMap[$sid] = [
+                                'selected' => filter_var($s['is_selected'] ?? false, FILTER_VALIDATE_BOOLEAN),
+                                'price' => (float)($s['price'] ?? 0),
+                            ];
+                        }
+                    }
+                }
+            }
+            
+            foreach ($services as $service) {
+                $sid = $service->id;
+                
+                if (isset($savedMap[$sid])) {
+                    // Use saved invoice data
+                    $isSelected = $savedMap[$sid]['selected'] ? 1 : 0;
+                    $price = $savedMap[$sid]['price'];
+                } else {
+                    // Fallback to quote data
+                    $isSelected = ($quote->service_id == $sid) ? 1 : 0;
+                    $price = $isSelected ? (float)$quote->amount : 0;
+                }
+                
+                $servicesData[] = [
+                    'id' => $sid,
+                    'title' => $service->title,
+                    'is_selected' => $isSelected,
+                    'price' => $price,
+                ];
+            }
+
             $data = [
                 'invoice_number' => 'INV-' . str_pad($quote->id, 6, '0', STR_PAD_LEFT),
-                'invoice_date' => now()->format('d M Y'),
+                'invoice_date' => $invoice ? date('d M Y', strtotime($invoice->created_at)) : now()->format('d M Y'),
                 'due_date' => now()->addDays(30)->format('d M Y'),
                 'quote' => $quote,
                 'status_label' => $statusLabels[$quote->status] ?? 'Unknown',
+                'settings' => $settings,
+                'admin' => $admin,
+                'services' => $servicesData,
+                'invoice' => $invoice,
             ];
 
             $pdf = Pdf::loadView('admin.user.invoice', $data)->setPaper('a4', 'portrait');
@@ -351,6 +439,82 @@ class UserController extends Controller
 
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    /**
+     * STEP 3 — Save invoice to database
+     */
+    public function saveInvoice(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'quote_id' => 'required|integer',
+                'invoice_date' => 'required|date',
+                'grand_total' => 'required|numeric',
+                'time_spend' => 'required|numeric',
+                'payment_method' => 'required|in:cash,card',
+                'services' => 'required|array',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['status' => 400, 'errors' => $validator->errors()->all()]);
+            }
+
+            $quote = User::where('id', $request->quote_id)->firstOrFail();
+            
+            // Time spend is the total hours entered by admin
+            $time_spend = (string)$request->time_spend;
+
+            // Prepare service JSON - ensure clean data
+            $cleanServices = [];
+            foreach ($request->services as $s) {
+                $cleanServices[] = [
+                    'service_id' => (int)($s['service_id'] ?? 0),
+                    'title' => $s['title'] ?? '',
+                    'is_selected' => filter_var($s['is_selected'] ?? false, FILTER_VALIDATE_BOOLEAN),
+                    'price' => (float)($s['price'] ?? 0),
+                ];
+            }
+            $service_json = json_encode($cleanServices);
+
+            // Payment type: 1 = card, 0 = cash
+            $payment_type = ($request->payment_method == 'card') ? 1 : 0;
+
+            // Check if invoice already exists
+            $invoice = Invoice::where('quote_id', $request->quote_id)->first();
+
+            if ($invoice) {
+                // Update existing invoice
+                $invoice->invoice_id = 'INV-' . str_pad($quote->id, 6, '0', STR_PAD_LEFT);
+                $invoice->service_json = $service_json;
+                $invoice->total = (float)$request->grand_total;
+                $invoice->payment_type = $payment_type;
+                $invoice->time_spend = $time_spend;
+                $invoice->description = $request->description ?? '';
+                $invoice->save();
+            } else {
+                // Create new invoice
+                $invoice = Invoice::create([
+                    'quote_id' => $request->quote_id,
+                    'invoice_id' => 'INV-' . str_pad($quote->id, 6, '0', STR_PAD_LEFT),
+                    'service_json' => $service_json,
+                    'total' => (float)$request->grand_total,
+                    'payment_type' => $payment_type,
+                    'time_spend' => $time_spend,
+                    'description' => $request->description ?? '',
+                    'status' => 1,
+                ]);
+            }
+
+            return response()->json([
+                'status' => 200,
+                'success' => 'Invoice saved successfully',
+                'download_url' => route('admin.user.invoice.download', $quote->id),
+            ]);
+
+        } catch (Exception $e) {
+            return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }
     }
 }
