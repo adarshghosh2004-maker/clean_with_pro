@@ -109,5 +109,18 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
         Route::resource('page', PageController::class)->only(['destroy']);
         Route::resource('video', VideoController::class)->only(['destroy']);
 
+
+        // Route 1 — returns JSON for the modal
+        Route::get(
+            'user/{id}/invoice-data',
+            [UserController::class, 'getInvoiceData']
+        )->name('user.invoice.data');
+
+        // Route 2 — streams the PDF download
+        Route::get(
+            'user/{id}/invoice-download',
+            [UserController::class, 'downloadInvoice']
+        )->name('user.invoice.download');
+
     });
 });

@@ -12,7 +12,9 @@
             <span class="material-symbols-outlined fs-6">call</span>
             <a class="text-white text-decoration-none fw-bold"
                 href="tel:{{ Setting_Data()['contact'] ?? "+61468460145" }}">{{ Setting_Data()['contact'] ?? "+61468460145" }}
-                - {{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}</a>
+                 <span class="top-bar-name">
+                  -  {{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}
+                </span></a>
         </div>
     </div>
 
@@ -54,8 +56,10 @@
                             aria-expanded="false">
                             Services
                         </a>
-                        <button class="dropdown-toggle-icon" type="button" aria-label="Toggle services dropdown" aria-expanded="false">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <button class="dropdown-toggle-icon" type="button" aria-label="Toggle services dropdown"
+                            aria-expanded="false">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
                         </button>
