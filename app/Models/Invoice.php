@@ -17,10 +17,10 @@ class Invoice extends Model
         'quote_id' => 'integer',
         'invoice_id' => 'string',
         'service_json' => 'string',
+        'technician_name' => 'string',
         'total' => 'string',
         'payment_type' => 'integer',
         'time_spend' => 'string',
-        'description' => 'string',
         'status' => 'integer',
     ];
 

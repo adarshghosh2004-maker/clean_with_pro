@@ -43,7 +43,7 @@ class PageController extends Controller
 
                         $page_delete = __('label.delete_page');
 
-                        $delete = '<form onsubmit="return confirm(\'' . $page_delete . '\');" method="POST" action="' . route('admin.pages.destroy', [$row->id]) . '">
+                        $delete = '<form onsubmit="return confirm(\'' . $page_delete . '\');" method="POST" action="' . route('admin.page.destroy', [$row->id]) . '">
                         <input type="hidden" name="_token" value="' . csrf_token() . '">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="edit-delete-btn" title=' . __('label.delete') . ' ><i class="fa-solid fa-trash-can fa-xl"></i></button></form>';
@@ -52,7 +52,7 @@ class PageController extends Controller
                         $btn .= '<a href="' . route('page.view', [$row->title]) . '" class="edit-delete-btn mr-4 " title=' . __('label.view_page') . ' target="_blank">';
                         $btn .= '<i class="fa-regular fa-eye fa-xl"></i>';
                         $btn .= '</a>';
-                        $btn .= '<a href="' . route('admin.pages.edit', [$row->id]) . '" class="edit-delete-btn mr-4" title=' . __('label.edit') . '>';
+                        $btn .= '<a href="' . route('admin.page.edit', [$row->id]) . '" class="edit-delete-btn mr-4" title=' . __('label.edit') . '>';
                         $btn .= '<i class="fa-solid fa-pen-to-square fa-xl"></i>';
                         $btn .= '</a>';
                         $btn .= $delete;
@@ -105,7 +105,7 @@ class PageController extends Controller
             $insert['title'] = $request['title'];
             $insert['description'] = $request['description'];
             $files = $request['icon'];
-            $insert['icon'] = $this->common->saveImage($files, $this->folder, 'pages_');
+            $insert['icon'] = $this->common->saveImage($files, $this->folder, 'page_');
             $insert['status'] = 1;
             if ($insert->save()) {
                 return response()->json(['status' => 200, 'success' => __('label.success_add_page')]);
@@ -183,7 +183,7 @@ class PageController extends Controller
                 $page['description'] = $request['description'];
                 if (isset($request['icon'])) {
                     $files = $request['icon'];
-                    $page['icon'] = $this->common->saveImage($files, $this->folder, 'pages_');
+                    $page['icon'] = $this->common->saveImage($files, $this->folder, 'page_');
 
                     $this->common->deleteImageToFolder($this->folder, basename($request['old_icon']));
                 }
@@ -210,7 +210,7 @@ class PageController extends Controller
                 $page->delete();
             }
 
-            return redirect()->route('admin.pages.index')->with('success', __('label.page_delete'));
+            return redirect()->route('admin.page.index')->with('success', __('label.page_delete'));
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }

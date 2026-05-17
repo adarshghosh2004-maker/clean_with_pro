@@ -64,197 +64,201 @@
     {{-- ═══════════════════════════════════════════════
     INVOICE MODAL
     ════════════════════════════════════════════════ --}}
-   <div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 70%;">
-    <div class="modal-content invoice-modal-content">
+    <div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 70%;">
+            <div class="modal-content invoice-modal-content">
 
-      {{-- Header --}}
-      <div class="modal-header invoice-modal-header">
-        <h5 class="modal-title mb-0" id="invoiceModalLabel">
-          <i class="fa-solid fa-file-invoice me-2"></i> Invoice
-        </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+                {{-- Header --}}
+                <div class="modal-header invoice-modal-header">
+                    <h5 class="modal-title mb-0" id="invoiceModalLabel">
+                        <i class="fa-solid fa-file-invoice me-2"></i> Invoice
+                    </h5>
+                </div>
 
-      {{-- Body --}}
-      <div class="modal-body p-4">
-        
-        {{-- Loading Spinner --}}
-        <div id="invoiceSpinner" class="text-center py-5">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-          <p class="mt-2">Loading invoice data...</p>
+                {{-- Body --}}
+                <div class="modal-body p-4">
+
+                    {{-- Loading Spinner --}}
+                    <div id="invoiceSpinner" class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-2">Loading invoice data...</p>
+                    </div>
+
+                    {{-- Error Message --}}
+                    <div id="invoiceError" class="alert alert-danger d-none">
+                        <i class="fa-solid fa-triangle-exclamation me-2"></i> Failed to load invoice data.
+                    </div>
+
+                    {{-- Invoice Content --}}
+                    <div id="invoiceContent" class="d-none">
+
+                        {{-- Top Section: Logo & Company Info --}}
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="company-logo-section">
+                                    <img src="{{ asset('assets/imgs/CWPss.png') }}" alt="Mad About Cleaning"
+                                        class="company-logo" style="max-height: 80px;">
+                                    <div class="mt-2">
+                                        <strong id="company_phone_1">Ph.
+                                            {{ Setting_Data()['contact'] ?? '0435811838' }}</strong><br>
+                                        <a href="{{ Setting_Data()['website'] ?? '' }}"
+                                            id="company_website" target="_blank">{{ Setting_Data()['website'] ?? '' }}</a><br>
+                                        <a href="mailto:{{ Setting_Data()['email'] ?? '' }}"
+                                            id="company_email">{{ Setting_Data()['email'] ?? ''}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <div class="company-details-section">
+                                    <h4 class="company-name-header" id="company_name">
+                                        {{ Setting_Data()['company_name'] ?? 'MAD ABOUT CLEANING' }}</h4>
+                                    <p class="mb-1" id="company_abn">ABN {{ Setting_Data()['abn_number'] ?? '' }}</p>
+                                    <p class="mb-1" id="company_acn">ACN {{ Setting_Data()['acn_number'] ?? '' }}</p>
+                                    <p class="mb-1" id="company_address">
+                                        {{ Setting_Data()['address'] ?? '' }}</p>
+                                    <p class="mb-0">Date : <input type="date" id="inv_date"
+                                            class="form-control d-inline-block" style="width: auto;"></p>
+                                    <p class="mb-0">Invoice No: <span id="modalInvoiceNumber"></span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        {{-- Customer & Technician Details --}}
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="info-box">
+                                    <h6 class="section-title">CUSTOMER DETAILS</h6>
+                                    <div class="mb-2">
+                                        <label class="form-label small">Name:</label>
+                                        <input type="text" class="form-control form-control-sm" id="inv_customer_name"
+                                            readonly>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label small">Address:</label>
+                                        <textarea class="form-control form-control-sm" id="inv_customer_address" rows="2"
+                                            readonly></textarea>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label small">Ph:</label>
+                                        <input type="text" class="form-control form-control-sm" id="inv_customer_phone"
+                                            readonly>
+                                    </div>
+                                    <div>
+                                        <label class="form-label small">Booking Date:</label>
+                                        <input type="text" class="form-control form-control-sm" id="inv_booking_date"
+                                            readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box">
+                                    <h6 class="section-title">TECHNICIAN NAME:</h6>
+                                    <input type="text" class="form-control form-control-sm mb-2" id="inv_technician_name">
+
+                                    <h6 class="section-title mt-3">BANK DETAILS:</h6>
+                                    <p class="mb-1">BSB:- <span id="bank_bsb">{{ Setting_Data()['bsb'] ?? ''}}</span></p>
+                                    <p class="mb-0">ACC:- <span id="bank_acc">{{ Setting_Data()['account_number'] ?? '' }}</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        {{-- Services Section --}}
+                        <div class="services-section mb-3">
+                            <h6 class="section-title">SELECT SERVICES</h6>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-sm services-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 8%;">✓</th>
+                                            <th style="width: 62%;">Service</th>
+                                            <th style="width: 30%;">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="services_tbody">
+                                        {{-- Static services populated by JS --}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        {{-- Total Hours & Payment Section --}}
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="info-box">
+                                    <h6 class="section-title">TIME SPEND (HOURS)</h6>
+                                    <input type="number" class="form-control form-control-sm" id="inv_total_hours" value="0"
+                                        min="0" step="0.5" placeholder="e.g. 2, 3, 2.5">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="info-box">
+                                    <h6 class="section-title">PAYMENT METHOD</h6>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment_method" id="pay_cash"
+                                            value="cash" checked>
+                                        <label class="form-check-label" for="pay_cash">CASH</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment_method" id="pay_card"
+                                            value="card">
+                                        <label class="form-check-label" for="pay_card">CARD</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="info-box">
+                                    <h6 class="section-title">GRAND TOTAL</h6>
+                                    <input type="number" class="form-control form-control-sm" id="inv_grand_total" value="0"
+                                        step="0.01" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        {{-- Signature Section --}}
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="signature-box">
+                                    <p class="text-center mb-2">Customer Signature</p>
+                                    <div class="signature-line"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="signature-box">
+                                    <p class="text-center mb-2">Technician Signature (Sign after print)</p>
+                                    <div class="signature-line"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                {{-- Footer --}}
+                <div class="modal-footer invoice-modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark me-1"></i> Close
+                    </button>
+                    <a href="#" id="btnDownloadPdf" class="btn btn-success btn-sm d-none" target="_blank">
+                        <i class="fa-solid fa-download me-1"></i> Download Invoice
+                    </a>
+                    <button type="button" class="btn btn-primary btn-sm" id="btnSaveInvoice">
+                        <i class="fa-solid fa-save me-1"></i> Save & Download
+                    </button>
+                </div>
+
+            </div>
         </div>
-
-        {{-- Error Message --}}
-        <div id="invoiceError" class="alert alert-danger d-none">
-          <i class="fa-solid fa-triangle-exclamation me-2"></i> Failed to load invoice data.
-        </div>
-
-        {{-- Invoice Content --}}
-        <div id="invoiceContent" class="d-none">
-          
-          {{-- Top Section: Logo & Company Info --}}
-          <div class="row mb-4">
-            <div class="col-md-6">
-              <div class="company-logo-section">
-                <img src="{{ asset('assets/imgs/CWPss.png') }}" alt="Mad About Cleaning" class="company-logo" style="max-height: 80px;">
-                <div class="mt-2">
-                  <strong id="company_phone_1">Ph. {{ Setting_Data()['contact'] ?? '0435811838' }}</strong><br>
-                  <a href="http://www.madaboutcleaning.com.au" id="company_website">www.madaboutcleaning.com.au</a><br>
-                  <a href="mailto:{{ Setting_Data()['email'] ?? 'info@madaboutcleaning.com.au' }}" id="company_email">{{ Setting_Data()['email'] ?? 'info@madaboutcleaning.com.au' }}</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 text-end">
-              <div class="company-details-section">
-                <h4 class="company-name-header" id="company_name">{{ Setting_Data()['company_name'] ?? 'MAD ABOUT CLEANING' }}</h4>
-                <p class="mb-1">REGISTERED TO S & N MAINTENANCE PTY. LTD.</p>
-                <p class="mb-1" id="company_abn">ABN 44481703275</p>
-                <p class="mb-1" id="company_acn">ACN 681703275</p>
-                <p class="mb-1" id="company_address">{{ Setting_Data()['address'] ?? '1/22 SHEPPARSON AVE CARNEGIE VIC3163' }}</p>
-                <p class="mb-0">Date : <input type="date" id="inv_date" class="form-control d-inline-block" style="width: auto;"></p>
-                <p class="mb-0">Invoice No: <span id="modalInvoiceNumber"></span></p>
-              </div>
-            </div>
-          </div>
-
-          <hr>
-
-          {{-- Customer & Technician Details --}}
-          <div class="row mb-4">
-            <div class="col-md-6">
-              <div class="info-box">
-                <h6 class="section-title">CUSTOMER DETAILS</h6>
-                <div class="mb-2">
-                  <label class="form-label small">Name:</label>
-                  <input type="text" class="form-control form-control-sm" id="inv_customer_name" readonly>
-                </div>
-                <div class="mb-2">
-                  <label class="form-label small">Address:</label>
-                  <textarea class="form-control form-control-sm" id="inv_customer_address" rows="2" readonly></textarea>
-                </div>
-                <div class="mb-2">
-                  <label class="form-label small">Ph:</label>
-                  <input type="text" class="form-control form-control-sm" id="inv_customer_phone" readonly>
-                </div>
-                <div>
-                  <label class="form-label small">Booking Date:</label>
-                  <input type="text" class="form-control form-control-sm" id="inv_booking_date" readonly>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="info-box">
-                <h6 class="section-title">TECHNICIAN NAME:</h6>
-                <input type="text" class="form-control form-control-sm mb-2" id="inv_technician_name" readonly>
-                
-                <h6 class="section-title mt-3">BANK DETAILS:</h6>
-                <p class="mb-1"><strong>S & N MAINTENANCE PTY LTD</strong></p>
-                <p class="mb-1">BSB:- <span id="bank_bsb">013593</span></p>
-                <p class="mb-0">ACC:- <span id="bank_acc">805715126</span></p>
-              </div>
-            </div>
-          </div>
-
-          <hr>
-
-          {{-- Services Section --}}
-          <div class="services-section mb-3">
-            <h6 class="section-title">SELECT SERVICES</h6>
-            <div class="table-responsive">
-              <table class="table table-bordered table-sm services-table">
-                <thead>
-                  <tr>
-                    <th style="width: 8%;">✓</th>
-                    <th style="width: 62%;">Service</th>
-                    <th style="width: 30%;">Price</th>
-                  </tr>
-                </thead>
-                <tbody id="services_tbody">
-                  {{-- Static services populated by JS --}}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <hr>
-
-          {{-- Total Hours & Payment Section --}}
-          <div class="row mb-4">
-            <div class="col-md-4">
-              <div class="info-box">
-                <h6 class="section-title">TIME SPEND (HOURS)</h6>
-                <input type="number" class="form-control form-control-sm" id="inv_total_hours" value="0" min="0" step="0.5" placeholder="e.g. 2, 3, 2.5">
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="info-box">
-                <h6 class="section-title">PAYMENT METHOD</h6>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="payment_method" id="pay_cash" value="cash" checked>
-                  <label class="form-check-label" for="pay_cash">CASH</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="payment_method" id="pay_card" value="card">
-                  <label class="form-check-label" for="pay_card">CARD</label>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="info-box">
-                <h6 class="section-title">GRAND TOTAL</h6>
-                <input type="number" class="form-control form-control-sm" id="inv_grand_total" value="0" step="0.01" readonly>
-              </div>
-            </div>
-          </div>
-
-          <hr>
-
-          {{-- Description Section --}}
-          <div class="mb-4">
-            <h6 class="section-title">DESCRIPTION / NOTES</h6>
-            <textarea class="form-control" id="inv_description" rows="3" placeholder="Add any notes or description here..."></textarea>
-          </div>
-
-          <hr>
-
-          {{-- Signature Section --}}
-          <div class="row mt-4">
-            <div class="col-md-6">
-              <div class="signature-box">
-                <p class="text-center mb-2">Customer Signature</p>
-                <div class="signature-line"></div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="signature-box">
-                <p class="text-center mb-2">Technician Signature (Sign after print)</p>
-                <div class="signature-line"></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      {{-- Footer --}}
-      <div class="modal-footer invoice-modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
-          <i class="fa-solid fa-xmark me-1"></i> Close
-        </button>
-        <a href="#" id="btnDownloadPdf" class="btn btn-success btn-sm d-none" target="_blank">
-          <i class="fa-solid fa-download me-1"></i> Download Invoice
-        </a>
-        <button type="button" class="btn btn-primary btn-sm" id="btnSaveInvoice">
-          <i class="fa-solid fa-save me-1"></i> Save & Download
-        </button>
-      </div>
-
     </div>
-  </div>
-</div>
 
     {{-- ═══════ END INVOICE MODAL ═══════ --}}
 
@@ -355,7 +359,8 @@
             padding-top: 5px;
         }
 
-        .form-control-sm, .form-select-sm {
+        .form-control-sm,
+        .form-select-sm {
             font-size: 13px;
         }
 
@@ -453,7 +458,7 @@
 
                             // Set invoice number
                             $('#modalInvoiceNumber').text(resp.invoice_number);
-                            
+
                             // Set date to today
                             var today = new Date().toISOString().split('T')[0];
                             $('#inv_date').val(today);
@@ -468,27 +473,28 @@
 
                             // Populate services (9 static services)
                             var staticServices = [
-                                { title: 'Carpet Cleaning' },
-                                { title: 'Rug Cleaning' },
-                                { title: 'Upholstery Cleaning' },
-                                { title: 'Mattress Cleaning' },
-                                { title: 'Tile & Grout Cleaning' },
-                                { title: 'Stain Removal' },
-                                { title: 'Odour Removal' },
-                                { title: 'Steam Cleaning' },
-                                { title: 'End of Lease Cleaning' }
+                                { id: 1, title: 'Carpet Cleaning' },
+                                { id: 2, title: 'Rug Cleaning' },
+                                { id: 3, title: 'Upholstery Cleaning' },
+                                { id: 4, title: 'Mattress Cleaning' },
+                                { id: 5, title: 'Tile & Grout Cleaning' },
+                                { id: 6, title: 'Stain Removal' },
+                                { id: 7, title: 'Odour Removal' },
+                                { id: 8, title: 'Steam Cleaning' },
+                                { id: 9, title: 'End of Lease Cleaning' }
                             ];
-                            
+
                             var servicesHtml = '';
-                            staticServices.forEach(function(service, index) {
+                            staticServices.forEach(function (service, index) {
                                 var apiService = resp.services && resp.services[index] ? resp.services[index] : {};
                                 var isChecked = apiService.is_selected ? 'checked' : '';
                                 var price = apiService.price || 0;
-                                
+                                var isDisabled = apiService.is_selected ? '' : 'disabled';
+
                                 servicesHtml += '<tr data-service-index="' + index + '">';
                                 servicesHtml += '<td class="text-center"><input type="checkbox" class="service-checkbox" data-index="' + index + '" ' + isChecked + '></td>';
                                 servicesHtml += '<td>' + service.title + '</td>';
-                                servicesHtml += '<td><input type="number" class="form-control form-control-sm service-price" data-index="' + index + '" value="' + price + '" min="0" step="0.01"></td>';
+                                servicesHtml += '<td><input type="number" class="form-control form-control-sm service-price" data-index="' + index + '" value="' + price + '" min="0" step="0.01" ' + isDisabled + '></td>';
                                 servicesHtml += '</tr>';
                             });
                             $('#services_tbody').html(servicesHtml);
@@ -509,22 +515,34 @@
                             // Set grand total
                             $('#inv_grand_total').val(resp.total || 0);
 
+                            // Toggle price input disabled state on checkbox change
+                            $(document).on('change', '.service-checkbox', function () {
+                                var index = $(this).data('index');
+                                var priceInput = $('.service-price[data-index="' + index + '"]');
+                                if ($(this).is(':checked')) {
+                                    priceInput.prop('disabled', false).focus();
+                                } else {
+                                    priceInput.prop('disabled', true).val(0);
+                                }
+                                calculateGrandTotal();
+                            });
+
                             // Calculate totals on input change
-                            $('.service-price, .service-checkbox').on('input change', function() {
+                            $('.service-price, .service-checkbox').on('input change', function () {
                                 calculateGrandTotal();
                             });
 
                             function calculateGrandTotal() {
                                 var grandTotal = 0;
-                                
-                                $('.service-checkbox').each(function() {
+
+                                $('.service-checkbox').each(function () {
                                     var index = $(this).data('index');
                                     if ($(this).is(':checked')) {
                                         var price = parseFloat($('.service-price[data-index="' + index + '"]').val()) || 0;
                                         grandTotal += price;
                                     }
                                 });
-                                
+
                                 $('#inv_grand_total').val(grandTotal.toFixed(2));
                             }
 
@@ -545,39 +563,39 @@
             });
 
             // ─ Save Invoice Button ──────────────────────────────────────
-            $('#btnSaveInvoice').on('click', function() {
+            $('#btnSaveInvoice').on('click', function () {
                 if (!currentQuoteId) {
                     alert('No quote selected');
                     return;
                 }
 
                 var staticServices = [
-                    { title: 'Carpet Cleaning' },
-                    { title: 'Rug Cleaning' },
-                    { title: 'Upholstery Cleaning' },
-                    { title: 'Mattress Cleaning' },
-                    { title: 'Tile & Grout Cleaning' },
-                    { title: 'Stain Removal' },
-                    { title: 'Odour Removal' },
-                    { title: 'Steam Cleaning' },
-                    { title: 'End of Lease Cleaning' }
+                    { id: 1, title: 'Carpet Cleaning' },
+                    { id: 2, title: 'Rug Cleaning' },
+                    { id: 3, title: 'Upholstery Cleaning' },
+                    { id: 4, title: 'Mattress Cleaning' },
+                    { id: 5, title: 'Tile & Grout Cleaning' },
+                    { id: 6, title: 'Stain Removal' },
+                    { id: 7, title: 'Odour Removal' },
+                    { id: 8, title: 'Steam Cleaning' },
+                    { id: 9, title: 'End of Lease Cleaning' }
                 ];
 
                 // Collect services data
                 var services = [];
                 var grandTotal = 0;
-                
-                $('.service-checkbox').each(function() {
+
+                $('.service-checkbox').each(function () {
                     var index = $(this).data('index');
                     var isChecked = $(this).is(':checked');
                     var price = parseFloat($('.service-price[data-index="' + index + '"]').val()) || 0;
-                    
+
                     if (isChecked) {
                         grandTotal += price;
                     }
-                    
+
                     services.push({
-                        service_id: null,
+                        service_id: staticServices[index] ? staticServices[index].id : 0,
                         title: staticServices[index] ? staticServices[index].title : '',
                         is_selected: isChecked,
                         price: price
@@ -591,7 +609,7 @@
                     time_spend: parseFloat($('#inv_total_hours').val()) || 0,
                     payment_method: $('input[name="payment_method"]:checked').val(),
                     grand_total: grandTotal,
-                    description: $('#inv_description').val(),
+                    technician_name: $('#inv_technician_name').val(),
                     services: services
                 };
 
@@ -612,27 +630,27 @@
                                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
                                 }
                             })
-                            .then(response => response.blob())
-                            .then(blob => {
-                                const url = window.URL.createObjectURL(blob);
-                                const a = document.createElement('a');
-                                a.href = url;
-                                a.download = resp.download_url.split('/').pop() || 'invoice.pdf';
-                                document.body.appendChild(a);
-                                a.click();
-                                window.URL.revokeObjectURL(url);
-                                document.body.removeChild(a);
-                                
-                                // Close modal after download
-                                var modal = bootstrap.Modal.getInstance(document.getElementById('invoiceModal'));
-                                modal.hide();
-                                
-                                $('#dvloader').hide();
-                            })
-                            .catch(err => {
-                                alert('Error downloading PDF. Please try again.');
-                                $('#dvloader').hide();
-                            });
+                                .then(response => response.blob())
+                                .then(blob => {
+                                    const url = window.URL.createObjectURL(blob);
+                                    const a = document.createElement('a');
+                                    a.href = url;
+                                    a.download = resp.download_url.split('/').pop() || 'invoice.pdf';
+                                    document.body.appendChild(a);
+                                    a.click();
+                                    window.URL.revokeObjectURL(url);
+                                    document.body.removeChild(a);
+
+                                    // Close modal after download
+                                    var modal = bootstrap.Modal.getInstance(document.getElementById('invoiceModal'));
+                                    modal.hide();
+
+                                    $('#dvloader').hide();
+                                })
+                                .catch(err => {
+                                    alert('Error downloading PDF. Please try again.');
+                                    $('#dvloader').hide();
+                                });
                         } else {
                             alert('Error saving invoice: ' + (resp.errors || 'Unknown error'));
                             $('#dvloader').hide();

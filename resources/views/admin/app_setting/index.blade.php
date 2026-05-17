@@ -67,11 +67,41 @@
                                                     placeholder="{{__('label.abn_number_here')}}">
                                             </div>
                                             <div class="form-group col-md-4">
+                                                <label> {{__('label.acn_number')}} <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="acn_number"
+                                                    value="{{ $result['acn_number'] ?? '' }}" class="form-control"
+                                                    placeholder="{{__('label.acn_number_here')}}">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label> {{__('label.bsb')}} <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="bsb"
+                                                    value="{{ $result['bsb'] ?? '' }}" class="form-control"
+                                                    placeholder="{{__('label.bsb_here')}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label> {{__('label.account_number')}} <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="account_number"
+                                                    value="{{ $result['account_number'] ?? '' }}" class="form-control"
+                                                    placeholder="{{__('label.account_number_here')}}">
+                                            </div>
+                                            <div class="form-group col-md-4">
                                                 <label> {{__('label.whatsapp_number')}} <span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" name="whatsapp_number"
                                                     value="{{ $result['whatsapp_number'] ?? '' }}" class="form-control"
                                                     placeholder="{{__('label.whatsapp_number_here')}}">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label> {{__('label.website')}} <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" name="website"
+                                                    value="{{ $result['website'] ?? '' }}" class="form-control"
+                                                    placeholder="{{__('label.website_here')}}">
                                             </div>
                                         </div>
                                         <div class="form-row">

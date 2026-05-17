@@ -299,24 +299,59 @@ class UserController extends Controller
                 2 => 'badge-completed',
             ];
 
-            // Get all services
-            $services = Service::where('status', 1)->get();
-            $servicesData = [];
+            // Static service IDs: 1-9
+            $staticServiceIds = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             
-            foreach ($services as $service) {
-                $is_selected = ($quote->service_id == $service->id) ? 1 : 0;
-                $price = $is_selected ? $quote->amount : 0;
+            // Map static IDs to service titles
+            $staticTitles = [
+                1 => 'Carpet Cleaning',
+                2 => 'Rug Cleaning',
+                3 => 'Upholstery Cleaning',
+                4 => 'Mattress Cleaning',
+                5 => 'Tile & Grout Cleaning',
+                6 => 'Stain Removal',
+                7 => 'Odour Removal',
+                8 => 'Steam Cleaning',
+                9 => 'End of Lease Cleaning',
+            ];
+            
+            // Check if invoice exists
+            $invoice = Invoice::where('quote_id', $id)->first();
+            
+            // Build map from saved invoice services by static ID
+            $savedMap = [];
+            if ($invoice && !empty($invoice->service_json)) {
+                $decoded = json_decode($invoice->service_json, true);
+                if (is_array($decoded)) {
+                    foreach ($decoded as $s) {
+                        $sid = (int)($s['service_id'] ?? 0);
+                        if ($sid > 0) {
+                            $savedMap[$sid] = [
+                                'selected' => filter_var($s['is_selected'] ?? false, FILTER_VALIDATE_BOOLEAN),
+                                'price' => (float)($s['price'] ?? 0),
+                            ];
+                        }
+                    }
+                }
+            }
+            
+            $servicesData = [];
+            foreach ($staticServiceIds as $staticId) {
+                if (isset($savedMap[$staticId])) {
+                    $isSelected = $savedMap[$staticId]['selected'] ? 1 : 0;
+                    $price = $savedMap[$staticId]['price'];
+                } else {
+                    $isSelected = 0;
+                    $price = 0;
+                }
                 
                 $servicesData[] = [
-                    'id' => $service->id,
-                    'title' => $service->title,
-                    'is_selected' => (int)$is_selected,
+                    'id' => $staticId,
+                    'title' => $staticTitles[$staticId],
+                    'is_selected' => (int)$isSelected,
                     'price' => (float)$price,
                 ];
             }
-
-            // Check if invoice exists
-            $invoice = Invoice::where('quote_id', $id)->first();
             
             $time_spend = '00:00:00';
             $payment_method = 'cash';
@@ -379,17 +414,17 @@ class UserController extends Controller
             // Get invoice data if exists
             $invoice = Invoice::where('quote_id', $id)->first();
             
-            $services = Service::where('status', 1)->get();
-            $servicesData = [];
+            // Static service IDs: 1-9
+            $staticServiceIds = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             
-            // Build map from saved invoice services
+            // Build map from saved invoice services by static ID
             $savedMap = [];
             if ($invoice && !empty($invoice->service_json)) {
                 $decoded = json_decode($invoice->service_json, true);
                 if (is_array($decoded)) {
                     foreach ($decoded as $s) {
-                        $sid = $s['service_id'] ?? $s['id'] ?? null;
-                        if ($sid !== null) {
+                        $sid = (int)($s['service_id'] ?? 0);
+                        if ($sid > 0) {
                             $savedMap[$sid] = [
                                 'selected' => filter_var($s['is_selected'] ?? false, FILTER_VALIDATE_BOOLEAN),
                                 'price' => (float)($s['price'] ?? 0),
@@ -399,22 +434,32 @@ class UserController extends Controller
                 }
             }
             
-            foreach ($services as $service) {
-                $sid = $service->id;
-                
-                if (isset($savedMap[$sid])) {
-                    // Use saved invoice data
-                    $isSelected = $savedMap[$sid]['selected'] ? 1 : 0;
-                    $price = $savedMap[$sid]['price'];
+            // Map static IDs to service titles
+            $staticTitles = [
+                1 => 'Carpet Cleaning',
+                2 => 'Rug Cleaning',
+                3 => 'Upholstery Cleaning',
+                4 => 'Mattress Cleaning',
+                5 => 'Tile & Grout Cleaning',
+                6 => 'Stain Removal',
+                7 => 'Odour Removal',
+                8 => 'Steam Cleaning',
+                9 => 'End of Lease Cleaning',
+            ];
+            
+            $servicesData = [];
+            foreach ($staticServiceIds as $staticId) {
+                if (isset($savedMap[$staticId])) {
+                    $isSelected = $savedMap[$staticId]['selected'] ? 1 : 0;
+                    $price = $savedMap[$staticId]['price'];
                 } else {
-                    // Fallback to quote data
-                    $isSelected = ($quote->service_id == $sid) ? 1 : 0;
-                    $price = $isSelected ? (float)$quote->amount : 0;
+                    $isSelected = 0;
+                    $price = 0;
                 }
                 
                 $servicesData[] = [
-                    'id' => $sid,
-                    'title' => $service->title,
+                    'id' => $staticId,
+                    'title' => $staticTitles[$staticId],
                     'is_selected' => $isSelected,
                     'price' => $price,
                 ];
@@ -491,7 +536,7 @@ class UserController extends Controller
                 $invoice->total = (float)$request->grand_total;
                 $invoice->payment_type = $payment_type;
                 $invoice->time_spend = $time_spend;
-                $invoice->description = $request->description ?? '';
+                $invoice->technician_name = $request->technician_name ?? '';
                 $invoice->save();
             } else {
                 // Create new invoice
@@ -502,7 +547,7 @@ class UserController extends Controller
                     'total' => (float)$request->grand_total,
                     'payment_type' => $payment_type,
                     'time_spend' => $time_spend,
-                    'description' => $request->description ?? '',
+                    'technician_name' => $request->technician_name ?? '',
                     'status' => 1,
                 ]);
             }
