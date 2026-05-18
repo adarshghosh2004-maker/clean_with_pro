@@ -275,7 +275,8 @@
       </td>
       <td width="28%" class="company-block">
         <h2>{{ Setting_Data()['company_name'] ?? '' }}</h2>
-        <p>ABN {{ Setting_Data()['abn_number'] ?? '' }} | ACN 681703275</p>
+        <p>ABN {{ Setting_Data()['abn_number'] ?? '' }}</p>
+        <p>ACN {{ Setting_Data()['acn_number'] ?? '' }}</p>
         <p>{{ Setting_Data()['address'] ?? '' }}</p>
         <div class="invoice-meta">
           <div><strong>Date:</strong> {{ $invoice_date }}</div>
@@ -304,7 +305,6 @@
           <p>{{ $invoice && $invoice->technician_name ? $invoice->technician_name : ($admin ? $admin->user_name : 'N/A') }}</p>
           <div style="margin-top:6px;">
             <div class="box-title">Bank Details</div>
-            <p><strong>S &amp; N MAINTENANCE PTY LTD</strong></p>
             <p>BSB : 013593 &nbsp;&nbsp; ACC : 805715126</p>
           </div>
         </div>
