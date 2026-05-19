@@ -20,7 +20,7 @@ class Invoice extends Model
         'technician_name' => 'string',
         'total' => 'string',
         'payment_type' => 'integer',
-        'time_spend' => 'string',
+        'description' => 'string',
         'status' => 'integer',
     ];
 

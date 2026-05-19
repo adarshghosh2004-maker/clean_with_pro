@@ -301,7 +301,7 @@ class UserController extends Controller
 
             // Static service IDs: 1-9
             $staticServiceIds = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            
+
             // Map static IDs to service titles
             $staticTitles = [
                 1 => 'Carpet Cleaning',
@@ -314,27 +314,27 @@ class UserController extends Controller
                 8 => 'Steam Cleaning',
                 9 => 'End of Lease Cleaning',
             ];
-            
+
             // Check if invoice exists
             $invoice = Invoice::where('quote_id', $id)->first();
-            
+
             // Build map from saved invoice services by static ID
             $savedMap = [];
             if ($invoice && !empty($invoice->service_json)) {
                 $decoded = json_decode($invoice->service_json, true);
                 if (is_array($decoded)) {
                     foreach ($decoded as $s) {
-                        $sid = (int)($s['service_id'] ?? 0);
+                        $sid = (int) ($s['service_id'] ?? 0);
                         if ($sid > 0) {
                             $savedMap[$sid] = [
                                 'selected' => filter_var($s['is_selected'] ?? false, FILTER_VALIDATE_BOOLEAN),
-                                'price' => (float)($s['price'] ?? 0),
+                                'price' => (float) ($s['price'] ?? 0),
                             ];
                         }
                     }
                 }
             }
-            
+
             $servicesData = [];
             foreach ($staticServiceIds as $staticId) {
                 if (isset($savedMap[$staticId])) {
@@ -344,28 +344,34 @@ class UserController extends Controller
                     $isSelected = 0;
                     $price = 0;
                 }
-                
+
                 $servicesData[] = [
                     'id' => $staticId,
                     'title' => $staticTitles[$staticId],
-                    'is_selected' => (int)$isSelected,
-                    'price' => (float)$price,
+                    'is_selected' => (int) $isSelected,
+                    'price' => (float) $price,
                 ];
             }
-            
+
             $time_spend = '00:00:00';
             $payment_method = 'cash';
             $total = 0;
-            
+
             if ($invoice) {
                 $time_spend = $invoice->time_spend;
-                $payment_method = $invoice->payment_type == 1 ? 'card' : 'cash';
+                if ($invoice->payment_type == 1) {
+                    $payment_method = 'card';
+                } elseif ($invoice->payment_type == 2) {
+                    $payment_method = 'Bank_Transfer';
+                } else {
+                    $payment_method = 'cash';
+                }
                 $total = $invoice->total;
             }
 
             return response()->json([
                 'status' => 200,
-                'invoice_number' => 'INV-' . str_pad($quote->id, 6, '0', STR_PAD_LEFT),
+                'invoice_number' => 'INV-' . str_pad($quote->id, 4, '0', STR_PAD_LEFT),
                 'invoice_date' => now()->format('d M Y'),
                 'due_date' => now()->addDays(30)->format('d M Y'),
                 'name' => $quote->name,
@@ -413,27 +419,27 @@ class UserController extends Controller
 
             // Get invoice data if exists
             $invoice = Invoice::where('quote_id', $id)->first();
-            
+
             // Static service IDs: 1-9
             $staticServiceIds = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            
+
             // Build map from saved invoice services by static ID
             $savedMap = [];
             if ($invoice && !empty($invoice->service_json)) {
                 $decoded = json_decode($invoice->service_json, true);
                 if (is_array($decoded)) {
                     foreach ($decoded as $s) {
-                        $sid = (int)($s['service_id'] ?? 0);
+                        $sid = (int) ($s['service_id'] ?? 0);
                         if ($sid > 0) {
                             $savedMap[$sid] = [
                                 'selected' => filter_var($s['is_selected'] ?? false, FILTER_VALIDATE_BOOLEAN),
-                                'price' => (float)($s['price'] ?? 0),
+                                'price' => (float) ($s['price'] ?? 0),
                             ];
                         }
                     }
                 }
             }
-            
+
             // Map static IDs to service titles
             $staticTitles = [
                 1 => 'Carpet Cleaning',
@@ -446,7 +452,7 @@ class UserController extends Controller
                 8 => 'Steam Cleaning',
                 9 => 'End of Lease Cleaning',
             ];
-            
+
             $servicesData = [];
             foreach ($staticServiceIds as $staticId) {
                 if (isset($savedMap[$staticId])) {
@@ -456,7 +462,7 @@ class UserController extends Controller
                     $isSelected = 0;
                     $price = 0;
                 }
-                
+
                 $servicesData[] = [
                     'id' => $staticId,
                     'title' => $staticTitles[$staticId],
@@ -466,7 +472,7 @@ class UserController extends Controller
             }
 
             $data = [
-                'invoice_number' => 'INV-' . str_pad($quote->id, 6, '0', STR_PAD_LEFT),
+                'invoice_number' => 'INV-' . str_pad($quote->id, 4, '0', STR_PAD_LEFT),
                 'invoice_date' => $invoice ? date('d M Y', strtotime($invoice->created_at)) : now()->format('d M Y'),
                 'due_date' => now()->addDays(30)->format('d M Y'),
                 'quote' => $quote,
@@ -498,7 +504,8 @@ class UserController extends Controller
                 'invoice_date' => 'required|date',
                 'grand_total' => 'required|numeric',
                 'time_spend' => 'required|numeric',
-                'payment_method' => 'required|in:cash,card',
+                // allow bank transfer option from frontend (value: Bank_Transfer)
+                'payment_method' => 'required|in:cash,card,Bank_Transfer',
                 'services' => 'required|array',
             ]);
 
@@ -507,33 +514,40 @@ class UserController extends Controller
             }
 
             $quote = User::where('id', $request->quote_id)->firstOrFail();
-            
+
             // Time spend is the total hours entered by admin
-            $time_spend = (string)$request->time_spend;
+            $time_spend = (string) $request->time_spend;
 
             // Prepare service JSON - ensure clean data
             $cleanServices = [];
             foreach ($request->services as $s) {
                 $cleanServices[] = [
-                    'service_id' => (int)($s['service_id'] ?? 0),
+                    'service_id' => (int) ($s['service_id'] ?? 0),
                     'title' => $s['title'] ?? '',
                     'is_selected' => filter_var($s['is_selected'] ?? false, FILTER_VALIDATE_BOOLEAN),
-                    'price' => (float)($s['price'] ?? 0),
+                    'price' => (float) ($s['price'] ?? 0),
                 ];
             }
             $service_json = json_encode($cleanServices);
 
-            // Payment type: 1 = card, 0 = cash
-            $payment_type = ($request->payment_method == 'card') ? 1 : 0;
+            // Payment type mapping:
+            // 1 = card, 0 = cash, 2 = bank transfer
+            if ($request->payment_method == 'card') {
+                $payment_type = 1;
+            } elseif ($request->payment_method == 'Bank_Transfer') {
+                $payment_type = 2;
+            } else {
+                $payment_type = 0;
+            }
 
             // Check if invoice already exists
             $invoice = Invoice::where('quote_id', $request->quote_id)->first();
 
             if ($invoice) {
                 // Update existing invoice
-                $invoice->invoice_id = 'INV-' . str_pad($quote->id, 6, '0', STR_PAD_LEFT);
+                $invoice->invoice_id = 'INV-' . str_pad($quote->id, 4, '0', STR_PAD_LEFT);
                 $invoice->service_json = $service_json;
-                $invoice->total = (float)$request->grand_total;
+                $invoice->total = (float) $request->grand_total;
                 $invoice->payment_type = $payment_type;
                 $invoice->time_spend = $time_spend;
                 $invoice->technician_name = $request->technician_name ?? '';
@@ -542,9 +556,9 @@ class UserController extends Controller
                 // Create new invoice
                 $invoice = Invoice::create([
                     'quote_id' => $request->quote_id,
-                    'invoice_id' => 'INV-' . str_pad($quote->id, 6, '0', STR_PAD_LEFT),
+                    'invoice_id' => 'INV-' . str_pad($quote->id, 4, '0', STR_PAD_LEFT),
                     'service_json' => $service_json,
-                    'total' => (float)$request->grand_total,
+                    'total' => (float) $request->grand_total,
                     'payment_type' => $payment_type,
                     'time_spend' => $time_spend,
                     'technician_name' => $request->technician_name ?? '',

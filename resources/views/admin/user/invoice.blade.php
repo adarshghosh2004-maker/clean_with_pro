@@ -47,12 +47,13 @@
     }
 
     .header-logo-cell img {
-      max-height: 60px;
-      max-width: 160px;
+      max-height: 80px;
+      max-width: 200px;
     }
 
     .contact-info {
-      font-size: 7px;
+      margin-bottom: -40px;
+      font-size: 8px;
       color: #444;
       line-height: 1.75;
     }
@@ -79,9 +80,15 @@
     }
 
     .invoice-meta {
-      margin-top: 4px;
       font-size: 7.5px;
       line-height: 1.75;
+    }
+
+    .invoice_size {
+      font-size: 13px;
+      line-height: 1.75;
+      color: #003366;
+      font-weight: bold;
     }
 
     /* ── BOX ── */
@@ -98,9 +105,13 @@
 
     .acknowledgement-box,
     .services-box {
-      height: 280px;
+      height: 225px;
     }
 
+    .payment-box,
+    .time-box {
+      height: 60px;
+    }
 
     .box-title {
       font-size: 6.5px;
@@ -271,6 +282,7 @@
       @endphp
         @if($logoData)
       <img src="{{ $logoData }}" alt="Company Logo">
+      <div class="invoice_size"><strong>Invoice:</strong> {{ $invoice_number }}</div>
     @endif
       </td>
       <td width="28%" class="company-block">
@@ -280,7 +292,6 @@
         <p>{{ Setting_Data()['address'] ?? '' }}</p>
         <div class="invoice-meta">
           <div><strong>Date:</strong> {{ $invoice_date }}</div>
-          <div><strong>Invoice:</strong> {{ $invoice_number }}</div>
         </div>
       </td>
     </tr>
@@ -295,17 +306,20 @@
           <p><strong>Name:</strong> {{ $quote->name }}</p>
           <p><strong>Address:</strong> {{ $quote->suburb ?? '-' }}</p>
           <p><strong>Ph:</strong> {{ $quote->phone ?? '-' }}</p>
-          <p><strong>Booking:</strong> {{ $quote->date ? \Carbon\Carbon::parse($quote->date)->format('d M Y') : '-' }}
+          <p><strong>Booking Data:</strong> {{ $quote->date ? \Carbon\Carbon::parse($quote->date)->format('d M Y') : '-' }}
           </p>
         </div>
       </td>
       <td width="50%" style="padding-left:4px;">
         <div class="box technician-box">
           <div class="box-title">Technician</div>
-          <p>{{ $invoice && $invoice->technician_name ? $invoice->technician_name : ($admin ? $admin->user_name : 'N/A') }}</p>
+          <p>
+            {{ $invoice && $invoice->technician_name ? $invoice->technician_name : ($admin ? $admin->user_name : 'N/A') }}
+          </p>
           <div style="margin-top:6px;">
             <div class="box-title">Bank Details</div>
-            <p>BSB : 013593 &nbsp;&nbsp; ACC : 805715126</p>
+            <p>S and N maintenance</p>
+            <p>BSB : 013593 &nbsp;&nbsp; <br>ACC : 805715126</p>
           </div>
         </div>
       </td>
@@ -338,15 +352,13 @@
             <tbody>
               @php
         $staticServices = [
-          ['id' => 1, 'title' => 'Carpet Cleaning'],
-          ['id' => 2, 'title' => 'Rug Cleaning'],
-          ['id' => 3, 'title' => 'Upholstery Cleaning'],
-          ['id' => 4, 'title' => 'Mattress Cleaning'],
-          ['id' => 5, 'title' => 'Tile & Grout Cleaning'],
-          ['id' => 6, 'title' => 'Stain Removal'],
-          ['id' => 7, 'title' => 'Odour Removal'],
-          ['id' => 8, 'title' => 'Steam Cleaning'],
-          ['id' => 9, 'title' => 'End of Lease Cleaning']
+          ['id' => 1, 'title' => 'Domestic Cleaning'],
+          ['id' => 2, 'title' => 'End of Lease Cleaning'],
+          ['id' => 3, 'title' => 'Carpet Cleaning'],
+          ['id' => 4, 'title' => 'Oven Cleaning'],
+          ['id' => 5, 'title' => 'Tile Grouting'],
+          ['id' => 6, 'title' => 'Mould Treatment'],
+          ['id' => 7, 'title' => 'Bathroom/Kitchen Cleaning '],
         ];
         $grandTotal = 0;
 
@@ -390,19 +402,21 @@
   <table class="section-table">
     <tr>
       <td width="50%" style="padding-right:4px;">
-        <div class="box">
+        <div class="box payment-box">
           <div class="box-title">Payment Method</div>
           <p style="font-size:9px; margin-top:2px;">
             @if($invoice && $invoice->payment_type == 1)
-        &#9744; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9745; CARD
+        &#9744; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9745; CARD &nbsp;&nbsp;&nbsp;&nbsp; &#9744; BANK TRANSFER
+      @elseif($invoice && $invoice->payment_type == 2)
+        &#9744; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9744; CARD &nbsp;&nbsp;&nbsp;&nbsp; &#9745; BANK TRANSFER
       @else
-        &#9745; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9744; CARD
+        &#9745; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9744; CARD &nbsp;&nbsp;&nbsp;&nbsp; &#9744; BANK TRANSFER
       @endif
           </p>
         </div>
       </td>
       <td width="50%" style="padding-left:4px;">
-        <div class="box">
+        <div class="box time-box">
           <div class="box-title">Time Spent</div>
           <p style="font-size:11px; font-weight:bold; color:#003366; margin-top:2px;">
             {{ $invoice ? $invoice->time_spend : '0' }} hrs

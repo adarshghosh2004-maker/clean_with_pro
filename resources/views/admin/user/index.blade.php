@@ -104,8 +104,8 @@
                                     <div class="mt-2">
                                         <strong id="company_phone_1">Ph.
                                             {{ Setting_Data()['contact'] ?? '0435811838' }}</strong><br>
-                                        <a href="{{ Setting_Data()['website'] ?? '' }}"
-                                            id="company_website" target="_blank">{{ Setting_Data()['website'] ?? '' }}</a><br>
+                                        <a href="{{ Setting_Data()['website'] ?? '' }}" id="company_website"
+                                            target="_blank">{{ Setting_Data()['website'] ?? '' }}</a><br>
                                         <a href="mailto:{{ Setting_Data()['email'] ?? '' }}"
                                             id="company_email">{{ Setting_Data()['email'] ?? ''}}</a>
                                     </div>
@@ -114,11 +114,14 @@
                             <div class="col-md-6 text-end">
                                 <div class="company-details-section">
                                     <h4 class="company-name-header" id="company_name">
-                                        {{ Setting_Data()['company_name'] ?? 'MAD ABOUT CLEANING' }}</h4>
+                                        {{ Setting_Data()['company_name'] ?? 'MAD ABOUT CLEANING' }}
+                                    </h4>
+                                    <p class="mb-1">S and N maintenance</p>
                                     <p class="mb-1" id="company_abn">ABN {{ Setting_Data()['abn_number'] ?? '' }}</p>
                                     <p class="mb-1" id="company_acn">ACN {{ Setting_Data()['acn_number'] ?? '' }}</p>
                                     <p class="mb-1" id="company_address">
-                                        {{ Setting_Data()['address'] ?? '' }}</p>
+                                        {{ Setting_Data()['address'] ?? '' }}
+                                    </p>
                                     <p class="mb-0">Date : <input type="date" id="inv_date"
                                             class="form-control d-inline-block" style="width: auto;"></p>
                                     <p class="mb-0">Invoice No: <span id="modalInvoiceNumber"></span></p>
@@ -162,7 +165,8 @@
 
                                     <h6 class="section-title mt-3">BANK DETAILS:</h6>
                                     <p class="mb-1">BSB:- <span id="bank_bsb">{{ Setting_Data()['bsb'] ?? ''}}</span></p>
-                                    <p class="mb-0">ACC:- <span id="bank_acc">{{ Setting_Data()['account_number'] ?? '' }}</span></p>
+                                    <p class="mb-0">ACC:- <span
+                                            id="bank_acc">{{ Setting_Data()['account_number'] ?? '' }}</span></p>
                                 </div>
                             </div>
                         </div>
@@ -177,8 +181,8 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 8%;">✓</th>
-                                            <th style="width: 62%;">Service</th>
-                                            <th style="width: 30%;">Price</th>
+                                            <th style="width: 60%;">Service</th>
+                                            <th style="width: 32%;">Price</th>
                                         </tr>
                                     </thead>
                                     <tbody id="services_tbody">
@@ -190,13 +194,13 @@
 
                         <hr>
 
-                        {{-- Total Hours & Payment Section --}}
+                        {{-- Description & Payment Section --}}
                         <div class="row mb-4">
                             <div class="col-md-4">
                                 <div class="info-box">
-                                    <h6 class="section-title">TIME SPEND (HOURS)</h6>
-                                    <input type="number" class="form-control form-control-sm" id="inv_total_hours" value="0"
-                                        min="0" step="0.5" placeholder="e.g. 2, 3, 2.5">
+                                    <h6 class="section-title">Given Services</h6>
+                                    <textarea class="form-control form-control-sm" id="inv_description" rows="3"
+                                        placeholder="Enter description..."></textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -211,6 +215,11 @@
                                         <input class="form-check-input" type="radio" name="payment_method" id="pay_card"
                                             value="card">
                                         <label class="form-check-label" for="pay_card">CARD</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment_method" id="pay_bank"
+                                            value="Bank_Transfer">
+                                        <label class="form-check-label" for="pay_bank">BANK TRANSFER</label>
                                     </div>
                                 </div>
                             </div>
@@ -474,15 +483,13 @@
 
                             // Populate services (9 static services)
                             var staticServices = [
-                                { id: 1, title: 'Carpet Cleaning' },
-                                { id: 2, title: 'Rug Cleaning' },
-                                { id: 3, title: 'Upholstery Cleaning' },
-                                { id: 4, title: 'Mattress Cleaning' },
-                                { id: 5, title: 'Tile & Grout Cleaning' },
-                                { id: 6, title: 'Stain Removal' },
-                                { id: 7, title: 'Odour Removal' },
-                                { id: 8, title: 'Steam Cleaning' },
-                                { id: 9, title: 'End of Lease Cleaning' }
+                                { id: 1, title: 'Domestic Cleaning' },
+                                { id: 2, title: 'End of Lease Cleaning' },
+                                { id: 3, title: 'Carpet Cleaning' },
+                                { id: 4, title: 'Oven Cleaning' },
+                                { id: 5, title: 'Tile Grouting' },
+                                { id: 6, title: 'Mould Treatment' },
+                                { id: 7, title: 'Bathroom/Kitchen Cleaning' },
                             ];
 
                             var servicesHtml = '';
@@ -509,6 +516,8 @@
                             // Set payment method
                             if (resp.payment_method == 'card') {
                                 $('#pay_card').prop('checked', true);
+                            } else if (resp.payment_method == 'Bank_Transfer') {
+                                $('#pay_bank').prop('checked', true);
                             } else {
                                 $('#pay_cash').prop('checked', true);
                             }
