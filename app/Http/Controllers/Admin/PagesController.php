@@ -40,7 +40,7 @@ class PagesController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function ($row) {
 
-                        $pages_delete = __('label.delete_pages');
+                        $pages_delete = __('label.delete_hero_image');
 
                         $delete = '<form onsubmit="return confirm(\'' . $pages_delete . '\');" method="POST" action="' . route('admin.pages.destroy', [$row->id]) . '">
                             <input type="hidden" name="_token" value="' . csrf_token() . '">
@@ -79,9 +79,9 @@ class PagesController extends Controller
 
             $data = pages::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($data->id)) {
-                return response()->json(['status' => 200, 'success' => __('label.success_add_page')]);
+                return response()->json(['status' => 200, 'success' => __('label.success_add_hero_image')]);
             } else {
-                return response()->json(['status' => 400, 'errors' => __('label.error_add_page')]);
+                return response()->json(['status' => 400, 'errors' => __('label.error_add_hero_image')]);
             }
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
@@ -108,9 +108,9 @@ class PagesController extends Controller
 
             $data = pages::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($data->id)) {
-                return response()->json(['status' => 200, 'success' => __('label.success_edit_page')]);
+                return response()->json(['status' => 200, 'success' => __('label.success_edit_hero_image')]);
             } else {
-                return response()->json(['status' => 400, 'errors' => __('label.error_edit_page')]);
+                return response()->json(['status' => 400, 'errors' => __('label.error_edit_hero_image')]);
             }
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
@@ -127,7 +127,7 @@ class PagesController extends Controller
                 $this->common->deleteImageToFolder($this->folder, $data['img_3']);
                 $data->delete();
             }
-            return redirect()->route('admin.pages.index')->with('success', __('label.page_delete'));
+            return redirect()->route('admin.pages.index')->with('success', __('label.hero_image_delete'));
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }
