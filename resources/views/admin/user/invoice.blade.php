@@ -306,7 +306,8 @@
           <p><strong>Name:</strong> {{ $quote->name }}</p>
           <p><strong>Address:</strong> {{ $quote->suburb ?? '-' }}</p>
           <p><strong>Ph:</strong> {{ $quote->phone ?? '-' }}</p>
-          <p><strong>Booking Data:</strong> {{ $quote->date ? \Carbon\Carbon::parse($quote->date)->format('d M Y') : '-' }}
+          <p><strong>Booking Data:</strong>
+            {{ $quote->date ? \Carbon\Carbon::parse($quote->date)->format('d M Y') : '-' }}
           </p>
         </div>
       </td>
@@ -367,23 +368,23 @@
         foreach ($services as $svc) {
           $serviceMap[$svc['id']] = $svc;
         }
-      @endphp
+        @endphp
               @foreach($staticServices as $index => $service)
-              @php
-            $staticId = $service['id'];
-            $matchedService = $serviceMap[$staticId] ?? null;
-            $val = $matchedService ? $matchedService['is_selected'] : 0;
-            $isChecked = ($val == 1 || $val === "1" || $val === true);
-            $price = (float) ($matchedService['price'] ?? 0);
-            if ($isChecked) {
-            $grandTotal += $price;
-            }
-          @endphp
-              <tr>
-              <td>@if($isChecked)<span class="checkbox">&#10003;</span>@else<span class="checkbox"></span>@endif</td>
-              <td>{{ $service['title'] }}</td>
-              <td>{{ $isChecked ? '$' . number_format($price, 2) : '' }}</td>
-              </tr>
+            @php
+          $staticId = $service['id'];
+          $matchedService = $serviceMap[$staticId] ?? null;
+          $val = $matchedService ? $matchedService['is_selected'] : 0;
+          $isChecked = ($val == 1 || $val === "1" || $val === true);
+          $price = (float) ($matchedService['price'] ?? 0);
+          if ($isChecked) {
+          $grandTotal += $price;
+          }
+        @endphp
+            <tr>
+            <td>@if($isChecked)<span class="checkbox">&#10003;</span>@else<span class="checkbox"></span>@endif</td>
+            <td>{{ $service['title'] }}</td>
+            <td>{{ $isChecked ? '$' . number_format($price, 2) : '' }}</td>
+            </tr>
         @endforeach
             </tbody>
             <tfoot>
@@ -453,7 +454,7 @@
 
   <!-- ══ FOOTER ══ -->
   <div class="footer">
-    <p>Thank you for choosing Mad About Cleaning</p>
+    <p>Thank you for choosing Clean With Professionals</p>
     <p>Generated: {{ now()->format('d M Y H:i') }}</p>
   </div>
 
