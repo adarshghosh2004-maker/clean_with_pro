@@ -274,6 +274,7 @@ return [
     'help' => 'Help',
     'logout' => 'Logout',
     'upload_file' => 'Select File',
+    'account' => 'Account',
 
     'videos' => "Videos",
     'requests' => "Requests",

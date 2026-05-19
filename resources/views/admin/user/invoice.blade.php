@@ -443,12 +443,10 @@
   <div class="conditions">
     <div class="box-title">Condition of Contract</div>
     <ol>
-      <li>Company means cleaner and agents.</li>
-      <li>Work carried out to highest standards.</li>
-      <li>Company not liable for shrinkage.</li>
-      <li>Colour fading cannot be restored.</li>
-      <li>Quotes by phone are estimates.</li>
-      <li>Complaints not accepted after 7 days.</li>
+      <li>Complaints must be reported within 7 days after service completion.</li>
+      <li>We are not responsible for any pre-existing damage or wear and tear.</li>
+      <li>Additional cleaning requested after completion may incur extra charges.</li>
+      <li>No complaints will be accepted if anyone enters the property after cleaning for maintenance or other work.</li>
     </ol>
   </div>
 

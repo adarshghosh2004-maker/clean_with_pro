@@ -274,6 +274,7 @@ return [
     'help' => 'Aide',
     'logout' => 'Déconnexion',
     'upload_file' => 'Sélectionner un fichier',
+    'account' => 'Compte',
 
     'videos' => "Vidéos",
     'requests' => "Demandes",

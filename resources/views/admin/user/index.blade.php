@@ -116,7 +116,7 @@
                                     <h4 class="company-name-header" id="company_name">
                                         {{ Setting_Data()['company_name'] ?? 'MAD ABOUT CLEANING' }}
                                     </h4>
-                                    <p class="mb-1">S and N maintenance</p>
+                                    <p class="mb-1">Clean With Pro</p>
                                     <p class="mb-1" id="company_abn">ABN {{ Setting_Data()['abn_number'] ?? '' }}</p>
                                     <p class="mb-1" id="company_acn">ACN {{ Setting_Data()['acn_number'] ?? '' }}</p>
                                     <p class="mb-1" id="company_address">

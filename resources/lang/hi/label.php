@@ -274,6 +274,7 @@ return [
     'help' => 'सहायता',
     'logout' => 'लॉगआउट',
     'upload_file' => 'फ़ाइल चुनें',
+    'account' => 'खाता',
 
     'videos' => "वीडियो",
     'requests' => "अनुरोध",

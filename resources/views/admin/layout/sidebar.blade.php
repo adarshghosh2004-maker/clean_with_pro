@@ -50,12 +50,6 @@
                 <span>{{__('label.quotes')}}</span>
             </a>
         </li>
-        <li class="side_line {{ request()->routeIs('admin.appsetting*') ? 'active' : '' }}">
-            <a href="{{ route('admin.appsetting.index') }}">
-                <i class="fa-solid fa-gear fa-2xl menu-icon"></i>
-                <span>{{__('label.app_settings')}}</span>
-            </a>
-        </li>
         <li class="side_line {{ request()->routeIs('admin.notification.*') ? 'active' : '' }}">
             <a href="{{ route('admin.notification.index') }}">
                 <i class="fa-solid fa-bell fa-2xl menu-icon"></i>
@@ -88,7 +82,7 @@
         </li>
         <li class="side_line {{ request()->routeIs('admin.pages*') ? 'active' : '' }}">
             <a href="{{ route('admin.pages.index') }}">
-                <i class="fa-solid fa-book-open fa-2xl menu-icon"></i>
+                <i class="fa-solid fa-image fa-2xl menu-icon"></i>
                 <span>{{__('label.hero_images')}}</span>
             </a>
         </li>
@@ -96,6 +90,12 @@
             <a href="{{ route('admin.page.index') }}">
                 <i class="fa-solid fa-book-open fa-2xl menu-icon"></i>
                 <span>{{__('label.pages')}}</span>
+            </a>
+        </li>
+        <li class="side_line {{ request()->routeIs('admin.appsetting*') ? 'active' : '' }}">
+            <a href="{{ route('admin.appsetting.index') }}">
+                <i class="fa-solid fa-gear fa-2xl menu-icon"></i>
+                <span>{{__('label.app_settings')}}</span>
             </a>
         </li>
         <p class="partition"><span>{{__('label.account')}}</span></p>
