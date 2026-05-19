@@ -73,7 +73,7 @@
         <!-- Floating Badge -->
         <div class="position-absolute bg-primary-blue text-white p-3 rounded shadow text-center"
         style="bottom: -20px; right: -20px;">
-        <h3 class="mb-0 fw-bold">15+</h3>
+        <h3 class="mb-0 fw-bold">6+</h3>
         <p class="small mb-0">Years Experience</p>
         </div>
       </div>
