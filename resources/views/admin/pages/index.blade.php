@@ -1,6 +1,6 @@
 @extends('admin.layout.page-app')
-@section('page_title', __('label.pages'))
-@section('tab_title', __('label.pages'))
+@section('page_title', __('label.hero_images'))
+@section('tab_title', __('label.hero_images'))
 
 @section('content')
     @include('admin.layout.sidebar')
@@ -10,14 +10,14 @@
 
         <div class="body-content">
             <!-- mobile title -->
-            <h1 class="page-title-sm">{{__('label.pages')}}</h1>
+            <h1 class="page-title-sm">{{__('label.hero_images')}}</h1>
 
             <div class="border-bottom row mb-3">
                 <div class="col-sm-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{__('label.dashboard')}}</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{__('label.pages')}}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('label.hero_images')}}</li>
                     </ol>
                 </div>
             </div>
@@ -87,6 +87,8 @@
                                                         </div>
                                                         <div class="avatar-preview">
                                                             <img src="" alt="upload_img.png" id="imagePreview">
+                                                            <label
+                                                                class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -145,8 +147,8 @@
                     searchable: false,
                     render: function (data, type, full, meta) {
                         return `<a href='${data}' target='_blank'>
-                                                                <img src='${data}' class='img-thumbnail size-55'>
-                                                            </a>`;
+                                                                            <img src='${data}' class='img-thumbnail size-55'>
+                                                                        </a>`;
                     },
                 },
                 {

@@ -101,7 +101,7 @@ class VideoController extends Controller
             $validator = Validator::make($request->all(), [
                 'service_id' => 'required',
                 'video' => 'required',
-                'image' => 'required|image|mimes:jpeg,jpg,png,webp',
+                'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -155,7 +155,7 @@ class VideoController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'service_id' => 'required',
-                'image' => 'image|mimes:jpeg,jpg,png,webp',
+                'image' => 'image|mimes:jpeg,jpg,png,webp|max:10240',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();

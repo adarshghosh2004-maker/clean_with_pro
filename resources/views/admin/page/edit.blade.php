@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <input type="hidden" name="old_icon" value="{{ $data['icon'] }}">
-                            <label class="mt-3 ml-5 text-gray">{{__('label.max_size_5mb')}}</label>
+                            <label class="mt-3 ml-5 text-gray">{{__('label.max_size_10mb')}}</label>
                         </div>
                     </div>
                 </div>

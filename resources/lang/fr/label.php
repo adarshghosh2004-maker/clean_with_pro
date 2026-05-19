@@ -41,7 +41,7 @@ return [
     'image_1' => 'Image 1',
     'image_2' => 'Image 2',
     'image_3' => 'Image 3',
-    'max_size_5mb' => 'Taille max : 5MB',
+    'max_size_10mb' => 'Taille max : 10MB',
     'edit_question' => 'Modifier la question',
     'question_list' => 'Liste des questions',
     'success_edit_password_change_successfully' => 'Question mise à jour avec succès',

@@ -1,5 +1,6 @@
 @extends('admin.layout.page-app')
 @section('page_title', __('label.quotes'))
+@section('tab_title', __('label.quotes'))
 
 @section('content')
     @include('admin.layout.sidebar')

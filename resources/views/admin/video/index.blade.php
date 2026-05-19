@@ -1,5 +1,6 @@
 @extends('admin.layout.page-app')
 @section('page_title', __('label.video'))
+@section('tab_title', __('label.video'))
 
 @section('content')
     @include('admin.layout.sidebar')

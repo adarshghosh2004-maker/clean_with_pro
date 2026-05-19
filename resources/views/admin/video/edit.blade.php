@@ -1,5 +1,6 @@
 @extends('admin.layout.page-app')
 @section('page_title', __('label.edit_video'))
+@section('tab_title', __('label.edit_video'))
 
 @section('content')
 	@include('admin.layout.sidebar')
@@ -88,8 +89,8 @@
 												</div>
 												<input type="hidden" name="video" id="mp3_file_name" class="form-control"
 													value="">
-												<a href="{{ $data->video }}" target="_blank"
-													class="btn-link ml-3 mb-3" id="oldFileList">{{ basename($data->video) }}</a>
+												<a href="{{ $data->video }}" target="_blank" class="btn-link ml-3 mb-3"
+													id="oldFileList">{{ basename($data->video) }}</a>
 												<input type="hidden" name="old_video" value="{{ $data->video }}">
 
 											</div>
@@ -108,6 +109,7 @@
 										</div>
 										<div class="avatar-preview">
 											<img src="{{ $data->image }}" alt="upload_img.png" id="imagePreview">
+											<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
 										</div>
 									</div>
 									<input type="hidden" name="old_image" value="{{ $data->image }}">

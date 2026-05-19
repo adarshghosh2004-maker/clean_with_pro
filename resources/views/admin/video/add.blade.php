@@ -1,5 +1,6 @@
 @extends('admin.layout.page-app')
 @section('page_title', __('label.add_video'))
+@section('tab_title', __('label.add_video'))
 
 @section('content')
     @include('admin.layout.sidebar')
@@ -101,6 +102,7 @@
                                     <div class="avatar-preview">
                                         <img src="{{asset('assets/imgs/upload_img.png')}}" alt="upload_img.png"
                                             id="imagePreview">
+                                        <label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
                                     </div>
                                 </div>
                             </div>

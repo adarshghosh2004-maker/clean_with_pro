@@ -41,7 +41,7 @@ return [
     'image_1' => 'इमेज 1',
     'image_2' => 'इमेज 2',
     'image_3' => 'इमेज 3',
-    'max_size_5mb' => 'अधिकतम आकार: 5MB',
+    'max_size_10mb' => 'अधिकतम आकार: 10MB',
     'edit_question' => 'प्रश्न संपादित करें',
     'question_list' => 'प्रश्न सूची',
     'success_edit_password_change_successfully' => 'प्रश्न सफलतापूर्वक अपडेट किया गया',

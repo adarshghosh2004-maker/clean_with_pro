@@ -62,9 +62,7 @@
                                                 </div>
                                                 <div class="avatar-preview">
                                                     <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview">
-                                                    <small class="text-muted text-center font-weight-bold"
-                                                        title="{{__('label.max_size_10mb')}}">Max size:
-                                                        10MB</small>
+                                                    <label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -80,6 +78,7 @@
                                                 </div>
                                                 <div class="avatar-preview">
                                                     <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview2">
+                                                    <label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -95,6 +94,7 @@
                                                 </div>
                                                 <div class="avatar-preview">
                                                     <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview3">
+                                                    <label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
                                                 </div>
                                             </div>
                                         </div>

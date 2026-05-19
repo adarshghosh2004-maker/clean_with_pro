@@ -1,5 +1,6 @@
 @extends('admin.layout.page-app')
 @section('page_title', __('label.edit_service'))
+@section('tab_title', __('label.edit_service'))
 
 @section('content')
 	@include('admin.layout.sidebar')
@@ -82,6 +83,7 @@
 										</div>
 										<div class="avatar-preview">
 											<img src="{{ $data->banner_img }}" alt="upload_img.png" id="imagePreview">
+											<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
 										</div>
 									</div>
 									<input type="hidden" name="old_banner_img" value="{{ $data->banner_img }}">
@@ -99,6 +101,7 @@
 										</div>
 										<div class="avatar-preview">
 											<img src="{{ $data->detail_img1 }}" alt="upload_img.png" id="imagePreview2">
+											<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
 										</div>
 									</div>
 									<input type="hidden" name="old_detail_img1" value="{{ $data->detail_img1 }}">
@@ -116,6 +119,7 @@
 										</div>
 										<div class="avatar-preview">
 											<img src="{{ $data->detail_img2 }}" alt="upload_img.png" id="imagePreview3">
+											<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
 										</div>
 									</div>
 									<input type="hidden" name="old_detail_img2" value="{{ $data->detail_img2 }}">

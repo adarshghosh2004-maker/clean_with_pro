@@ -67,7 +67,7 @@ class PagesController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'img' => 'required|image|mimes:jpeg,png,jpg,webp',
+                'img' => 'required|image|mimes:jpeg,png,jpg,webp|max:10240',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();
@@ -92,7 +92,7 @@ class PagesController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'img' => 'image|mimes:jpeg,png,jpg,webp',
+                'img' => 'image|mimes:jpeg,png,jpg,webp|max:10240',
             ]);
             if ($validator->fails()) {
                 $errs = $validator->errors()->all();

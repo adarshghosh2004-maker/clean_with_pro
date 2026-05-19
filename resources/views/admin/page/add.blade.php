@@ -66,7 +66,7 @@
                                     <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview">
                                 </div>
                             </div>
-                            <label class="mt-3 ml-5 text-gray">{{__('label.max_size_5mb')}}</label>
+                            <label class="mt-3 ml-5 text-gray">{{__('label.max_size_10mb')}}</label>
                         </div>
                     </div>
                 </div>
