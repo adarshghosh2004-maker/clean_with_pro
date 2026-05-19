@@ -417,21 +417,14 @@
       </td>
       <td width="50%" style="padding-left:4px;">
         <div class="box time-box">
-          <div class="box-title">Time Spent</div>
-          <p style="font-size:11px; font-weight:bold; color:#003366; margin-top:2px;">
-            {{ $invoice ? $invoice->time_spend : '0' }} hrs
+          <div class="box-title">Given Services</div>
+          <p style="font-size:8px; margin-top:2px;">
+            {{ $invoice ? $invoice->description : 'N/A' }}
           </p>
         </div>
       </td>
     </tr>
   </table>
-
-  @if($invoice && $invoice->description)
-    <div class="box" style="margin-bottom:6px;">
-    <div class="box-title">Description</div>
-    <p>{{ $invoice->description }}</p>
-    </div>
-  @endif
 
   <!-- ══ SIGNATURES ══ -->
   <table class="sig-table">

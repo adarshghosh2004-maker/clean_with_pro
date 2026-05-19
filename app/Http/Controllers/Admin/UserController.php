@@ -353,12 +353,12 @@ class UserController extends Controller
                 ];
             }
 
-            $time_spend = '00:00:00';
+            $description = '';
             $payment_method = 'cash';
             $total = 0;
 
             if ($invoice) {
-                $time_spend = $invoice->time_spend;
+                $description = $invoice->description;
                 if ($invoice->payment_type == 1) {
                     $payment_method = 'card';
                 } elseif ($invoice->payment_type == 2) {
@@ -390,7 +390,7 @@ class UserController extends Controller
                 'download_url' => route('admin.user.invoice.download', $quote->id),
                 'technician_name' => $admin ? $admin->user_name : 'N/A',
                 'services' => $servicesData,
-                'time_spend' => $time_spend,
+                'description' => $description,
                 'payment_method' => $payment_method,
                 'total' => $total,
             ]);
@@ -503,8 +503,7 @@ class UserController extends Controller
                 'quote_id' => 'required|integer',
                 'invoice_date' => 'required|date',
                 'grand_total' => 'required|numeric',
-                'time_spend' => 'required|numeric',
-                // allow bank transfer option from frontend (value: Bank_Transfer)
+                'description' => 'nullable|string',
                 'payment_method' => 'required|in:cash,card,Bank_Transfer',
                 'services' => 'required|array',
             ]);
@@ -515,8 +514,8 @@ class UserController extends Controller
 
             $quote = User::where('id', $request->quote_id)->firstOrFail();
 
-            // Time spend is the total hours entered by admin
-            $time_spend = (string) $request->time_spend;
+            // Description for given services
+            $description = (string) $request->description;
 
             // Prepare service JSON - ensure clean data
             $cleanServices = [];
@@ -549,7 +548,7 @@ class UserController extends Controller
                 $invoice->service_json = $service_json;
                 $invoice->total = (float) $request->grand_total;
                 $invoice->payment_type = $payment_type;
-                $invoice->time_spend = $time_spend;
+                $invoice->description = $description;
                 $invoice->technician_name = $request->technician_name ?? '';
                 $invoice->save();
             } else {
@@ -560,7 +559,7 @@ class UserController extends Controller
                     'service_json' => $service_json,
                     'total' => (float) $request->grand_total,
                     'payment_type' => $payment_type,
-                    'time_spend' => $time_spend,
+                    'description' => $description,
                     'technician_name' => $request->technician_name ?? '',
                     'status' => 1,
                 ]);

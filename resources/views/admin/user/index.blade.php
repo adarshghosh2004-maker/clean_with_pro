@@ -510,8 +510,8 @@
                             // Set booking date
                             $('#inv_booking_date').val(resp.booking_date || '-');
 
-                            // Set total hours (time_spend)
-                            $('#inv_total_hours').val(resp.time_spend || 0);
+                            // Set description (given services)
+                            $('#inv_description').val(resp.description || '');
 
                             // Set payment method
                             if (resp.payment_method == 'card') {
@@ -616,7 +616,7 @@
                 var invoiceData = {
                     quote_id: currentQuoteId,
                     invoice_date: $('#inv_date').val(),
-                    time_spend: parseFloat($('#inv_total_hours').val()) || 0,
+                    description: $('#inv_description').val() || '',
                     payment_method: $('input[name="payment_method"]:checked').val(),
                     grand_total: grandTotal,
                     technician_name: $('#inv_technician_name').val(),
