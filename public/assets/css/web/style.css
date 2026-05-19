@@ -505,6 +505,9 @@ h6,
     .btn-primary-blue{
         font-size: 12px;
     }
+}
+
+@media (max-width: 767px) {
     .dropdown-button {
         display: flex;
     }
@@ -512,7 +515,6 @@ h6,
         display: none;
     }
 
-    /* Mobile dropdown: inline expand, no pushing */
     .nav-item.dropdown .dropdown-menu-custom {
         position: relative !important;
         transform: none !important;
@@ -536,7 +538,8 @@ h6,
 
     .nav-item.dropdown.mobile-open .dropdown-menu-custom {
         display: block;
-        max-height: 600px;
+        max-height: 250px;
+        overflow-y: auto;
         padding: 0.75rem !important;
     }
 
@@ -564,7 +567,6 @@ h6,
         transform: translateX(3px);
     }
 
-    /* Dropdown toggle indicator on mobile */
     .nav-item.dropdown .dropdown-toggle::after {
         display: none;
     }

@@ -282,7 +282,7 @@
             window.addEventListener('load', updateHeaderHeight);
 
             // ── Mobile dropdown navigation ──
-            const isMobile = () => window.innerWidth < 992;
+            const isMobile = () => window.innerWidth < 768;
             const dropdowns = document.querySelectorAll('.nav-item.dropdown');
 
             dropdowns.forEach(dropdown => {
