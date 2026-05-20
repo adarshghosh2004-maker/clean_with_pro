@@ -218,7 +218,7 @@
         <div class="container text-center">
             <h2 class="display-5 fw-bold text-primary mb-5" data-anim="fade-up">How We Restore Your Home</h2>
             <div class="row g-4 mt-4 position-relative">
-                <div class="process-line d-none d-lg-block"></div>
+                <div class="process-line d-none d-md-block"></div>
                 <div class="col" data-anim="fade-up" data-anim-delay="100">
                     <div class="step-item">
                         <div class="step-number-circle mx-auto mb-3">1</div>
@@ -257,8 +257,6 @@
             </div>
         </div>
     </section>
-
-
 
     <!-- Section 10: Ready to Book? -->
     <section class="section-padding bg-primary text-white text-center position-relative overflow-hidden"
