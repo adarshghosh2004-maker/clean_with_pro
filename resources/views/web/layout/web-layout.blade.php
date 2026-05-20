@@ -355,7 +355,7 @@
                 e.preventDefault();
                 e.stopPropagation();
 
-                const dropdown = iconBtn.closest('.dropdown-button');
+                const dropdown = iconBtn.closest('.nav-item.dropdown');
                 if (!dropdown) return;
 
                 const wasOpen = dropdown.classList.contains('mobile-open');
