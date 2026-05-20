@@ -68,8 +68,8 @@ Route::get('/pricing', function () {
 })->name('pricing');
 
 Route::get('/feedback', function () {
-    return view('web.feedback2');
-})->name('feedback2');
+    return view('web.feedback');
+})->name('feedback');
 
 Route::resource('quote', WebController::class)->only('store');
 Route::get('gallery', [WebController::class, 'gallery'])->name('gallery');
