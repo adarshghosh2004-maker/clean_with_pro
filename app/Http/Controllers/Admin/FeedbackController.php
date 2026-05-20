@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Common;
-use App\Models\Feature;
 use App\Models\Feedback;
 use Cache;
 use Illuminate\Http\Request;
@@ -24,7 +23,6 @@ class FeedbackController extends Controller
         try {
 
             $params['data'] = Feedback::latest()->get();
-            $params['features'] = Feature::latest()->get();
             if ($request->ajax()) {
 
                 $query = Feedback::query();
