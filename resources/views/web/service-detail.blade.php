@@ -8,17 +8,17 @@
         <section class="hero-section">
             <img src="{{ $service['banner_img'] }}" alt="{{ $service['title'] ?? '' }}" class="hero-img">
             <div class="container">
-                  @php
-      $middleWord = getMiddleWord($service['title']);
-      @endphp
-      <h1>
-        {!! str_replace(
-      $middleWord,
-      '<span class="surface-container-lowest">' . $middleWord . '</span>',
-      $service['title']
-      ) !!}
-      </h1>
-                <p>{{ $service['short_title'] ?? ''}}</p>
+                @php
+                    $middleWord = getMiddleWord($service['title']);
+                @endphp
+                <h1 class="service-hero-title">
+                    {!! str_replace(
+                        $middleWord,
+                        '<span class="surface-container-lowest">' . $middleWord . '</span>',
+                        $service['title']
+                    ) !!}
+                </h1>
+                <p>{{ $service['short_title'] ?? '' }}</p>
                 <div class="d-flex justify-content-center gap-3">
                     <a href="#EditModel" data-bs-toggle="modal" data-id="{{ $service['id'] ?? '' }}"
                         class="btn btn-secondary px-4 py-3">BOOK NOW</a>

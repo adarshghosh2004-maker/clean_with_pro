@@ -1530,13 +1530,26 @@ h6,
     }
 
     .hero-section h1 {
-        font-size: clamp(1.75rem, 7vw, 2.5rem);
-        line-height: 1.15;
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+        line-height: 1.2;
+        padding: 0 0.75rem;
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+        max-width: 100%;
+        word-break: break-word;
+        white-space: normal;
     }
 
     .hero-section p {
-        font-size: clamp(0.9rem, 3.5vw, 1rem);
+        font-size: clamp(0.85rem, 3.5vw, 1rem);
         margin-bottom: 1.5rem;
+        padding: 0 0.75rem;
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
+        max-width: 100%;
+        word-break: break-word;
+        white-space: normal;
     }
 
     .hero-section .btn {
@@ -1550,7 +1563,55 @@ h6,
      }
 
     .hero-section .container {
-        padding: 0 1rem;
+        padding: 0 0.75rem;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .hero-section {
+        overflow-x: hidden;
+    }
+
+    #heroSlider {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .slide-item {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .hero-slider {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .hero-section h1,
+    .hero-section p,
+    .hero-section .container,
+    .hero-section .btn {
+        max-width: 100vw;
+    }
+
+    body, html {
+        overflow-x: hidden;
+    }
+
+    .hero-section .container > * {
+        max-width: 100%;
+    }
+
+    .hero-section h1 span {
+        display: inline;
+        word-break: break-word;
+    }
+
+    .hero-section h1,
+    .hero-section p {
+        display: block;
+        width: 100%;
     }
 
     .showcase-img {
@@ -5062,6 +5123,12 @@ h6,
         font-size: 1.5rem;
     }
 
+    .service-hero-title {
+        font-size: clamp(1.4rem, 5vw, 1.8rem) !important;
+        line-height: 1.2;
+        padding: 0 0.75rem;
+    }
+
     .headline{
         font-size: 15px !important;
     }
@@ -5146,6 +5213,11 @@ h6,
         font-size: 1.35rem;
     }
 
+    .service-hero-title {
+        font-size: clamp(1.25rem, 5.5vw, 1.5rem) !important;
+        line-height: 1.25;
+    }
+
     .hero-section .container {
         padding: 0 0.75rem;
     }
@@ -5158,6 +5230,11 @@ h6,
 @media (max-width: 320px) {
     .hero-section h1 {
         font-size: 1.25rem;
+    }
+
+    .service-hero-title {
+        font-size: clamp(1.15rem, 6vw, 1.35rem) !important;
+        line-height: 1.3;
     }
 
     .hero-section p {
@@ -5560,6 +5637,65 @@ h6,
     .haq-grid {
         padding: 0 0.5rem;
     }
+
+    .haq-hero {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .haq-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .haq-description {
+        font-size: 0.85rem;
+        padding: 0 0.25rem;
+    }
+
+    .contact-card {
+        padding: 0.85rem;
+        gap: 0.75rem;
+        border-radius: 14px;
+    }
+
+    .contact-card .icon-box {
+        min-width: 42px;
+        min-height: 42px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+    }
+
+    .contact-card h3 {
+        font-size: 0.88rem;
+    }
+
+    .contact-card p {
+        font-size: 0.78rem;
+    }
+
+    .contact-value {
+        font-size: 0.85rem;
+    }
+
+    .haq-visual {
+        min-height: 180px;
+    }
+
+    .main-img-bg {
+        border-radius: 14px;
+    }
+
+    .floating-card {
+        width: 70px;
+    }
+
+    .floating-card img {
+        height: 55px;
+    }
+
+    .floating-card.card-bottom {
+        width: 85px;
+    }
 }
 
 .haq-left,
@@ -5748,80 +5884,102 @@ h6,
         gap: 1.8rem;
     }
 
+    .haq-hero {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
     .haq-content {
         gap: 1rem;
     }
 
     .haq-content h1 {
-        font-size: 2rem;
-        line-height: 1.15;
-        margin-bottom: 0.6rem;
+        font-size: 1.75rem;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+        text-align: center;
     }
 
     .haq-description {
-        font-size: 0.9rem;
-        line-height: 1.6;
+        font-size: 0.88rem;
+        line-height: 1.65;
         margin-bottom: 1rem;
+        text-align: center;
+        padding: 0 0.5rem;
     }
 
     .contact-card {
-        padding: 0.8rem 1rem;
-        gap: 0.8rem;
+        padding: 1rem;
+        gap: 0.9rem;
         border-radius: 16px;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.9rem;
+        flex-direction: row;
+        align-items: flex-start;
     }
 
     .contact-card .icon-box {
-        min-width: 44px;
-        min-height: 44px;
-        border-radius: 12px;
-        font-size: 0.95rem;
+        min-width: 48px;
+        min-height: 48px;
+        border-radius: 14px;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    .contact-card .card-info {
+        flex: 1;
+        min-width: 0;
+        padding: 0;
     }
 
     .contact-card h3 {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         margin-bottom: 0.2rem;
+        line-height: 1.3;
     }
 
     .contact-card p {
-        font-size: 0.82rem;
-        margin-bottom: 0.35rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+        line-height: 1.4;
     }
 
     .contact-value {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
+        word-break: break-word;
+        display: block;
     }
 
     .haq-visual {
-        min-height: 240px;
+        min-height: 220px;
+        margin-top: 1rem;
     }
 
     .main-img-bg {
         max-width: 100%;
         border-radius: 16px;
-        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+        box-shadow: 0 15px 40px rgba(15, 23, 42, 0.1);
     }
 
     .floating-card {
-        width: 95px;
+        width: 85px;
         border-radius: 12px;
     }
 
     .floating-card img {
-        height: 75px;
+        height: 65px;
     }
 
     .floating-card.card-top {
-        top: -4%;
-        left: 3%;
+        top: -3%;
+        left: 5%;
         right: auto;
         transform: rotate(-3deg);
     }
 
     .floating-card.card-bottom {
-        width: 110px;
-        bottom: -4%;
-        right: 3%;
+        width: 100px;
+        bottom: -3%;
+        right: 5%;
         left: auto;
         transform: rotate(3deg);
     }
@@ -6124,7 +6282,13 @@ h6,
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 30, 51, 0.6);
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 30, 51, 0.75) 0%,
+        rgba(0, 30, 51, 0.6) 50%,
+        rgba(0, 30, 51, 0.75) 100%
+    );
+    z-index: 1;
 }
 .hero-section .container {
     position: relative;
@@ -6151,8 +6315,16 @@ h6,
     line-height: 1.1;
     max-width: 850px;
     margin: 0 auto 1.5rem auto;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.3);
     animation: heroTextReveal 0.9s 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+    letter-spacing: -0.02em;
+}
+
+.service-hero-title {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    padding: 0 0.5rem;
 }
 
 .hero-section h1 span,
@@ -6164,8 +6336,10 @@ h6,
     font-size: clamp(1rem, 2vw, 1.2rem);
     max-width: 850px;
     margin: 0 auto 2.5rem auto;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     line-height: 1.6;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    font-weight: 500;
     animation: fadeInUp 0.8s 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
