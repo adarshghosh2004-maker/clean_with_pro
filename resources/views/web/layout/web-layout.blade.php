@@ -408,6 +408,14 @@
                 }
             });
 
+            // ── Close menu when clicking "Get A Quote" ─
+            document.addEventListener('click', (e) => {
+                const quoteBtn = e.target.closest('[data-close-mobile-menu]');
+                if (quoteBtn && isMobile()) {
+                    toggleMobileMenu(false);
+                }
+            });
+
             // ── Close on Escape ──
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && isMobile() && navbarCollapse?.classList.contains('show')) {

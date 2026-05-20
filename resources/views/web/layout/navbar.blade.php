@@ -97,7 +97,7 @@
                     </li>
                 </ul>
                 <div class="navbar-cta-wrapper d-flex align-items-center">
-                    <a href="#EditModel" data-bs-toggle="modal"
+                    <a href="#EditModel" data-bs-toggle="modal" data-close-mobile-menu
                         class="btn btn-secondary px-4 py-2 rounded-pill fw-bold shadow-sm transition-all hover-translate-y">Get
                         A Quote</a>
                 </div>
