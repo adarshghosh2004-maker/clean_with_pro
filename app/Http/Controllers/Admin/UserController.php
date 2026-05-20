@@ -48,7 +48,10 @@ class UserController extends Controller
                         $q->where('name', 'LIKE', "%{$input_search}%")
                             ->orWhere('email', 'LIKE', "%{$input_search}%")
                             ->orWhere('phone', 'LIKE', "%{$input_search}%")
-                            ->orWhere('suburb', 'LIKE', "%{$input_search}%");
+                            ->orWhere('suburb', 'LIKE', "%{$input_search}%")
+                            ->orWhereHas('service', function ($sq) use ($input_search) {
+                                $sq->where('title', 'LIKE', "%{$input_search}%");
+                            });
                     });
                 }
 

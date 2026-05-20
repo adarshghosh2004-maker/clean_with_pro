@@ -34,7 +34,11 @@ class ServiceController extends Controller
                 $query = Service::query();
 
                 if (!empty($input_search)) {
-                    $query->where('name', 'LIKE', "%{$input_search}%");
+                    $query->where(function($q) use ($input_search) {
+                        $q->where('title', 'LIKE', "%{$input_search}%")
+                          ->orWhere('short_title', 'LIKE', "%{$input_search}%")
+                          ->orWhere('description', 'LIKE', "%{$input_search}%");
+                    });
                 }
 
                 $data = $query->orderBy('id', 'desc')->get();

@@ -29,8 +29,8 @@ class PagesController extends Controller
 
                 $query = pages::query();
                 $input_search = $request['input_search'];
-                if ($input_search != null) {
-                    $query = pages::where('name', 'LIKE', "%{$input_search}%");
+                if (!empty($input_search)) {
+                    $query->where('name', 'LIKE', "%{$input_search}%");
                 }
                 $data = $query->latest()->get();
 

@@ -30,7 +30,11 @@ class QuestionController extends Controller
                 $query = Question::with('service');
                 $input_search = $request['input_search'];
                 if ($input_search != null) {
-                    $query = Question::where('name', 'LIKE', "%{$input_search}%");
+                    $query->where(function($q) use ($input_search) {
+                        $q->whereHas('service', function($sq) use ($input_search) {
+                            $sq->where('title', 'LIKE', "%{$input_search}%");
+                        })->orWhere('description', 'LIKE', "%{$input_search}%");
+                    });
                 }
                 $data = $query->latest()->get();
 

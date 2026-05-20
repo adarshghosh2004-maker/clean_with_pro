@@ -29,11 +29,16 @@ class PageController extends Controller
             if ($request->ajax()) {
 
                 $input_search = $request['input_search'];
-                if ($input_search != null && isset($input_search)) {
-                    $data = Page::where('title', 'LIKE', "%{$input_search}%")->latest()->get();
-                } else {
-                    $data = Page::get();
+                $query = Page::query();
+
+                if (!empty($input_search)) {
+                    $query->where(function($q) use ($input_search) {
+                        $q->where('title', 'LIKE', "%{$input_search}%")
+                          ->orWhere('description', 'LIKE', "%{$input_search}%");
+                    });
                 }
+
+                $data = $query->latest()->get();
 
                 $this->common->imageNameToUrl($data, 'icon', $this->folder);
 

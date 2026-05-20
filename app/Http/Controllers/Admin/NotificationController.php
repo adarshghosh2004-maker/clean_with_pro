@@ -25,12 +25,16 @@ class NotificationController extends Controller
             $params['data'] = [];
             if ($request->ajax()) {
 
-                $input_search = $request['input_search'];
-                if ($input_search != null && isset($input_search)) {
-                    $data = Notification::where('title', 'LIKE', "%{$input_search}%")->where('type', 1)->latest()->get();
-                } else {
-                    $data = Notification::where('type', 1)->latest()->get();
+                $query = Notification::where('type', 1);
+
+                if (!empty($input_search)) {
+                    $query->where(function($q) use ($input_search) {
+                        $q->where('title', 'LIKE', "%{$input_search}%")
+                          ->orWhere('message', 'LIKE', "%{$input_search}%");
+                    });
                 }
+
+                $data = $query->latest()->get();
 
              foreach ($data as $notification) {
                     $notification['image'] = $this->common->getImage($this->folder, $notification['image']);
