@@ -588,16 +588,18 @@ h6,
     #navbarNav .nav-item {
         width: 100%;
         border-bottom: 2px solid var(--border-light);
+        margin-bottom: 6px;
     }
 
     #navbarNav .nav-item:last-child {
         border-bottom: none;
+        margin-bottom: 0;
     }
 
     #navbarNav .nav-link {
-        margin: 0;
+        margin: 4px 0;
         padding: 0.85rem 1rem;
-        border-radius: 10px;
+        border-radius: 8px;
         font-size: 0.95rem;
         font-weight: 500;
         color: var(--text-dark);
@@ -617,6 +619,7 @@ h6,
         background: rgba(0, 75, 135, 0.08);
         color: var(--primary-blue) !important;
         font-weight: 600;
+        margin: 6px 0;
     }
 
     /* Suppress desktop hover dropdown on mobile */
@@ -641,7 +644,7 @@ h6,
 
     .dropdown-button > .nav-link.dropdown-toggle {
         flex: 1;
-        border-radius: 10px 0 0 10px;
+        border-radius: 8px 0 0 8px;
     }
 
     .dropdown-button > .nav-link.dropdown-toggle::after {
@@ -659,9 +662,10 @@ h6,
         background: transparent;
         color: var(--text-dark);
         cursor: pointer;
-        border-radius: 0 10px 10px 0;
+        border-radius: 0 8px 8px 0;
         transition: background 0.2s ease, color 0.2s ease;
         flex-shrink: 0;
+        margin: 8px 0;
     }
 
     .dropdown-button .dropdown-toggle-icon:hover {
