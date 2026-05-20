@@ -4239,6 +4239,7 @@ h6,
 @media (max-width: 992px) {
     .s2-features-grid {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 
     .s2-features-images {
@@ -4248,18 +4249,50 @@ h6,
     .s2-img-1,
     .s2-img-2 {
         width: 100%;
-        height: 320px;
+        height: 280px;
         margin-top: 0;
     }
 }
 
 @media (max-width: 640px) {
     .s2-features {
-        padding: 80px 0;
+        padding: 60px 0;
+    }
+
+    .s2-features-grid {
+        gap: 2rem;
+    }
+
+    .s2-features-text {
+        gap: 1rem;
     }
 
     .s2-features-text h2 {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .s2-features-text p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .eyebrow-label {
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .s2-features-images {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .s2-img-1,
+    .s2-img-2 {
+        width: 100%;
+        height: 220px;
+        border-radius: 16px;
+        margin-top: 0;
     }
 
     .s2-feature-item {
@@ -4366,10 +4399,17 @@ h6,
         grid-template-columns: 1fr;
     }
     .featured-img {
-        min-height: 300px;
+        min-height: 250px;
     }
     .featured-info {
-        padding: 40px;
+        padding: 30px 20px;
+    }
+    .featured-info h2 {
+        font-size: 24px;
+        word-break: break-word;
+    }
+    .featured-info p {
+        font-size: 15px;
     }
 }
 
@@ -5662,13 +5702,30 @@ h6,
 @media (max-width: 992px) {
     .haq-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
         padding: 0 1rem;
     }
 
     .haq-left,
     .haq-right {
         align-items: center;
+    }
+
+    .haq-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .haq-description {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-card {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .haq-visual {
@@ -5683,53 +5740,88 @@ h6,
     .floating-card img {
         height: 120px;
     }
- 
 }
 
 @media (max-width: 640px) {
     .haq-grid {
         padding: 0 0.75rem;
-        gap: 1.5rem;
+        gap: 1.8rem;
+    }
+
+    .haq-content {
+        gap: 1rem;
+    }
+
+    .haq-content h1 {
+        font-size: 2rem;
+        line-height: 1.15;
+        margin-bottom: 0.6rem;
     }
 
     .haq-description {
-        max-width: 100%;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .contact-card {
+        padding: 0.8rem 1rem;
+        gap: 0.8rem;
+        border-radius: 16px;
+        margin-bottom: 0.8rem;
     }
 
     .contact-card .icon-box {
-        min-width: 48px;
-        min-height: 48px;
+        min-width: 44px;
+        min-height: 44px;
+        border-radius: 12px;
+        font-size: 0.95rem;
+    }
+
+    .contact-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .contact-card p {
+        font-size: 0.82rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .contact-value {
+        font-size: 0.9rem;
     }
 
     .haq-visual {
-        min-height: 280px;
+        min-height: 240px;
     }
 
     .main-img-bg {
         max-width: 100%;
-        border-radius: 20px;
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
     }
 
     .floating-card {
-        width: 110px;
-        border-radius: 16px;
+        width: 95px;
+        border-radius: 12px;
     }
 
     .floating-card img {
-        height: 90px;
+        height: 75px;
     }
 
     .floating-card.card-top {
-        top: -5%;
-        left: 5%;
+        top: -4%;
+        left: 3%;
         right: auto;
         transform: rotate(-3deg);
     }
 
     .floating-card.card-bottom {
-        width: 130px;
-        bottom: -5%;
-        right: 5%;
+        width: 110px;
+        bottom: -4%;
+        right: 3%;
         left: auto;
         transform: rotate(3deg);
     }
