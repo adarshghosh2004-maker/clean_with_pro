@@ -131,9 +131,9 @@
             <p class="text-muted mx-auto mb-5" style="max-width: 600px;" data-anim="fade-up" data-anim-delay="100">Every
                 corner of your home deserves a fresh start. Explore our specialized maintenance services.</p>
 
-            <div class="row g-4 text-start">
-                <div class="col-md-3" data-anim="fade-up" data-anim-delay="100">
-                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
+            <div class="row g-4 text-center">
+                <div class="col-12 col-md-6 col-lg-3" data-anim="fade-up" data-anim-delay="100">
+                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm">
                         <div class="solution-icon mb-4">
                             <span class="material-symbols-outlined fs-1 text-secondary">grid_view</span>
                         </div>
@@ -142,8 +142,8 @@
                             restore natural shine.</p>
                     </div>
                 </div>
-                <div class="col-md-3" data-anim="fade-up" data-anim-delay="200">
-                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
+                <div class="col-12 col-md-6 col-lg-3" data-anim="fade-up" data-anim-delay="200">
+                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm">
                         <div class="solution-icon mb-4">
                             <span class="material-symbols-outlined fs-1 text-secondary">workspace_premium</span>
                         </div>
@@ -152,8 +152,8 @@
                             cracking and restore suppleness.</p>
                     </div>
                 </div>
-                <div class="col-md-3" data-anim="fade-up" data-anim-delay="300">
-                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
+                <div class="col-12 col-md-6 col-lg-3" data-anim="fade-up" data-anim-delay="300">
+                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm">
                         <div class="solution-icon mb-4">
                             <span class="material-symbols-outlined fs-1 text-secondary">wash</span>
                         </div>
@@ -162,8 +162,8 @@
                             fibers and tribal rugs.</p>
                     </div>
                 </div>
-                <div class="col-md-3" data-anim="fade-up" data-anim-delay="400">
-                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm border-top border-4 border-secondary">
+                <div class="col-12 col-md-6 col-lg-3" data-anim="fade-up" data-anim-delay="400">
+                    <div class="solution-card h-100 p-4 bg-white rounded-4 shadow-sm">
                         <div class="solution-icon mb-4">
                             <span class="material-symbols-outlined fs-1 text-secondary">medical_services</span>
                         </div>
