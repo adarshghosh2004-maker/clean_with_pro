@@ -30,51 +30,39 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-4">
                 <div class="category-item text-center" data-anim="zoom-in" data-anim-delay="100">
                     <div class="category-icon-circle">
-                        <i class="fa-solid fa-rug fa-xl"></i>
+                        <i class="fa-solid fa-clipboard-check fa-xl"></i>
                     </div>
-                    <p class="small fw-bold mt-2 mb-0">CARPET</p>
+                    <p class="small fw-bold mt-2 mb-0">End of lease</p>
                 </div>
                 <div class="category-item text-center" data-anim="zoom-in" data-anim-delay="150">
                     <div class="category-icon-circle">
-                        <i class="fa-solid fa-couch fa-xl"></i>
+                        <i class="fa-solid fa-broom fa-xl"></i>
                     </div>
-                    <p class="small fw-bold mt-2 mb-0">SOFA</p>
+                    <p class="small fw-bold mt-2 mb-0">General cleaning</p>
                 </div>
                 <div class="category-item text-center" data-anim="zoom-in" data-anim-delay="200">
                     <div class="category-icon-circle">
-                        <i class="fa-solid fa-mattress-pillow fa-xl"></i>
+                        <i class="fa-solid fa-sink fa-xl"></i>
                     </div>
-                    <p class="small fw-bold mt-2 mb-0">MATTRESS</p>
+                    <p class="small fw-bold mt-2 mb-0">Kitchen cleaning</p>
                 </div>
                 <div class="category-item text-center" data-anim="zoom-in" data-anim-delay="250">
                     <div class="category-icon-circle">
-                        <i class="fa-solid fa-rug fa-xl"></i>
+                        <i class="fa-solid fa-bath fa-xl"></i>
                     </div>
-                    <p class="small fw-bold mt-2 mb-0">RUGS</p>
+                    <p class="small fw-bold mt-2 mb-0">Bathroom cleaning</p>
                 </div>
                 <div class="category-item text-center" data-anim="zoom-in" data-anim-delay="300">
                     <div class="category-icon-circle">
-                        <i class="fa-solid fa-kitchen-set fa-xl"></i>
+                        <i class="fa-solid fa-fire-burner fa-xl"></i>
                     </div>
-                    <p class="small fw-bold mt-2 mb-0">COMMERCIAL</p>
+                    <p class="small fw-bold mt-2 mb-0">Oven cleaning</p>
                 </div>
                 <div class="category-item text-center" data-anim="zoom-in" data-anim-delay="350">
                     <div class="category-icon-circle">
-                        <i class="fa-solid fa-file-lines fa-xl"></i>
+                        <i class="fa-solid fa-rug fa-xl"></i>
                     </div>
-                    <p class="small fw-bold mt-2 mb-0">CURTAINS</p>
-                </div>
-                <div class="category-item text-center" data-anim="zoom-in" data-anim-delay="350">
-                    <div class="category-icon-circle">
-                        <i class="fa-solid fa-lines-leaning fa-xl"></i>
-                    </div>
-                    <p class="small fw-bold mt-2 mb-0">TILE</p>
-                </div>
-                <div class="category-item text-center" data-anim="zoom-in" data-anim-delay="450">
-                    <div class="category-icon-circle">
-                        <i class="fa-solid fa-hand-sparkles fa-xl"></i>
-                    </div>
-                    <p class="small fw-bold mt-2 mb-0">HYGIENE</p>
+                    <p class="small fw-bold mt-2 mb-0">Carpet cleaning</p>
                 </div>
             </div>
         </div>
