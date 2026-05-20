@@ -588,7 +588,6 @@ h6,
     #navbarNav .nav-item {
         width: 100%;
         border-bottom: 2px solid var(--border-light);
-        margin-bottom: 6px;
     }
 
     #navbarNav .nav-item:last-child {
