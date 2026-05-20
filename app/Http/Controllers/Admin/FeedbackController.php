@@ -28,7 +28,12 @@ class FeedbackController extends Controller
                 $query = Feedback::query();
                 $input_search = $request['input_search'];
                 if ($input_search != null) {
-                    $query = Feedback::where('name', 'LIKE', "%{$input_search}%");
+                    $query->where(function($q) use ($input_search) {
+                        $q->where('name', 'LIKE', "%{$input_search}%")
+                          ->orWhere('email', 'LIKE', "%{$input_search}%")
+                          ->orWhere('mobile_no', 'LIKE', "%{$input_search}%")
+                          ->orWhere('area_name', 'LIKE', "%{$input_search}%");
+                    });
                 }
                 $data = $query->latest()->get();
 
