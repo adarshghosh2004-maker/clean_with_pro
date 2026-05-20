@@ -2516,9 +2516,10 @@ h6,
 
 .process-line {
     position: absolute;
-    top: 28px;
-    left: calc(10% + 28px);
-    right: calc(10% + 28px);
+    top: 25px;
+    left: 10%;
+    right: 10%;
+    width: 80%;
     height: 2px;
     background: repeating-linear-gradient(
         to right,
@@ -2528,6 +2529,24 @@ h6,
         transparent 20px
     );
     z-index: 0;
+}
+
+@media (min-width: 768px) {
+    .process-line {
+        top: 25px;
+        left: calc(10% + 25px);
+        right: calc(10% + 25px);
+        width: calc(80% - 50px);
+    }
+}
+
+@media (min-width: 1024px) {
+    .process-line {
+        top: 25px;
+        left: calc(10% + 25px);
+        right: calc(10% + 25px);
+        width: calc(80% - 50px);
+    }
 }
 
 .hover-translate-y:hover {
