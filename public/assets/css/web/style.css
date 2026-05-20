@@ -260,7 +260,7 @@ h6,
     position: sticky;
     top: 0;
     min-height: auto;
-    z-index: 1050;
+    z-index: 1065;
     box-shadow: var(--shadow-md);
 }
 
