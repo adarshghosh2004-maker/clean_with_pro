@@ -281,87 +281,150 @@
             // Re-measure after fonts/images load
             window.addEventListener('load', updateHeaderHeight);
 
-            // ── Mobile dropdown navigation ──
-            const isMobile = () => window.innerWidth < 768;
-            const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+            // ── Mobile Navigation ──
+            const isMobile = () => window.innerWidth < 992;
+            const header = document.querySelector('.header-main');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.getElementById('navbarNav');
+            const dropdowns = [...document.querySelectorAll('.nav-item.dropdown')];
+            let scrollPosition = 0;
 
-            dropdowns.forEach(dropdown => {
-                const toggle = dropdown.querySelector('.dropdown-toggle');
-                const menu = dropdown.querySelector('.dropdown-menu');
-                const iconBtn = dropdown.querySelector('.dropdown-toggle-icon');
+            // ── Mobile offcanvas toggle ──
+            function toggleMobileMenu(forceState) {
+                if (!navbarCollapse || !navbarToggler || !header) return;
 
-                if (!toggle || !menu) return;
+                const isOpen = forceState !== undefined ? forceState : !navbarCollapse.classList.contains('show');
 
-                // Text link always navigates (default behavior)
-                // Only intercept on mobile to prevent navigation when clicking text
-                // But we want text to navigate, icon to toggle dropdown
+                navbarCollapse.classList.toggle('show', isOpen);
+                navbarToggler.classList.toggle('active', isOpen);
+                navbarToggler.setAttribute('aria-expanded', isOpen);
 
-                // Icon button toggles dropdown
-                if (iconBtn) {
-                    iconBtn.addEventListener('click', (e) => {
-                        if (!isMobile()) return;
-                        e.preventDefault();
-                        e.stopPropagation();
+                // Backdrop management
+                let backdrop = document.querySelector('.navbar-backdrop');
+                if (isOpen) {
+                    scrollPosition = window.scrollY;
+                    document.body.classList.add('mobile-menu-open');
+                    document.body.style.top = `-${scrollPosition}px`;
 
-                        const isOpen = dropdown.classList.contains('mobile-open');
+                    if (!backdrop) {
+                        backdrop = document.createElement('div');
+                        backdrop.className = 'navbar-backdrop';
+                        document.body.appendChild(backdrop);
+                        backdrop.addEventListener('click', () => toggleMobileMenu(false), { once: true });
+                    }
+                    backdrop.classList.add('active');
+                } else {
+                    document.body.classList.remove('mobile-menu-open');
+                    document.body.style.top = '';
+                    window.scrollTo(0, scrollPosition);
+                    scrollPosition = 0;
 
-                        // Close all other dropdowns
-                        dropdowns.forEach(d => {
-                            if (d !== dropdown) {
-                                d.classList.remove('mobile-open');
-                                const otherIcon = d.querySelector('.dropdown-toggle-icon');
-                                if (otherIcon) otherIcon.setAttribute('aria-expanded', 'false');
+                    if (backdrop) {
+                        backdrop.classList.remove('active');
+                        backdrop.addEventListener('transitionend', () => {
+                            if (backdrop && backdrop.parentNode) backdrop.remove();
+                        }, { once: true });
+                    }
+
+                    // Close all open dropdowns
+                    dropdowns.forEach(d => {
+                        d.classList.remove('mobile-open');
+                        const icon = d.querySelector('.dropdown-toggle-icon');
+                        if (icon) icon.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            }
+
+            // ── Hamburger click ──
+            navbarToggler?.addEventListener('click', (e) => {
+                if (!isMobile()) return;
+                e.preventDefault();
+                toggleMobileMenu();
+            });
+
+            // ── Close button (inside offcanvas) ──
+            const closeBtn = document.querySelector('[data-nav-close]');
+            closeBtn?.addEventListener('click', () => {
+                if (isMobile()) toggleMobileMenu(false);
+            });
+
+            // ── Mobile dropdown accordion (delegated) ──
+            navbarCollapse?.addEventListener('click', (e) => {
+                const iconBtn = e.target.closest('.dropdown-toggle-icon');
+                if (!iconBtn || !isMobile()) return;
+                e.preventDefault();
+                e.stopPropagation();
+
+                const dropdown = iconBtn.closest('.dropdown-button');
+                if (!dropdown) return;
+
+                const wasOpen = dropdown.classList.contains('mobile-open');
+
+                // Close all other dropdowns
+                dropdowns.forEach(d => {
+                    d.classList.remove('mobile-open');
+                    const otherIcon = d.querySelector('.dropdown-toggle-icon');
+                    if (otherIcon) otherIcon.setAttribute('aria-expanded', 'false');
+                });
+
+                // Toggle current
+                dropdown.classList.toggle('mobile-open', !wasOpen);
+                iconBtn.setAttribute('aria-expanded', !wasOpen);
+
+                // ── Dynamic sizing & scroll on open ──
+                if (!wasOpen && navbarCollapse) {
+                    const dropdownMenu = dropdown.querySelector('.dropdown-menu-custom');
+                    if (dropdownMenu) {
+                        requestAnimationFrame(() => {
+                            const panelRect = navbarCollapse.getBoundingClientRect();
+                            const ddRect = dropdown.getBoundingClientRect();
+                            const spaceBelow = panelRect.bottom - ddRect.top - 16;
+                            const capped = Math.min(spaceBelow * 0.65, window.innerHeight * 0.4);
+                            dropdownMenu.style.setProperty('--dropdown-max-height', Math.max(100, Math.round(capped)) + 'px');
+                        });
+                    }
+
+                    // Auto-scroll to keep dropdown visible
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            const panelBottom = navbarCollapse.getBoundingClientRect().bottom;
+                            const ddBottom = dropdown.getBoundingClientRect().bottom;
+                            if (ddBottom > panelBottom - 10) {
+                                navbarCollapse.scrollBy({
+                                    top: ddBottom - panelBottom + 16,
+                                    behavior: 'smooth'
+                                });
                             }
                         });
-
-                        // Toggle current
-                        dropdown.classList.toggle('mobile-open', !isOpen);
-                        iconBtn.setAttribute('aria-expanded', !isOpen);
-                    });
-                }
-
-                // Text link on mobile: navigate, don't toggle dropdown
-                toggle.addEventListener('click', (e) => {
-                    if (!isMobile()) return;
-                    // Allow default navigation - do NOT toggle dropdown
-                });
-            });
-
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!isMobile()) return;
-                if (!e.target.closest('.nav-item.dropdown')) {
-                    dropdowns.forEach(d => {
-                        d.classList.remove('mobile-open');
-                        const icon = d.querySelector('.dropdown-toggle-icon');
-                        if (icon) icon.setAttribute('aria-expanded', 'false');
                     });
                 }
             });
 
-            // Close dropdowns on nav link click (non-toggle)
-            document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (!isMobile()) return;
-                    dropdowns.forEach(d => {
-                        d.classList.remove('mobile-open');
-                        const icon = d.querySelector('.dropdown-toggle-icon');
-                        if (icon) icon.setAttribute('aria-expanded', 'false');
-                    });
-                });
+            // ── Close menu when tapping a nav link (delegated) ──
+            navbarCollapse?.addEventListener('click', (e) => {
+                const link = e.target.closest('.navbar-nav .nav-link:not(.dropdown-toggle)');
+                if (link && isMobile()) {
+                    setTimeout(() => toggleMobileMenu(false), 250);
+                }
             });
 
-            // Close dropdowns when navbar collapses
-            const navbarCollapse = document.getElementById('navbarNav');
-            if (navbarCollapse) {
-                navbarCollapse.addEventListener('hidden.bs.collapse', () => {
-                    dropdowns.forEach(d => {
-                        d.classList.remove('mobile-open');
-                        const icon = d.querySelector('.dropdown-toggle-icon');
-                        if (icon) icon.setAttribute('aria-expanded', 'false');
-                    });
+            // ── Close on Escape ──
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMobile() && navbarCollapse?.classList.contains('show')) {
+                    toggleMobileMenu(false);
+                }
+            });
+
+            // ── Close on resize to desktop ──
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                cancelAnimationFrame(resizeTimer);
+                resizeTimer = requestAnimationFrame(() => {
+                    if (window.innerWidth >= 992 && navbarCollapse?.classList.contains('show')) {
+                        toggleMobileMenu(false);
+                    }
                 });
-            }
+            }, { passive: true });
 
             // ── Animation observer with robust fallback ──
             const animElements = document.querySelectorAll('.anim-trigger, [data-anim]');

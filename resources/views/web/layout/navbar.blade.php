@@ -28,13 +28,22 @@
                     class="m-0 fs-4 fw-bold text-primary-blue headline">{{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}</span>
             </a>
 
-            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            <button class="navbar-toggler border-0 shadow-none" type="button"
+                aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"><span></span></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav" data-mobile-nav>
+                <!-- Mobile close button (visible only inside offcanvas) -->
+                <button class="navbar-close-btn" type="button" aria-label="Close navigation" data-nav-close>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}"
@@ -59,11 +68,11 @@
                         <button class="dropdown-toggle-icon" type="button" aria-label="Toggle services dropdown"
                             aria-expanded="false">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
                         </button>
-                        <div class="dropdown-menu mega-menu dropdown-menu-custom shadow-lg"
+                        <div class="dropdown-menu mega-menu dropdown-menu-custom"
                             aria-labelledby="servicesDropdown">
                             <div class="dropdown-grid">
                                 @foreach ($services as $value)
@@ -87,7 +96,7 @@
                             href="<?php echo route('contact'); ?>">Contact Us</a>
                     </li>
                 </ul>
-                <div class="d-flex align-items-center mt-3 mt-lg-0">
+                <div class="navbar-cta-wrapper d-flex align-items-center">
                     <a href="#EditModel" data-bs-toggle="modal"
                         class="btn btn-secondary px-4 py-2 rounded-pill fw-bold shadow-sm transition-all hover-translate-y">Get
                         A Quote</a>
