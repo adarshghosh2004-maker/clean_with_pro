@@ -234,8 +234,12 @@
                     <li class="mb-2"><a href="<?php echo route('gallery'); ?>">Gallery</a></li>
                     <li class="mb-2"><a href="<?php echo route('pricing'); ?>">Pricing</a></li>
                     <li class="mb-2"><a href="<?php echo route('contact'); ?>">Contact Us</a></li>
-                    <li class="mb-2"><a href="#">Privacy Policy</a></li>
-                    <li class="mb-2"><a href="#">Terms & Conditions</a></li>
+                    @php
+                        $activePages = \App\Models\Page::where('status', 1)->get();
+                    @endphp
+                    @foreach($activePages as $activePage)
+                        <li class="mb-2"><a href="{{ route('page.view', $activePage->title) }}">{{ $activePage->title }}</a></li>
+                    @endforeach
                 </ul>
             </div>
 
