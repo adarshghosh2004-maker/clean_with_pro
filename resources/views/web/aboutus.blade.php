@@ -193,8 +193,8 @@
                 <!-- Member 1 -->
                 <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
                     <div class="team-member-card">
-                        <div class="team-initials">CP</div>
-                        <h4 class="fw-bold mb-1">Charmy Patel</h4>
+                        <div class="team-initials">RL</div>
+                        <h4 class="fw-bold mb-1">Rose Latchman</h4>
                         <p class="text-secondary fw-semibold mb-3">Founder &amp; Director</p>
                         <p class="text-muted small mb-0">"My goal is to bring five-star hotel standards to every home in
                             Melbourne."</p>
@@ -203,8 +203,8 @@
                 <!-- Member 2 -->
                 <div class="col-md-4" data-anim="fade-up" data-anim-delay="200">
                     <div class="team-member-card">
-                        <div class="team-initials">RP</div>
-                        <h4 class="fw-bold mb-1">Rajveer Patel</h4>
+                        <div class="team-initials">EL</div>
+                        <h4 class="fw-bold mb-1">Edward Latchman</h4>
                         <p class="text-secondary fw-semibold mb-3">Operations Manager</p>
                         <p class="text-muted small mb-0">"I ensure our cleaners are as dedicated to your home's health
                             as we are."</p>

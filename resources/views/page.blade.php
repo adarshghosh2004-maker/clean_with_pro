@@ -2,6 +2,8 @@
 
     <head>
         <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="{{ asset('assets/imgs/CWPss.PNG') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
         <title>{{ $result->title }} | {{ app_name() }}</title>
 
         <style type="text/css">
