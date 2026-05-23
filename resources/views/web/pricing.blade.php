@@ -700,10 +700,6 @@
                             <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
-                            <span class="mobile-row-text">Extensive Tidy Up</span>
-                            <span class="mobile-row-icon cross">✕</span>
-                        </div>
-                        <div class="mobile-row">
                             <span class="mobile-row-text">Cobweb Removal</span>
                             <span class="mobile-row-icon check">✓</span>
                         </div>
@@ -714,10 +710,6 @@
                         <div class="mobile-row">
                             <span class="mobile-row-text">Dust Skirting/Window Sills/Doors</span>
                             <span class="mobile-row-icon check">✓</span>
-                        </div>
-                        <div class="mobile-row">
-                            <span class="mobile-row-text">Wipe Skirting/Window Sills/Doors</span>
-                            <span class="mobile-row-icon cross">✕</span>
                         </div>
                         <div class="mobile-row">
                             <span class="mobile-row-text">Dust/Clean Doors</span>
@@ -740,22 +732,92 @@
                             <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
-                            <span class="mobile-row-text">Vacuum Soft Furnishing</span>
-                            <span class="mobile-row-icon cross">✕</span>
+                            <span class="mobile-row-text">Vacuum Under Furniture</span>
+                            <span class="mobile-row-icon check">✓</span>
                         </div>
-                    </div>
-
-                    <div class="mobile-legend">
-                        <div class="mobile-legend-icon">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="#0d9488">
-                                <circle cx="10" cy="10" r="9" fill="none" stroke="#0d9488" stroke-width="1.5" />
-                                <text x="10" y="14" text-anchor="middle" font-size="12" font-weight="bold"
-                                    fill="#0d9488">i</text>
-                            </svg>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Stovetop</span>
+                            <span class="mobile-row-icon check">✓</span>
                         </div>
-                        <div class="mobile-legend-text">
-                            <p>Green check (✓) = Included</p>
-                            <p>Gray cross (✕) = Not included</p>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Rangehood Exterior</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Benchtops</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Appliances (Exterior)</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Splashback</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Polish Tapware</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Sink</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Microwave Inside/Out</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Cupboard Exteriors</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Polish Stainless Steel</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Dust All Surfaces</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Bath</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Shower</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Sink</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Benches</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Mirrors</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Polish Chrome</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Cupboard Exteriors</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Empty Bins</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Toilet</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Inside Drawers</span>
+                            <span class="mobile-row-icon check">✓</span>
                         </div>
                     </div>
                 </div>
@@ -833,10 +895,6 @@
                             <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
-                            <span class="mobile-row-text">Vacuum Soft Furnishing</span>
-                            <span class="mobile-row-icon cross">✕</span>
-                        </div>
-                        <div class="mobile-row">
                             <span class="mobile-row-text">Vacuum Under Furniture</span>
                             <span class="mobile-row-icon check">✓</span>
                         </div>
@@ -848,19 +906,93 @@
                             <span class="mobile-row-text">Clean Window Tracks</span>
                             <span class="mobile-row-icon check">✓</span>
                         </div>
-                    </div>
-
-                    <div class="mobile-legend">
-                        <div class="mobile-legend-icon">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="#0d9488">
-                                <circle cx="10" cy="10" r="9" fill="none" stroke="#0d9488" stroke-width="1.5" />
-                                <text x="10" y="14" text-anchor="middle" font-size="12" font-weight="bold"
-                                    fill="#0d9488">i</text>
-                            </svg>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Stovetop</span>
+                            <span class="mobile-row-icon check">✓</span>
                         </div>
-                        <div class="mobile-legend-text">
-                            <p>Green check (✓) = Included</p>
-                            <p>Gray cross (✕) = Not included</p>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Rangehood Exterior</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Benchtops</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Appliances (Exterior)</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Splashback</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Polish Tapware</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Sink</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Microwave Inside/Out</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Cupboard Exteriors</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Polish Stainless Steel</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Dust All Surfaces</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Bath</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Shower</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Sink</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Benches</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Mirrors</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Polish Chrome</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Cupboard Exteriors</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Empty Bins</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Toilet</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Shower Grout</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Inside Drawers</span>
+                            <span class="mobile-row-icon check">✓</span>
                         </div>
                     </div>
                 </div>
@@ -896,10 +1028,6 @@
                         <div class="mobile-row">
                             <span class="mobile-row-text">Light Tidy Up</span>
                             <span class="mobile-row-icon check">✓</span>
-                        </div>
-                        <div class="mobile-row">
-                            <span class="mobile-row-text">Extensive Tidy Up</span>
-                            <span class="mobile-row-icon cross">✕</span>
                         </div>
                         <div class="mobile-row">
                             <span class="mobile-row-text">Cobweb Removal</span>
@@ -938,11 +1066,23 @@
                             <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
-                            <span class="mobile-row-text">Vacuum Soft Furnishing</span>
-                            <span class="mobile-row-icon cross">✕</span>
+                            <span class="mobile-row-text">Vacuum Under Furniture</span>
+                            <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
-                            <span class="mobile-row-text">Vacuum Under Furniture</span>
+                            <span class="mobile-row-text">Dust Blinds</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Window Tracks</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Stovetop</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Rangehood Exterior</span>
                             <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
@@ -954,15 +1094,39 @@
                             <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
-                            <span class="mobile-row-text">Scrub Shower Grout</span>
+                            <span class="mobile-row-text">Wipe Benchtops</span>
                             <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
-                            <span class="mobile-row-text">Clean Ceiling Exhaust Fan</span>
+                            <span class="mobile-row-text">Clean Appliances (Exterior)</span>
                             <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
-                            <span class="mobile-row-text">Inside Drawers/Cabinets</span>
+                            <span class="mobile-row-text">Clean Splashback</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Polish Tapware</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Sink</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Microwave Inside/Out</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Cupboard Exteriors</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Polish Stainless Steel</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Dust All Surfaces</span>
                             <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
@@ -978,22 +1142,60 @@
                             <span class="mobile-row-icon check">✓</span>
                         </div>
                         <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Bath</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Shower</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Sink</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Benches</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Mirrors</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Polish Chrome</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Wipe Cupboard Exteriors</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Empty Bins</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Toilet</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Scrub Shower Grout</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Ceiling Exhaust Fan</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Inside Drawers/Cabinets</span>
+                            <span class="mobile-row-icon check">✓</span>
+                        </div>
+                        <div class="mobile-row">
                             <span class="mobile-row-text">Dust/Wipe All Surfaces</span>
                             <span class="mobile-row-icon check">✓</span>
                         </div>
-                    </div>
-
-                    <div class="mobile-legend">
-                        <div class="mobile-legend-icon">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="#0d9488">
-                                <circle cx="10" cy="10" r="9" fill="none" stroke="#0d9488" stroke-width="1.5" />
-                                <text x="10" y="14" text-anchor="middle" font-size="12" font-weight="bold"
-                                    fill="#0d9488">i</text>
-                            </svg>
-                        </div>
-                        <div class="mobile-legend-text">
-                            <p>Green check (✓) = Included</p>
-                            <p>Gray cross (✕) = Not included</p>
+                        <div class="mobile-row">
+                            <span class="mobile-row-text">Clean Inside Drawers</span>
+                            <span class="mobile-row-icon check">✓</span>
                         </div>
                     </div>
                 </div>
