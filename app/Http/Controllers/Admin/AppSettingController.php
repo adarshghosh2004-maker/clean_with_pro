@@ -27,8 +27,7 @@ class AppSettingController extends Controller
 
             $params['result'] = Setting_Data();
             if ($params['result']) {
-
-                $params['result']['app_logo'] = $this->common->getImage($this->folder, $params['result']['app_logo']);
+                
                 $params['result']['company_logo'] = $this->common->getImage($this->folder, $params['result']['company_logo']);
 
                 $params['smtp'] = Smtp::latest()->first();
@@ -274,7 +273,7 @@ class AppSettingController extends Controller
             if ($validator->fails()) {
                 return response()->json(['status' => 400, 'errors' => $validator->errors()->all()]);
             }
-            $this->common->Send_Mail(10, $request->email, 0, "", 0, "", "", "", "", 0, "");
+            $this->common->Send_Mail(7, $request->email, []);
             return response()->json(['status' => 200, 'success' => __('label.mail_sent')]);
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);

@@ -16,6 +16,7 @@ use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
@@ -224,6 +225,22 @@ class UserController extends Controller
             $data = User::updateOrCreate(['id' => $requestData['id']], $requestData);
 
             if (isset($data->id)) {
+                Log::info($data->service_id);
+                if ($data->status == 1) {
+                    if ($data->service_id == 1) {
+                        $this->common->Send_Mail(1, $data->email, $data);
+                    } else if ($data->service_id == 2) {
+                        $this->common->Send_Mail(2, $data->email, $data);
+                    } else if ($data->service_id == 4) {
+                        $this->common->Send_Mail(3, $data->email, $data);
+                    } else if ($data->service_id == 5) {
+                        $this->common->Send_Mail(4, $data->email, $data);
+                    } else if ($data->service_id == 6) {
+                        $this->common->Send_Mail(5, $data->email, $data);
+                    } else if ($data->service_id == 8) {
+                        $this->common->Send_Mail(6, $data->email, $data);
+                    }
+                }
                 return response()->json(['status' => 200, 'success' => __('label.success_edit_user')]);
             } else {
                 return response()->json(['status' => 400, 'errors' => __('label.error_edit_user')]);

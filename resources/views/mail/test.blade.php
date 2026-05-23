@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -6,44 +7,51 @@
     <title>{{ $details['title'] }}</title>
 </head>
 
-<body style="margin: 0; padding: 20px; font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #e0e7ff, #f5f7fa);">
+<body style="margin:0;padding:20px;background:#f4f6f8;font-family:Arial,sans-serif;">
 
-    <table align="center" width="100%" cellpadding="0" cellspacing="0">
+    <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
-            <td>
-                <table align="center" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden;">
-                    <!-- Header -->
+            <td align="center">
+
+                <table width="600" cellpadding="0" cellspacing="0"
+                    style="background:#ffffff;border-radius:8px;border:1px solid #e5e5e5;">
+
                     <tr>
-                        <td style="padding: 30px; background: linear-gradient(135deg, #6d5dfc, #4e45b8); color: #ffffff; text-align: center;">
-                            <h1 style="margin: 0; font-size: 24px;">{{ $details['title'] }}</h1>
+                        <td style="background:#4e45b8;padding:25px;text-align:center;color:#fff;">
+                            <h2 style="margin:0;">{{ App_Name() }}</h2>
                         </td>
                     </tr>
 
-                    <!-- Body -->
                     <tr>
-                        <td style="padding: 4px 30px; color: #000000">
-                            <div style="font-size: 18px; line-height: 1.7;">
-                                <p>
-                                    Hello 👋,<br><br>
-                                    This is a test email from <strong>{{ App_Name(); }}</strong>.<br>
-                                    Your SMTP setup is working correctly ✅.
-                                </p>
-                                <p>
-                                    Regards,<br>
-                                    <strong>{{ App_Name(); }}</strong> Team
-                                </p>
-                            </div>
+                        <td style="padding:30px;color:#333;line-height:1.8;font-size:15px;">
+
+                            <p>Hello,</p>
+
+                            <p>
+                                Thank you for choosing <strong>{{ App_Name() }}</strong>.
+                                This email confirms that our email service is configured and operating successfully.
+                            </p>
+
+                            <p>
+                                If you have any questions or require assistance, feel free to contact our team.
+                            </p>
+
+                            <p>
+                                Regards,<br>
+                                <strong>{{ App_Name() }} Team</strong>
+                            </p>
+
                         </td>
                     </tr>
 
-
-                    <!-- Footer -->
                     <tr>
-                        <td style="padding: 20px; background-color: #f8f8f8; text-align: center; font-size: 14px; color: #999;">
-                            &copy; {{ date('Y') }} {{ App_Name(); }}. All rights reserved.
+                        <td style="background:#f7f7f7;padding:15px;text-align:center;color:#777;font-size:12px;">
+                            Copyright &copy; {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}} 2026. All rights reserved.
                         </td>
                     </tr>
+
                 </table>
+
             </td>
         </tr>
     </table>

@@ -3,6 +3,7 @@
 use App\Models\General_Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 function Setting_Data()
@@ -17,7 +18,7 @@ function Setting_Data()
 function Tab_Icon()
 {
     $setting_data = Setting_Data();
-    $app_logo = $setting_data['app_logo'];
+    $app_logo = $setting_data['company_logo'];
     $folder = "setting";
 
     if ($app_logo != "" && $folder != "") {
@@ -37,8 +38,8 @@ function Tab_Icon()
 function App_Name()
 {
     $setting_data = Setting_Data();
-    $app_name = $setting_data['app_name'];
-
+    $app_name = $setting_data['company_name'];
+    Log::info($app_name);
     if (isset($app_name) && $app_name != "") {
         return $app_name;
     } else {

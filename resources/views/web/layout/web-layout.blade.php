@@ -42,7 +42,8 @@
     <link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/web/style.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('assets/css/web/style.css') }}?v={{ filemtime(public_path('assets/css/web/style.css')) }}">
 
     <!-- Loader CSS -->
     <style>
@@ -65,11 +66,56 @@
             left: 240px;
             z-index: 100;
         }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999999;
+            transition: opacity .5s ease;
+        }
+
+
+        #preloader img {
+            width: 300px;
+            animation: pulse 1.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
     </style>
 </head>
 
 
 <body>
+
+    <div id="preloader">
+        <img src="{{ asset('assets/imgs/CWPss.PNG') }}" alt="Logo">
+    </div>
+
     <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}" /></div>
     @include('web.layout.navbar')
 
@@ -189,6 +235,17 @@
     <script src="{{ asset('assets/js/toastr.min.js')}}"></script>
 
     <script>
+        window.addEventListener("load", function () {
+            const loader = document.getElementById("preloader");
+
+            if (loader) {
+                loader.style.opacity = "0";
+
+                setTimeout(function () {
+                    loader.style.display = "none";
+                }, 500);
+            }
+        });
 
         $(document).on('click', '[data-bs-toggle="modal"]', function () {
 

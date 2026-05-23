@@ -256,24 +256,26 @@ class Common extends Model
         if (isset($smtp) && $smtp != null && $smtp['status'] == 1) {
 
             if ($smtp) {
-                $data = [
-                    'driver' => 'smtp',
+                Config::set('mail.default', 'smtp');
+                Config::set('mail.mailers.smtp', [
+                    'transport' => 'smtp',
                     'host' => $smtp->host,
                     'port' => $smtp->port,
                     'encryption' => 'tls',
                     'username' => $smtp->user,
                     'password' => $smtp->pass,
-                    'from' => [
-                        'address' => $smtp->from_email,
-                        'name' => $smtp->from_name
-                    ]
-                ];
-                Config::set('mail', $data);
+                    'timeout' => null,
+                    'auth_mode' => null,
+                ]);
+                Config::set('mail.from', [
+                    'address' => $smtp->from_email,
+                    'name' => $smtp->from_name,
+                ]);
             }
         }
         return true;
     }
-    public function Send_Mail($type, $email, $request_status = 0, $content_title = "", $price = 0, $first_name = "", $last_name = "", $transaction_id = "", $date = "", $content_type = 0, $password = "", $payout_period = "", $subscription_earnings = 0, $content_earnings = 0)
+    public function Send_Mail($type, $email, $array)
     {
         try {
 
@@ -283,128 +285,79 @@ class Common extends Model
             if (isset($smtp) && $smtp['status'] == 1) {
 
                 if ($type == 1) {
-
                     $details = [
-                        'title' => App_Name() . " - Registration",
-                        'view' => 'mail.register',
+                        'title' => App_Name() . " - Domestic",
+                        'customer_name' => $array['name'] ?? '',
+                        'booking_number' => $array['id'] ?? '',
+                        'date' => $array['date'] ?? '',
+                        'customer_address' => $array['suburb'] ?? '',
+                        'customer_mobile_no' => $array['phone'] ?? '',
+                        'service_cost' => $array['amount'] ?? '',
+                        'view' => 'mail.end_of_lease',
                     ];
                 } else if ($type == 2) {
                     $details = [
-                        'title' => App_Name() . " - Login",
-                        'view' => 'mail.login',
+                        'title' => App_Name() . " - End of Lease",
+                        'customer_name' => $array['name'] ?? '',
+                        'booking_number' => $array['id'] ?? '',
+                        'date' => $array['date'] ?? '',
+                        'customer_address' => $array['suburd'] ?? '',
+                        'customer_mobile_no' => $array['phone'] ?? '',
+                        'service_cost' => $array['amount'] ?? '',
+                        'view' => 'mail.end_of_lease',
                     ];
                 } else if ($type == 3) {
-
                     $details = [
-                        'title' => App_Name() . " - Become Auther Request",
-                        'view' => 'mail.become_author_request',
+                        'title' => App_Name() . " - Oven",
+                        'customer_name' => $array['name'] ?? '',
+                        'booking_number' => $array['id'] ?? '',
+                        'date' => $array['date'] ?? '',
+                        'customer_address' => $array['suburd'] ?? '',
+                        'customer_mobile_no' => $array['phone'] ?? '',
+                        'service_cost' => $array['amount'] ?? '',
+                        'view' => 'mail.end_of_lease',
                     ];
                 } else if ($type == 4) {
-
-                    if ($request_status == 0) {
-                        $details = [
-                            'title' => App_Name() . " - Auther Request Status",
-                            'view' => 'mail.author_request_no',
-                        ];
-                    } else {
-                        $details = [
-                            'title' => App_Name() . " - Auther Request Status",
-                            'view' => 'mail.author_request_yes',
-                        ];
-                    }
-                } else if ($type == 5) {
-
                     $details = [
-                        'title' => App_Name() . " - Purchase Content",
-                        'user_name' => $first_name . ' ' . $last_name,
-                        'content_title' => $content_title,
-                        'price' => $price,
-                        'transaction_id' => $transaction_id,
-                        'date' => $date,
-                        'view' => 'mail.purchase',
+                        'title' => App_Name() . " - Bathroom",
+                        'customer_name' => $array['name'] ?? '',
+                        'booking_number' => $array['id'] ?? '',
+                        'date' => $array['date'] ?? '',
+                        'customer_address' => $array['suburd'] ?? '',
+                        'customer_mobile_no' => $array['phone'] ?? '',
+                        'service_cost' => $array['amount'] ?? '',
+                        'view' => 'mail.end_of_lease',
+                    ];
+                } else if ($type == 5) {
+                    $details = [
+                        'title' => App_Name() . " - Kitchen",
+                        'customer_name' => $array['name'] ?? '',
+                        'booking_number' => $array['id'] ?? '',
+                        'date' => $array['date'] ?? '',
+                        'customer_address' => $array['suburd'] ?? '',
+                        'customer_mobile_no' => $array['phone'] ?? '',
+                        'service_cost' => $array['amount'] ?? '',
+                        'view' => 'mail.end_of_lease',
                     ];
                 } else if ($type == 6) {
-
                     $details = [
-                        'title' => 'Withdrawal Request Submitted!',
-                        'username' => $first_name . ' ' . $last_name,
-                        'view' => 'mail.withdrawal_request',
+                        'title' => App_Name() . " - Carpet steam",
+                        'customer_name' => $array['name'] ?? '',
+                        'booking_number' => $array['id'] ?? '',
+                        'date' => $array['date'] ?? '',
+                        'customer_address' => $array['suburd'] ?? '',
+                        'customer_mobile_no' => $array['phone'] ?? '',
+                        'service_cost' => $array['amount'] ?? '',
+                        'view' => 'mail.end_of_lease',
                     ];
                 } else if ($type == 7) {
-
-                    $status = $request_status == 1 ? 'Approved' : 'Rejected';
-                    $details = [
-                        'title' => 'Withdrawal Request ' . ucfirst($status),
-                        'username' => $first_name . ' ' . $last_name,
-                        'status' => $status,
-                        'view' => 'mail.withdrawal_status_update',
-                    ];
-                } else if ($type == 8) {
-                    if ($content_type == 1) {
-                        $book_type = "Audio Book";
-                    } elseif ($content_type == 2) {
-                        $book_type = "Novel";
-                    } elseif ($content_type == 3) {
-                        $book_type = "Magazine";
-                    } else {
-                        $book_type = "Book";
-                    }
-                    if ($request_status == 0) {
-                        $details = [
-                            'title' => App_Name() . " - " . $book_type . " Request Status",
-                            'book_name' => $content_title,
-                            'book_type' => $book_type,
-                            'view' => 'mail.book_request_no',
-                        ];
-                    } else {
-                        $details = [
-                            'title' => App_Name() . " - " . $book_type . " Request Status",
-                            'book_name' => $content_title,
-                            'book_type' => $book_type,
-                            'view' => 'mail.book_request_yes',
-                        ];
-                    }
-                } else if ($type == 9) {
-
-                    $details = [
-                        'title' => App_Name() . " - Forgot Password",
-                        'email' => $email,
-                        'password' => $password,
-                        'view' => 'mail.forgot_password',
-                    ];
-                } else if ($type == 10) {
-
                     $details = [
                         'title' => App_Name() . " - Test Smtp",
                         'view' => 'mail.test',
                     ];
-                } else if ($type == 11) {
-
-                    $details = [
-                        'title' => App_Name() . " - Purchase Plan",
-                        'user_name' => $first_name . ' ' . $last_name,
-                        'price' => $price,
-                        'transaction_id' => $transaction_id,
-                        'date' => $date,
-                        'view' => 'mail.buy_plan',
-                    ];
-                } else if ($type == 12) {
-
-                    $details = [
-                        'title' => App_Name() . " - Subscription Payout",
-                        'plan_name' => $content_title,
-                        'user_name' => $first_name . ' ' . $last_name,
-                        'payout' => $price,
-                        'subscription_earnings' => $subscription_earnings,
-                        'content_earnings' => $content_earnings,
-                        'payout_period' => $payout_period,
-                        'payout_date' => $date,
-                        'view' => 'mail.subscription_payout',
-                    ];
                 } else {
                     return true;
                 }
-
                 Mail::to($email)->send(new \App\Mail\mail($details));
             } else {
                 return true;
@@ -582,13 +535,6 @@ class Common extends Model
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }
-    }
-
-    public function get_feature_name($ids)
-    {
-        $array = explode(',', $ids);
-        $names = Feature::whereIn('id', $array)->pluck('name')->toArray();
-        return $names;
     }
     public function create_slug($string)
     {

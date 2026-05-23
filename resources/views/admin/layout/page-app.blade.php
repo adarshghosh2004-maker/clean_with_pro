@@ -15,7 +15,8 @@
     <link href="{{asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{asset('assets/css/admin/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assets/css/admin/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/admin/style.css') }}?v={{ filemtime(public_path('assets/css/admin/style.css')) }}"
+        rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
@@ -167,7 +168,7 @@
 
     <script>
         // Counter
-        $('.counting').each(function() {
+        $('.counting').each(function () {
             var $this = $(this),
                 countTo = $this.attr('data-count');
 
@@ -178,10 +179,10 @@
             }, {
                 duration: 2000,
                 easing: 'swing',
-                step: function(now) {
+                step: function (now) {
                     $(this).text(Math.ceil(now));
                 },
-                complete: function() {
+                complete: function () {
                     $this.text($this.attr('data-count'));
                 }
             });
@@ -210,7 +211,7 @@
                     document.getElementById(form_name).reset();
                 }
                 if (url != "") {
-                    setTimeout(function() {
+                    setTimeout(function () {
                         window.location.replace(url);
                     }, 500);
                 }
@@ -219,7 +220,7 @@
                 if (typeof obj === 'string') {
                     toastr.error(obj);
                 } else {
-                    $.each(obj, function(i, e) {
+                    $.each(obj, function (i, e) {
                         toastr.error(e);
                     });
                 }
@@ -228,16 +229,16 @@
 
         // Toastr MSG Show
         @if(Session::has('error'))
-        toastr.error('{{ Session::get("error") }}');
+            toastr.error('{{ Session::get("error") }}');
         @elseif(Session::has('success'))
-        toastr.success('{{ Session::get("success") }}');
+            toastr.success('{{ Session::get("success") }}');
         @endif
 
         // Image Upload Preview
-        $('#imageUpload').change(function() {
+        $('#imageUpload').change(function () {
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $('#imagePreview').attr("src", e.target.result);
                     $('#imagePreview').hide();
                     $('#imagePreview').fadeIn(650);
@@ -245,10 +246,10 @@
                 reader.readAsDataURL(this.files[0]);
             }
         });
-        $('#imageUpload2').change(function() {
+        $('#imageUpload2').change(function () {
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $('#imagePreview2').attr("src", e.target.result);
                     $('#imagePreview2').hide();
                     $('#imagePreview2').fadeIn(650);
@@ -256,10 +257,10 @@
                 reader.readAsDataURL(this.files[0]);
             }
         });
-          $('#imageUpload3').change(function() {
+        $('#imageUpload3').change(function () {
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $('#imagePreview3').attr("src", e.target.result);
                     $('#imagePreview3').hide();
                     $('#imagePreview3').fadeIn(650);
@@ -267,10 +268,10 @@
                 reader.readAsDataURL(this.files[0]);
             }
         });
-        $('#imageUploadModel').change(function() {
+        $('#imageUploadModel').change(function () {
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $('#imagePreviewModel').attr("src", e.target.result);
                     $('#imagePreviewModel').hide();
                     $('#imagePreviewModel').fadeIn(650);
@@ -278,10 +279,10 @@
                 reader.readAsDataURL(this.files[0]);
             }
         });
-        $('#imageUploadLandscape').change(function() {
+        $('#imageUploadLandscape').change(function () {
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $('#imagePreviewLandscape').attr("src", e.target.result);
                     $('#imagePreviewLandscape').hide();
                     $('#imagePreviewLandscape').fadeIn(650);
@@ -289,10 +290,10 @@
                 reader.readAsDataURL(this.files[0]);
             }
         });
-        $('#imageUploadLandscapeModel').change(function() {
+        $('#imageUploadLandscapeModel').change(function () {
             if (this.files && this.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $('#imagePreviewLandscapeModel').attr("src", e.target.result);
                     $('#imagePreviewLandscapeModel').hide();
                     $('#imagePreviewLandscapeModel').fadeIn(650);
