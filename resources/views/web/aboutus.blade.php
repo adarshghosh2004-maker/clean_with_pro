@@ -6,25 +6,24 @@
 
 @section('content')
     <!-- ========================
-                        SECTION 1: Hero
-                        ======================== -->
+                                                    SECTION 1: Hero
+                                                    ======================== -->
     <section class="hero-section">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'about')
                 <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
             @endif
-
         @endforeach
         <div class="container">
-            <h1>Melbourne's Trusted <span>Cleaning Experts</span> Since 2013</h1>
+            <h1>Melbourne's Trusted <span>Cleaning Experts</span> Since 2020</h1>
             <p>We've spent the last decade perfecting the art of cleanliness,
                 transforming thousands of homes and workplaces into pristine sanctuaries.</p>
         </div>
     </section>
 
     <!-- ========================
-                        SECTION 2: Passion / Our Story
-                        ======================== -->
+                                                    SECTION 2: Passion / Our Story
+                                                    ======================== -->
     <section class="section-padding" data-anim="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -53,7 +52,7 @@
                 </div>
                 <div class="col-lg-6" data-anim="fade-left">
                     <div class="passion-img-wrapper">
-                        <img src="{{ asset('assets/imgs/CWPss.PNG') }}" alt="CleanCare Team at Work"
+                        <img src="{{ asset('assets/imgs/About2.jpg') }}" alt="CleanCare Team at Work"
                             class="passion-img shadow-lg">
                     </div>
                 </div>
@@ -62,8 +61,8 @@
     </section>
 
     <!-- ========================
-                        SECTION 3: Core Pillars
-                        ======================== -->
+                                                    SECTION 3: Core Pillars
+                                                    ======================== -->
     <section class="section-padding" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-anim="fade-up">
@@ -121,8 +120,8 @@
     </section>
 
     <!-- ========================
-                        SECTION 4: Professional Edge
-                        ======================== -->
+                                                    SECTION 4: Professional Edge
+                                                    ======================== -->
     <section class="section-padding" data-anim="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -140,7 +139,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-6" data-anim="fade-left">
-                    <img src="{{ asset('assets/imgs/CWPss.PNG') }}" alt="The Professional Edge at CleanCare"
+                    <img src="{{ asset('assets/imgs/About1.jpg') }}" alt="The Professional Edge at CleanCare"
                         class="img-fluid rounded-4 shadow edge-img">
                 </div>
             </div>
@@ -148,8 +147,8 @@
     </section>
 
     <!-- ========================
-                        SECTION 5: How It Works
-                        ======================== -->
+                                                    SECTION 5: How It Works
+                                                    ======================== -->
     <section class="how-it-works-section" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-3" data-anim="fade-up">
@@ -181,8 +180,8 @@
     </section>
 
     <!-- ========================
-                        SECTION 6: Team – Faces Behind the Shine
-                        ======================== -->
+                                                    SECTION 6: Team – Faces Behind the Shine
+                                                    ======================== -->
     <section class="team-section-new" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-anim="fade-up">
@@ -225,8 +224,8 @@
     </section>
 
     <!-- ========================
-                        SECTION 8: Testimonials
-                        ======================== -->
+                                                    SECTION 8: Testimonials
+                                                    ======================== -->
     <section class="about-testimonials-section" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-anim="fade-up">
@@ -259,8 +258,8 @@
     </section>
 
     <!-- ========================
-                        SECTION 9: CTA – Experience the Standard
-                        ======================== -->
+                                                    SECTION 9: CTA – Experience the Standard
+                                                    ======================== -->
     <section class="cta-section-new" data-anim="fade-up">
         <div class="container" data-anim="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Experience the Clean With Professionals Standard</h2>

@@ -29,8 +29,8 @@
         {{ String_Cut($value['short_title'], 70) }}
       </p>
       <div class="d-flex justify-content-center gap-3">
-        <a class="btn btn-secondary d-flex align-items-center justify-content-center gap-2"
-        data-bs-toggle="modal" href="#EditModel" data-id="{{ $value['id'] ?? "" }}">
+        <a class="btn btn-secondary d-flex align-items-center justify-content-center gap-2" data-bs-toggle="modal"
+        href="#EditModel" data-id="{{ $value['id'] ?? "" }}">
         Book Now <span class="material-symbols-outlined">arrow_forward</span>
         </a>
       </div>
@@ -66,9 +66,9 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6" data-anim="fade-right">
       <div class="about-images-grid position-relative">
-        <img src="assets/imgs/CWPss.PNG" class="about-img-main shadow" alt="Cleaning Staff">
-        <img src="assets/imgs/CWPss.PNG" class="about-img-sub shadow" alt="Equipment">
-        <img src="assets/imgs/CWPss.PNG" class="about-img-sub shadow" alt="Clean Office">
+        <img src="assets/imgs/CWP1.jpg" class="about-img-main shadow" alt="Cleaning Staff">
+        <img src="assets/imgs/CWP2.jpg" class="about-img-sub shadow" alt="Equipment">
+        <img src="assets/imgs/CWP3.jpg" class="about-img-sub shadow" alt="Clean Office">
 
         <!-- Floating Badge -->
         <div class="position-absolute bg-primary-blue text-white p-3 rounded shadow text-center"

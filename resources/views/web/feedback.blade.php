@@ -8,8 +8,11 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2000&auto=format&fit=crop"
-            alt="Luxury Interior" class="hero-img">
+        @foreach ($pages as $key => $value)
+            @if ($value['name'] == 'feedback')
+                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
+            @endif
+        @endforeach
         <div class="container">
             <div class="hero-section-subtitle">Editorial Experience</div>
             <h1 class="hero-heading-v2">Your Voice, Our Standard.</h1>
@@ -24,11 +27,11 @@
             <form method="POST" id="feedback">
                 @csrf
                 <input type="hidden" name="id" value="">
-                
+
                 <div class="form-group-v2">
                     <label for="full_name">Full Name</label>
-                    <input type="text" id="full_name" name="name" class="form-control-v2"
-                        placeholder="Julianne Smith" required>
+                    <input type="text" id="full_name" name="name" class="form-control-v2" placeholder="Julianne Smith"
+                        required>
                 </div>
 
                 <div class="form-group-v2">
@@ -39,14 +42,14 @@
 
                 <div class="form-group-v2">
                     <label for="mobile_number">Mobile Number</label>
-                    <input type="text" id="mobile_number" name="mobile_no" class="form-control-v2"
-                        placeholder="679869756" required>
+                    <input type="text" id="mobile_number" name="mobile_no" class="form-control-v2" placeholder="679869756"
+                        required>
                 </div>
 
                 <div class="form-group-v2">
                     <label for="area">Area</label>
-                    <input type="text" id="area" name="area_name" class="form-control-v2"
-                        placeholder="Enter your area" required>
+                    <input type="text" id="area" name="area_name" class="form-control-v2" placeholder="Enter your area"
+                        required>
                 </div>
 
                 <!-- Rating -->

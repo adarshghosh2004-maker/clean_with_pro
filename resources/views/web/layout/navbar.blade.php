@@ -35,6 +35,13 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav" data-mobile-nav>
+                <!-- Mobile header (visible only on mobile) -->
+                <div class="mobile-menu-header">
+                    <img src="{{ asset('assets/imgs/CWPss.PNG') }}" alt="Clean With Professionals Logo"
+                        class="mobile-menu-logo">
+                    <span class="mobile-menu-company-name">{{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}</span>
+                </div>
+
                 <!-- Mobile close button (visible only inside offcanvas) -->
                 <button class="navbar-close-btn" type="button" aria-label="Close navigation" data-nav-close>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"

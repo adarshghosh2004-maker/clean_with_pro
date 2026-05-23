@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\pages;
 use App\Models\Common;
 use App\Models\Service;
+use Cache;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Validator;
@@ -77,8 +78,9 @@ class PagesController extends Controller
             $requestData = $request->all();
             $requestData['img'] = $this->common->saveImage($requestData['img'], $this->folder, 'pages_');
 
-            $data = pages::updateOrCreate(['id' => $requestData['id']], $requestData);
+            $data = Pages::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($data->id)) {
+                Cache::forget('pages_list');
                 return response()->json(['status' => 200, 'success' => __('label.success_add_hero_image')]);
             } else {
                 return response()->json(['status' => 400, 'errors' => __('label.error_add_hero_image')]);
@@ -106,8 +108,9 @@ class PagesController extends Controller
             }
             unset($requestData['old_img']);
 
-            $data = pages::updateOrCreate(['id' => $requestData['id']], $requestData);
+            $data = Pages::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($data->id)) {
+                Cache::forget('pages_list');
                 return response()->json(['status' => 200, 'success' => __('label.success_edit_hero_image')]);
             } else {
                 return response()->json(['status' => 400, 'errors' => __('label.error_edit_hero_image')]);
