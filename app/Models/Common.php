@@ -265,7 +265,7 @@ class Common extends Model
         }
         return true;
     }
-    public function Send_Mail($type, $email, $array)
+    public function Send_Mail($type, $email, $array, $attachmentData = null, $attachmentName = null)
     {
         try {
 
@@ -358,7 +358,7 @@ class Common extends Model
                 else {
                     return true;
                 }
-                Mail::to($email)->send(new \App\Mail\mail($details));
+                Mail::to($email)->send(new \App\Mail\mail($details, $attachmentData, $attachmentName));
             } else {
                 return true;
             }

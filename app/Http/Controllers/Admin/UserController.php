@@ -244,7 +244,78 @@ class UserController extends Controller
                         $this->common->Send_Mail(6, $data->email, $data);
                     }
                 } else if ($data->status == 2) {
-                    $this->common->Send_Mail(8, $data->email, $data);
+                    $invoice = Invoice::where('quote_id', $data->id)->first();
+                    if ($invoice) {
+                        $settings = Setting_Data();
+                        $admin = Admin_Data();
+
+                        $statusLabels = [
+                            0 => 'Pending',
+                            1 => 'Confirmed',
+                            2 => 'Completed',
+                        ];
+
+                        $staticServiceIds = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                        $staticTitles = [
+                            1 => 'Carpet Cleaning',
+                            2 => 'Rug Cleaning',
+                            3 => 'Upholstery Cleaning',
+                            4 => 'Mattress Cleaning',
+                            5 => 'Tile & Grout Cleaning',
+                            6 => 'Stain Removal',
+                            7 => 'Odour Removal',
+                            8 => 'Steam Cleaning',
+                            9 => 'End of Lease Cleaning',
+                        ];
+
+                        $savedMap = [];
+                        if (!empty($invoice->service_json)) {
+                            $decoded = json_decode($invoice->service_json, true);
+                            if (is_array($decoded)) {
+                                foreach ($decoded as $s) {
+                                    $sid = (int) ($s['service_id'] ?? 0);
+                                    if ($sid > 0) {
+                                        $savedMap[$sid] = [
+                                            'selected' => filter_var($s['is_selected'] ?? false, FILTER_VALIDATE_BOOLEAN),
+                                            'price' => (float) ($s['price'] ?? 0),
+                                        ];
+                                    }
+                                }
+                            }
+                        }
+
+                        $servicesData = [];
+                        foreach ($staticServiceIds as $staticId) {
+                            $isSelected = isset($savedMap[$staticId]) ? ($savedMap[$staticId]['selected'] ? 1 : 0) : 0;
+                            $price = isset($savedMap[$staticId]) ? $savedMap[$staticId]['price'] : 0;
+                            $servicesData[] = [
+                                'id' => $staticId,
+                                'title' => $staticTitles[$staticId],
+                                'is_selected' => $isSelected,
+                                'price' => $price,
+                            ];
+                        }
+
+                        $pdfData = [
+                            'invoice_number' => 'INV-' . str_pad($data->id, 4, '0', STR_PAD_LEFT),
+                            'invoice_date' => date('d M Y', strtotime($invoice->created_at)),
+                            'due_date' => now()->addDays(30)->format('d M Y'),
+                            'quote' => $data,
+                            'status_label' => $statusLabels[$data->status] ?? 'Unknown',
+                            'settings' => $settings,
+                            'admin' => $admin,
+                            'services' => $servicesData,
+                            'invoice' => $invoice,
+                        ];
+
+                        $pdf = Pdf::loadView('admin.user.invoice', $pdfData)->setPaper('a4', 'portrait');
+                        $pdfOutput = $pdf->output();
+                        $filename = 'Invoice-INV-' . str_pad($data->id, 4, '0', STR_PAD_LEFT) . '.pdf';
+
+                        $this->common->Send_Mail(8, $data->email, $data, $pdfOutput, $filename);
+                    } else {
+                        $this->common->Send_Mail(8, $data->email, $data);
+                    }
                 }
                 return response()->json(['status' => 200, 'success' => __('label.success_edit_user')]);
             } else {

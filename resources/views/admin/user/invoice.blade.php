@@ -266,32 +266,32 @@
       </td>
       <td width="44%" class="header-logo-cell">
         @php
-      $logoPath = Tab_Icon();
-      $logoData = '';
-      if (filter_var($logoPath, FILTER_VALIDATE_URL)) {
-        $logoContent = @file_get_contents($logoPath);
-        if ($logoContent !== false) {
-        $mimeType = getimagesizefromstring($logoContent)['mime'] ?? 'image/png';
-        $logoData = 'data:' . $mimeType . ';base64,' . base64_encode($logoContent);
-        } else {
-        $logoData = $logoPath;
-        }
-      } else {
-        $logoData = $logoPath;
-      }
-      @endphp
+            $logoPath = Tab_Icon();
+            $logoData = '';
+            if (filter_var($logoPath, FILTER_VALIDATE_URL)) {
+            $logoContent = @file_get_contents($logoPath);
+            if ($logoContent !== false) {
+              $mimeType = getimagesizefromstring($logoContent)['mime'] ?? 'image/png';
+              $logoData = 'data:' . $mimeType . ';base64,' . base64_encode($logoContent);
+            } else {
+              $logoData = $logoPath;
+            }
+          } else {
+            $logoData = $logoPath;
+          }
+        @endphp
         @if($logoData)
-      <img src="{{ $logoData }}" alt="Company Logo">
-      <div class="invoice_size"><strong>Invoice:</strong> {{ $invoice_number }}</div>
-    @endif
-      </td>
+          <img src="{{ $logoData }}" alt="Company Logo">
+          <div class="invoice_size"><strong>Invoice:</strong> {{ $invoice_number }}</div>
+        @endif
+        </td>
       <td width="28%" class="company-block">
-        <h2>{{ Setting_Data()['company_name'] ?? '' }}</h2>
-        <p>ABN {{ Setting_Data()['abn_number'] ?? '' }}</p>
+          <h2>{{ Setting_Data()['company_name'] ?? '' }}</h2>
+          <p>ABN {{ Setting_Data()['abn_number'] ?? '' }}</p>
         <p>ACN {{ Setting_Data()['acn_number'] ?? '' }}</p>
-        <p>{{ Setting_Data()['address'] ?? '' }}</p>
-        <div class="invoice-meta">
-          <div><strong>Date:</strong> {{ $invoice_date }}</div>
+          <p>{{ Setting_Data()['address'] ?? '' }}</p>
+          <div class="invoice-meta">
+              <div><strong>Date:</strong> {{ $invoice_date }}</div>
         </div>
       </td>
     </tr>
@@ -307,7 +307,10 @@
           <p><strong>Address:</strong> {{ $quote->suburb ?? '-' }}</p>
           <p><strong>Ph:</strong> {{ $quote->phone ?? '-' }}</p>
           <p><strong>Booking Date:</strong>
-            {{ $quote->date ? \Carbon\Carbon::parse($quote->date)->format('d M Y') : '-' }}
+            {{ date('Y-m-d', strtotime($quote->date))}} 
+          </p>
+           <p><strong>Booking Time:</strong>
+            {{ $quote->time ?? '-'}} 
           </p>
         </div>
       </td>
@@ -320,7 +323,7 @@
           <div style="margin-top:6px;">
             <div class="box-title">Bank Details</div>
             <p>Clean With Pro</p>
-            <p>BSB : 013593 &nbsp;&nbsp; <br>ACC : 805715126</p>
+            <p>BSB : {{ Setting_Data()['bsb'] ?? ''}} &nbsp;&nbsp; <br>ACC : {{ Setting_Data()['account_number'] ?? ''}}</p>
           </div>
         </div>
       </td>
@@ -329,7 +332,8 @@
 
   <!-- ══ ACKNOWLEDGEMENT + SERVICES ══ -->
   <table class="section-table">
-    <tr>
+
+                <tr>
       <td width="33%" style="padding-right:4px;">
         <div class="box acknowledgement-box">
           <p style="margin-bottom:5px;">(1) I acknowledge pre-existing damage and accept responsibility.</p>
@@ -352,48 +356,48 @@
             </thead>
             <tbody>
               @php
-        $staticServices = [
-          ['id' => 1, 'title' => 'Domestic Cleaning'],
-          ['id' => 2, 'title' => 'End of Lease Cleaning'],
-          ['id' => 3, 'title' => 'Carpet Cleaning'],
-          ['id' => 4, 'title' => 'Oven Cleaning'],
-          ['id' => 5, 'title' => 'Tile Grouting'],
-          ['id' => 6, 'title' => 'Mould Treatment'],
-          ['id' => 7, 'title' => 'Bathroom/Kitchen Cleaning '],
-        ];
-        $grandTotal = 0;
+                $staticServices = [
+                  ['id' => 1, 'title' => 'Domestic Cleaning'],
+                  ['id' => 2, 'title' => 'End of Lease Cleaning'],
+                  ['id' => 3, 'title' => 'Carpet Cleaning'],
+                  ['id' => 4, 'title' => 'Oven Cleaning'],
+                  ['id' => 5, 'title' => 'Tile Grouting'],
+                  ['id' => 6, 'title' => 'Mould Treatment'],
+                  ['id' => 7, 'title' => 'Bathroom/Kitchen Cleaning '],
+                ];
+                $grandTotal = 0;
 
-        // Build a lookup map from services array by static ID
-        $serviceMap = [];
-        foreach ($services as $svc) {
-          $serviceMap[$svc['id']] = $svc;
-        }
-      @endphp
-              @foreach($staticServices as $index => $service)
-              @php
-            $staticId = $service['id'];
-            $matchedService = $serviceMap[$staticId] ?? null;
-            $val = $matchedService ? $matchedService['is_selected'] : 0;
-            $isChecked = ($val == 1 || $val === "1" || $val === true);
-            $price = (float) ($matchedService['price'] ?? 0);
-            if ($isChecked) {
-            $grandTotal += $price;
-            }
-          @endphp
+                // Build a lookup map from services array by static ID
+                $serviceMap = [];
+                foreach ($services as $svc) {
+                  $serviceMap[$svc['id']] = $svc;
+                }
+              @endphp
+                    @foreach($staticServices as $index => $service)
+                      @php
+                        $staticId = $service['id'];
+                        $matchedService = $serviceMap[$staticId] ?? null;
+                        $val = $matchedService ? $matchedService['is_selected'] : 0;
+                        $isChecked = ($val == 1 || $val === "1" || $val === true);
+                        $price = (float) ($matchedService['price'] ?? 0);
+                        if ($isChecked) {
+                          $grandTotal += $price;
+                        }
+                      @endphp
+                        <tr>
+                        <td>@if($isChecked)<span class="checkbox">&#10003;</span>@else<span class="checkbox"></span>@endif</td>
+                        <td>{{ $service['title'] }}</td>
+                        <td>{{ $isChecked ? '$' . number_format($price, 2) : '' }}</td>
+                        </tr>
+                    @endforeach
+              </tbody>
+                <tfoot>
               <tr>
-              <td>@if($isChecked)<span class="checkbox">&#10003;</span>@else<span class="checkbox"></span>@endif</td>
-              <td>{{ $service['title'] }}</td>
-              <td>{{ $isChecked ? '$' . number_format($price, 2) : '' }}</td>
-              </tr>
-        @endforeach
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="2" style="text-align:right;">Grand Total</td>
-                <td>${{ number_format($invoice ? $invoice->total : $grandTotal, 2) }}</td>
-              </tr>
+                  <td colspan="2" style="text-align:right;">Grand Total</td>
+                  <td>${{ number_format($invoice ? $invoice->total : $grandTotal, 2) }}</td>
+                </tr>
             </tfoot>
-          </table>
+                </table>
         </div>
       </td>
     </tr>
@@ -407,20 +411,20 @@
           <div class="box-title">Payment Method</div>
           <p style="font-size:9px; margin-top:2px;">
             @if($invoice && $invoice->payment_type == 1)
-        &#9744; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9745; CARD &nbsp;&nbsp;&nbsp;&nbsp; &#9744; BANK TRANSFER
-      @elseif($invoice && $invoice->payment_type == 2)
+              &#9744; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9745; CARD &nbsp;&nbsp;&nbsp;&nbsp; &#9744; BANK TRANSFER
+            @elseif($invoice && $invoice->payment_type == 2)
         &#9744; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9744; CARD &nbsp;&nbsp;&nbsp;&nbsp; &#9745; BANK TRANSFER
       @else
         &#9745; CASH &nbsp;&nbsp;&nbsp;&nbsp; &#9744; CARD &nbsp;&nbsp;&nbsp;&nbsp; &#9744; BANK TRANSFER
       @endif
           </p>
         </div>
-      </td>
-      <td width="50%" style="padding-left:4px;">
-        <div class="box time-box">
-          <div class="box-title">Given Services</div>
-          <p style="font-size:8px; margin-top:2px;">
-            {{ $invoice ? $invoice->description : 'N/A' }}
+        </  td>
+            <td width="50%" style="padding-left:4px;">
+            <div class="box time-box">
+                <div class="box-title">Given Services</div>
+              <p style="font-size:8px; margin-top:2px;">
+                  {{ $invoice ? $invoice->description : 'N/A' }}
           </p>
         </div>
       </td>
@@ -456,6 +460,7 @@
     <p>Generated: {{ now()->format('d M Y H:i') }}</p>
   </div>
 
+      
 </body>
 
 </html>
