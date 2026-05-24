@@ -50,22 +50,10 @@
                 <span>{{__('label.quotes')}}</span>
             </a>
         </li>
-        <li class="side_line {{ request()->routeIs('admin.notification.*') ? 'active' : '' }}">
-            <a href="{{ route('admin.notification.index') }}">
-                <i class="fa-solid fa-bell fa-2xl menu-icon"></i>
-                <span>{{__('label.notification')}}</span>
-            </a>
-        </li>
         <li class="side_line {{ request()->routeIs('admin.panelsetting*') ? 'active' : '' }}">
             <a href="{{ route('admin.panelsetting.index') }}">
                 <i class="fa-solid fa-palette fa-2xl menu-icon"></i>
                 <span>{{__('label.panel_settings')}}</span>
-            </a>
-        </li>
-        <li class="side_line {{ request()->routeIs('admin.notificationconfigurations*') ? 'active' : '' }}">
-            <a href="{{ route('admin.notificationconfigurations.index') }}">
-                <i class="fa-solid fa-bell fa-2xl menu-icon"></i>
-                <span>{{__('label.notification_configurations')}}</span>
             </a>
         </li>
         <li class="side_line {{ request()->routeIs('admin.system.setting*') ? 'active' : '' }}">

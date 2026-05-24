@@ -65,8 +65,6 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
     Route::resource('user', UserController::class)->only(['index', 'create', 'store', 'edit', 'update', 'show']);
     Route::get('user/details/{id}', [UserController::class, 'details'])->name('user.details');
     Route::resource('feedback', FeedbackController::class)->only(['index', 'store', 'update', 'show']);
-    // Notification
-    Route::resource('notification', NotificationController::class)->only(['index', 'create', 'store']);
     // App Setting
     Route::get('appsetting', [AppSettingController::class, 'index'])->name('appsetting.index');
     Route::post('appsetting/app', [AppSettingController::class, 'app'])->name('appsetting.app');
@@ -79,8 +77,6 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
     Route::get('systemsetting', [SystemSettingController::class, 'index'])->name('system.setting.index');
     Route::post('systemsetting/cleardata', [SystemSettingController::class, 'ClearData'])->name('system.setting.cleardata');
     Route::post('systemsetting/cleandatabase', [SystemSettingController::class, 'CleanDatabase'])->name('system.setting.cleandatabase');
-    // Notification Configurations
-    Route::resource('notificationconfigurations', NotificationConfigurationsController::class)->only(['index', 'store']);
     Route::resource('pages', PagesController::class)->only('index', 'store', 'edit', 'update');
     // Pages
     Route::resource('page', PageController::class)->only(['index', 'create', 'store', 'edit', 'update', 'show']);
@@ -99,10 +95,6 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
         Route::resource('user', UserController::class)->only(['destroy']);
         // feedback
         Route::resource('feedback', FeedbackController::class)->only(['destroy']);
-        // Notification
-        Route::resource('notification', NotificationController::class)->only(['destroy']);
-        Route::get('notification/setting', [NotificationController::class, 'setting'])->name('notification.setting');
-        Route::post('notification/setting', [NotificationController::class, 'settingsave'])->name('notification.setting.save');
         // System Setting
         Route::get('systemsetting/downloaddb', [SystemSettingController::class, 'DownloadDB'])->name('system.setting.downloaddb');
         Route::resource('pages', PagesController::class)->only(['destroy']);   // Pages

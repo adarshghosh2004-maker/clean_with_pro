@@ -135,6 +135,7 @@
 						<div class="col-md-4 detail-field">
 							<label>{{ __('label.service') }}</label>
 							<select name="service_id" class="form-control-static bg-white">
+								<option value="0" {{ $quote->service_id == 0 ? 'selected' : ''}}>Special Offer</option>
 								@foreach ($services as $key => $value)
 									<option value="{{ $value->id }}" {{ $quote->service_id == $value->id ? 'selected' : '' }}>
 										{{ $value->title }}

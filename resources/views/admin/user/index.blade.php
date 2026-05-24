@@ -429,7 +429,7 @@
                     { data: 'suburb', name: 'suburb', orderable: false, searchable: false, render: d => d ? d : '-' },
                     { data: 'date', name: 'date', orderable: false, searchable: false, render: d => d ? d : '-' },
                     { data: 'time', name: 'time', orderable: false, searchable: false, render: d => d ? d : '-' },
-                    { data: 'service', name: 'service', render: (d) => d ? d.title : '-' },
+                    { data: 'service', name: 'service' },
                     { data: 'msg', name: 'msg', orderable: false, searchable: false, render: d => d ? d : '-' },
                     { data: 'status', name: 'status', orderable: false, searchable: false },
                     { data: 'action', name: 'action', orderable: false, searchable: false },

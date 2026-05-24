@@ -120,6 +120,13 @@ class UserController extends Controller
                     ->addColumn('date', function ($row) {
                         return date("d M Y", strtotime($row->created_at));
                     })
+                    ->addColumn('service', function ($row) {
+                        if ($row->service_id == 0) {
+                            return 'Special Offer';
+                        } else {
+                            return $row->service?->title;
+                        }
+                    })
                     ->rawColumns(['action', 'status'])
                     ->make(true);
             }
