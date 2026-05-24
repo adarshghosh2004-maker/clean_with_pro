@@ -293,7 +293,7 @@ class Common extends Model
                         'customer_address' => $array['suburb'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
-                        'view' => 'mail.end_of_lease',
+                        'view' => 'mail.domestic',
                     ];
                 } else if ($type == 2) {
                     $details = [
@@ -315,7 +315,7 @@ class Common extends Model
                         'customer_address' => $array['suburd'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
-                        'view' => 'mail.end_of_lease',
+                        'view' => 'mail.oven',
                     ];
                 } else if ($type == 4) {
                     $details = [
@@ -326,7 +326,7 @@ class Common extends Model
                         'customer_address' => $array['suburd'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
-                        'view' => 'mail.end_of_lease',
+                        'view' => 'mail.bathroom',
                     ];
                 } else if ($type == 5) {
                     $details = [
@@ -337,7 +337,7 @@ class Common extends Model
                         'customer_address' => $array['suburd'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
-                        'view' => 'mail.end_of_lease',
+                        'view' => 'mail.kitchen',
                     ];
                 } else if ($type == 6) {
                     $details = [
@@ -348,7 +348,7 @@ class Common extends Model
                         'customer_address' => $array['suburd'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
-                        'view' => 'mail.end_of_lease',
+                        'view' => 'mail.carpet',
                     ];
                 } else if ($type == 7) {
                     $details = [

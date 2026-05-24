@@ -35,7 +35,7 @@
                             <div style="font-size:16px;line-height:1.8;">
 
                                 <p>
-                                    Dear {{ $customer_name }},<br><br>
+                                    Dear {{ $details['customer_name'] }},<br><br>
 
                                     Thank you for choosing
                                     <strong>{{ App_Name() }}</strong>

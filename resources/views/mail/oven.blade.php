@@ -36,7 +36,7 @@
                             <div style="font-size:16px;line-height:1.8;">
 
                                 <p>
-                                    Dear {{ $customer_name }},<br><br>
+                                    Dear {{ $details['customer_name'] }},<br><br>
 
                                     Thank you for choosing
                                     <strong>{{ App_Name() }}</strong>
@@ -69,7 +69,7 @@
                                 <br><br>
 
                                 <strong>💲 Total Amount:</strong>
-                                ${{ $total_amount }}
+                                ${{ $details['service_cost'] }}
 
                                 <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
 
