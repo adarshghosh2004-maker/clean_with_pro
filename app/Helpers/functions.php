@@ -39,7 +39,6 @@ function App_Name()
 {
     $setting_data = Setting_Data();
     $app_name = $setting_data['company_name'];
-    Log::info($app_name);
     if (isset($app_name) && $app_name != "") {
         return $app_name;
     } else {
