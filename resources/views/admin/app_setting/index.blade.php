@@ -31,6 +31,10 @@
                     <a class="nav-link" id="smtp-tab" data-toggle="tab" href="#smtp" role="tab" aria-controls="smtp"
                         aria-selected="false">{{__('label.smtp')}}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="social-tab" data-toggle="tab" href="#social" role="tab" aria-controls="social"
+                        aria-selected="false">{{__('label.social_setting')}}</a>
+                </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="app" role="tabpanel" aria-labelledby="app-tab">
@@ -74,11 +78,9 @@
                                                     placeholder="{{__('label.acn_number_here')}}">
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label> {{__('label.bsb')}} <span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" name="bsb"
-                                                    value="{{ $result['bsb'] ?? '' }}" class="form-control"
-                                                    placeholder="{{__('label.bsb_here')}}">
+                                                <label> {{__('label.bsb')}} <span class="text-danger">*</span></label>
+                                                <input type="text" name="bsb" value="{{ $result['bsb'] ?? '' }}"
+                                                    class="form-control" placeholder="{{__('label.bsb_here')}}">
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -97,11 +99,9 @@
                                                     placeholder="{{__('label.whatsapp_number_here')}}">
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label> {{__('label.website')}} <span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" name="website"
-                                                    value="{{ $result['website'] ?? '' }}" class="form-control"
-                                                    placeholder="{{__('label.website_here')}}">
+                                                <label> {{__('label.website')}} <span class="text-danger">*</span></label>
+                                                <input type="text" name="website" value="{{ $result['website'] ?? '' }}"
+                                                    class="form-control" placeholder="{{__('label.website_here')}}">
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -233,6 +233,92 @@
                         </div>
                     @endif
                 </div>
+                <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
+                    <div class="card custom-border-card">
+                        <h5 class="card-header">{{__('label.social_links')}}</h5>
+                        <div class="card-body">
+                            <form id="social_link" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="form-group col-md-3">
+                                        <label>{{__('label.name')}}<span class="text-danger">*</span></label>
+                                        <input type="text" name="name[]" class="form-control"
+                                            placeholder="{{__('label.name_here')}}">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>{{__('label.url')}}<span class="text-danger">*</span></label>
+                                        <input type="url" name="url[]" class="form-control"
+                                            placeholder="{{__('label.url_here')}}">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>{{__('label.icon')}}<span class="text-danger">*</span></label>
+                                        <input type="file" name="image[]" class="form-control import-file social_img"
+                                            id="social_img" accept=".png, .jpg, .jpeg, .webp">
+                                        <input type="hidden" name="old_image[]" value="">
+                                    </div>
+                                    <div class="form-group col-md-1">
+                                        <div class="custom-file">
+                                            <img src="{{asset('assets/imgs/upload_img.png')}}" class="img-thumbnail size-90"
+                                                id="link_img_social_img">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 mt-2">
+                                        <div class="flex-grow-1 px-5 d-inline-flex">
+                                            <div class="change mr-3 mt-4" id="add_btn">
+                                                <a class="btn btn-success add-more text-white"
+                                                    onclick="add_more_link()">+</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @for ($i = 0; $i < count($social_link); $i++)
+                                    <div class="social_part">
+                                        <div class="row">
+                                            <div class="form-group col-md-3">
+                                                <label>{{__('label.name')}}<span class="text-danger">*</span></label>
+                                                <input type="text" name="name[]" value="{{ $social_link[$i]['name'] }}"
+                                                    class="form-control" placeholder="{{__('label.name_here')}}">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label>{{__('label.url')}}<span class="text-danger">*</span></label>
+                                                <input type="url" name="url[]" value="{{ $social_link[$i]['url'] }}"
+                                                    class="form-control" placeholder="{{__('label.url_here')}}">
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <label>{{__('label.icon')}}<span class="text-danger">*</span></label>
+                                                <input type="file" name="image[]" class="form-control import-file social_img"
+                                                    id="social_img_{{$i}}" accept=".png, .jpg, .jpeg, .webp">
+                                                <input type="hidden" name="old_image[]"
+                                                    value="{{ basename($social_link[$i]['image']) }}">
+                                            </div>
+                                            <div class="form-group col-md-1">
+                                                <div class="custom-file">
+                                                    <img src="{{$social_link[$i]['image']}}" class="img-thumbnail size-90"
+                                                        id="link_img_social_img_{{$i}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 mt-2">
+                                                <div class="flex-grow-1 px-5 d-inline-flex">
+                                                    <div class="change mr-3 mt-4" id="add_btn">
+                                                        <a class="btn btn-danger text-white remove_link">-</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endfor
+
+                                <div class="add-more-social-link"></div>
+
+                                <div class="border-top pt-3 text-right">
+                                    <button type="button" class="btn btn-default mw-120"
+                                        onclick="social_link()">{{__('label.save')}}</button>
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -331,6 +417,94 @@
             } else {
                 showError();
             }
+        }
+        $("body").on("click", ".remove_link", function (e) {
+            $(this).parents('.social_part').remove();
+        });
+
+        // Multipal Img Show 
+        $(document).on('change', '.social_img', function () {
+            readURL(this, this.id);
+        });
+        function readURL(input, id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#link_img_' + id).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        // Social Link Save
+        function social_link() {
+
+            var Demo_Mode = '<?php echo Demo_Mode(); ?>';
+            if (Demo_Mode == 1) {
+
+                $("#dvloader").show();
+                var formData = new FormData($("#social_link")[0]);
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route("admin.appsetting.sociallink") }}',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (resp) {
+                        $("#dvloader").hide();
+                        get_responce_message(resp, 'social_link', '{{ route("admin.appsetting.index") }}');
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $("#dvloader").hide();
+                        toastr.error(errorThrown, textStatus);
+                    }
+                });
+            } else {
+                showError();
+            }
+        }
+
+        // OnBoarding Screen Add-Remove Link Part
+        var i = -1;
+
+        function add_more_link() {
+
+            var data = '<div class="social_part">';
+            data += '<div class="row">';
+            data += '<div class="form-group col-md-3">';
+            data += '<label>{{__("label.name")}}<span class="text-danger">*</span></label>';
+            data += '<input type="text" name="name[]" class="form-control" placeholder="{{__("label.name_here")}}">';
+            data += '</div>';
+            data += '<div class="form-group col-md-3">';
+            data += '<label>{{__("label.url")}}<span class="text-danger">*</span></label>';
+            data += '<input type="url" name="url[]" class="form-control" placeholder="{{__("label.url_here")}}">';
+            data += '</div>';
+            data += '<div class="form-group col-lg-3">';
+            data += '<label>{{__("label.icon")}}<span class="text-danger">*</span></label>';
+            data += '<input type="file" name="image[]" class="form-control import-file social_img" id="social_img_' + i + '" accept=".png, .jpg, .jpeg, .webp">';
+            data += '<input type="hidden" name="old_image[]" value="">';
+            data += '</div>';
+            data += '<div class="form-group col-md-1">';
+            data += '<div class="custom-file">';
+            data += '<img src="{{asset("assets/imgs/upload_img.png")}}" class="img-thumbnail size-90" id="link_img_social_img_' + i + '">';
+            data += '</div>';
+            data += '</div>';
+            data += '<div class="col-md-1 mt-2">';
+            data += '<div class="flex-grow-1 px-5 d-inline-flex">';
+            data += '<div class="change mr-3 mt-4" id="add_btn">';
+            data += '<a class="btn btn-danger add-more text-white remove_link">-</a>';
+            data += '</div>';
+            data += '</div>';
+            data += '</div>';
+            data += '</div>';
+            data += '</div>';
+
+            $('.add-more-social-link').append(data);
+            i--;
+            $("html, body").animate({
+                scrollTop: $(document).height()
+            }, "slow");
         }
     </script>
 @endsection

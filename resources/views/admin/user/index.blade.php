@@ -580,15 +580,13 @@
                 }
 
                 var staticServices = [
-                    { id: 1, title: 'Carpet Cleaning' },
-                    { id: 2, title: 'Rug Cleaning' },
-                    { id: 3, title: 'Upholstery Cleaning' },
-                    { id: 4, title: 'Mattress Cleaning' },
-                    { id: 5, title: 'Tile & Grout Cleaning' },
-                    { id: 6, title: 'Stain Removal' },
-                    { id: 7, title: 'Odour Removal' },
-                    { id: 8, title: 'Steam Cleaning' },
-                    { id: 9, title: 'End of Lease Cleaning' }
+                    { id: 1, title: 'Domestic Cleaning' },
+                    { id: 2, title: 'End of Lease Cleaning' },
+                    { id: 3, title: 'Carpet Cleaning' },
+                    { id: 4, title: 'Oven Cleaning' },
+                    { id: 5, title: 'Tile Grouting' },
+                    { id: 6, title: 'Mould Treatment' },
+                    { id: 7, title: 'Bathroom/Kitchen Cleaning' },
                 ];
 
                 // Collect services data

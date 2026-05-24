@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Notification_Configuration extends Model
+class Social_Link extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_notification_configuration';
+    protected $table = 'tbl_social_link';
     protected $guarded = array();
 
     protected $casts = [
         'id' => 'integer',
-        'type' => 'string',
-        'send_mail' => 'integer',
-        'send_notification' => 'integer',
+        'name' => 'string',
+        'image' => 'string',
+        'url' => 'string',
         'status' => 'integer',
     ];
 }

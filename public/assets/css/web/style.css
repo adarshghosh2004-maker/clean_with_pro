@@ -950,10 +950,18 @@ h6,
     margin-right: 10px;
     color: var(--white);
 }
+
+.social-icons a img{
+    height:100%;
+    width:100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
 .social-icons a:hover {
     background: linear-gradient(90deg, #12344d, #0f9d7a) !important;
     color: var(--white);
-    padding-left: 2.5px;
+    padding: 0;
+    transform: translateY(-2px);
 }
 
 /* Enhanced Buttons */
@@ -1518,6 +1526,10 @@ h6,
 }
 
 @media (max-width: 768px) {
+    .footer-img{
+        height: 120px;
+        width: 120px;
+    }
     .feature-row {
         flex-direction: column;
         gap: 30px;

@@ -219,9 +219,9 @@
                 <p class="small text-white-50 mb-4">Premium cleaning services tailored to your specific needs.
                     Experience excellence and reliability.</p>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/share/18juoSnKYm/"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/cleanwithpro/"><i class="bi bi-instagram"></i></a>
-                    <!-- <a href="#"><i class="bi bi-twitter-x"></i></a> -->
+                    @foreach ($social_links as $key => $value)
+                        <a href="{{ $value['url'] }}"><img src="{{ $value['image']}}"></a>
+                    @endforeach
                 </div>
             </div>
 
@@ -238,7 +238,8 @@
                         $activePages = \App\Models\Page::where('status', 1)->get();
                     @endphp
                     @foreach($activePages as $activePage)
-                        <li class="mb-2"><a href="{{ route('page.view', $activePage->title) }}">{{ $activePage->title }}</a></li>
+                        <li class="mb-2"><a href="{{ route('page.view', $activePage->title) }}">{{ $activePage->title }}</a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
@@ -279,7 +280,8 @@
 
         <hr class="mt-5 mb-4 border-secondary">
         <div class="text-center text-white-50 small">
-            Copyright &copy; {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}} 2026. All rights reserved.
+            Copyright &copy; {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}} 2026. All rights
+            reserved.
         </div>
     </div>
 </footer>

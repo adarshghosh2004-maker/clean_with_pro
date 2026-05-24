@@ -70,6 +70,7 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
     Route::post('appsetting/app', [AppSettingController::class, 'app'])->name('appsetting.app');
     Route::post('appsetting/smtp', [AppSettingController::class, 'smtp'])->name('appsetting.smtp');
     Route::post('appsetting/testsmtp', [AppSettingController::class, 'testsmtp'])->name('appsetting.testsmtp');
+    Route::post('appsetting/sociallink', [AppSettingController::class, 'sociallink'])->name('appsetting.sociallink');
     // panel setting
     Route::get('panelsetting', [PanelSettingController::class, 'index'])->name('panelsetting.index');
     Route::post('panelsetting/save', [PanelSettingController::class, 'save'])->name('panelsetting.save');
