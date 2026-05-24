@@ -39,7 +39,7 @@
                                         <img src="{{ $result['panel_login_page_bg_image'] }}" id="imagePreview">
                                     </div>
                                 </div>
-                                <input type="hidden" name="old_panel_login_page_bg_image" value="{{ $result['panel_login_page_bg_image'] }}">
+                                <input type="hidden" name="old_panel_login_page_bg_image" value="{{ $old_panel_login_page_bg_image }}">
                             </div>
                         </div>
                     </div>

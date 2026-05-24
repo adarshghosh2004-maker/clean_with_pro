@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -7,132 +6,198 @@
     <title>{{ $details['title'] }}</title>
 </head>
 
-<body
-    style="margin:0;padding:20px;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#e0e7ff,#f5f7fa);">
+<body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
 
-    <table align="center" width="100%" cellpadding="0" cellspacing="0">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-            <td>
-                <table align="center" cellpadding="0" cellspacing="0"
-                    style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.1);overflow:hidden;">
+            <td align="center">
+
+                <table width="600" cellpadding="0" cellspacing="0" border="0"
+                    style="background:#ffffff;border:1px solid #e5e5e5;">
 
                     <!-- Header -->
+
                     <tr>
-                        <td
-                            style="padding:30px;background:linear-gradient(135deg,#6d5dfc,#4e45b8);color:#ffffff;text-align:center;">
+                        <td align="center" style="background:#4e45b8;padding:25px;color:#ffffff;">
+
                             <h1 style="margin:0;font-size:24px;">
                                 {{ App_Name() }}
                             </h1>
-                            <p style="margin-top:8px;">
-                                Booking Confirmation 🎉
+
+                            <p style="margin:10px 0 0;">
+                                Booking Confirmation
                             </p>
+
                         </td>
                     </tr>
 
-                    <!-- Body -->
+
+                    <!-- Content -->
+
                     <tr>
-                        <td style="padding:20px 30px;color:#000000">
+                        <td style="padding:30px;color:#333;line-height:1.7;">
 
-                            <div style="font-size:16px;line-height:1.8;">
+                            <p>
+                                Dear {{ $details['customer_name'] }},
+                            </p>
 
-                                <p>
-                                    Dear {{ $details['customer_name'] }},
-                                    <br>
+                            <p>
+                                Thank you for booking your cleaning service with
+                                <strong>{{ App_Name() }}</strong>.
+                            </p>
 
-                                    Thank you for booking your cleaning service with
-                                    <strong>{{ App_Name() }}</strong>.
-                                </p>
+                            <p>
+                                Your booking details are below:
+                            </p>
 
-                                <h3>📌 Booking Confirmation</h3>
+                            <hr>
 
-                                <strong>Customer:</strong> {{ $details['customer_name']}}<br>
-                                <strong>Booking No:</strong> {{ $details['booking_number']}}<br>
-                                <strong>Date & Time:</strong> {{ $details['date']}}<br>
-                                <strong>Service:</strong> 3 Hours Domestic Cleaning<br>
-                                <strong>Address:</strong> {{ $details['customer_address']}}<br>
-                                <strong>Mobile:</strong> {{ $details['customer_mobile_no']}}<br>
-                                <strong>Service Cost:</strong> ${{ $details['service_cost']}}
+                            <h3>Booking Details</h3>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <table width="100%" cellpadding="8">
 
-                                <h3>🧹 Cleaning Checklist</h3>
+                                <tr>
+                                    <td><strong>Customer</strong></td>
+                                    <td>{{ $details['customer_name'] }}</td>
+                                </tr>
 
-                                <strong>General Areas</strong><br>
-                                • Light tidy up<br>
-                                • Cobweb removal<br>
-                                • Empty bins<br>
-                                • Dust skirting / window sills / doors<br>
-                                • Dust & clean doors<br>
-                                • Clean light switches & power points<br>
-                                • Dust reachable surfaces<br>
-                                • Clean mirrors<br>
-                                • Air freshen (optional)<br>
-                                • Vacuum under furniture
+                                <tr>
+                                    <td><strong>Booking No</strong></td>
+                                    <td>{{ $details['booking_number'] }}</td>
+                                </tr>
 
-                                <br>
+                                <tr>
+                                    <td><strong>Date & Time</strong></td>
+                                    <td>{{ $details['date'] }}</td>
+                                </tr>
 
-                                <strong>🍳 Kitchen</strong><br>
-                                • Clean stovetop<br>
-                                • Clean rangehood exterior<br>
-                                • Wipe benchtops<br>
-                                • Clean appliances (exterior)<br>
-                                • Clean splashback
+                                <tr>
+                                    <td><strong>Service</strong></td>
+                                    <td>3 Hours Domestic Cleaning</td>
+                                </tr>
 
-                                <br>
+                                <tr>
+                                    <td><strong>Address</strong></td>
+                                    <td>{{ $details['customer_address'] }}</td>
+                                </tr>
 
-                                <strong>🚿 Bathroom</strong><br>
-                                • Scrub bath<br>
-                                • Scrub shower<br>
-                                • Scrub sink<br>
-                                • Wipe benches<br>
-                                • Clean mirrors<br>
-                                • Polish chrome<br>
-                                • Wipe cupboard exteriors<br>
-                                • Empty bins<br>
-                                • Clean toilet
+                                <tr>
+                                    <td><strong>Mobile</strong></td>
+                                    <td>{{ $details['customer_mobile_no'] }}</td>
+                                </tr>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                                <tr>
+                                    <td><strong>Service Cost</strong></td>
+                                    <td>${{ $details['service_cost'] }}</td>
+                                </tr>
 
-                                <h3>⚠️ Important Notes</h3>
+                            </table>
 
-                                • Two professional cleaners will attend the service at the same time, and booking will
-                                be completed within approximately 1.5 hours.<br>
+                            <hr>
 
-                                • Additional cleaning time beyond the booked duration will be charged at <strong>$70 per
-                                    extra hour</strong>.<br>
+                            <h3>Cleaning Checklist</h3>
 
-                                • Cancellation or rescheduling requests must be made at least <strong>24 hours
-                                    prior</strong> to the scheduled service time.
+                            <strong>General Areas</strong>
 
-                                <br>
+                            <ul>
+                                <li>Light tidy up</li>
+                                <li>Cobweb removal</li>
+                                <li>Empty bins</li>
+                                <li>Dust skirting / window sills / doors</li>
+                                <li>Dust & clean doors</li>
+                                <li>Clean light switches & power points</li>
+                                <li>Dust reachable surfaces</li>
+                                <li>Clean mirrors</li>
+                                <li>Air freshen (optional)</li>
+                                <li>Vacuum under furniture</li>
+                            </ul>
 
-                                If you need anything, just message us 👍
+                            <strong>Kitchen</strong>
 
-                                <br>
+                            <ul>
+                                <li>Clean stovetop</li>
+                                <li>Clean rangehood exterior</li>
+                                <li>Wipe benchtops</li>
+                                <li>Clean appliances (exterior)</li>
+                                <li>Clean splashback</li>
+                            </ul>
 
-                                We look forward to assisting you.
+                            <strong>Bathroom</strong>
 
-                                <br>
+                            <ul>
+                                <li>Scrub bath</li>
+                                <li>Scrub shower</li>
+                                <li>Scrub sink</li>
+                                <li>Wipe benches</li>
+                                <li>Clean mirrors</li>
+                                <li>Polish chrome</li>
+                                <li>Wipe cupboard exteriors</li>
+                                <li>Empty bins</li>
+                                <li>Clean toilet</li>
+                            </ul>
 
-                                Kind regards,<br>
-                                <strong>{{ App_Name() }}</strong><br>
-                                📞 {{ Setting_Data()['contact'] ?? ''}}<br>
-                                📧 {{ Setting_Data()['email'] ?? ''}}
+                            <hr>
 
-                            </div>
+                            <h3>Important Information</h3>
+
+                            <ul>
+
+                                <li>
+                                    Two professional cleaners will attend together.
+                                    Booking duration is approximately 1.5 hours.
+                                </li>
+
+                                <li>
+                                    Additional cleaning time beyond booking duration
+                                    will be charged at $70 per extra hour.
+                                </li>
+
+                                <li>
+                                    Cancellation or rescheduling requests should be
+                                    made at least 24 hours before service time.
+                                </li>
+
+                            </ul>
+
+                            <p>
+                                If you need any assistance,
+                                please contact us.
+                            </p>
+
+                            <br>
+
+                            Regards,
+                            <br>
+
+                            <strong>{{ App_Name() }}</strong>
+
+                            <br>
+
+                            {{ Setting_Data()['contact'] ?? '' }}
+
+                            <br>
+
+                            {{ Setting_Data()['email'] ?? '' }}
 
                         </td>
                     </tr>
+
 
                     <!-- Footer -->
+
                     <tr>
-                        <td style="padding:20px;background-color:#f8f8f8;text-align:center;font-size:14px;color:#999;">
-                            Copyright &copy; {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}} 2026. All
-                            rights reserved.
+                        <td align="center" style="padding:20px;background:#fafafa;color:#777;font-size:13px;">
+
+                            Copyright ©
+                            {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}}
+                            2026.
+                            All rights reserved.
+
                         </td>
                     </tr>
 
                 </table>
+
             </td>
         </tr>
     </table>

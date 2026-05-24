@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -7,133 +6,213 @@
     <title>{{ $details['title'] }}</title>
 </head>
 
-<body
-    style="margin:0;padding:20px;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#e0e7ff,#f5f7fa);">
+<body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
 
-    <table align="center" width="100%" cellpadding="0" cellspacing="0">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-            <td>
-                <table align="center" cellpadding="0" cellspacing="0"
-                    style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.1);overflow:hidden;">
+            <td align="center">
+
+                <table width="600" cellpadding="0" cellspacing="0" border="0"
+                    style="background:#ffffff;border:1px solid #e5e5e5;">
 
                     <!-- Header -->
+
                     <tr>
-                        <td
-                            style="padding:30px;background:linear-gradient(135deg,#6d5dfc,#4e45b8);color:#ffffff;text-align:center;">
+                        <td align="center" style="background:#4e45b8;padding:25px;color:#ffffff;">
+
                             <h1 style="margin:0;font-size:24px;">
-                                🧽 {{ App_Name() }}
+                                {{ App_Name() }}
                             </h1>
-                            <p style="margin-top:8px;">
-                                Booking Confirmation 🎉
+
+                            <p style="margin:10px 0 0;">
+                                Booking Confirmation
                             </p>
+
                         </td>
                     </tr>
 
-                    <!-- Body -->
+
+                    <!-- Content -->
+
                     <tr>
-                        <td style="padding:20px 30px;color:#000000">
+                        <td style="padding:30px;color:#333;line-height:1.7;">
 
-                            <div style="font-size:16px;line-height:1.8;">
+                            <p>
+                                Dear {{ $details['customer_name'] }},
+                            </p>
 
-                                <p>
-                                    Dear {{ $details['customer_name'] }},<br>
+                            <p>
+                                Thank you for choosing
+                                <strong>{{ App_Name() }}</strong>
+                                for your cleaning service.
+                            </p>
 
-                                    Thank you for choosing
-                                    <strong>{{ App_Name() }}</strong>
-                                    for your cleaning service.
-                                </p>
+                            <p>
+                                Your booking has been confirmed.
+                                Please find your booking details below:
+                            </p>
 
-                                <p>
-                                    Your booking has been successfully confirmed.
-                                    Please find the details below:
-                                </p>
+                            <hr>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <h3>Booking Details</h3>
 
-                                <h3>📋 Booking Details</h3>
+                            <table width="100%" cellpadding="8">
 
-                                <strong>Customer:</strong> {{ $details['customer_name']}}<br>
-                                <strong>Booking No:</strong> {{ $details['booking_number']}}<br>
-                                <strong>Date & Time:</strong> {{ $details['date']}}<br>
-                                <strong>Service:</strong> Oven Cleaning<br>
-                                <strong>Address:</strong> {{ $details['customer_address']}}<br>
-                                <strong>Mobile:</strong> {{ $details['customer_mobile_no']}}<br>
-                                <strong>Service Cost:</strong> ${{ $details['service_cost']}}
+                                <tr>
+                                    <td><strong>Customer</strong></td>
+                                    <td>{{ $details['customer_name'] }}</td>
+                                </tr>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                                <tr>
+                                    <td><strong>Booking No</strong></td>
+                                    <td>{{ $details['booking_number'] }}</td>
+                                </tr>
 
-                                <h3>🧼 Service Booked</h3>
+                                <tr>
+                                    <td><strong>Date & Time</strong></td>
+                                    <td>{{ $details['date'] }}</td>
+                                </tr>
 
+                                <tr>
+                                    <td><strong>Service</strong></td>
+                                    <td>Oven Cleaning</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Address</strong></td>
+                                    <td>{{ $details['customer_address'] }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Mobile</strong></td>
+                                    <td>{{ $details['customer_mobile_no'] }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Service Cost</strong></td>
+                                    <td>${{ $details['service_cost'] }}</td>
+                                </tr>
+
+                            </table>
+
+                            <hr>
+
+                            <h3>Service Booked</h3>
+
+                            <p>
                                 Standard Oven Cleaning + FREE Rangehood Cleaning
-                                +
-                                <br>
+                            </p>
 
-                                <strong>💲 Total Amount:</strong>
+                            <p>
+                                <strong>Total Amount:</strong>
                                 ${{ $details['service_cost'] }}
+                            </p>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <hr>
 
-                                <h3>✅ Standard Oven Cleaning Checklist</h3>
+                            <h3>Standard Oven Cleaning Checklist</h3>
 
-                                • Deep cleaning of oven interior<br>
-                                • Oven door cleaning inside & outside<br>
-                                • Oven glass detailing<br>
-                                • Removal of grease & burnt residue<br>
-                                • Cleaning oven racks & trays<br>
-                                • Wipe down of exterior surfaces<br>
-                                • Degreasing around oven edges
+                            <ul>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                                <li>Deep cleaning of oven interior</li>
 
-                                <h3>🎁 FREE Rangehood Cleaning Service Includes</h3>
+                                <li>Oven door cleaning inside & outside</li>
 
-                                • Deep scrubbing of the rangehood<br>
-                                • Filter cleaning and degreasing<br>
-                                • Cleaning underneath and surrounding areas<br>
-                                • Exterior wipe down and detailing<br>
-                                • Removal of built-up oil, dust & grime
+                                <li>Oven glass detailing</li>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                                <li>Removal of grease and burnt residue</li>
 
-                                <h3>📌 Important Notes</h3>
+                                <li>Cleaning oven racks & trays</li>
 
-                                • Please ensure electricity/light is not turned off during the service.<br>
+                                <li>Wipe down of exterior surfaces</li>
 
-                                • Oven must be in working condition and able to heat properly by itself.<br>
+                                <li>Degreasing around oven edges</li>
 
-                                • Any cancellation or rescheduling must be advised at least
-                                <strong>24 hours</strong>
-                                before booking time.
+                            </ul>
 
-                                <br>
 
-                                If you need anything, just message us 👍
+                            <hr>
 
-                                <br>
+                            <h3>FREE Rangehood Cleaning Service Includes</h3>
 
-                                We look forward to assisting you.
+                            <ul>
 
-                                <br>
+                                <li>Deep scrubbing of the rangehood</li>
 
-                                Kind regards,<br>
-                                <strong>{{ App_Name() }}</strong><br>
-                                📞 {{ Setting_Data()['contact'] ?? ''}}<br>
-                                📧 {{ Setting_Data()['email'] ?? ''}}
+                                <li>Filter cleaning and degreasing</li>
 
-                            </div>
+                                <li>Cleaning underneath and surrounding areas</li>
+
+                                <li>Exterior wipe down and detailing</li>
+
+                                <li>Removal of built-up oil, dust and grime</li>
+
+                            </ul>
+
+
+                            <hr>
+
+                            <h3>Important Information</h3>
+
+                            <ul>
+
+                                <li>
+                                    Please ensure electricity/light remains on during service.
+                                </li>
+
+                                <li>
+                                    Oven must be in working condition and able to heat properly.
+                                </li>
+
+                                <li>
+                                    Cancellation or rescheduling requests should be made at least
+                                    24 hours before booking time.
+                                </li>
+
+                            </ul>
+
+
+                            <p>
+                                If you need any assistance,
+                                please contact us.
+                            </p>
+
+                            <br>
+
+                            Regards,
+                            <br>
+
+                            <strong>{{ App_Name() }}</strong>
+
+                            <br>
+
+                            {{ Setting_Data()['contact'] ?? '' }}
+
+                            <br>
+
+                            {{ Setting_Data()['email'] ?? '' }}
 
                         </td>
                     </tr>
+
 
                     <!-- Footer -->
+
                     <tr>
-                        <td style="padding:20px;background-color:#f8f8f8;text-align:center;font-size:14px;color:#999;">
-                            Copyright &copy; {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}} 2026. All
-                            rights reserved.
+
+                        <td align="center" style="padding:20px;background:#fafafa;color:#777;font-size:13px;">
+
+                            Copyright ©
+                            {{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}
+                            2026.
+                            All rights reserved.
+
                         </td>
+
                     </tr>
 
                 </table>
+
             </td>
         </tr>
     </table>

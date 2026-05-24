@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -7,166 +6,234 @@
     <title>{{ $details['title'] }}</title>
 </head>
 
-<body
-    style="margin:0;padding:20px;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#e0e7ff,#f5f7fa);">
+<body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
 
-    <table align="center" width="100%" cellpadding="0" cellspacing="0">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-            <td>
-                <table align="center" cellpadding="0" cellspacing="0"
-                    style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.1);overflow:hidden;">
+            <td align="center">
+
+                <table width="600" cellpadding="0" cellspacing="0" border="0"
+                    style="background:#ffffff;border:1px solid #e5e5e5;">
 
                     <!-- Header -->
+
                     <tr>
-                        <td
-                            style="padding:30px;background:linear-gradient(135deg,#6d5dfc,#4e45b8);color:#fff;text-align:center;">
+                        <td align="center" style="background:#4e45b8;padding:25px;color:#ffffff;">
+
                             <h1 style="margin:0;font-size:24px;">
                                 {{ App_Name() }}
                             </h1>
-                            <p style="margin-top:8px;">
-                                Booking Confirmation 🎉
+
+                            <p style="margin:10px 0 0;">
+                                Booking Confirmation
                             </p>
+
                         </td>
                     </tr>
 
-                    <!-- Body -->
+
+                    <!-- Content -->
+
                     <tr>
-                        <td style="padding:20px 30px;color:#000;">
+                        <td style="padding:30px;color:#333;line-height:1.7;">
 
-                            <div style="font-size:16px;line-height:1.8;">
+                            <p>
+                                Dear {{ $details['customer_name'] }},
+                            </p>
 
-                                <p>
-                                    Dear {{ $details['customer_name']}} 👋<br>
+                            <p>
+                                Thank you for booking with
+                                <strong>{{ App_Name() }}</strong>.
+                            </p>
 
-                                    Thank you for booking with
-                                    <strong>{{ App_Name() }}</strong>.
-                                </p>
+                            <p>
+                                Your booking details are below:
+                            </p>
 
-                                <h3>📌 BOOKING CONFIRMATION</h3>
+                            <hr>
 
-                                <strong>Customer:</strong> {{ $details['customer_name']}}<br>
-                                <strong>Booking No:</strong> {{ $details['booking_number']}}<br>
-                                <strong>Date & Time:</strong> {{ $details['date']}}<br>
-                                <strong>Service:</strong> End of Lease Cleaning<br>
-                                <strong>Address:</strong> {{ $details['customer_address']}}<br>
-                                <strong>Mobile:</strong> {{ $details['customer_mobile_no']}}<br>
-                                <strong>Service Cost:</strong> ${{ $details['service_cost']}}
+                            <h3>Booking Details</h3>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <table width="100%" cellpadding="8">
 
-                                <h3>🛡️ BOND BACK GUARANTEE</h3>
+                                <tr>
+                                    <td><strong>Customer</strong></td>
+                                    <td>{{ $details['customer_name'] }}</td>
+                                </tr>
 
-                                ✔ 100% Bond Back Guarantee<br>
-                                ✔ Free re-clean if agent is not satisfied<br>
-                                ✔ Valid for 7 days<br>
-                                ✔ Receipt provided for agent
+                                <tr>
+                                    <td><strong>Booking No</strong></td>
+                                    <td>{{ $details['booking_number'] }}</td>
+                                </tr>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                                <tr>
+                                    <td><strong>Date & Time</strong></td>
+                                    <td>{{ $details['date'] }}</td>
+                                </tr>
 
-                                <h3>🧼 CLEANING CHECKLIST</h3>
+                                <tr>
+                                    <td><strong>Service</strong></td>
+                                    <td>End of Lease Cleaning</td>
+                                </tr>
 
-                                <strong>Bedrooms & Living Areas</strong><br>
-                                • Doors & skirting dusting<br>
-                                • Windows (inside only)<br>
-                                • Blinds (dust only)<br>
-                                • Light fittings & switches<br>
-                                • Built-in cabinets & wardrobes<br>
-                                • Reachable cobweb removal<br>
-                                • Wall marks (major marks only)
+                                <tr>
+                                    <td><strong>Address</strong></td>
+                                    <td>{{ $details['customer_address'] }}</td>
+                                </tr>
 
-                                <br>
+                                <tr>
+                                    <td><strong>Mobile</strong></td>
+                                    <td>{{ $details['customer_mobile_no'] }}</td>
+                                </tr>
 
-                                <strong>Bathrooms</strong><br>
-                                • Shower screens, tiles & grout<br>
-                                • Bathtub & toilet<br>
-                                • Basin, vanity & mirrors<br>
-                                • Cupboards (inside & outside)<br>
-                                • Tap, shower head & stainless steel polish<br>
-                                • Exhaust fan dusting
+                                <tr>
+                                    <td><strong>Service Cost</strong></td>
+                                    <td>${{ $details['service_cost'] }}</td>
+                                </tr>
 
-                                <br>
+                            </table>
 
-                                <strong>Kitchen</strong><br>
-                                • Oven, cooktop, rangehood & filters<br>
-                                • Splashback & benchtops<br>
-                                • Pantry & cupboards (inside/outside)<br>
-                                • Sink & taps
+                            <hr>
 
-                                <br>
+                            <h3>Bond Back Guarantee</h3>
 
-                                <strong>Floors</strong><br>
-                                • Vacuum all floors<br>
-                                • Mop hard floors<br>
-                                • Carpet steam cleaning
+                            <ul>
+                                <li>100% Bond Back Guarantee</li>
+                                <li>Free re-clean if agent is not satisfied</li>
+                                <li>Valid for 7 days</li>
+                                <li>Receipt provided for agent</li>
+                            </ul>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <hr>
 
-                                <h3>➕ EXTRA SERVICES (if required)</h3>
+                            <h3>Cleaning Checklist</h3>
 
-                                • Balcony cleaning – $50<br>
-                                • Wall spot cleaning – price on inspection<br>
-                                • Full wall wash – $10–$15 per wall<br>
-                                • Outside windows – $10 each<br>
-                                • Garage wash – $50<br>
-                                • Flea treatment – $120<br>
-                                • Carpet deodoriser – $10 each<br>
-                                • Mould cleaning – depends on condition
+                            <strong>Bedrooms & Living Areas</strong>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <ul>
+                                <li>Doors & skirting dusting</li>
+                                <li>Windows (inside only)</li>
+                                <li>Blinds (dust only)</li>
+                                <li>Light fittings & switches</li>
+                                <li>Built-in cabinets & wardrobes</li>
+                                <li>Reachable cobweb removal</li>
+                                <li>Wall marks (major marks only)</li>
+                            </ul>
 
-                                <h3>⚠️ IMPORTANT NOTES</h3>
+                            <strong>Bathrooms</strong>
 
-                                • Property must be empty<br>
-                                • Power & hot water must be available<br>
-                                • No rubbish removal<br>
-                                • Pet hair removal is best effort only<br>
-                                • Customer to arrange parking<br>
-                                • Pay on arrival 💳
+                            <ul>
+                                <li>Shower screens, tiles & grout</li>
+                                <li>Bathtub & toilet</li>
+                                <li>Basin, vanity & mirrors</li>
+                                <li>Cupboards (inside & outside)</li>
+                                <li>Tap, shower head & stainless steel polish</li>
+                                <li>Exhaust fan dusting</li>
+                            </ul>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <strong>Kitchen</strong>
 
-                                <h3>⚠️ EXCLUSIONS</h3>
+                            <ul>
+                                <li>Oven, cooktop, rangehood & filters</li>
+                                <li>Splashback & benchtops</li>
+                                <li>Pantry & cupboards (inside/outside)</li>
+                                <li>Sink & taps</li>
+                            </ul>
 
-                                • Ceilings<br>
-                                • Stickers, adhesive tape, paint marks<br>
-                                • Front & back yard<br>
-                                • Appliances (Fridge, Microwave, Washing Machine, TV, Speaker, etc.)
+                            <strong>Floors</strong>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <ul>
+                                <li>Vacuum all floors</li>
+                                <li>Mop hard floors</li>
+                                <li>Carpet steam cleaning</li>
+                            </ul>
 
-                                <h3>🚪 AFTER CLEANING</h3>
+                            <hr>
 
-                                Only real estate agent should enter after cleaning to keep bond guarantee valid.
+                            <h3>Extra Services (if required)</h3>
 
-                                <br>
+                            <ul>
+                                <li>Balcony cleaning – $50</li>
+                                <li>Wall spot cleaning – price on inspection</li>
+                                <li>Full wall wash – $10–$15 per wall</li>
+                                <li>Outside windows – $10 each</li>
+                                <li>Garage wash – $50</li>
+                                <li>Flea treatment – $120</li>
+                                <li>Carpet deodoriser – $10 each</li>
+                                <li>Mould cleaning – depends on condition</li>
+                            </ul>
 
-                                If you need anything, just message us 👍
+                            <hr>
 
-                                <br>
+                            <h3>Important Information</h3>
 
-                                We look forward to assisting you.
+                            <ul>
+                                <li>Property must be empty</li>
+                                <li>Power & hot water must be available</li>
+                                <li>No rubbish removal</li>
+                                <li>Pet hair removal is best effort only</li>
+                                <li>Customer to arrange parking</li>
+                                <li>Payment on arrival</li>
+                            </ul>
 
-                                <br>
+                            <hr>
 
-                                Kind regards,<br>
-                                <strong>{{ App_Name() }}</strong><br>
-                                📞 {{ Setting_Data()['contact'] ?? ''}}<br>
-                                📧 {{ Setting_Data()['email'] ?? ''}}
+                            <h3>Exclusions</h3>
 
-                            </div>
+                            <ul>
+                                <li>Ceilings</li>
+                                <li>Stickers, adhesive tape, paint marks</li>
+                                <li>Front & back yard</li>
+                                <li>Appliances (Fridge, Microwave, Washing Machine, TV, Speaker, etc.)</li>
+                            </ul>
+
+                            <hr>
+
+                            <h3>After Cleaning</h3>
+
+                            <p>
+                                Only the real estate agent should enter after cleaning
+                                to keep the bond guarantee valid.
+                            </p>
+
+                            <p>
+                                If you need any assistance,
+                                please contact us.
+                            </p>
+
+                            <br>
+
+                            Regards,
+                            <br>
+
+                            <strong>{{ App_Name() }}</strong>
+
+                            <br>
+
+                            {{ Setting_Data()['contact'] ?? '' }}
+
+                            <br>
+
+                            {{ Setting_Data()['email'] ?? '' }}
 
                         </td>
                     </tr>
 
                     <!-- Footer -->
+
                     <tr>
-                        <td style="padding:20px;background:#f8f8f8;text-align:center;font-size:14px;color:#999;">
-                            Copyright &copy; {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}} 2026. All
-                            rights reserved.
+                        <td align="center" style="padding:20px;background:#fafafa;color:#777;font-size:13px;">
+
+                            Copyright ©
+                            {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}}
+                            2026.
+                            All rights reserved.
+
                         </td>
                     </tr>
 
                 </table>
+
             </td>
         </tr>
     </table>

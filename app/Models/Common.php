@@ -22,37 +22,27 @@ class Common extends Model
     // Image Functions
     public function saveImage($org_name, $folder, $prefix = "")
     {
-        try {
+        // Generate filename
+        $filename = $prefix . date('d_m_Y_') . rand(1111, 9999) . '.webp';
 
-            // Generate filename
-            $filename = $prefix . date('d_m_Y_') . rand(1111, 9999) . '.webp';
+        // Storage path
+        $path = storage_path('app/public/' . $folder);
 
-            // Storage path
-            $path = storage_path('app/public/' . $folder);
-
-            // Create folder if not exists
-            if (!file_exists($path)) {
-                mkdir($path, 0777, true);
-            }
-
-            // Read image
-            $image = Image::read($org_name);
-
-            // Resize large images automatically
-            $image->scaleDown(width: 1600);
-
-            // Save as optimized webp
-            $image->toWebp(80)->save($path . '/' . $filename);
-
-            return $filename;
-
-        } catch (Exception $e) {
-
-            return response()->json([
-                'status' => 400,
-                'errors' => $e->getMessage()
-            ]);
+        // Create folder if not exists
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
         }
+
+        // Read image
+        $image = Image::read($org_name);
+
+        // Resize large images automatically
+        $image->scaleDown(width: 1600);
+
+        // Save as optimized webp
+        $image->toWebp(80)->save($path . '/' . $filename);
+
+        return $filename;
     }
     public function imageNameToUrl($array, $column, $folder)
     {
@@ -355,7 +345,17 @@ class Common extends Model
                         'title' => App_Name() . " - Test Smtp",
                         'view' => 'mail.test',
                     ];
-                } else {
+                } else if($type == 8){
+                    $details = [
+                        'title' => App_Name() . " - Thankyou",
+                        'customer_name' => $array['name'] ?? '',
+                        'booking_number' => $array['id'] ?? '',
+                        'date' => $array['date'] ?? '',
+                        'service_cost' => $array['amount'] ?? '',
+                        'view' => 'mail.thankyou',
+                    ];
+                }
+                else {
                     return true;
                 }
                 Mail::to($email)->send(new \App\Mail\mail($details));

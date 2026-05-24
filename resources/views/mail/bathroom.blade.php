@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -7,127 +6,206 @@
     <title>{{ $details['title'] }}</title>
 </head>
 
-<body
-    style="margin:0;padding:20px;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#e0e7ff,#f5f7fa);">
+<body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
 
-    <table align="center" width="100%" cellpadding="0" cellspacing="0">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-            <td>
-                <table align="center" cellpadding="0" cellspacing="0"
-                    style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.1);overflow:hidden;">
+            <td align="center">
+
+                <table width="600" cellpadding="0" cellspacing="0" border="0"
+                    style="background:#ffffff;border:1px solid #e5e5e5;">
 
                     <!-- Header -->
+
                     <tr>
-                        <td
-                            style="padding:30px;background:linear-gradient(135deg,#6d5dfc,#4e45b8);color:#ffffff;text-align:center;">
+                        <td align="center" style="background:#4e45b8;padding:25px;color:#ffffff;">
+
                             <h1 style="margin:0;font-size:24px;">
-                                🧽 {{ App_Name() }}
+                                {{ App_Name() }}
                             </h1>
-                            <p style="margin-top:8px;">
-                                Booking Confirmation 🎉
+
+                            <p style="margin:10px 0 0;">
+                                Booking Confirmation
                             </p>
+
                         </td>
                     </tr>
 
-                    <!-- Body -->
+
+                    <!-- Content -->
+
                     <tr>
-                        <td style="padding:20px 30px;color:#000000">
+                        <td style="padding:30px;color:#333;line-height:1.7;">
 
-                            <div style="font-size:16px;line-height:1.8;">
+                            <p>
+                                Dear {{ $details['customer_name'] }},
+                            </p>
 
-                                <p>
-                                    Dear {{ $details['customer_name'] }},<br>
+                            <p>
+                                Thank you for choosing
+                                <strong>{{ App_Name() }}</strong>
+                                for your cleaning service.
+                            </p>
 
-                                    Thank you for choosing
-                                    <strong>{{ App_Name() }}</strong>
-                                    for your cleaning service.
-                                </p>
+                            <p>
+                                Your booking details are below:
+                            </p>
 
-                                <p>
-                                    Your booking has been successfully confirmed.
-                                    Please find the details below:
-                                </p>
+                            <hr>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <h3>Booking Details</h3>
 
-                                <h3>📋 Booking Details</h3>
+                            <table width="100%" cellpadding="8">
 
-                                <strong>Customer:</strong> {{ $details['customer_name']}}<br>
-                                <strong>Booking No:</strong> {{ $details['booking_number']}}<br>
-                                <strong>Date & Time:</strong> {{ $details['date']}}<br>
-                                <strong>Service:</strong> Bathroom Cleaning<br>
-                                <strong>Address:</strong> {{ $details['customer_address']}}<br>
-                                <strong>Mobile:</strong> {{ $details['customer_mobile_no']}}<br>
-                                <strong>Service Cost:</strong> ${{ $details['service_cost']}}
+                                <tr>
+                                    <td><strong>Customer</strong></td>
+                                    <td>{{ $details['customer_name'] }}</td>
+                                </tr>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                                <tr>
+                                    <td><strong>Booking No</strong></td>
+                                    <td>{{ $details['booking_number'] }}</td>
+                                </tr>
 
-                                <h3>🛁 Service Booked</h3>
+                                <tr>
+                                    <td><strong>Date & Time</strong></td>
+                                    <td>{{ $details['date'] }}</td>
+                                </tr>
 
+                                <tr>
+                                    <td><strong>Service</strong></td>
+                                    <td>Bathroom Cleaning</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Address</strong></td>
+                                    <td>{{ $details['customer_address'] }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Mobile</strong></td>
+                                    <td>{{ $details['customer_mobile_no'] }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Service Cost</strong></td>
+                                    <td>${{ $details['service_cost'] }}</td>
+                                </tr>
+
+                            </table>
+
+                            <hr>
+
+                            <h3>Service Booked</h3>
+
+                            <p>
                                 Standard Bathroom Cleaning
+                            </p>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <hr>
 
-                                <h3>✅ Standard Bathroom Cleaning Checklist</h3>
+                            <h3>Bathroom Cleaning Checklist</h3>
 
-                                • Shower screen cleaning<br>
-                                • Shower tiles and grout scrubbing<br>
-                                • Bathtub cleaning<br>
-                                • Toilet deep cleaning and sanitising<br>
-                                • Sink and vanity cleaning<br>
-                                • Mirror polishing<br>
-                                • Tap and fixture detailing<br>
-                                • Removal of soap scum and limescale<br>
-                                • Floor vacuum and mopping<br>
-                                • Dusting accessible surfaces
+                            <ul>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                                <li>Shower screen cleaning</li>
 
-                                <h3>🔥 Special Offer</h3>
+                                <li>Shower tiles and grout scrubbing</li>
 
-                                <div
-                                    style="background:#fff4e5;padding:15px;border-radius:10px;border:1px solid #ffd18a;">
-                                    <strong>2 Bathrooms Cleaning</strong><br>
-                                    ONLY <strong>$269</strong> ✨
-                                </div>
+                                <li>Bathtub cleaning</li>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                                <li>Toilet deep cleaning and sanitising</li>
 
-                                <h3>📌 Important Notes</h3>
+                                <li>Sink and vanity cleaning</li>
 
-                                • Any cancellation or rescheduling must be advised at least
-                                <strong>24 hours</strong>
-                                before booking time.
+                                <li>Mirror polishing</li>
 
-                                <br>
+                                <li>Tap and fixture detailing</li>
 
-                                If you need anything, just message us 👍
+                                <li>Removal of soap scum and limescale</li>
 
-                                <br>
+                                <li>Floor vacuum and mopping</li>
 
-                                We look forward to assisting you.
+                                <li>Dusting accessible surfaces</li>
 
-                                <br>
+                            </ul>
 
-                                Kind regards,<br>
-                                <strong>{{ App_Name() }}</strong><br>
-                                📞 {{ Setting_Data()['contact'] ?? ''}}<br>
-                                📧 {{ Setting_Data()['email'] ?? ''}}
+                            <hr>
 
-                            </div>
+                            <h3>Special Offer</h3>
+
+                            <table width="100%" cellpadding="12" style="background:#f8f8f8;border:1px solid #ddd;">
+
+                                <tr>
+                                    <td align="center">
+
+                                        <strong>
+                                            2 Bathrooms Cleaning
+                                        </strong>
+
+                                        <br><br>
+
+                                        ONLY
+                                        <strong>$269</strong>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <hr>
+
+                            <h3>Important Information</h3>
+
+                            <ul>
+
+                                <li>
+                                    Cancellation or rescheduling requests
+                                    should be made at least 24 hours
+                                    before booking time.
+                                </li>
+
+                            </ul>
+
+                            <p>
+                                If you need any assistance,
+                                please contact us.
+                            </p>
+
+                            <br>
+
+                            Regards,
+                            <br>
+
+                            <strong>{{ App_Name() }}</strong>
+
+                            <br>
+
+                            {{ Setting_Data()['contact'] ?? '' }}
+
+                            <br>
+
+                            {{ Setting_Data()['email'] ?? '' }}
 
                         </td>
                     </tr>
+
 
                     <!-- Footer -->
+
                     <tr>
-                        <td style="padding:20px;background-color:#f8f8f8;text-align:center;font-size:14px;color:#999;">
-                            Copyright &copy; {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}} 2026. All
-                            rights reserved.
+                        <td align="center" style="padding:20px;background:#fafafa;color:#777;font-size:13px;">
+
+                            Copyright ©
+                            {{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}
+                            2026.
+                            All rights reserved.
+
                         </td>
                     </tr>
 
                 </table>
+
             </td>
         </tr>
     </table>

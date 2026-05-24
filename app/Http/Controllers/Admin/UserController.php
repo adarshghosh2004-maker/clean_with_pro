@@ -120,9 +120,6 @@ class UserController extends Controller
                     ->addColumn('date', function ($row) {
                         return date("d M Y", strtotime($row->created_at));
                     })
-                    ->addColumn('books_bought', function ($row) {
-                        return $row->content_transaction_count ?? 0;
-                    })
                     ->rawColumns(['action', 'status'])
                     ->make(true);
             }
@@ -225,7 +222,6 @@ class UserController extends Controller
             $data = User::updateOrCreate(['id' => $requestData['id']], $requestData);
 
             if (isset($data->id)) {
-                Log::info($data->service_id);
                 if ($data->status == 1) {
                     if ($data->service_id == 1) {
                         $this->common->Send_Mail(1, $data->email, $data);
@@ -240,6 +236,8 @@ class UserController extends Controller
                     } else if ($data->service_id == 8) {
                         $this->common->Send_Mail(6, $data->email, $data);
                     }
+                } else if ($data->status == 2) {
+                    $this->common->Send_Mail(8, $data->email, $data);
                 }
                 return response()->json(['status' => 200, 'success' => __('label.success_edit_user')]);
             } else {

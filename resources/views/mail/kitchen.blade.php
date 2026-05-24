@@ -6,122 +6,184 @@
     <title>{{ $details['title'] }}</title>
 </head>
 
-<body
-    style="margin:0;padding:20px;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#e0e7ff,#f5f7fa);">
+<body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
 
-    <table align="center" width="100%" cellpadding="0" cellspacing="0">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-            <td>
-                <table align="center" cellpadding="0" cellspacing="0"
-                    style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.1);overflow:hidden;">
+            <td align="center">
+
+                <table width="600" cellpadding="0" cellspacing="0" border="0"
+                    style="background:#ffffff;border:1px solid #e5e5e5;">
 
                     <!-- Header -->
                     <tr>
-                        <td
-                            style="padding:30px;background:linear-gradient(135deg,#6d5dfc,#4e45b8);color:#ffffff;text-align:center;">
+                        <td align="center" style="background:#4e45b8;padding:25px;color:#ffffff;">
+
                             <h1 style="margin:0;font-size:24px;">
-                                🧽 {{ App_Name() }}
+                                {{ App_Name() }}
                             </h1>
-                            <p style="margin-top:8px;">
-                                Booking Confirmation 🎉
+
+                            <p style="margin:10px 0 0;">
+                                Booking Confirmation
                             </p>
+
                         </td>
                     </tr>
 
-                    <!-- Body -->
+
+                    <!-- Content -->
+
                     <tr>
-                        <td style="padding:20px 30px;color:#000000">
+                        <td style="padding:30px;color:#333;line-height:1.7;">
 
-                            <div style="font-size:16px;line-height:1.8;">
+                            <p>
+                                Dear {{ $details['customer_name'] }},
+                            </p>
 
-                                <p>
-                                    Dear {{ $details['customer_name'] }},<br>
+                            <p>
+                                Thank you for choosing
+                                <strong>{{ App_Name() }}</strong>.
+                            </p>
 
-                                    Thank you for choosing
-                                    <strong>{{ App_Name() }}</strong>
-                                    for your cleaning service.
-                                </p>
+                            <p>
+                                Your booking details are below:
+                            </p>
 
-                                <p>
-                                    Your booking has been successfully confirmed.
-                                    Please find the details below:
-                                </p>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <hr>
 
-                                <h3>📋 Booking Details</h3>
 
-                                <strong>Customer:</strong> {{ $details['customer_name']}}<br>
-                                <strong>Booking No:</strong> {{ $details['booking_number']}}<br>
-                                <strong>Date & Time:</strong> {{ $details['date']}}<br>
-                                <strong>Service:</strong> Kitchen Cleaning<br>
-                                <strong>Address:</strong> {{ $details['customer_address']}}<br>
-                                <strong>Mobile:</strong> {{ $details['customer_mobile_no']}}<br>
-                                <strong>Service Cost:</strong> ${{ $details['service_cost']}}
+                            <h3>Booking Details</h3>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                            <table width="100%" cellpadding="8">
 
-                                <h3>🍽️ Service Booked</h3>
+                                <tr>
+                                    <td><strong>Customer</strong></td>
+                                    <td>{{ $details['customer_name'] }}</td>
+                                </tr>
 
-                                Kitchen Deep Cleaning
+                                <tr>
+                                    <td><strong>Booking No</strong></td>
+                                    <td>{{ $details['booking_number'] }}</td>
+                                </tr>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                                <tr>
+                                    <td><strong>Date & Time</strong></td>
+                                    <td>{{ $details['date'] }}</td>
+                                </tr>
 
-                                <h3>✅ Standard Kitchen Cleaning Checklist</h3>
+                                <tr>
+                                    <td><strong>Service</strong></td>
+                                    <td>Kitchen Cleaning</td>
+                                </tr>
 
-                                • Oven standard cleaning (interior, glass, racks & door)<br>
-                                • Stovetop & burners deep cleaning<br>
-                                • Rangehood exterior cleaning<br>
-                                • Splashback cleaning and degreasing<br>
-                                • Sink and tap cleaning<br>
-                                • Bench-top wiping and sanitising<br>
-                                • Cupboards cleaning (inside & outside)<br>
-                                • Door handles and switch cleaning<br>
-                                • Floor vacuum and mopping<br>
-                                • Removal of grease, stains & food residue
+                                <tr>
+                                    <td><strong>Address</strong></td>
+                                    <td>{{ $details['customer_address'] }}</td>
+                                </tr>
 
-                                <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                                <tr>
+                                    <td><strong>Mobile</strong></td>
+                                    <td>{{ $details['customer_mobile_no'] }}</td>
+                                </tr>
 
-                                <h3>📌 Important Notes</h3>
+                                <tr>
+                                    <td><strong>Service Cost</strong></td>
+                                    <td>${{ $details['service_cost'] }}</td>
+                                </tr>
 
-                                • If you want inside cupboard cleaning, all cupboards must be completely empty before
-                                arrival.<br>
+                            </table>
 
-                                • Oven must be in working condition and able to heat properly by itself.<br>
+                            <hr>
 
-                                • Any cancellation or rescheduling must be advised at least
-                                <strong>24 hours</strong>
-                                before booking time.
+                            <h3>Kitchen Cleaning Checklist</h3>
 
-                                <br>
+                            <ul>
 
-                                If you need anything, just message us 👍
+                                <li>Oven cleaning</li>
 
-                                <br>
+                                <li>Stovetop and burner cleaning</li>
 
-                                We look forward to assisting you.
+                                <li>Rangehood exterior cleaning</li>
 
-                                <br>
+                                <li>Splashback cleaning</li>
 
-                                Kind regards,<br>
-                                <strong>{{ App_Name() }}</strong><br>
-                                📞 {{ Setting_Data()['contact'] ?? ''}}<br>
-                                📧 {{ Setting_Data()['email'] ?? ''}}
+                                <li>Sink and tap cleaning</li>
 
-                            </div>
+                                <li>Bench-top cleaning</li>
+
+                                <li>Cabinet exterior cleaning</li>
+
+                                <li>Switch and handle cleaning</li>
+
+                                <li>Vacuum and floor mopping</li>
+
+                            </ul>
+
+
+                            <hr>
+
+                            <h3>Important Information</h3>
+
+                            <ul>
+
+                                <li>
+                                    Cupboards should be empty if inside
+                                    cleaning is required.
+                                </li>
+
+                                <li>
+                                    Oven should be operational before service.
+                                </li>
+
+                                <li>
+                                    Rescheduling or cancellation requests
+                                    should be made 24 hours before service.
+                                </li>
+
+                            </ul>
+
+
+                            <p>
+                                If you have any questions,
+                                please contact us.
+                            </p>
+
+                            <br>
+
+                            Regards,
+                            <br>
+
+                            <strong>{{ App_Name() }}</strong>
+
+                            <br>
+
+                            {{ Setting_Data()['contact'] ?? '' }}
+
+                            <br>
+
+                            {{ Setting_Data()['email'] ?? '' }}
 
                         </td>
                     </tr>
+
 
                     <!-- Footer -->
+
                     <tr>
-                        <td style="padding:20px;background-color:#f8f8f8;text-align:center;font-size:14px;color:#999;">
-                            Copyright &copy; {{ Setting_Data()['company_name'] ?? "Clean With Professionals"}} 2026. All
-                            rights reserved.
+
+                        <td align="center" style="padding:20px;background:#fafafa;color:#777;font-size:13px;">
+
+                            Copyright ©
+                            {{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}
+                            2026
+
                         </td>
+
                     </tr>
 
                 </table>
+
             </td>
         </tr>
     </table>

@@ -23,6 +23,7 @@ class PanelSettingController extends Controller
 
             $params['result'] = Setting_Data();
             if ($params['result']) {
+                $params['old_panel_login_page_bg_image'] = $params['result']['panel_login_page_bg_image'];
                 $params['result']['panel_login_page_bg_image'] = $this->common->getImage($this->folder, $params['result']['panel_login_page_bg_image']);
 
                 return view('admin.panel_setting.index', $params);
@@ -39,13 +40,16 @@ class PanelSettingController extends Controller
 
             $data = $request->all();
             $data['panel_login_page_view'] = isset($data['panel_login_page_view']) ? $data['panel_login_page_view'] : 0;
-        
 
-                if (isset($data['panel_login_page_bg_image'])) {
-                    $files = $data['panel_login_page_bg_image'];
-                    $data['panel_login_page_bg_image'] = $this->common->saveImage($files, $this->folder, 'panel_');
+            $file = $request->file('panel_login_page_bg_image');
+            if ($file && $file->isValid()) {
+                $data['panel_login_page_bg_image'] = $this->common->saveImage($file, $this->folder, 'panel_');
+                if (!empty($data['old_panel_login_page_bg_image'])) {
                     $this->common->deleteImageToFolder($this->folder, basename($data['old_panel_login_page_bg_image']));
                 }
+            }
+
+            unset($data['_token'], $data['old_panel_login_page_bg_image']);
 
             foreach ($data as $key => $value) {
                 $setting = General_Setting::where('key', $key)->first();
