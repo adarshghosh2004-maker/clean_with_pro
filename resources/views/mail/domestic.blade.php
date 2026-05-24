@@ -37,7 +37,7 @@
 
                                 <p>
                                     Dear {{ $details['customer_name'] }},
-                                    <br><br>
+                                    <br>
 
                                     Thank you for booking your cleaning service with
                                     <strong>{{ App_Name() }}</strong>.
@@ -69,7 +69,7 @@
                                 • Air freshen (optional)<br>
                                 • Vacuum under furniture
 
-                                <br><br>
+                                <br>
 
                                 <strong>🍳 Kitchen</strong><br>
                                 • Clean stovetop<br>
@@ -78,7 +78,7 @@
                                 • Clean appliances (exterior)<br>
                                 • Clean splashback
 
-                                <br><br>
+                                <br>
 
                                 <strong>🚿 Bathroom</strong><br>
                                 • Scrub bath<br>
@@ -96,23 +96,23 @@
                                 <h3>⚠️ Important Notes</h3>
 
                                 • Two professional cleaners will attend the service at the same time, and booking will
-                                be completed within approximately 1.5 hours.<br><br>
+                                be completed within approximately 1.5 hours.<br>
 
                                 • Additional cleaning time beyond the booked duration will be charged at <strong>$70 per
-                                    extra hour</strong>.<br><br>
+                                    extra hour</strong>.<br>
 
                                 • Cancellation or rescheduling requests must be made at least <strong>24 hours
                                     prior</strong> to the scheduled service time.
 
-                                <br><br>
+                                <br>
 
                                 If you need anything, just message us 👍
 
-                                <br><br>
+                                <br>
 
                                 We look forward to assisting you.
 
-                                <br><br>
+                                <br>
 
                                 Kind regards,<br>
                                 <strong>{{ App_Name() }}</strong><br>

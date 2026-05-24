@@ -36,7 +36,7 @@
                             <div style="font-size:16px;line-height:1.8;">
 
                                 <p>
-                                    Dear {{ $details['customer_name']}} 👋<br><br>
+                                    Dear {{ $details['customer_name']}} 👋<br>
 
                                     Thank you for booking with
                                     <strong>{{ App_Name() }}</strong>.
@@ -74,7 +74,7 @@
                                 • Reachable cobweb removal<br>
                                 • Wall marks (major marks only)
 
-                                <br><br>
+                                <br>
 
                                 <strong>Bathrooms</strong><br>
                                 • Shower screens, tiles & grout<br>
@@ -84,7 +84,7 @@
                                 • Tap, shower head & stainless steel polish<br>
                                 • Exhaust fan dusting
 
-                                <br><br>
+                                <br>
 
                                 <strong>Kitchen</strong><br>
                                 • Oven, cooktop, rangehood & filters<br>
@@ -92,7 +92,7 @@
                                 • Pantry & cupboards (inside/outside)<br>
                                 • Sink & taps
 
-                                <br><br>
+                                <br>
 
                                 <strong>Floors</strong><br>
                                 • Vacuum all floors<br>
@@ -138,15 +138,15 @@
 
                                 Only real estate agent should enter after cleaning to keep bond guarantee valid.
 
-                                <br><br>
+                                <br>
 
                                 If you need anything, just message us 👍
 
-                                <br><br>
+                                <br>
 
                                 We look forward to assisting you.
 
-                                <br><br>
+                                <br>
 
                                 Kind regards,<br>
                                 <strong>{{ App_Name() }}</strong><br>

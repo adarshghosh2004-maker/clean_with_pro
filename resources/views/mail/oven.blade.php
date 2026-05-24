@@ -36,7 +36,7 @@
                             <div style="font-size:16px;line-height:1.8;">
 
                                 <p>
-                                    Dear {{ $details['customer_name'] }},<br><br>
+                                    Dear {{ $details['customer_name'] }},<br>
 
                                     Thank you for choosing
                                     <strong>{{ App_Name() }}</strong>
@@ -66,7 +66,7 @@
 
                                 Standard Oven Cleaning + FREE Rangehood Cleaning
                                 +
-                                <br><br>
+                                <br>
 
                                 <strong>💲 Total Amount:</strong>
                                 ${{ $details['service_cost'] }}
@@ -97,23 +97,23 @@
 
                                 <h3>📌 Important Notes</h3>
 
-                                • Please ensure electricity/light is not turned off during the service.<br><br>
+                                • Please ensure electricity/light is not turned off during the service.<br>
 
-                                • Oven must be in working condition and able to heat properly by itself.<br><br>
+                                • Oven must be in working condition and able to heat properly by itself.<br>
 
                                 • Any cancellation or rescheduling must be advised at least
                                 <strong>24 hours</strong>
                                 before booking time.
 
-                                <br><br>
+                                <br>
 
                                 If you need anything, just message us 👍
 
-                                <br><br>
+                                <br>
 
                                 We look forward to assisting you.
 
-                                <br><br>
+                                <br>
 
                                 Kind regards,<br>
                                 <strong>{{ App_Name() }}</strong><br>
