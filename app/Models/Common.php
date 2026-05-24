@@ -354,6 +354,54 @@ class Common extends Model
                         'service_cost' => $array['amount'] ?? '',
                         'view' => 'mail.thankyou',
                     ];
+                } else if ($type == 9) {
+                    $serviceName = '';
+                    if (isset($array['service'])) {
+                        $serviceName = $array['service']['title'] ?? '';
+                    } elseif (isset($array->service)) {
+                        $serviceName = $array->service->title ?? '';
+                    }
+                    if (empty($serviceName)) {
+                        $serviceId = $array['service_id'] ?? ($array->service_id ?? 0);
+                        if ($serviceId == 0) {
+                            $serviceName = 'Special Offer';
+                        }
+                    }
+                    $details = [
+                        'title' => App_Name() . " - Quote Received",
+                        'customer_name' => $array['name'] ?? '',
+                        'service_name' => $serviceName,
+                        'date' => $array['date'] ?? '',
+                        'time' => $array['time'] ?? '',
+                        'suburb' => $array['suburb'] ?? '',
+                        'phone' => $array['phone'] ?? '',
+                        'is_special_offer' => $serviceName === 'Special Offer',
+                        'view' => 'mail.quote_acknowledgement',
+                    ];
+                } else if ($type == 10) {
+                    $serviceName = '';
+                    if (isset($array['service'])) {
+                        $serviceName = $array['service']['title'] ?? '';
+                    } elseif (isset($array->service)) {
+                        $serviceName = $array->service->title ?? '';
+                    }
+                    if (empty($serviceName)) {
+                        $serviceId = $array['service_id'] ?? ($array->service_id ?? 0);
+                        if ($serviceId == 0) {
+                            $serviceName = 'Special Offer';
+                        }
+                    }
+                    $details = [
+                        'title' => App_Name() . " - New Booking Request",
+                        'customer_name' => $array['name'] ?? '',
+                        'email' => $array['email'] ?? '',
+                        'service_name' => $serviceName,
+                        'date' => $array['date'] ?? '',
+                        'time' => $array['time'] ?? '',
+                        'suburb' => $array['suburb'] ?? '',
+                        'phone' => $array['phone'] ?? '',
+                        'view' => 'mail.admin_new_booking',
+                    ];
                 }
                 else {
                     return true;
@@ -540,6 +588,12 @@ class Common extends Model
     {
         $slug = Str::slug($string, '-');
         $count = Service::where('slug', 'LIKE', "{$slug}%")->count();
+        return $count ? "{$slug}-{$count}" : $slug;
+    }
+    public function create_page_slug($string)
+    {
+        $slug = Str::slug($string, '-');
+        $count = Page::where('slug', 'LIKE', "{$slug}%")->count();
         return $count ? "{$slug}-{$count}" : $slug;
     }
 }

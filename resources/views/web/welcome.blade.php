@@ -66,9 +66,9 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6" data-anim="fade-right">
       <div class="about-images-grid position-relative">
-        <img src="assets/imgs/CWP1.jpg" class="about-img-main shadow" alt="Cleaning Staff">
-        <img src="assets/imgs/CWP2.jpg" class="about-img-sub shadow" alt="Equipment">
-        <img src="assets/imgs/CWP3.jpg" class="about-img-sub shadow" alt="Clean Office">
+        <img src="assets/imgs/CWP1.webp" class="about-img-main shadow" alt="Cleaning Staff">
+        <img src="assets/imgs/CWP2.webp" class="about-img-sub shadow" alt="Equipment">
+        <img src="assets/imgs/CWP3.webp" class="about-img-sub shadow" alt="Clean Office">
 
         <!-- Floating Badge -->
         <div class="position-absolute bg-primary-blue text-white p-3 rounded shadow text-center"

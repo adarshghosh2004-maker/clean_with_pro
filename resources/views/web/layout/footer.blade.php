@@ -214,7 +214,7 @@
         <div class="row g-4 justify-content-between">
             <div class="col-lg-3 col-md-6">
                 <a class="footer-img text-white fs-3 mb-4 d-block" href="#">
-                    <img src="<?php echo asset('assets/imgs/CWPss.PNG'); ?>" alt="Clean With Professionals">
+                    <img src="{{ Tab_Icon() }}" alt="Clean With Professionals">
                 </a>
                 <p class="small text-white-50 mb-4">Premium cleaning services tailored to your specific needs.
                     Experience excellence and reliability.</p>
@@ -234,11 +234,14 @@
                     <li class="mb-2"><a href="<?php echo route('gallery'); ?>">Gallery</a></li>
                     <li class="mb-2"><a href="<?php echo route('pricing'); ?>">Pricing</a></li>
                     <li class="mb-2"><a href="<?php echo route('contact'); ?>">Contact Us</a></li>
-                    @php
-                        $activePages = \App\Models\Page::where('status', 1)->get();
-                    @endphp
-                    @foreach($activePages as $activePage)
-                        <li class="mb-2"><a href="{{ route('page.view', $activePage->title) }}">{{ $activePage->title }}</a>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5>Pages</h5>
+                <ul class="list-unstyled mt-4">
+                    @foreach($page as $key=>$value)
+                        <li class="mb-2"><a href="{{ route('page.view', $value->slug) }}">{{ $value->title }}</a>
                         </li>
                     @endforeach
                 </ul>

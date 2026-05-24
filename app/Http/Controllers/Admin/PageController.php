@@ -7,9 +7,9 @@ use App\Models\Page;
 use App\Models\Common;
 use App\Models\General_Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Exception;
-use Illuminate\Support\Facades\URL;
 
 class PageController extends Controller
 {
@@ -32,9 +32,9 @@ class PageController extends Controller
                 $query = Page::query();
 
                 if (!empty($input_search)) {
-                    $query->where(function($q) use ($input_search) {
+                    $query->where(function ($q) use ($input_search) {
                         $q->where('title', 'LIKE', "%{$input_search}%")
-                          ->orWhere('description', 'LIKE', "%{$input_search}%");
+                            ->orWhere('description', 'LIKE', "%{$input_search}%");
                     });
                 }
 
@@ -54,7 +54,7 @@ class PageController extends Controller
                         <button type="submit" class="edit-delete-btn" title=' . __('label.delete') . ' ><i class="fa-solid fa-trash-can fa-xl"></i></button></form>';
 
                         $btn = '<div class="d-flex justify-content-center">';
-                        $btn .= '<a href="' . route('page.view', [$row->title]) . '" class="edit-delete-btn mr-4 " title=' . __('label.view_page') . ' target="_blank">';
+                        $btn .= '<a href="' . route('page.view', [$row->slug]) . '" class="edit-delete-btn mr-4 " title=' . __('label.view_page') . ' target="_blank">';
                         $btn .= '<i class="fa-regular fa-eye fa-xl"></i>';
                         $btn .= '</a>';
                         $btn .= '<a href="' . route('admin.page.edit', [$row->id]) . '" class="edit-delete-btn mr-4" title=' . __('label.edit') . '>';
@@ -108,11 +108,13 @@ class PageController extends Controller
 
             $insert = new Page();
             $insert['title'] = $request['title'];
+            $insert['slug'] = $this->common->create_page_slug($request['title']);
             $insert['description'] = $request['description'];
             $files = $request['icon'];
             $insert['icon'] = $this->common->saveImage($files, $this->folder, 'page_');
             $insert['status'] = 1;
             if ($insert->save()) {
+                Cache::forget('page_list');
                 return response()->json(['status' => 200, 'success' => __('label.success_add_page')]);
             } else {
                 return response()->json(['status' => 400, 'errors' => __('label.error_add_page')]);
@@ -185,6 +187,7 @@ class PageController extends Controller
             if ($page['id']) {
 
                 $page['title'] = $request['title'];
+                $page['slug'] = $this->common->create_page_slug($request['title']);
                 $page['description'] = $request['description'];
                 if (isset($request['icon'])) {
                     $files = $request['icon'];
@@ -194,6 +197,7 @@ class PageController extends Controller
                 }
 
                 if ($page->save()) {
+                    Cache::forget('page_list');
                     return response()->json(['status' => 200, 'success' => __('label.success_edit_page')]);
                 } else {
                     return response()->json(['status' => 400, 'errors' => __('label.error_edit_page')]);
@@ -237,15 +241,10 @@ class PageController extends Controller
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }
     }
-    public function page_view()
+    public function page_view($slug)
     {
         try {
-            $currentURL = URL::current();
-
-            $link_array = explode('/', $currentURL);
-            $page = urldecode(end($link_array));
-
-            $params['result'] = Page::where('title', $page)->first();
+            $params['result'] = Page::where('slug', $slug)->first();
             if (isset($params['result'])) {
 
                 $params['settings'] = Setting_Data();

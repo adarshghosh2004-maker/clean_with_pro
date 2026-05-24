@@ -70,7 +70,7 @@ class WebController extends Controller
                 'email' => 'required|email',
                 'phone' => 'required|numeric',
                 'suburb' => 'required|string',
-                'date' => 'required|date',
+                'date' => 'required|date|after_or_equal:today',
                 'service_id' => 'required',
             ]);
 
@@ -91,6 +91,10 @@ class WebController extends Controller
             $quote->amount = $request->amount ?? 0;
             $quote->status = 0;
             $quote->save();
+
+            $quote->load('service');
+            $this->common->Send_Mail(9, $quote->email, $quote);
+            $this->common->Send_Mail(10, Setting_Data()['email'], $quote);
 
             return response()->json(['status' => 200, 'success' => 'Quote request sent successfully.']);
         } catch (Exception $e) {

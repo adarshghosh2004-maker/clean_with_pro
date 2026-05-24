@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\WebController;
+use Spatie\Sitemap\SitemapGenerator;
 
 // Artisan
 Route::get('clearcache', function () {
@@ -29,7 +30,7 @@ Route::get('clearcache', function () {
     return "<h1>All Config Cache Clear Successfully.</h1>";
 });
 
-    Route::get('pages/{page_name}', [PageController::class, 'page_view'])->name('page.view');
+    Route::get('pages/{slug}', [PageController::class, 'page_view'])->name('page.view');
 
 // Version
 Route::get('version', function () {
@@ -75,3 +76,11 @@ Route::resource('quote', WebController::class)->only('store');
 Route::get('gallery', [WebController::class, 'gallery'])->name('gallery');
 
 Route::get('/services/{slug}', [WebController::class, 'serviceDetail'])->name('services_detail');
+
+Route::get('/generate-sitemap', function () {
+
+    SitemapGenerator::create(config('app.url'))
+        ->writeToFile(public_path('sitemap.xml'));
+
+    return "Sitemap generated successfully";
+});

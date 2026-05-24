@@ -22,7 +22,6 @@
             <p>Experience Melbourne's premier cleaning standard with our curated seasonal specials. Limited time offers for
                 homeowners who demand excellence.</p>
             <div class="d-flex justify-content-center gap-3">
-                <a href="#EditModel" data-bs-toggle="modal" class="btn btn-secondary">BOOK YOUR SPECIAL</a>
                 <a href="{{ route('services') }}" class="btn btn-outline-white">VIEW ALL SERVICES</a>
             </div>
         </div>
@@ -404,21 +403,6 @@
                 <p>100% bond-back guarantee.</p>
             </div>
 
-        </div>
-    </section>
-
-    {{-- ═══════════════════════════════════════
-    CTA SECTION
-    ════════════════════════════════════════ --}}
-    <section class="cta-section" data-anim="fade-up">
-        <div class="cta-box-alt" data-anim="fade-up" data-anim-delay="100">
-            <div class="cta-content">
-                <h2>Ready for a spotless home?</h2>
-                <p>Join over 2,500+ satisfied Melbourne residents. Book your professional clean in under 60 seconds.</p>
-            </div>
-            <div class="cta-action">
-                <a href="#EditModel" data-bs-toggle="modal" class="btn-book-online">BOOK ONLINE NOW</a>
-            </div>
         </div>
     </section>
 

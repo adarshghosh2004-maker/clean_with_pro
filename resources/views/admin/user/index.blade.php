@@ -99,8 +99,8 @@
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="company-logo-section">
-                                    <img src="{{ asset('assets/imgs/CWPss.png') }}" alt="Mad About Cleaning"
-                                        class="company-logo" style="max-height: 80px;">
+                                    <img src="{{ Tab_Icon() }}" alt="Mad About Cleaning" class="company-logo"
+                                        style="max-height: 80px;">
                                     <div class="mt-2">
                                         <strong id="company_phone_1">Ph.
                                             {{ Setting_Data()['contact'] ?? '0435811838' }}</strong><br>
@@ -235,16 +235,18 @@
                         <hr>
 
                         {{-- Signature Section --}}
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <div class="signature-box">
+                        <div class="row mt-4 d-flex justify-content-center">
+                            <div class="col-md-4 d-flex">
+                                <div class="signature-box flex-fill">
                                     <p class="text-center mb-2">Customer Signature</p>
                                     <div class="signature-line"></div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="signature-box">
-                                    <p class="text-center mb-2">Technician Signature (Sign after print)</p>
+                            <div class="col-md-4 d-flex">
+                                <div class="signature-box flex-fill">
+                                    <p class="text-center mb-2">Technician Signature</p>
+                                    <img src="{{ asset('assets/imgs/signature.webp') }}" alt="Technician Signature"
+                                        style="height:40px; display:block; margin:0 auto 4px;">
                                     <div class="signature-line"></div>
                                 </div>
                             </div>
@@ -360,6 +362,9 @@
         .signature-box {
             text-align: center;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .signature-line {

@@ -212,8 +212,20 @@
 
     .sig-table td {
       text-align: center;
-      padding-top: 18px;
       width: 50%;
+    }
+
+    .sig-cell {
+      height: 85px;
+      vertical-align: bottom;
+    }
+
+    .sig-cell-inner {
+      padding-top: 18px;
+    }
+
+    .sig-spacer {
+      height: 44px;
     }
 
     .sig-line {
@@ -434,11 +446,27 @@
   <!-- ══ SIGNATURES ══ -->
   <table class="sig-table">
     <tr>
-      <td>
-        <div class="sig-line">Customer Signature</div>
+      <td class="sig-cell">
+        <div class="sig-cell-inner">
+          <div class="sig-spacer"></div>
+          <div class="sig-line">Customer Signature</div>
+        </div>
       </td>
-      <td>
-        <div class="sig-line">Technician Signature</div>
+      <td class="sig-cell">
+        <div class="sig-cell-inner">
+          @php
+              $sigPath = public_path('assets/imgs/signature.webp');
+              $sigData = '';
+              if (file_exists($sigPath)) {
+                  $sigContent = file_get_contents($sigPath);
+                  $sigData = 'data:image/webp;base64,' . base64_encode($sigContent);
+              }
+          @endphp
+          @if($sigData)
+            <img src="{{ $sigData }}" alt="Technician Signature" style="height:40px; display:block; margin:0 auto 4px;">
+          @endif
+          <div class="sig-line">Technician Signature</div>
+        </div>
       </td>
     </tr>
   </table>

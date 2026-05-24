@@ -13,20 +13,20 @@
     <link rel="canonical" href="@yield('canonical', url()->current())">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/imgs/CWPss.PNG') }}">
+    <link rel="icon" type="image/png" href="{{ Tab_Icon() }}">
 
     <!-- Social Sharing (Open Graph) -->
     <meta property="og:title" content="@yield('title', 'Default Site Title')">
     <meta property="og:description" content="@yield('description', 'Default description here')">
     <meta property="og:url" content="@yield('canonical', url()->current())">
-    <meta property="og:image" content="@yield('og_image', asset('assets/imgs/CWPss.PNG'))">
+    <meta property="og:image" content="@yield('og_image', Tab_Icon())">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="@yield('title', 'Default Site Title')">
     <meta name="twitter:description" content="@yield('description', 'Default description here')">
-    <meta name="twitter:image" content="@yield('og_image', asset('assets/imgs/CWPss.PNG'))">
+    <meta name="twitter:image" content="@yield('og_image', Tab_Icon())">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
@@ -113,7 +113,7 @@
 <body>
 
     <div id="preloader">
-        <img src="{{ asset('assets/imgs/CWPss.PNG') }}" alt="Logo">
+        <img src="{{ Tab_Icon() }}" alt="Logo">
     </div>
 
     <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}" /></div>
