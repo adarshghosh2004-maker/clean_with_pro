@@ -315,6 +315,7 @@ return [
     'recent_users' => "हाल के उपयोगकर्ता",
     'images' => 'चित्र',
     'feature' => 'फ़ीचर',
+    'pending_quotes' => 'लंबित कोटेशन',
 
     'access_denied' => 'पहुंच अस्वीकृत',
     'whoops_the_code_you_entered_seems_to_be_for_a_different_product' => 'ओह! आपने जो कोड दर्ज किया है, वह किसी अन्य उत्पाद के लिए प्रतीत होता है।',

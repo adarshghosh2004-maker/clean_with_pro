@@ -44,7 +44,7 @@ class DashboardController extends Controller
             $data['total_images'] = Gallery::count();
             $data['total_feedbacks'] = Feedback::count();
             $data['total_questions'] = Question::count();
-            $data['total_requests'] = User::whereNotNull('service_id')->count();
+            $data['total_requests'] = User::where('status', 0)->whereNotNull('service_id')->count();
             $data['active_services'] = Service::where('status', 1)->count();
 
             // User requests chart

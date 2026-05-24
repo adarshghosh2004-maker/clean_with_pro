@@ -20,7 +20,7 @@
                                 <i class="fa-solid fa-users fa-2x"></i>
                             </div>
                             <div class="card-stat-content">
-                                <span>{{ __('label.users') }}</span>
+                                <span>{{ __('label.quote') }}</span>
                                 <h3>{{ No_Format($total_users) }}</h3>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                                 <i class="fa-solid fa-user-clock fa-2x"></i>
                             </div>
                             <div class="card-stat-content">
-                                <span>{{ __('label.requests') }}</span>
+                                <span>{{ __('label.pending_quotes') }}</span>
                                 <h3>{{ No_Format($total_requests) }}</h3>
                             </div>
                         </div>

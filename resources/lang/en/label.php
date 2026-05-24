@@ -315,6 +315,7 @@ return [
     'recent_users' => "Recent Users",
     'images' => 'Images',
     'feature' => 'Feature',
+    'pending_quotes' => 'Pending Quotes',
 
     'access_denied' => 'Access Denied',
     'whoops_the_code_you_entered_seems_to_be_for_a_different_product' => 'Whoops! The code you entered seems to be for a different product.',

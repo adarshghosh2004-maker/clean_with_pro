@@ -315,6 +315,7 @@ return [
     'recent_users' => "Utilisateurs récents",
     'images' => 'Images',
     'feature' => 'Fonctionnalité',
+    'pending_quotes' => 'Devis en attente',
 
     'access_denied' => 'Accès refusé',
     'whoops_the_code_you_entered_seems_to_be_for_a_different_product' => 'Oups ! Le code que vous avez saisi semble être destiné à un autre produit.',
