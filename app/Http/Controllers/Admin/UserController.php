@@ -331,7 +331,6 @@ class UserController extends Controller
         try {
             $data = User::where('id', $id)->first();
             if (isset($data)) {
-                Notification::where('user_id', $id)->delete();
                 $this->common->deleteImageToFolder($this->folder, $data['image']);
                 $data->delete();
             }
