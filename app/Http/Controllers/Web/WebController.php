@@ -131,9 +131,12 @@ class WebController extends Controller
             return Service::where('slug', $slug)->where('status', 1)->first();
         });
 
-        // Agar service null ho to fallback
         if (!$service) {
-            $service = Service::first(); // koi default service le lo
+            $service = Service::find($slug);
+        }
+
+        if (!$service) {
+            $service = Service::where('status', 1)->first();
         }
 
         $this->common->imageNameToUrl([$service], 'banner_img', 'service');

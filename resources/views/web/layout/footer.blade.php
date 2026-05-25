@@ -251,7 +251,7 @@
                 <h5>Our Services</h5>
                 <ul class="list-unstyled mt-4">
                     @foreach ($services as $key => $value)
-                        <li class="mb-2"><a href="{{ route('services_detail', $value['id']) }}">{{ $value['title'] }}</a>
+                        <li class="mb-2"><a href="{{ route('services_detail', $value['slug']) }}">{{ $value['title'] }}</a>
                         </li>
                     @endforeach
                 </ul>

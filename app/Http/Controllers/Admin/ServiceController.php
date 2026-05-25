@@ -34,10 +34,10 @@ class ServiceController extends Controller
                 $query = Service::query();
 
                 if (!empty($input_search)) {
-                    $query->where(function($q) use ($input_search) {
+                    $query->where(function ($q) use ($input_search) {
                         $q->where('title', 'LIKE', "%{$input_search}%")
-                          ->orWhere('short_title', 'LIKE', "%{$input_search}%")
-                          ->orWhere('description', 'LIKE', "%{$input_search}%");
+                            ->orWhere('short_title', 'LIKE', "%{$input_search}%")
+                            ->orWhere('description', 'LIKE', "%{$input_search}%");
                     });
                 }
 
@@ -131,6 +131,7 @@ class ServiceController extends Controller
 
             if (isset($service_data->id)) {
                 Cache::forget('services_list');
+                Cache::forget("service_detail_{$requestData['slug']}");
                 return response()->json(array('status' => 200, 'success' => __('label.service_save')));
             } else {
                 return response()->json(array('status' => 400, 'errors' => __('label.service_not_save')));
@@ -202,6 +203,7 @@ class ServiceController extends Controller
             $service_data = Service::updateOrCreate(['id' => $requestData['id']], $requestData);
             if (isset($service_data->id)) {
                 Cache::forget('services_list');
+                Cache::forget("service_detail_{$requestData['slug']}");
                 return response()->json(array('status' => 200, 'success' => __('label.service_update')));
             } else {
                 return response()->json(array('status' => 400, 'errors' => __('label.service_not_update')));
@@ -219,6 +221,7 @@ class ServiceController extends Controller
                 $data->delete();
             }
             Cache::forget('services_list');
+            Cache::forget("service_detail_{$data['slug']}");
             return redirect()->back()->with('success', __('label.service_delete'));
         } catch (Exception $e) {
             return response()->json(array('status' => 400, 'errors' => $e->getMessage()));
@@ -237,7 +240,7 @@ class ServiceController extends Controller
             $data->save();
 
             Cache::forget('services_list');
-
+            Cache::forget("service_detail_{$data['slug']}");
             return response()->json(['status' => 200, 'success' => __('label.status_changed'), 'status_code' => $data->status]);
         } catch (Exception $e) {
             return response()->json(array('status' => 400, 'errors' => $e->getMessage()));

@@ -76,7 +76,7 @@
                     <span class="tag-popular">MOST POPULAR</span>
                     <h2>{{ $services[0]['title'] ?? ""}}</h2>
                     <p>{{ $services[0]['description'] ?? "" }}</p>
-                    <a href="{{ route('services_detail', $services[0]['id'] ?? "") }}" class="view-details">
+                    <a href="{{ route('services_detail', $services[0]['slug'] ?? "") }}" class="view-details">
                         <i class="fa-solid fa-file-invoice"></i> VIEW DETAILS <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
@@ -115,7 +115,7 @@
                             <h3>{{ $value['title'] }}</h3>
                         </div>
                         <p>{{ $value['description'] }}</p>
-                        <a href="{{ route('services_detail', $value['id']) }}" class="view-details">VIEW DETAILS <i
+                        <a href="{{ route('services_detail', $value['slug']) }}" class="view-details">VIEW DETAILS <i
                                 class="fa-solid fa-chevron-right"></i></a>
 
                     </div>
