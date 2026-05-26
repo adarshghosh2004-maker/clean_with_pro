@@ -11,7 +11,7 @@
     <section class="hero-section">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'about')
-                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
+                <img src="{{ $value['img'] }}" alt="Clean with Professionals Hero Image" class="hero-img">
             @endif
         @endforeach
         <div class="container">
@@ -29,14 +29,16 @@
             <div class="row align-items-center g-5">
                 <div class="col-lg-6" data-anim="fade-right">
                     <h2 class="display-5 fw-bold mb-4">Driven by a Passion for Perfection</h2>
-                    <p class="text-muted mb-4">Founded in the heart of Melbourne, CleanCare began with a simple mission:
+                    <p class="text-muted mb-4">Founded in the heart of Melbourne, Clean with Professionals began with a
+                        simple mission:
                         to provide the highest standard of professional cleaning without compromising on the health of
                         our clients or the environment.</p>
                     <p class="text-muted mb-4">What started as a small family operation has grown into a premier
                         cleaning specialist network. We don't just "clean"—we restore environments, ensuring every
                         corner reflects our commitment to excellence.</p>
                     <div class="passion-quote p-4 bg-light rounded-3 mb-4">
-                        <p class="fst-italic mb-0">"Excellence is not an act, but a habit. At CleanCare, it is the
+                        <p class="fst-italic mb-0">"Excellence is not an act, but a habit. At Clean with Professionals, it
+                            is the
                             standard we meet every single day."</p>
                     </div>
                     <div class="row g-4 passion-stat">
@@ -52,7 +54,7 @@
                 </div>
                 <div class="col-lg-6" data-anim="fade-left">
                     <div class="passion-img-wrapper">
-                        <img src="{{ asset('assets/imgs/About2.webp') }}" alt="CleanCare Team at Work"
+                        <img src="{{ asset('assets/imgs/About2.webp') }}" alt="Clean with Professionals Team at Work"
                             class="passion-img shadow-lg">
                     </div>
                 </div>
@@ -61,8 +63,8 @@
     </section>
 
     <!-- ========================
-                                                            SECTION 3: Core Pillars
-                                                            ======================== -->
+                                                                    SECTION 3: Core Pillars
+                                                                    ======================== -->
     <section class="section-padding" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-anim="fade-up">
@@ -120,8 +122,8 @@
     </section>
 
     <!-- ========================
-                                                            SECTION 4: Professional Edge
-                                                            ======================== -->
+                                                                    SECTION 4: Professional Edge
+                                                                    ======================== -->
     <section class="section-padding" data-anim="fade-up">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -139,16 +141,16 @@
                     </ul>
                 </div>
                 <div class="col-lg-6" data-anim="fade-left">
-                    <img src="{{ asset('assets/imgs/About1.webp') }}" alt="The Professional Edge at CleanCare"
-                        class="img-fluid rounded-4 shadow edge-img">
+                    <img src="{{ asset('assets/imgs/About1.webp') }}"
+                        alt="The Professional Edge at Clean with Professionals" class="img-fluid rounded-4 shadow edge-img">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ========================
-                                                            SECTION 5: How It Works
-                                                            ======================== -->
+                                                                    SECTION 5: How It Works
+                                                                    ======================== -->
     <section class="how-it-works-section" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-3" data-anim="fade-up">
@@ -173,15 +175,15 @@
                 <div class="col-md-3 timeline-item" data-anim="fade-up" data-anim-delay="400">
                     <div class="timeline-step">4</div>
                     <h5 class="fw-bold">Relax</h5>
-                    <p class="text-muted small">Enjoy your pristine home and the CleanCare guarantee.</p>
+                    <p class="text-muted small">Enjoy your pristine home and the Clean with Professionals guarantee.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ========================
-                                                            SECTION 6: Team – Faces Behind the Shine
-                                                            ======================== -->
+                                                                    SECTION 6: Team – Faces Behind the Shine
+                                                                    ======================== -->
     <section class="team-section-new" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-anim="fade-up">
@@ -224,8 +226,8 @@
     </section>
 
     <!-- ========================
-                                                            SECTION 8: Testimonials
-                                                            ======================== -->
+                                                                    SECTION 8: Testimonials
+                                                                    ======================== -->
     <section class="about-testimonials-section" data-anim="fade-up">
         <div class="container">
             <div class="text-center mb-5" data-anim="fade-up">
@@ -258,8 +260,8 @@
     </section>
 
     <!-- ========================
-                                                            SECTION 9: CTA – Experience the Standard
-                                                            ======================== -->
+                                                                    SECTION 9: CTA – Experience the Standard
+                                                                    ======================== -->
     <section class="cta-section-new" data-anim="fade-up">
         <div class="container" data-anim="zoom-in">
             <h2 class="display-4 fw-bold mb-4">Experience the Clean With Professionals Standard</h2>

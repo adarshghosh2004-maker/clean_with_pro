@@ -10,7 +10,7 @@
         <section class="hero-section">
             @foreach ($pages as $key => $value)
                 @if ($value['name'] == 'gallery')
-                    <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
+                    <img src="{{ $value['img'] }}" alt="Clean with Professionals Hero Image" class="hero-img">
                 @endif
 
             @endforeach

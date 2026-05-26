@@ -4,7 +4,7 @@
 @section('description', 'Discover our latest cleaning deals and discounts for homes and offices in Melbourne.')
 @section('keywords', 'cleaning offers, cleaning discounts, Melbourne cleaning deals')
 
-@section('title', 'Specials – CleanCare')
+@section('title', 'Specials – Clean with Professionals')
 
 @section('content')
 
@@ -14,7 +14,7 @@
     <section class="hero-section">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'specials')
-                <img src="{{ $value['img'] }}" alt="CleanCare Hero Image" class="hero-img">
+                <img src="{{ $value['img'] }}" alt="Clean with Professionals Hero Image" class="hero-img">
             @endif
         @endforeach
         <div class="container">
