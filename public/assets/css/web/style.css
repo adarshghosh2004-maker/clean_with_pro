@@ -7046,3 +7046,368 @@ h6,
         display: none !important;
     }
 }
+
+/* ==========================================================================
+   Google Ads Landing Page Custom Styles
+   ========================================================================== */
+
+.lp-hero-section {
+    position: relative;
+    padding: 100px 0 80px;
+    background: linear-gradient(135deg, rgba(0, 30, 51, 0.95), rgba(15, 157, 122, 0.9)), url('../../imgs/About2.webp') no-repeat center center;
+    background-size: cover;
+    color: var(--white);
+    overflow: hidden;
+}
+
+.lp-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--secondary-container);
+    margin-bottom: 20px;
+}
+
+.lp-hero-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.lp-hero-title span {
+    color: var(--secondary-container);
+}
+
+.lp-hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.lp-hero-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.lp-bullet-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.lp-bullet-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(131, 248, 207, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-container);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.lp-hero-form-wrapper {
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    padding: 35px;
+    box-shadow: var(--shadow-lg);
+    color: var(--text-dark);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.lp-hero-form-header h3 {
+    font-size: 1.6rem;
+    color: var(--primary-blue);
+    margin-bottom: 8px;
+}
+
+.lp-usp-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border-light);
+    padding: 30px 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.lp-usp-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px;
+}
+
+.lp-usp-icon-wrapper {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--accent-light-teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.lp-usp-text h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 2px;
+}
+
+.lp-usp-text p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.lp-services-section {
+    background-color: var(--surface);
+}
+
+.lp-service-card {
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    height: 100%;
+}
+
+.lp-service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(15, 157, 122, 0.2);
+}
+
+.lp-service-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.lp-service-price-tag {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: var(--secondary);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-sm);
+}
+
+.lp-service-body {
+    padding: 25px;
+}
+
+.lp-service-body h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 12px;
+}
+
+.lp-service-body p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.lp-service-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lp-service-link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--secondary);
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.lp-service-link:hover {
+    color: var(--secondary-hover);
+    gap: 10px;
+}
+
+.lp-trust-badge-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--accent-light-teal);
+    color: var(--secondary);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.lp-review-card {
+    background: var(--white);
+    border-radius: var(--border-radius-md);
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    position: relative;
+    height: 100%;
+}
+
+.lp-review-stars {
+    color: var(--accent-yellow);
+    margin-bottom: 15px;
+}
+
+.lp-review-text {
+    font-style: italic;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.lp-review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.lp-review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--surface-container-low);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+}
+
+.lp-review-info h5 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--primary);
+}
+
+.lp-review-info p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.lp-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.1);
+    z-index: 1040;
+    padding: 12px 0;
+    border-top: 2px solid var(--secondary);
+}
+
+.lp-sticky-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.lp-sticky-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.lp-sticky-phone-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-light-teal);
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lp-sticky-text h6 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0 0 2px;
+    font-weight: 600;
+}
+
+.lp-sticky-text p {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .lp-hero-section {
+        padding: 60px 0 60px;
+        text-align: center;
+    }
+    .lp-hero-title {
+        font-size: 2.4rem;
+    }
+    .lp-hero-bullets {
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .lp-hero-form-wrapper {
+        margin-top: 30px;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .lp-sticky-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    .lp-sticky-bar {
+        padding: 10px 0;
+    }
+    .lp-sticky-info {
+        display: none;
+    }
+    .lp-sticky-btn {
+        width: 100%;
+    }
+}

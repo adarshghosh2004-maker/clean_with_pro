@@ -74,6 +74,7 @@ Route::get('/feedback', function () {
 
 Route::resource('quote', WebController::class)->only('store');
 Route::get('gallery', [WebController::class, 'gallery'])->name('gallery');
+Route::get('/cleaning-promo', [WebController::class, 'landingPage'])->name('landing.promo');
 
 Route::get('/services/{slug}', [WebController::class, 'serviceDetail'])->name('services_detail');
 

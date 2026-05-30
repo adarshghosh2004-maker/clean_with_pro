@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Invoice {{ $invoice_number }}</title>
+  <title>{{ __('label.booking_no') }} {{ $invoice_number }}</title>
   <style>
     * {
       margin: 0;
@@ -294,7 +294,7 @@
         @endphp
         @if($logoData)
           <img src="{{ $logoData }}" alt="Company Logo">
-          <div class="invoice_size"><strong>Invoice:</strong> {{ $invoice_number }}</div>
+          <div class="invoice_size"><strong>{{ __('label.booking_no') }}:</strong> {{ $invoice_number }}</div>
         @endif
         </td>
       <td width="28%" class="company-block">
@@ -442,6 +442,14 @@
       </td>
     </tr>
   </table>
+
+  <!-- ══ ADDITIONAL NOTES ══ -->
+  @if($invoice && $invoice->notes)
+    <div class="conditions" style="margin-bottom: 6px;">
+      <div class="box-title">{{ __('label.additional_notes_title') }}</div>
+      <p style="font-size:8px; color:#444;">{{ $invoice->notes }}</p>
+    </div>
+  @endif
 
   <!-- ══ SIGNATURES ══ -->
   <table class="sig-table">

@@ -125,7 +125,7 @@
                                     </p>
                                     <p class="mb-0">{{ __('label.date_colon') }} <input type="date" id="inv_date"
                                             class="form-control d-inline-block" style="width: auto;"></p>
-                                    <p class="mb-0">{{ __('label.invoice_no') }} <span id="modalInvoiceNumber"></span></p>
+                                    <p class="mb-0">{{ __('label.booking_no') }}: <span id="modalInvoiceNumber"></span></p>
                                 </div>
                             </div>
                         </div>
@@ -152,9 +152,14 @@
                                         <input type="text" class="form-control form-control-sm" id="inv_customer_phone"
                                             readonly>
                                     </div>
-                                    <div>
+                                    <div class="mb-2">
                                         <label class="form-label small">{{ __('label.booking_date_colon') }}</label>
                                         <input type="text" class="form-control form-control-sm" id="inv_booking_date"
+                                            readonly>
+                                    </div>
+                                    <div>
+                                        <label class="form-label small">{{ __('label.booking_time_colon') }}</label>
+                                        <input type="text" class="form-control form-control-sm" id="inv_booking_time"
                                             readonly>
                                     </div>
                                 </div>
@@ -229,6 +234,17 @@
                                     <h6 class="section-title">{{ __('label.grand_total') }}</h6>
                                     <input type="number" class="form-control form-control-sm" id="inv_grand_total" value="0"
                                         step="0.01" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Additional Notes Section --}}
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <div class="info-box">
+                                    <h6 class="section-title">{{ __('label.additional_notes') }}</h6>
+                                    <textarea class="form-control form-control-sm" id="inv_notes" rows="2"
+                                        placeholder="{{ __('label.enter_additional_notes') }}"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -474,7 +490,7 @@
                         if (resp.status == 200) {
 
                             // Set invoice number
-                            $('#modalInvoiceNumber').text(resp.invoice_number);
+                            $('#modalInvoiceNumber').text(resp.booking_no);
 
                             // Set date to today
                             var today = new Date().toISOString().split('T')[0];
@@ -514,11 +530,15 @@
                             });
                             $('#services_tbody').html(servicesHtml);
 
-                            // Set booking date
+                            // Set booking date and time
                             $('#inv_booking_date').val(resp.booking_date || '-');
+                            $('#inv_booking_time').val(resp.time || '-');
 
                             // Set description (given services)
                             $('#inv_description').val(resp.description || '');
+
+                            // Set additional notes
+                            $('#inv_notes').val(resp.notes || '');
 
                             // Set payment method
                             if (resp.payment_method == 'card') {
@@ -622,6 +642,7 @@
                     quote_id: currentQuoteId,
                     invoice_date: $('#inv_date').val(),
                     description: $('#inv_description').val() || '',
+                    notes: $('#inv_notes').val() || '',
                     payment_method: $('input[name="payment_method"]:checked').val(),
                     grand_total: grandTotal,
                     technician_name: $('#inv_technician_name').val(),

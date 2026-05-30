@@ -84,7 +84,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Suburb</strong></td>
+                                    <td><strong>Your Address</strong></td>
                                     <td>{{ $details['suburb'] }}</td>
                                 </tr>
 

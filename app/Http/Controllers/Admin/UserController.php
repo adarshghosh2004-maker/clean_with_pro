@@ -107,7 +107,7 @@ class UserController extends Controller
                     ->addColumn('status', function ($row) {
                         if ($row->status == 1) {
                             $class = 'show-btn';
-                            $label = __('label.confiremed');
+                            $label = __('label.confirmed');
                         } elseif ($row->status == 2) {
                             $class = 'primary-btn';
                             $label = __('label.completed');

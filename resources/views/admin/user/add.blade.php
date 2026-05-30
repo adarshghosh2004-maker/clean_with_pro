@@ -80,7 +80,7 @@
                                     <div class="form-group">
                                         <label>{{__('label.time')}}<span class="text-danger">*</span></label>
                                         <input type="time" class="form-control" name="time"
-                                            placeholder="{{ __('label.time_here') }}" value="00:00">
+                                            placeholder="{{ __('label.time_here') }}" value="00:00" step="1800">
                                     </div>
                                 </div>
                             </div>

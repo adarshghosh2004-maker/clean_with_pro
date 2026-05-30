@@ -178,4 +178,17 @@ class WebController extends Controller
         });
         return view('web.aboutus', $params);
     }
+
+    // ✅ Google Ads Landing Page with Cache
+    public function landingPage(Request $request)
+    {
+        try {
+            $params['feedbacks'] = Cache::rememberForever('landing_feedbacks', function () {
+                return Feedback::latest()->take(6)->get();
+            });
+            return view('web.landing', $params);
+        } catch (Exception $e) {
+            return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
+        }
+    }
 }

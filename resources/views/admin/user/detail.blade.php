@@ -68,9 +68,7 @@
 						{{-- Suburb --}}
 						<div class="col-md-4 detail-field">
 							<label>{{ __('label.suburb') }}</label>
-							<input type="text" class="form-control-static" name="suburb" value="{{ $quote->suburb }}"
-								readonly>
-
+							<input type="text" class="form-control-static bg-white" name="suburb" value="{{ $quote->suburb }}">
 						</div>
 						{{-- Current Status (badge display) --}}
 						<div class="col-md-4 detail-field">
