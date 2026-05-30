@@ -88,7 +88,7 @@
 
                                 <tr>
                                     <td>
-                                        <strong>Date</strong>
+                                        <strong>Date & Time</strong>
                                     </td>
 
                                     <td>
