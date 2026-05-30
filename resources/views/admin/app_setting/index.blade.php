@@ -126,7 +126,7 @@
                                                                 title="{{__('label.upload_file')}}"></label>
                                                         </div>
                                                         <div class="avatar-preview">
-                                                            <img src="{{ $result['company_logo'] }}" id="imagePreview">
+                                                            <img src="{{ $result['company_logo'] }}" id="imagePreview" alt="image">
                                                         </div>
                                                     </div>
                                                     <input type="hidden" name="old_company_logo"
@@ -258,7 +258,7 @@
                                     <div class="form-group col-md-1">
                                         <div class="custom-file">
                                             <img src="{{asset('assets/imgs/upload_img.png')}}" class="img-thumbnail size-90"
-                                                id="link_img_social_img">
+                                                id="link_img_social_img" alt="image">
                                         </div>
                                     </div>
                                     <div class="col-md-1 mt-2">
@@ -294,7 +294,7 @@
                                             <div class="form-group col-md-1">
                                                 <div class="custom-file">
                                                     <img src="{{$social_link[$i]['image']}}" class="img-thumbnail size-90"
-                                                        id="link_img_social_img_{{$i}}">
+                                                        id="link_img_social_img_{{$i}}" alt="image">
                                                 </div>
                                             </div>
                                             <div class="col-md-1 mt-2">
@@ -487,7 +487,7 @@
             data += '</div>';
             data += '<div class="form-group col-md-1">';
             data += '<div class="custom-file">';
-            data += '<img src="{{asset("assets/imgs/upload_img.png")}}" class="img-thumbnail size-90" id="link_img_social_img_' + i + '">';
+            data += '<img src="{{asset("assets/imgs/upload_img.png")}}" class="img-thumbnail size-90" id="link_img_social_img_' + i + '" alt="image">';
             data += '</div>';
             data += '</div>';
             data += '<div class="col-md-1 mt-2">';

@@ -36,7 +36,7 @@
                                         <label for="imageUpload" title="{{__('label.upload_file')}}"></label>
                                     </div>
                                     <div class="avatar-preview">
-                                        <img src="{{ $result['panel_login_page_bg_image'] }}" id="imagePreview">
+                                        <img src="{{ $result['panel_login_page_bg_image'] }}" id="imagePreview" alt="image">
                                     </div>
                                 </div>
                                 <input type="hidden" name="old_panel_login_page_bg_image" value="{{ $old_panel_login_page_bg_image }}">

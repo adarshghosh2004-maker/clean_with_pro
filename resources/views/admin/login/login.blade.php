@@ -6,7 +6,7 @@
     <div class="h-100 no-gutters row">
         <div class="d-none d-lg-block h-100 col-lg-8 col-xl-7">
             <div class="left-caption">
-                <img src="{{ Login_Image() }}" class="bg-img" />
+                <img src="{{ Login_Image() }}" class="bg-img"  alt="image" />
                 <div class="caption">
                     <div>
                         <!-- logo -->

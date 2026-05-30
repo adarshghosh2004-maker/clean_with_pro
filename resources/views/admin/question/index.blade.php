@@ -61,7 +61,7 @@
                                                     <label for="imageUpload" title="{{__('label.upload_file')}}"></label>
                                                 </div>
                                                 <div class="avatar-preview">
-                                                    <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview">
+                                                    <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview" alt="image">
                                                     <label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
                                                 </div>
                                             </div>
@@ -77,7 +77,7 @@
                                                     <label for="imageUpload2" title="{{__('label.upload_file')}}"></label>
                                                 </div>
                                                 <div class="avatar-preview">
-                                                    <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview2">
+                                                    <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview2" alt="image">
                                                     <label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
                                                 </div>
                                             </div>
@@ -93,7 +93,7 @@
                                                     <label for="imageUpload3" title="{{__('label.upload_file')}}"></label>
                                                 </div>
                                                 <div class="avatar-preview">
-                                                    <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview3">
+                                                    <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview3" alt="image">
                                                     <label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
                                                 </div>
                                             </div>
@@ -172,7 +172,7 @@
                     searchable: false,
                     render: function (data, type, full, meta) {
                         return `<a href='${data}' target='_blank'>
-                                            <img src='${data}' class='img-thumbnail size-55'></a>`;
+                                            <img src='${data}' class='img-thumbnail size-55' alt="image"></a>`;
                     },
                 },
                 {
@@ -182,7 +182,7 @@
                     searchable: false,
                     render: function (data, type, full, meta) {
                         return `<a href='${data}' target='_blank'>
-                                    <img src='${data}' class='img-thumbnail size-55'></a>`;
+                                    <img src='${data}' class='img-thumbnail size-55' alt="image"></a>`;
                     },
                 },
                 {
@@ -192,7 +192,7 @@
                     searchable: false,
                     render: function (data, type, full, meta) {
                         return `<a href='${data}' target='_blank'>
-                                    <img src='${data}' class='img-thumbnail size-55'></a>`;
+                                    <img src='${data}' class='img-thumbnail size-55' alt="image"></a>`;
                     },
                 },
                 {

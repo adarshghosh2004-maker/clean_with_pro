@@ -148,7 +148,7 @@
 
     @yield('content')
 
-    <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}" /></div>
+    <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}"  alt="image" /></div>
 
     <!-- Jquery -->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>

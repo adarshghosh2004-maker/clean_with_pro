@@ -6,14 +6,14 @@
     <title>{{ $details['title'] }}</title>
 </head>
 
-<body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial,sans-serif;">
 
-    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f5f5;">
         <tr>
-            <td align="center">
+            <td align="center" style="padding:20px;">
 
-                <table width="600" cellpadding="0" cellspacing="0" border="0"
-                    style="background:#ffffff;border:1px solid #e5e5e5;">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0"
+                    style="max-width: 600px; background:#ffffff;border:1px solid #e5e5e5; margin: 0 auto;">
 
                     <!-- Header -->
 
@@ -60,7 +60,7 @@
 
                                 <tr>
                                     <td><strong>Email</strong></td>
-                                    <td>{{ $details['email'] }}</td>
+                                    <td style="word-break: break-all;">{{ $details['email'] }}</td>
                                 </tr>
 
                                 <tr>

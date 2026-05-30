@@ -63,7 +63,7 @@
                                     <label for="imageUpload" title="{{__('label.upload_file')}}"></label>
                                 </div>
                                 <div class="avatar-preview">
-                                    <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview">
+                                    <img src="{{asset('assets/imgs/upload_img.png')}}" id="imagePreview" alt="image">
                                 </div>
                             </div>
                             <label class="mt-3 ml-5 text-gray">{{__('label.max_size_10mb')}}</label>

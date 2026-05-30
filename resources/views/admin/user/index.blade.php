@@ -43,6 +43,7 @@
                     <thead>
                         <tr class="table-bg">
                             <th> {{__('label.#')}} </th>
+                            <th> {{__('label.booking_no')}} </th>
                             <th> {{__('label.name')}} </th>
                             <th> {{__('label.email')}} </th>
                             <th> {{__('label.phone')}} </th>
@@ -72,7 +73,7 @@
                 {{-- Header --}}
                 <div class="modal-header invoice-modal-header">
                     <h5 class="modal-title mb-0" id="invoiceModalLabel">
-                        <i class="fa-solid fa-file-invoice me-2"></i> Invoice
+                        <i class="fa-solid fa-file-invoice me-2"></i> {{ __('label.invoice') }}
                     </h5>
                 </div>
 
@@ -84,12 +85,12 @@
                         <div class="spinner-border text-primary" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
-                        <p class="mt-2">Loading invoice data...</p>
+                        <p class="mt-2">{{ __('label.loading_invoice_data') }}</p>
                     </div>
 
                     {{-- Error Message --}}
                     <div id="invoiceError" class="alert alert-danger d-none">
-                        <i class="fa-solid fa-triangle-exclamation me-2"></i> Failed to load invoice data.
+                        <i class="fa-solid fa-triangle-exclamation me-2"></i> {{ __('label.failed_to_load_invoice_data') }}
                     </div>
 
                     {{-- Invoice Content --}}
@@ -122,9 +123,9 @@
                                     <p class="mb-1" id="company_address">
                                         {{ Setting_Data()['address'] ?? '' }}
                                     </p>
-                                    <p class="mb-0">Date : <input type="date" id="inv_date"
+                                    <p class="mb-0">{{ __('label.date_colon') }} <input type="date" id="inv_date"
                                             class="form-control d-inline-block" style="width: auto;"></p>
-                                    <p class="mb-0">Invoice No: <span id="modalInvoiceNumber"></span></p>
+                                    <p class="mb-0">{{ __('label.invoice_no') }} <span id="modalInvoiceNumber"></span></p>
                                 </div>
                             </div>
                         </div>
@@ -135,24 +136,24 @@
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="info-box">
-                                    <h6 class="section-title">CUSTOMER DETAILS</h6>
+                                    <h6 class="section-title">{{ __('label.customer_details') }}</h6>
                                     <div class="mb-2">
-                                        <label class="form-label small">Name:</label>
+                                        <label class="form-label small">{{ __('label.name_colon') }}</label>
                                         <input type="text" class="form-control form-control-sm" id="inv_customer_name"
                                             readonly>
                                     </div>
                                     <div class="mb-2">
-                                        <label class="form-label small">Address:</label>
+                                        <label class="form-label small">{{ __('label.address_colon') }}</label>
                                         <textarea class="form-control form-control-sm" id="inv_customer_address" rows="2"
                                             readonly></textarea>
                                     </div>
                                     <div class="mb-2">
-                                        <label class="form-label small">Ph:</label>
+                                        <label class="form-label small">{{ __('label.ph_colon') }}</label>
                                         <input type="text" class="form-control form-control-sm" id="inv_customer_phone"
                                             readonly>
                                     </div>
                                     <div>
-                                        <label class="form-label small">Booking Date:</label>
+                                        <label class="form-label small">{{ __('label.booking_date_colon') }}</label>
                                         <input type="text" class="form-control form-control-sm" id="inv_booking_date"
                                             readonly>
                                     </div>
@@ -160,12 +161,12 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="info-box">
-                                    <h6 class="section-title">TECHNICIAN NAME:</h6>
+                                    <h6 class="section-title">{{ __('label.technician_name_colon') }}</h6>
                                     <input type="text" class="form-control form-control-sm mb-2" id="inv_technician_name">
 
-                                    <h6 class="section-title mt-3">BANK DETAILS:</h6>
-                                    <p class="mb-1">BSB:- <span id="bank_bsb">{{ Setting_Data()['bsb'] ?? ''}}</span></p>
-                                    <p class="mb-0">ACC:- <span
+                                    <h6 class="section-title mt-3">{{ __('label.bank_details_colon') }}</h6>
+                                    <p class="mb-1">{{ __('label.bsb_colon') }} <span id="bank_bsb">{{ Setting_Data()['bsb'] ?? ''}}</span></p>
+                                    <p class="mb-0">{{ __('label.acc_colon') }} <span
                                             id="bank_acc">{{ Setting_Data()['account_number'] ?? '' }}</span></p>
                                 </div>
                             </div>
@@ -175,14 +176,14 @@
 
                         {{-- Services Section --}}
                         <div class="services-section mb-3">
-                            <h6 class="section-title">SELECT SERVICES</h6>
+                            <h6 class="section-title">{{ __('label.select_services') }}</h6>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-sm services-table">
                                     <thead>
                                         <tr>
                                             <th style="width: 8%;">✓</th>
-                                            <th style="width: 60%;">Service</th>
-                                            <th style="width: 32%;">Price</th>
+                                            <th style="width: 60%;">{{ __('label.service') }}</th>
+                                            <th style="width: 32%;">{{ __('label.price') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody id="services_tbody">
@@ -198,34 +199,34 @@
                         <div class="row mb-4">
                             <div class="col-md-4">
                                 <div class="info-box">
-                                    <h6 class="section-title">Given Services</h6>
+                                    <h6 class="section-title">{{ __('label.given_services') }}</h6>
                                     <textarea class="form-control form-control-sm" id="inv_description" rows="3"
                                         placeholder="Enter description..."></textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="info-box">
-                                    <h6 class="section-title">PAYMENT METHOD</h6>
+                                    <h6 class="section-title">{{ __('label.payment_method') }}</h6>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="payment_method" id="pay_cash"
                                             value="cash" checked>
-                                        <label class="form-check-label" for="pay_cash">CASH</label>
+                                        <label class="form-check-label" for="pay_cash">{{ __('label.cash') }}</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="payment_method" id="pay_card"
                                             value="card">
-                                        <label class="form-check-label" for="pay_card">CARD</label>
+                                        <label class="form-check-label" for="pay_card">{{ __('label.card') }}</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="payment_method" id="pay_bank"
                                             value="Bank_Transfer">
-                                        <label class="form-check-label" for="pay_bank">BANK TRANSFER</label>
+                                        <label class="form-check-label" for="pay_bank">{{ __('label.bank_transfer') }}</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="info-box">
-                                    <h6 class="section-title">GRAND TOTAL</h6>
+                                    <h6 class="section-title">{{ __('label.grand_total') }}</h6>
                                     <input type="number" class="form-control form-control-sm" id="inv_grand_total" value="0"
                                         step="0.01" readonly>
                                 </div>
@@ -238,13 +239,13 @@
                         <div class="row mt-4 d-flex justify-content-center">
                             <div class="col-md-4 d-flex">
                                 <div class="signature-box flex-fill">
-                                    <p class="text-center mb-2">Customer Signature</p>
+                                    <p class="text-center mb-2">{{ __('label.customer_signature') }}</p>
                                     <div class="signature-line"></div>
                                 </div>
                             </div>
                             <div class="col-md-4 d-flex">
                                 <div class="signature-box flex-fill">
-                                    <p class="text-center mb-2">Technician Signature</p>
+                                    <p class="text-center mb-2">{{ __('label.technician_signature') }}</p>
                                     <img src="{{ asset('assets/imgs/signature.webp') }}" alt="Technician Signature"
                                         style="height:40px; display:block; margin:0 auto 4px;">
                                     <div class="signature-line"></div>
@@ -258,13 +259,13 @@
                 {{-- Footer --}}
                 <div class="modal-footer invoice-modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
-                        <i class="fa-solid fa-xmark me-1"></i> Close
+                        <i class="fa-solid fa-xmark me-1"></i> {{ __('label.close') }}
                     </button>
                     <a href="#" id="btnDownloadPdf" class="btn btn-success btn-sm d-none" target="_blank">
-                        <i class="fa-solid fa-download me-1"></i> Download Invoice
+                        <i class="fa-solid fa-download me-1"></i> {{ __('label.download_invoice') }}
                     </a>
                     <button type="button" class="btn btn-primary btn-sm" id="btnSaveInvoice">
-                        <i class="fa-solid fa-save me-1"></i> Save & Download
+                        <i class="fa-solid fa-save me-1"></i> {{ __('label.save_download') }}
                     </button>
                 </div>
 
@@ -428,6 +429,7 @@
                 },
                 columns: [
                     { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+                     { data: 'booking_no', name: 'booking_no', orderable: false, searchable: false, render: d => d ? d : '-' },
                     { data: 'name', name: 'name', orderable: false, searchable: false, render: d => d ? d : '-' },
                     { data: 'email', name: 'email', orderable: false, searchable: false, render: d => d ? d : '-' },
                     { data: 'phone', name: 'phone', orderable: false, searchable: false, render: d => d ? d : '-' },
@@ -488,13 +490,13 @@
 
                             // Populate services (9 static services)
                             var staticServices = [
-                                { id: 1, title: 'Domestic Cleaning' },
-                                { id: 2, title: 'End of Lease Cleaning' },
-                                { id: 3, title: 'Carpet Cleaning' },
-                                { id: 4, title: 'Oven Cleaning' },
-                                { id: 5, title: 'Tile Grouting' },
-                                { id: 6, title: 'Mould Treatment' },
-                                { id: 7, title: 'Bathroom/Kitchen Cleaning' },
+                                { id: 1, title: "{{ __('label.domestic_cleaning') }}" },
+                                { id: 2, title: "{{ __('label.end_of_lease_cleaning') }}" },
+                                { id: 3, title: "{{ __('label.carpet_cleaning') }}" },
+                                { id: 4, title: "{{ __('label.oven_cleaning') }}" },
+                                { id: 5, title: "{{ __('label.tile_grouting') }}" },
+                                { id: 6, title: "{{ __('label.mould_treatment') }}" },
+                                { id: 7, title: "{{ __('label.bathroom_kitchen_cleaning') }}" },
                             ];
 
                             var servicesHtml = '';
@@ -580,18 +582,18 @@
             // ─ Save Invoice Button ──────────────────────────────────────
             $('#btnSaveInvoice').on('click', function () {
                 if (!currentQuoteId) {
-                    alert('No quote selected');
+                    alert("{{ __('label.no_quote_selected') }}");
                     return;
                 }
 
                 var staticServices = [
-                    { id: 1, title: 'Domestic Cleaning' },
-                    { id: 2, title: 'End of Lease Cleaning' },
-                    { id: 3, title: 'Carpet Cleaning' },
-                    { id: 4, title: 'Oven Cleaning' },
-                    { id: 5, title: 'Tile Grouting' },
-                    { id: 6, title: 'Mould Treatment' },
-                    { id: 7, title: 'Bathroom/Kitchen Cleaning' },
+                    { id: 1, title: "{{ __('label.domestic_cleaning') }}" },
+                    { id: 2, title: "{{ __('label.end_of_lease_cleaning') }}" },
+                    { id: 3, title: "{{ __('label.carpet_cleaning') }}" },
+                    { id: 4, title: "{{ __('label.oven_cleaning') }}" },
+                    { id: 5, title: "{{ __('label.tile_grouting') }}" },
+                    { id: 6, title: "{{ __('label.mould_treatment') }}" },
+                    { id: 7, title: "{{ __('label.bathroom_kitchen_cleaning') }}" },
                 ];
 
                 // Collect services data
@@ -661,16 +663,16 @@
                                     $('#dvloader').hide();
                                 })
                                 .catch(err => {
-                                    alert('Error downloading PDF. Please try again.');
+                                    alert("{{ __('label.error_downloading_pdf') }}");
                                     $('#dvloader').hide();
                                 });
                         } else {
-                            alert('Error saving invoice: ' + (resp.errors || 'Unknown error'));
+                            alert("{{ __('label.error_saving_invoice') }}: " + (resp.errors || "{{ __('label.unknown_error') }}"));
                             $('#dvloader').hide();
                         }
                     },
                     error: function () {
-                        alert('Error saving invoice. Please try again.');
+                        alert("{{ __('label.error_saving_invoice_try_again') }}");
                         $('#dvloader').hide();
                     }
                 });

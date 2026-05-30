@@ -116,7 +116,7 @@
         <img src="{{ Tab_Icon() }}" alt="Logo">
     </div>
 
-    <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}" /></div>
+    <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}"  alt="image" /></div>
     @include('web.layout.navbar')
 
     @yield('content')
@@ -130,90 +130,99 @@
                             <div class="col-lg-12" data-anim="fade-up">
                                 <div class="quote-card border border-light">
                                     <div class="text-center mb-4">
-                                        <h3 class="fw-bold text-primary-blue">Get Your Free Quote</h3>
-                                        <p class="text-muted">No hidden costs. Transparent pricing. We work all 7 days
-                                            7:00 AM to 7:00 PM.</p>
+                                        <h3 class="fw-bold text-primary-blue">{{ __('label.get_your_free_quote') }}</h3>
+                                        <p class="text-muted">{{ __('label.no_hidden_costs') }}</p>
                                     </div>
 
                                     <form id="quote_form" enctype="multipart/form-data">
                                         <div class="row g-3">
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">Full Name<span
+                                                <label class="form-label small fw-semibold text-muted">{{ __('label.full_name') }}<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" name="name" class="form-control bg-light border-0"
                                                     placeholder="John Doe" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">Mobile
-                                                    Number<span class="text-danger">*</span></label>
+                                                <label class="form-label small fw-semibold text-muted">{{ __('label.phone') }}<span
+                                                        class="text-danger">*</span></label>
                                                 <input type="number" name="phone" class="form-control bg-light border-0"
                                                     placeholder="(555) 123-4567" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">Email
-                                                    Address<span class="text-danger">*</span></label>
+                                                <label class="form-label small fw-semibold text-muted">{{ __('label.email_address') }}<span
+                                                        class="text-danger">*</span></label>
                                                 <input type="email" name="email" class="form-control bg-light border-0"
                                                     placeholder="john@example.com" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">Suburb /
-                                                    Area<span class="text-danger">*</span></label>
+                                                <label class="form-label small fw-semibold text-muted">{{ __('label.your_address') }}<span
+                                                        class="text-danger">*</span></label>
                                                 <input type="text" name="suburb" class="form-control bg-light border-0"
-                                                    placeholder="e.g. Richmond, VIC" required>
+                                                    placeholder="e.g. 123 Main St, Richmond, VIC" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">Date<span
+                                                <label class="form-label small fw-semibold text-muted">{{ __('label.date') }}<span
                                                         class="text-danger">*</span></label>
                                                 <input type="date" name="date" class="form-control bg-light border-0"
                                                     placeholder="dd/mm/yyyy" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">Time
-                                                    (optional)</label>
+                                                <label class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
                                                 <select name="time" class="form-control bg-light border-0" required>
-                                                    <option value="">Select a time</option>
+                                                    <option value="">{{ __('label.select_a_time') }}</option>
                                                     <option value="07:00">7:00 AM</option>
+                                                    <option value="07:30">7:30 AM</option>
                                                     <option value="08:00">8:00 AM</option>
+                                                    <option value="08:30">8:30 AM</option>
                                                     <option value="09:00">9:00 AM</option>
+                                                    <option value="09:30">9:30 AM</option>
                                                     <option value="10:00">10:00 AM</option>
+                                                    <option value="10:30">10:30 AM</option>
                                                     <option value="11:00">11:00 AM</option>
+                                                    <option value="11:30">11:30 AM</option>
                                                     <option value="12:00">12:00 PM</option>
+                                                    <option value="12:30">12:30 PM</option>
                                                     <option value="13:00">1:00 PM</option>
+                                                    <option value="13:30">1:30 PM</option>
                                                     <option value="14:00">2:00 PM</option>
+                                                    <option value="14:30">2:30 PM</option>
                                                     <option value="15:00">3:00 PM</option>
+                                                    <option value="15:30">3:30 PM</option>
                                                     <option value="16:00">4:00 PM</option>
+                                                    <option value="16:30">4:30 PM</option>
                                                     <option value="17:00">5:00 PM</option>
+                                                    <option value="17:30">5:30 PM</option>
                                                     <option value="18:00">6:00 PM</option>
+                                                    <option value="18:30">6:30 PM</option>
                                                     <option value="19:00">7:00 PM</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-12">
-                                                <label class="form-label small fw-semibold text-muted">Service<span
+                                                <label class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
                                                         class="text-danger">*</span></label>
                                                 <select name="service_id" class="form-control bg-light border-0"
                                                     required>
-                                                    <option value="">Select a service</option>
-                                                    <option value="0">Special Offers</option>
+                                                    <option value="">{{ __('label.select_a_service') }}</option>
+                                                    <option value="0">{{ __('label.special_offers') }}</option>
                                                     @foreach ($services as $key => $value)
                                                         <option value="{{ $value->id }}">{{ $value->title }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-12">
-                                                <label class="form-label small fw-semibold text-muted">Your Message
-                                                    (optional)</label>
+                                                <label class="form-label small fw-semibold text-muted">{{ __('label.your_message_optional') }}</label>
                                                 <textarea name="msg" class="form-control bg-light border-0" rows="3"
-                                                    placeholder="Briefly describe your cleaning needs..."></textarea>
+                                                    placeholder="{{ __('label.briefly_describe') }}"></textarea>
                                             </div>
                                             <div class="col-12 mt-4">
                                                 <div class="row justify-content-end g-3">
                                                     <div class="col-md-3">
                                                         <button type="button" onclick="save_quote('quote_form')"
-                                                            class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">Send</button>
+                                                            class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">{{ __('label.send') }}</button>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <button type="button" data-bs-dismiss="modal"
-                                                            class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">Close</button>
+                                                            class="btn btn-primary-blue btn-lg w-100 rounded-3 fw-bold shadow-sm">{{ __('label.close') }}</button>
                                                     </div>
                                                 </div>
                                             </div>

@@ -71,7 +71,7 @@
     <section class="container" data-anim="fade-up">
         <div class="featured-service">
             <div class="featured-card">
-                <div class="featured-img"><img src="{{ $services[0]['banner_img'] ?? ''}}" alt=""></div>
+                <div class="featured-img"><img src="{{ $services[0]['banner_img'] ?? ''}}" alt="image"></div>
                 <div class="featured-info">
                     <span class="tag-popular">MOST POPULAR</span>
                     <h2>{{ $services[0]['title'] ?? ""}}</h2>

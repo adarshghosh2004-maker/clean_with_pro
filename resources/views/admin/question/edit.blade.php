@@ -77,7 +77,7 @@
 													<label for="imageUpload" title="{{__('label.upload_file')}}"></label>
 												</div>
 												<div class="avatar-preview">
-													<img src="{{ $data->img_1}}" id="imagePreview">
+													<img src="{{ $data->img_1}}" id="imagePreview" alt="image">
 													<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
 												</div>
 											</div>
@@ -93,7 +93,7 @@
 													<label for="imageUpload2" title="{{__('label.upload_file')}}"></label>
 												</div>
 												<div class="avatar-preview">
-													<img src="{{$data->img_2}}" id="imagePreview2">
+													<img src="{{$data->img_2}}" id="imagePreview2" alt="image">
 													<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
 												</div>
 											</div>
@@ -109,7 +109,7 @@
 													<label for="imageUpload3" title="{{__('label.upload_file')}}"></label>
 												</div>
 												<div class="avatar-preview">
-													<img src="{{$data->img_3}}" id="imagePreview3">
+													<img src="{{$data->img_3}}" id="imagePreview3" alt="image">
 													<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
 												</div>
 											</div>

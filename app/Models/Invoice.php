@@ -21,6 +21,7 @@ class Invoice extends Model
         'total' => 'string',
         'payment_type' => 'integer',
         'description' => 'string',
+        'notes' => 'string',
         'status' => 'integer',
     ];
 

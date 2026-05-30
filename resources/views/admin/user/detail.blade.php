@@ -78,13 +78,13 @@
 							<div class="form-control-static">
 								@php
 									$statusLabels = [
-										0 => 'Pending',
-										1 => 'Confirmed',
-										2 => 'Completed',
+										0 => __('label.pending'),
+										1 => __('label.confirmed'),
+										2 => __('label.completed'),
 									];
 								@endphp
 								<span class="status-badge status-{{ $quote->status }}">
-									{{ $statusLabels[$quote->status] ?? 'Unknown' }}
+									{{ $statusLabels[$quote->status] ?? __('label.unknown') }}
 								</span>
 							</div>
 						</div>
@@ -114,19 +114,31 @@
 						<div class="col-md-4 detail-field">
 							<label>{{ __('label.time') }}</label>
 							<select name="time" class="form-control-static bg-white" required>
-								<option value="">Select a time</option>
+								<option value="">{{ __('label.select_a_time') }}</option>
 								<option value="07:00" {{ $quote->time == '07:00' ? 'selected' : ''}}>7:00 AM</option>
+								<option value="07:30" {{ $quote->time == '07:30' ? 'selected' : ''}}>7:30 AM</option>
 								<option value="08:00" {{ $quote->time == '08:00' ? 'selected' : ''}}>8:00 AM</option>
+								<option value="08:30" {{ $quote->time == '08:30' ? 'selected' : ''}}>8:30 AM</option>
 								<option value="09:00" {{ $quote->time == '09:00' ? 'selected' : ''}}>9:00 AM</option>
+								<option value="09:30" {{ $quote->time == '09:30' ? 'selected' : ''}}>9:30 AM</option>
 								<option value="10:00" {{ $quote->time == '10:00' ? 'selected' : ''}}>10:00 AM</option>
+								<option value="10:30" {{ $quote->time == '10:30' ? 'selected' : ''}}>10:30 AM</option>
 								<option value="11:00" {{ $quote->time == '11:00' ? 'selected' : ''}}>11:00 AM</option>
+								<option value="11:30" {{ $quote->time == '11:30' ? 'selected' : ''}}>11:30 AM</option>
 								<option value="12:00" {{ $quote->time == '12:00' ? 'selected' : ''}}>12:00 PM</option>
+								<option value="12:30" {{ $quote->time == '12:30' ? 'selected' : ''}}>12:30 PM</option>
 								<option value="13:00" {{ $quote->time == '13:00' ? 'selected' : ''}}>1:00 PM</option>
+								<option value="13:30" {{ $quote->time == '13:30' ? 'selected' : ''}}>1:30 PM</option>
 								<option value="14:00" {{ $quote->time == '14:00' ? 'selected' : ''}}>2:00 PM</option>
+								<option value="14:30" {{ $quote->time == '14:30' ? 'selected' : ''}}>2:30 PM</option>
 								<option value="15:00" {{ $quote->time == '15:00' ? 'selected' : ''}}>3:00 PM</option>
+								<option value="15:30" {{ $quote->time == '15:30' ? 'selected' : ''}}>3:30 PM</option>
 								<option value="16:00" {{ $quote->time == '16:00' ? 'selected' : ''}}>4:00 PM</option>
+								<option value="16:30" {{ $quote->time == '16:30' ? 'selected' : ''}}>4:30 PM</option>
 								<option value="17:00" {{ $quote->time == '17:00' ? 'selected' : ''}}>5:00 PM</option>
+								<option value="17:30" {{ $quote->time == '17:30' ? 'selected' : ''}}>5:30 PM</option>
 								<option value="18:00" {{ $quote->time == '18:00' ? 'selected' : ''}}>6:00 PM</option>
+								<option value="18:30" {{ $quote->time == '18:30' ? 'selected' : ''}}>6:30 PM</option>
 								<option value="19:00" {{ $quote->time == '19:00' ? 'selected' : ''}}>7:00 PM</option>
 							</select>
 						</div>
@@ -135,7 +147,7 @@
 						<div class="col-md-4 detail-field">
 							<label>{{ __('label.service') }}</label>
 							<select name="service_id" class="form-control-static bg-white">
-								<option value="0" {{ $quote->service_id == 0 ? 'selected' : ''}}>Special Offer</option>
+								<option value="0" {{ $quote->service_id == 0 ? 'selected' : ''}}>{{ __('label.special_offer') }}</option>
 								@foreach ($services as $key => $value)
 									<option value="{{ $value->id }}" {{ $quote->service_id == $value->id ? 'selected' : '' }}>
 										{{ $value->title }}
@@ -154,9 +166,9 @@
 						<div class="col-md-4 detail-field">
 							<label>{{ __('label.status') }} <span class="text-danger">*</span></label>
 							<select name="status" class="form-select" required>
-								<option value="0" {{ $quote->status == 0 ? 'selected' : '' }}>Pending</option>
-								<option value="1" {{ $quote->status == 1 ? 'selected' : '' }}>Confirmed</option>
-								<option value="2" {{ $quote->status == 2 ? 'selected' : '' }}>Completed</option>
+								<option value="0" {{ $quote->status == 0 ? 'selected' : '' }}>{{ __('label.pending') }}</option>
+								<option value="1" {{ $quote->status == 1 ? 'selected' : '' }}>{{ __('label.confirmed') }}</option>
+								<option value="2" {{ $quote->status == 2 ? 'selected' : '' }}>{{ __('label.completed') }}</option>
 							</select>
 							@error('status')
 								<div class="text-danger mt-1" style="font-size:12px">{{ $message }}</div>
@@ -167,7 +179,7 @@
 						<div class="col-md-4 detail-field">
 							<label>{{ __('label.amount') }}</label>
 							<input type="number" name="amount" class="form-control"
-								value="{{ old('amount', $quote->amount) }}" min="0" placeholder="Enter amount">
+								value="{{ old('amount', $quote->amount) }}" min="0" placeholder="{{ __('label.enter_amount') }}">
 						</div>
 					</div>
 

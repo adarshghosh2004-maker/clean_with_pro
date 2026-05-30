@@ -118,7 +118,7 @@ class UserController extends Controller
                         return '<button class="' . $class . '">' . $label . '</button>';
                     })
                     ->addColumn('date', function ($row) {
-                        return date("d M Y", strtotime($row->created_at));
+                        return date("d M Y", strtotime($row->date));
                     })
                     ->addColumn('service', function ($row) {
                         if ($row->service_id == 0) {
@@ -126,6 +126,9 @@ class UserController extends Controller
                         } else {
                             return $row->service?->title;
                         }
+                    })
+                    ->addColumn('booking_no', function ($row) {
+                        return str_pad($row->id, 4, '0', STR_PAD_LEFT);
                     })
                     ->rawColumns(['action', 'status'])
                     ->make(true);
@@ -297,7 +300,7 @@ class UserController extends Controller
                         }
 
                         $pdfData = [
-                            'invoice_number' => 'INV-' . str_pad($data->id, 4, '0', STR_PAD_LEFT),
+                            'invoice_number' => str_pad($data->id, 4, '0', STR_PAD_LEFT),
                             'invoice_date' => date('d M Y', strtotime($invoice->created_at)),
                             'due_date' => now()->addDays(30)->format('d M Y'),
                             'quote' => $data,
@@ -310,7 +313,7 @@ class UserController extends Controller
 
                         $pdf = Pdf::loadView('admin.user.invoice', $pdfData)->setPaper('a4', 'portrait');
                         $pdfOutput = $pdf->output();
-                        $filename = 'Invoice-INV-' . str_pad($data->id, 4, '0', STR_PAD_LEFT) . '.pdf';
+                        $filename = 'Booking-' . str_pad($data->id, 4, '0', STR_PAD_LEFT) . '.pdf';
 
                         $this->common->Send_Mail(8, $data->email, $data, $pdfOutput, $filename);
                     } else {
@@ -449,11 +452,13 @@ class UserController extends Controller
             }
 
             $description = '';
+            $notes = '';
             $payment_method = 'cash';
             $total = 0;
 
             if ($invoice) {
                 $description = $invoice->description;
+                $notes = $invoice->notes;
                 if ($invoice->payment_type == 1) {
                     $payment_method = 'card';
                 } elseif ($invoice->payment_type == 2) {
@@ -466,7 +471,7 @@ class UserController extends Controller
 
             return response()->json([
                 'status' => 200,
-                'invoice_number' => 'INV-' . str_pad($quote->id, 4, '0', STR_PAD_LEFT),
+                'booking_no' => str_pad($quote->id, 4, '0', STR_PAD_LEFT),
                 'invoice_date' => now()->format('d M Y'),
                 'due_date' => now()->addDays(30)->format('d M Y'),
                 'name' => $quote->name,
@@ -486,6 +491,7 @@ class UserController extends Controller
                 'technician_name' => $admin ? $admin->user_name : 'N/A',
                 'services' => $servicesData,
                 'description' => $description,
+                'notes' => $notes,
                 'payment_method' => $payment_method,
                 'total' => $total,
             ]);
@@ -567,7 +573,7 @@ class UserController extends Controller
             }
 
             $data = [
-                'invoice_number' => 'INV-' . str_pad($quote->id, 4, '0', STR_PAD_LEFT),
+                'invoice_number' => str_pad($quote->id, 4, '0', STR_PAD_LEFT),
                 'invoice_date' => $invoice ? date('d M Y', strtotime($invoice->created_at)) : now()->format('d M Y'),
                 'due_date' => now()->addDays(30)->format('d M Y'),
                 'quote' => $quote,
@@ -579,7 +585,7 @@ class UserController extends Controller
             ];
 
             $pdf = Pdf::loadView('admin.user.invoice', $data)->setPaper('a4', 'portrait');
-            $filename = 'Invoice-' . $data['invoice_number'] . '.pdf';
+            $filename = 'Booking-' . $data['invoice_number'] . '.pdf';
 
             return $pdf->download($filename);
 
@@ -599,6 +605,7 @@ class UserController extends Controller
                 'invoice_date' => 'required|date',
                 'grand_total' => 'required|numeric',
                 'description' => 'nullable|string',
+                'notes' => 'nullable|string',
                 'payment_method' => 'required|in:cash,card,Bank_Transfer',
                 'services' => 'required|array',
             ]);
@@ -611,6 +618,7 @@ class UserController extends Controller
 
             // Description for given services
             $description = (string) $request->description;
+            $notes = (string) $request->notes;
 
             // Prepare service JSON - ensure clean data
             $cleanServices = [];
@@ -639,22 +647,24 @@ class UserController extends Controller
 
             if ($invoice) {
                 // Update existing invoice
-                $invoice->invoice_id = 'INV-' . str_pad($quote->id, 4, '0', STR_PAD_LEFT);
+                $invoice->invoice_id = str_pad($quote->id, 4, '0', STR_PAD_LEFT);
                 $invoice->service_json = $service_json;
                 $invoice->total = (float) $request->grand_total;
                 $invoice->payment_type = $payment_type;
                 $invoice->description = $description;
+                $invoice->notes = $notes;
                 $invoice->technician_name = $request->technician_name ?? '';
                 $invoice->save();
             } else {
                 // Create new invoice
                 $invoice = Invoice::create([
                     'quote_id' => $request->quote_id,
-                    'invoice_id' => 'INV-' . str_pad($quote->id, 4, '0', STR_PAD_LEFT),
+                    'invoice_id' => str_pad($quote->id, 4, '0', STR_PAD_LEFT),
                     'service_json' => $service_json,
                     'total' => (float) $request->grand_total,
                     'payment_type' => $payment_type,
                     'description' => $description,
+                    'notes' => $notes,
                     'technician_name' => $request->technician_name ?? '',
                     'status' => 1,
                 ]);

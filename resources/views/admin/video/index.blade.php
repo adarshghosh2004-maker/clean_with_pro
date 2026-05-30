@@ -133,7 +133,7 @@
                     orderable: false,
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return "<a href='" + data + "' target='_blank' title='Watch'><img src='" + data + "' class='img-thumbnail size-55' ></a>";
+                        return "<a href='" + data + "' target='_blank' title='Watch'><img src='" + data + "' class='img-thumbnail size-55'  alt="image"></a>";
                     },
                 },
                 {

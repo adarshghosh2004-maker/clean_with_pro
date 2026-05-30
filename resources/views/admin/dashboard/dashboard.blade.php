@@ -150,7 +150,7 @@
                                 @foreach ($top_services as $key => $value)
                                     <div class="col-12 mb-2 pr-0 content-box">
                                         <div class="position-relative">
-                                            <img src="{{ $value['banner_img'] ?? "" }}" class="category-image">
+                                            <img src="{{ $value['banner_img'] ?? "" }}" class="category-image" alt="image">
                                             <div class="centered">{{ $value['title'] ?? "" }}</div>
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@
                                 <div class="col-6 col-md-4 col-xl-2">
                                     <div class="artist-grid-card d-flex flex-column align-items-center">
                                         <span class="author-image">
-                                            <img src="{{ asset('assets/imgs/default.png') }}">
+                                            <img src="{{ asset('assets/imgs/default.png') }}" alt="image">
                                         </span>
                                         <h3 class="name"> </h3>
                                         <p class="details mb-0">{{ $value['name'] ?? "" }}</p>

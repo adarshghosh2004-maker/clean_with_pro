@@ -63,7 +63,7 @@
                                     <label for="imageUpload" title="{{__('label.upload_file')}}"></label>
                                 </div>
                                 <div class="avatar-preview">
-                                    <img src="{{ $data['icon'] }}" id="imagePreview">
+                                    <img src="{{ $data['icon'] }}" id="imagePreview" alt="image">
                                 </div>
                             </div>
                             <input type="hidden" name="old_icon" value="{{ $data['icon'] }}">

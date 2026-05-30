@@ -278,8 +278,8 @@ class Common extends Model
                     $details = [
                         'title' => App_Name() . " - Domestic",
                         'customer_name' => $array['name'] ?? '',
-                        'booking_number' => $array['id'] ?? '',
-                        'date' => $array['date'] ?? '',
+                        'booking_number' => isset($array['id']) ? sprintf('%04d', $array['id']) : '',
+                        'date' => trim(($array['date'] ?? '') . ' ' . ($array['time'] ?? '')),
                         'customer_address' => $array['suburb'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
@@ -289,8 +289,8 @@ class Common extends Model
                     $details = [
                         'title' => App_Name() . " - End of Lease",
                         'customer_name' => $array['name'] ?? '',
-                        'booking_number' => $array['id'] ?? '',
-                        'date' => $array['date'] ?? '',
+                        'booking_number' => isset($array['id']) ? sprintf('%04d', $array['id']) : '',
+                        'date' => trim(($array['date'] ?? '') . ' ' . ($array['time'] ?? '')),
                         'customer_address' => $array['suburb'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
@@ -300,8 +300,8 @@ class Common extends Model
                     $details = [
                         'title' => App_Name() . " - Oven",
                         'customer_name' => $array['name'] ?? '',
-                        'booking_number' => $array['id'] ?? '',
-                        'date' => $array['date'] ?? '',
+                        'booking_number' => isset($array['id']) ? sprintf('%04d', $array['id']) : '',
+                        'date' => trim(($array['date'] ?? '') . ' ' . ($array['time'] ?? '')),
                         'customer_address' => $array['suburb'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
@@ -311,8 +311,8 @@ class Common extends Model
                     $details = [
                         'title' => App_Name() . " - Bathroom",
                         'customer_name' => $array['name'] ?? '',
-                        'booking_number' => $array['id'] ?? '',
-                        'date' => $array['date'] ?? '',
+                        'booking_number' => isset($array['id']) ? sprintf('%04d', $array['id']) : '',
+                        'date' => trim(($array['date'] ?? '') . ' ' . ($array['time'] ?? '')),
                         'customer_address' => $array['suburb'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
@@ -322,8 +322,8 @@ class Common extends Model
                     $details = [
                         'title' => App_Name() . " - Kitchen",
                         'customer_name' => $array['name'] ?? '',
-                        'booking_number' => $array['id'] ?? '',
-                        'date' => $array['date'] ?? '',
+                        'booking_number' => isset($array['id']) ? sprintf('%04d', $array['id']) : '',
+                        'date' => trim(($array['date'] ?? '') . ' ' . ($array['time'] ?? '')),
                         'customer_address' => $array['suburb'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
@@ -333,8 +333,8 @@ class Common extends Model
                     $details = [
                         'title' => App_Name() . " - Carpet steam",
                         'customer_name' => $array['name'] ?? '',
-                        'booking_number' => $array['id'] ?? '',
-                        'date' => $array['date'] ?? '',
+                        'booking_number' => isset($array['id']) ? sprintf('%04d', $array['id']) : '',
+                        'date' => trim(($array['date'] ?? '') . ' ' . ($array['time'] ?? '')),
                         'customer_address' => $array['suburb'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
@@ -349,8 +349,8 @@ class Common extends Model
                     $details = [
                         'title' => App_Name() . " - Thankyou",
                         'customer_name' => $array['name'] ?? '',
-                        'booking_number' => $array['id'] ?? '',
-                        'date' => $array['date'] ?? '',
+                        'booking_number' => isset($array['id']) ? sprintf('%04d', $array['id']) : '',
+                        'date' => trim(($array['date'] ?? '') . ' ' . ($array['time'] ?? '')),
                         'service_cost' => $array['amount'] ?? '',
                         'view' => 'mail.thankyou',
                     ];

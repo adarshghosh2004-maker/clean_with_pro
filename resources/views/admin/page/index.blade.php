@@ -111,7 +111,7 @@
                     searchable: false,
                     render: function(data, type, full, meta) {
                         return `<a href='${data}' target='_blank'>
-                                        <img src='${data}' class='img-thumbnail size-55' >
+                                        <img src='${data}' class='img-thumbnail size-55'  alt="image">
                                     </a>`;
                     },
                 },
