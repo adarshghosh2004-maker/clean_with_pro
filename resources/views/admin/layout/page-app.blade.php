@@ -15,7 +15,7 @@
     <link href="{{asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{asset('assets/css/admin/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/admin/style.css') }}?v={{ filemtime(public_path('assets/css/admin/style.css')) }}"
+    <link href="{{ asset('assets/css/admin/style.css') }}?v={{ time() }}"
         rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />

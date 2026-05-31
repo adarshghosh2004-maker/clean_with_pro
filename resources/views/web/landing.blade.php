@@ -55,7 +55,7 @@
                         </div>
                     </div>
 
-                    <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center justify-content-center justify-content-lg-start gap-3">
                         <a href="tel:{{ Setting_Data()['contact'] ?? '+61468460145' }}"
                             class="btn btn-secondary btn-lg rounded-pill px-4 py-3 shadow transition-all hover-translate-y">
                             <i class="bi bi-telephone-fill me-2"></i> Call Us:
@@ -687,34 +687,6 @@
             <span class="material-symbols-outlined">cleaning_services</span>
         </div>
     </section>
-
-    <!-- ==========================================
-             STICKY BOTTOM CTA BAR (Boost Mobile CRO)
-             ========================================== -->
-    <div class="lp-sticky-bar d-md-none">
-        <div class="container">
-            <div class="lp-sticky-container">
-                <div class="lp-sticky-info">
-                    <div class="lp-sticky-phone-icon">
-                        <i class="bi bi-telephone-fill"></i>
-                    </div>
-                    <div class="lp-sticky-text">
-                        <h6>Book by Phone</h6>
-                        <p>{{ Setting_Data()['contact'] ?? '+61468460145' }}</p>
-                    </div>
-                </div>
-                <div class="d-flex w-100 gap-2">
-                    <a href="tel:{{ Setting_Data()['contact'] ?? '+61468460145' }}"
-                        class="btn btn-secondary flex-grow-1 py-2 fw-bold shadow-sm">
-                        <i class="bi bi-telephone-fill"></i> Call Now
-                    </a>
-                    <a href="#lp-form-anchor" class="btn btn-primary-blue flex-grow-1 py-2 fw-bold shadow-sm">
-                        <i class="bi bi-pencil-square"></i> Get Quote
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('pagescript')

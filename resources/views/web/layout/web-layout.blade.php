@@ -47,7 +47,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet"
-        href="{{ asset('assets/css/web/style.css') }}?v={{ filemtime(public_path('assets/css/web/style.css')) }}">
+        href="{{ asset('assets/css/web/style.css') }}?v={{ time() }}">
 
     <!-- Loader CSS -->
     <style>
