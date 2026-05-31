@@ -55,7 +55,7 @@
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div class="form-row">
+								<div class="form-row mb-4">
 									<div class="col-md-6">
 										<div class="form-group ml-4">
 											<label class="ml-5">{{__('label.before_img')}}<span
@@ -69,7 +69,7 @@
 												<div class="avatar-preview">
 													<img src="{{ $data->before_img }}" alt="upload_img.png"
 														id="imagePreview">
-													<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
+													<label class="mt-1 text-gray">{{__('label.max_size_10mb')}}</label>
 												</div>
 											</div>
 											<input type="hidden" name="old_before_img"
@@ -89,7 +89,7 @@
 												<div class="avatar-preview">
 													<img src="{{ $data->after_img }}" alt="upload_img.png"
 														id="imagePreview2">
-													<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
+													<label class="mt-1 text-gray">{{__('label.max_size_10mb')}}</label>
 												</div>
 											</div>
 											<input type="hidden" name="old_after_img"
