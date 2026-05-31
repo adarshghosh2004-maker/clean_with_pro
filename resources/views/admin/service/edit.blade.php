@@ -70,7 +70,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-row">
+						<div class="form-row mb-4">
 							<div class="col-md-3">
 								<div class="form-group ml-4">
 									<label class="ml-5">{{__('label.banner_image')}}<span
@@ -83,7 +83,7 @@
 										</div>
 										<div class="avatar-preview">
 											<img src="{{ $data->banner_img }}" alt="upload_img.png" id="imagePreview">
-											<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
+											<label class="mt-1 text-gray">{{__('label.max_size_10mb')}}</label>
 										</div>
 									</div>
 									<input type="hidden" name="old_banner_img" value="{{ $data->banner_img }}">
@@ -101,7 +101,7 @@
 										</div>
 										<div class="avatar-preview">
 											<img src="{{ $data->detail_img1 }}" alt="upload_img.png" id="imagePreview2">
-											<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
+											<label class="mt-1 text-gray">{{__('label.max_size_10mb')}}</label>
 										</div>
 									</div>
 									<input type="hidden" name="old_detail_img1" value="{{ $data->detail_img1 }}">
@@ -119,7 +119,7 @@
 										</div>
 										<div class="avatar-preview">
 											<img src="{{ $data->detail_img2 }}" alt="upload_img.png" id="imagePreview3">
-											<label class="mt-3 text-gray">{{__('label.max_size_10mb')}}</label>
+											<label class="mt-1 text-gray">{{__('label.max_size_10mb')}}</label>
 										</div>
 									</div>
 									<input type="hidden" name="old_detail_img2" value="{{ $data->detail_img2 }}">

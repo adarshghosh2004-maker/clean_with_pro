@@ -75,7 +75,7 @@
                                                         placeholder="{{__('label.name_here')}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 mb-4">
                                                 <div class="form-group ml-4">
                                                     <label class="ml-5">{{__('label.image')}}<span
                                                             class="text-danger">*</span></label>
