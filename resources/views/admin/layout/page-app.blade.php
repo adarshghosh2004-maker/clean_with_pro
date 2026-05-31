@@ -25,26 +25,6 @@
 
     <!-- Custom CSS -->
     <style>
-        /* Loader */
-        #dvloader {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            position: fixed;
-            display: block;
-            opacity: 0.7;
-            background-color: #fff;
-            z-index: 9999;
-            text-align: center;
-        }
-
-        #dvloader image {
-            position: absolute;
-            top: 100px;
-            left: 240px;
-            z-index: 100;
-        }
 
         /* btn Cancel */
         .btn-cancel {

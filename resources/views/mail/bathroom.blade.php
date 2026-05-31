@@ -160,9 +160,7 @@
                             <ul>
 
                                 <li>
-                                    Cancellation or rescheduling requests
-                                    should be made at least 24 hours
-                                    before booking time.
+                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at least 24 hours before the booking date, no charges will apply. If you cancel or reschedule within 24 hours of the booking date, a $60 fine will be charged.
                                 </li>
 
                             </ul>

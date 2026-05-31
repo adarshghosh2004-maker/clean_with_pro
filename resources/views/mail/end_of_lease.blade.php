@@ -174,6 +174,9 @@
                                 <li>Pet hair removal is best effort only</li>
                                 <li>Customer to arrange parking</li>
                                 <li>Payment on arrival</li>
+                                <li>
+                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at least 24 hours before the booking date, no charges will apply. If you cancel or reschedule within 24 hours of the booking date, a $60 fine will be charged.
+                                </li>
                             </ul>
 
                             <hr>

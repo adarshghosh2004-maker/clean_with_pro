@@ -13,15 +13,19 @@
             <div class="row align-items-center g-5">
                 <!-- Left: Catchy Value Proposition & Bullets -->
                 <div class="col-lg-6" data-anim="fade-right">
-                    <div class="lp-hero-badge">
-                        <i class="bi bi-star-fill text-warning"></i> Melbourne's #1 Rated Cleaners
-                    </div>
+                    @php
+                        $eolService = $services->first(function($s) {
+                            return str_contains(strtolower($s->slug), 'lease') || $s->id == 2;
+                        });
+                        $eolTitle = $eolService ? $eolService->title : 'Move in-out/end of lease/Bond Cleaning';
+                        $eolDesc = $eolService ? $eolService->description : 'We provide detailed move-in and move-out cleaning to prepare your space for a fresh start. Every corner is thoroughly cleaned, including floors, surfaces, and fixtures. Ideal for tenants, landlords, or homeowners during relocation.';
+                        $formattedTitle = preg_replace('/(end of lease)/i', '<span>$1</span>', $eolTitle);
+                    @endphp
                     <h1 class="lp-hero-title">
-                        Get Your Space <span>Spotless</span> Today
+                        {!! $formattedTitle !!}
                     </h1>
                     <p class="lp-hero-subtitle">
-                        Experience the gold standard in fabric care and property cleaning. Trusted by thousands of Melbourne
-                        residents and real estate agents. We handle the dirty work so you don't have to!
+                        {{ $eolDesc }}
                     </p>
 
                     <div class="lp-hero-bullets">
@@ -235,7 +239,7 @@
 
             <div class="offers-grid">
                 {{-- Offer 1 --}}
-                <div class="offer-card" data-anim="fade-up" data-anim-delay="100">
+                <div class="offer-card highlight-card" data-anim="fade-up" data-anim-delay="100">
                     <div class="offer-card-top">
                         <div class="offer-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -282,13 +286,171 @@
                             Carpet vacuuming & floor mopping
                         </li>
                     </ul>
-                    <a class="btn-select-offer btn-select-landing-offer mt-auto text-decoration-none" href="#lp-form-anchor"
+                    <a class="btn-select-offer btn-select-landing-offer mt-auto text-decoration-none" data-bs-toggle="modal" href="#EditModel" data-id="0"
                         data-name="3-Hour Domestic Cleaning Special">SELECT OFFER</a>
                 </div>
 
                 {{-- Offer 2 --}}
+                <div class="offer-card" data-anim="fade-up" data-anim-delay="150">
+                    <div class="offer-card-top">
+                        <div class="offer-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 10h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10z"></path>
+                                <path d="M8 10V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"></path>
+                            </svg>
+                        </div>
+                        <div class="offer-price-info">
+                            <span class="price-label">FLASH DEAL</span>
+                            <span class="price-amount">$149</span>
+                        </div>
+                    </div>
+                    <h3>Deep Bath Clean</h3>
+                    <p>Transform your bathroom into a sparkling sanctuary without lifting a finger! 🧼🚿</p>
+                    <ul class="sp2-card-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Full Shower Scrub (Tiles & Glass Screens)
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Shower Grout Treatment
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Vanity & Cupboards (Inside & Out)
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Toilet Sanitization
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Mirrors, Taps & Sinks polished
+                        </li>
+                    </ul>
+                    <a class="btn-select-offer btn-select-landing-offer mt-auto text-decoration-none" data-bs-toggle="modal" href="#EditModel" data-id="0"
+                        data-name="Deep Bath Clean">SELECT OFFER</a>
+                </div>
+
+                {{-- Offer 3 --}}
                 <div class="offer-card highlight-card" data-anim="fade-up" data-anim-delay="200">
-                    <div class="best-deal-ribbon">POPULAR</div>
+                    <div class="offer-card-top">
+                        <div class="offer-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                        </div>
+                        <div class="offer-price-info">
+                            <span class="price-label">LIMITED</span>
+                            <span class="price-amount">$149</span>
+                        </div>
+                    </div>
+                    <h3>KITCHEN DEEP CLEAN SPECIAL</h3>
+                    <p>Is your kitchen feeling a little greasy? Let us do the dirty work!</p>
+                    <ul class="sp2-card-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Inside & Out Cupboards (we get every corner!)
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Standard Oven Deep Clean
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Gas Stovetop & Rangehood degreased
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Benchtops & Splashbacks
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Sinks & Taps scrubbed to a shine
+                        </li>
+                    </ul>
+                    <a class="btn-select-offer btn-select-landing-offer mt-auto text-decoration-none" data-bs-toggle="modal" href="#EditModel" data-id="0"
+                        data-name="KITCHEN DEEP CLEAN SPECIAL">SELECT OFFER</a>
+                </div>
+
+                {{-- Offer 4 --}}
+                <div class="offer-card" data-anim="fade-up" data-anim-delay="250">
+                    <div class="offer-card-top">
+                        <div class="offer-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                                <line x1="9" y1="1" x2="9" y2="4"></line>
+                                <line x1="15" y1="1" x2="15" y2="4"></line>
+                                <line x1="9" y1="20" x2="9" y2="23"></line>
+                                <line x1="15" y1="20" x2="15" y2="23"></line>
+                                <line x1="20" y1="9" x2="23" y2="9"></line>
+                                <line x1="20" y1="14" x2="23" y2="14"></line>
+                                <line x1="1" y1="9" x2="4" y2="9"></line>
+                                <line x1="1" y1="14" x2="4" y2="14"></line>
+                            </svg>
+                        </div>
+                        <div class="offer-price-info">
+                            <span class="price-label">QUICK FIX</span>
+                            <span class="price-amount">$90</span>
+                        </div>
+                    </div>
+                    <h3>OVEN SPECIAL + FREE RANGEHOOD CLEAN!</h3>
+                    <p>Professional deep scrub that restores your appliances to showroom condition.</p>
+                    <ul class="sp2-card-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Full Oven Scrub (Inside & Out)
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            All Trays & Racks included
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Oven Glass polished
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            BONUS: Rangehood & Filters degreased for FREE!
+                        </li>
+                    </ul>
+                    <a class="btn-select-offer btn-select-landing-offer mt-auto text-decoration-none" data-bs-toggle="modal" href="#EditModel" data-id="0"
+                        data-name="OVEN SPECIAL + FREE RANGEHOOD CLEAN!">SELECT OFFER</a>
+                </div>
+
+                {{-- Offer 5 --}}
+                <div class="offer-card highlight-card" data-anim="fade-up" data-anim-delay="300">
                     <div class="offer-card-top">
                         <div class="offer-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -328,12 +490,12 @@
                             Fast Drying & Fresh Scent
                         </li>
                     </ul>
-                    <a class="btn-select-offer btn-select-landing-offer mt-auto text-decoration-none" href="#lp-form-anchor"
+                    <a class="btn-select-offer btn-select-landing-offer mt-auto text-decoration-none" data-bs-toggle="modal" href="#EditModel" data-id="0"
                         data-name="CARPET STEAM CLEANING SPECIAL">SELECT OFFER</a>
                 </div>
 
-                {{-- Offer 3 --}}
-                <div class="offer-card" data-anim="fade-up" data-anim-delay="300">
+                {{-- Offer 6 --}}
+                <div class="offer-card" data-anim="fade-up" data-anim-delay="350">
                     <div class="offer-card-top">
                         <div class="offer-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -368,13 +530,54 @@
                             Standard oven deep cleaning & degreasing
                         </li>
                     </ul>
-                    <a class="btn-select-offer btn-select-landing-offer mt-auto text-decoration-none" href="#lp-form-anchor"
+                    <a class="btn-select-offer btn-select-landing-offer mt-auto text-decoration-none" data-bs-toggle="modal" href="#EditModel" data-id="0"
                         data-name="Oven + Bathroom Deep Clean Special">SELECT OFFER</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ==========================================
+             SERVICES SLIDER SECTION (from Services Page)
+             ========================================== -->
+    <section class="section-padding bg-light" data-anim="fade-up" style="padding-inline: 32px;">
+        <div class="section-header anim-trigger d-flex justify-content-between align-items-center mb-4">
+            <div class="section-title-wrapper">
+                <h2 class="section-title mb-0">Our Professional <span>Services</span></h2>
+            </div>
+            <div class="slider-controls">
+                <button class="btn-nav" onclick="scrollSlider('gallerySlider', -1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="btn-nav" onclick="scrollSlider('gallerySlider', 1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="gallery-grid" id="gallerySlider">
+            <!-- Card 1 -->
+            @foreach ($services as $key => $value)
+                <div class="service-card anim-trigger anim-stagger-{{ ($key % 6) + 1 }}">
+                    <div class="card-img" style="background-image: url('{{ $value->banner_img }}')">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3>{{ $value->title }}</h3>
+                        </div>
+                        <p>{{ $value->description }}</p>
+                        <a href="{{ route('services_detail', $value->slug) }}" class="view-details">VIEW DETAILS <i
+                                class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </section>
 
     <!-- ==========================================
              HOW IT WORKS: 3 Simple Conversion Steps
@@ -516,22 +719,114 @@
 
 @section('pagescript')
     <script>
-        $(document).ready(function () {
-            $('.btn-select-landing-offer').on('click', function (e) {
-                e.preventDefault();
-                let offerName = $(this).data('name');
+        function scrollSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return;
 
-                // Select "Special Offers" (value 0) in the form
-                $('#quote_form_landing select[name="service_id"]').val('0');
+            const cards = slider.querySelectorAll('.service-card');
+            if (cards.length === 0) return;
 
-                // Pre-populate the message area with the selected offer name
-                $('#quote_form_landing textarea[name="msg"]').val('I would like to book the: ' + offerName);
+            const card = cards[0];
+            const gap = parseInt(window.getComputedStyle(slider).gap) || 0;
+            const scrollAmount = card.offsetWidth + gap;
 
-                // Smooth scroll to the form anchor
-                $('html, body').animate({
-                    scrollTop: $("#lp-form-anchor").offset().top - 80
-                }, 400);
+            // Add fade transition to visible cards
+            const visibleCards = Array.from(cards).filter(c => {
+                const rect = c.getBoundingClientRect();
+                return rect.left >= slider.getBoundingClientRect().left - 50 &&
+                    rect.right <= slider.getBoundingClientRect().right + 50;
             });
-        });
+
+            visibleCards.forEach(c => {
+                c.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                c.style.opacity = '0.6';
+                c.style.transform = direction > 0 ? 'translateX(-15px)' : 'translateX(15px)';
+            });
+
+            slider.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+
+            // Restore opacity after scroll
+            setTimeout(() => {
+                visibleCards.forEach(c => {
+                    c.style.opacity = '1';
+                    c.style.transform = 'translateX(0)';
+                });
+            }, 400);
+        }
+
+        (function () {
+            // ── Slider wheel fix with smooth handoff ───────────────────────────
+            const slider = document.getElementById('gallerySlider');
+
+            if (slider) {
+                let overflowAccumulator = 0;
+                let handoffFrame = null;
+                let isInsideSlider = false;
+
+                function atStart() {
+                    return slider.scrollLeft <= 0;
+                }
+
+                function atEnd() {
+                    return slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1;
+                }
+
+                function smoothPageScroll(delta) {
+                    cancelAnimationFrame(handoffFrame);
+
+                    let remaining = delta * 6;
+                    const FRICTION = 0.88;
+
+                    function step() {
+                        if (Math.abs(remaining) < 0.5) return;
+                        window.scrollBy({ top: remaining * (1 - FRICTION), behavior: 'instant' });
+                        remaining *= FRICTION;
+                        handoffFrame = requestAnimationFrame(step);
+                    }
+
+                    handoffFrame = requestAnimationFrame(step);
+                }
+
+                slider.addEventListener('mouseenter', () => { isInsideSlider = true; });
+                slider.addEventListener('mouseleave', () => {
+                    isInsideSlider = false;
+                    overflowAccumulator = 0;
+                    cancelAnimationFrame(handoffFrame);
+                });
+
+                slider.addEventListener('wheel', function (e) {
+                    const scrollingVertically = Math.abs(e.deltaY) > Math.abs(e.deltaX);
+                    if (!scrollingVertically) return;
+
+                    const goingDown = e.deltaY > 0;
+                    const goingUp = e.deltaY < 0;
+                    const hitEnd = goingDown && atEnd();
+                    const hitStart = goingUp && atStart();
+
+                    if (hitEnd || hitStart) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        overflowAccumulator += e.deltaY;
+
+                        if (Math.abs(overflowAccumulator) > 40) {
+                            smoothPageScroll(overflowAccumulator);
+                            overflowAccumulator = 0;
+                        }
+                        return;
+                    }
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                    overflowAccumulator = 0;
+                    cancelAnimationFrame(handoffFrame);
+                    slider.scrollBy({ left: e.deltaY, behavior: 'smooth' });
+
+                }, { passive: false, capture: false });
+            }
+        })();
     </script>
 @endsection

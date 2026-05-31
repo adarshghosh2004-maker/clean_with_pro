@@ -6,14 +6,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- favicon  -->
+    <link rel="icon" type="image/png" href="{{ asset('favicon-96x96.png') }}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}" />
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}" />
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}" />
+
     <!-- Dynamic SEO Tags -->
     <title>@yield('title', 'Default Site Title')</title>
     <meta name="description" content="@yield('description', 'Default description here')">
     <meta name="keywords" content="@yield('keywords', 'cleaning, services, melbourne')">
     <link rel="canonical" href="@yield('canonical', url()->current())">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ Tab_Icon() }}">
 
     <!-- Social Sharing (Open Graph) -->
     <meta property="og:title" content="@yield('title', 'Default Site Title')">
@@ -54,16 +58,18 @@
             left: 0;
             position: fixed;
             display: block;
-            opacity: 0.7;
-            background-color: #fff;
+            background-color: rgba(0, 0, 0, .7);
             z-index: 9999;
             text-align: center;
         }
 
-        #dvloader image {
+        #dvloader img {
             position: absolute;
-            top: 100px;
-            left: 240px;
+            top: 50%;
+            left: 50%;
+            height: 150px;
+            width: 150px;
+            transform: translate(-50%, -50%);
             z-index: 100;
         }
 
@@ -116,7 +122,7 @@
         <img src="{{ Tab_Icon() }}" alt="Logo">
     </div>
 
-    <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}"  alt="image" /></div>
+    <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}" alt="image" /></div>
     @include('web.layout.navbar')
 
     @yield('content')
@@ -137,37 +143,43 @@
                                     <form id="quote_form" enctype="multipart/form-data">
                                         <div class="row g-3">
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">{{ __('label.full_name') }}<span
+                                                <label
+                                                    class="form-label small fw-semibold text-muted">{{ __('label.full_name') }}<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" name="name" class="form-control bg-light border-0"
                                                     placeholder="John Doe" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">{{ __('label.phone') }}<span
+                                                <label
+                                                    class="form-label small fw-semibold text-muted">{{ __('label.phone') }}<span
                                                         class="text-danger">*</span></label>
                                                 <input type="number" name="phone" class="form-control bg-light border-0"
                                                     placeholder="(555) 123-4567" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">{{ __('label.email_address') }}<span
+                                                <label
+                                                    class="form-label small fw-semibold text-muted">{{ __('label.email_address') }}<span
                                                         class="text-danger">*</span></label>
                                                 <input type="email" name="email" class="form-control bg-light border-0"
                                                     placeholder="john@example.com" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">{{ __('label.your_address') }}<span
+                                                <label
+                                                    class="form-label small fw-semibold text-muted">{{ __('label.your_address') }}<span
                                                         class="text-danger">*</span></label>
                                                 <input type="text" name="suburb" class="form-control bg-light border-0"
                                                     placeholder="e.g. 123 Main St, Richmond, VIC" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">{{ __('label.date') }}<span
+                                                <label
+                                                    class="form-label small fw-semibold text-muted">{{ __('label.date') }}<span
                                                         class="text-danger">*</span></label>
                                                 <input type="date" name="date" class="form-control bg-light border-0"
                                                     placeholder="dd/mm/yyyy" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
+                                                <label
+                                                    class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
                                                 <select name="time" class="form-control bg-light border-0" required>
                                                     <option value="">{{ __('label.select_a_time') }}</option>
                                                     <option value="07:00">7:00 AM</option>
@@ -198,7 +210,8 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-12">
-                                                <label class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
+                                                <label
+                                                    class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
                                                         class="text-danger">*</span></label>
                                                 <select name="service_id" class="form-control bg-light border-0"
                                                     required>
@@ -210,7 +223,8 @@
                                                 </select>
                                             </div>
                                             <div class="col-12">
-                                                <label class="form-label small fw-semibold text-muted">{{ __('label.your_message_optional') }}</label>
+                                                <label
+                                                    class="form-label small fw-semibold text-muted">{{ __('label.your_message_optional') }}</label>
                                                 <textarea name="msg" class="form-control bg-light border-0" rows="3"
                                                     placeholder="{{ __('label.briefly_describe') }}"></textarea>
                                             </div>
