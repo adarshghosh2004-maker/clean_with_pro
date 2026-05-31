@@ -402,6 +402,27 @@ class Common extends Model
                         'phone' => $array['phone'] ?? '',
                         'view' => 'mail.admin_new_booking',
                     ];
+                } else if ($type == 11) {
+                    $serviceName = '';
+                    if (isset($array['service'])) {
+                        $serviceName = $array['service']['title'] ?? '';
+                    } elseif (isset($array->service)) {
+                        $serviceName = $array->service->title ?? '';
+                    }
+                    if (empty($serviceName)) {
+                        $serviceId = $array['service_id'] ?? ($array->service_id ?? 0);
+                        if ($serviceId == 0) {
+                            $serviceName = 'Special Offer';
+                        }
+                    }
+                    $details = [
+                        'title' => App_Name() . " - Booking Cancelled",
+                        'customer_name' => $array['name'] ?? '',
+                        'booking_number' => isset($array['id']) ? sprintf('%04d', $array['id']) : '',
+                        'service_name' => $serviceName,
+                        'date' => trim(($array['date'] ?? '') . ' ' . ($array['time'] ?? '')),
+                        'view' => 'mail.cancel',
+                    ];
                 }
                 else {
                     return true;

@@ -93,6 +93,7 @@ return [
     'quotes' => 'उद्धरण',
     'add_quote' => 'उद्धरण जोड़ें',
     'completed' => 'पूर्ण',
+    'cancelled' => 'रद्द',
     'pending' => 'लंबित',
     'quote_details' => 'उद्धरण विवरण',
     'write_reply' => 'उत्तर लिखें',

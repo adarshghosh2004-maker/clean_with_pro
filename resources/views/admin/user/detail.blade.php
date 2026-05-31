@@ -79,6 +79,7 @@
 										0 => __('label.pending'),
 										1 => __('label.confirmed'),
 										2 => __('label.completed'),
+										3 => __('label.cancelled'),
 									];
 								@endphp
 								<span class="status-badge status-{{ $quote->status }}">
@@ -167,6 +168,7 @@
 								<option value="0" {{ $quote->status == 0 ? 'selected' : '' }}>{{ __('label.pending') }}</option>
 								<option value="1" {{ $quote->status == 1 ? 'selected' : '' }}>{{ __('label.confirmed') }}</option>
 								<option value="2" {{ $quote->status == 2 ? 'selected' : '' }}>{{ __('label.completed') }}</option>
+								<option value="3" {{ $quote->status == 3 ? 'selected' : '' }}>{{ __('label.cancelled') }}</option>
 							</select>
 							@error('status')
 								<div class="text-danger mt-1" style="font-size:12px">{{ $message }}</div>

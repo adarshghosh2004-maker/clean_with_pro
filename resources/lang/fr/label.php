@@ -93,6 +93,7 @@ return [
     'quotes' => 'Devis',
     'add_quote' => 'Ajouter un devis',
     'completed' => 'Terminé',
+    'cancelled' => 'Annulé',
     'pending' => 'En attente',
     'quote_details' => 'Détails du devis',
     'write_reply' => 'Écrire une réponse',

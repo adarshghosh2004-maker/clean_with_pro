@@ -94,6 +94,7 @@ return [
     'confirmed' => 'Confirmed',
     'add_quote' => 'Add Quote',
     'completed' => 'Completed',
+    'cancelled' => 'Cancelled',
     'pending' => 'Pending',
     'quote_details' => 'Quote Details',
     'write_reply' => 'Write Reply',

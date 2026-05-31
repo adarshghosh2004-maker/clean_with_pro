@@ -111,6 +111,9 @@ class UserController extends Controller
                         } elseif ($row->status == 2) {
                             $class = 'primary-btn';
                             $label = __('label.completed');
+                        } elseif ($row->status == 3) {
+                            $class = 'hide-btn';
+                            $label = __('label.cancelled');
                         } else {
                             $class = 'upcoming-btn';
                             $label = __('label.pending');
@@ -319,6 +322,8 @@ class UserController extends Controller
                     } else {
                         $this->common->Send_Mail(8, $data->email, $data);
                     }
+                } else if ($data->status == 3) {
+                    $this->common->Send_Mail(11, $data->email, $data);
                 }
                 return response()->json(['status' => 200, 'success' => __('label.success_edit_user')]);
             } else {
@@ -389,12 +394,14 @@ class UserController extends Controller
                 0 => 'Pending',
                 1 => 'Confirmed',
                 2 => 'Completed',
+                3 => 'Cancelled',
             ];
 
             $statusClasses = [
                 0 => 'badge-pending',
                 1 => 'badge-confirmed',
                 2 => 'badge-completed',
+                3 => 'badge-cancelled',
             ];
 
             // Static service IDs: 1-9
@@ -516,6 +523,7 @@ class UserController extends Controller
                 0 => 'Pending',
                 1 => 'Confirmed',
                 2 => 'Completed',
+                3 => 'Cancelled',
             ];
 
             // Get invoice data if exists

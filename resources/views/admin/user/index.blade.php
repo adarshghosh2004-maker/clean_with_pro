@@ -418,6 +418,11 @@
             background: #cfe2ff;
             color: #084298;
         }
+
+        .badge-cancelled {
+            background: #f8d7da;
+            color: #842029;
+        }
     </style>
 
     <script>
