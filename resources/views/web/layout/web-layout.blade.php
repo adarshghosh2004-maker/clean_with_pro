@@ -44,30 +44,41 @@
 
     <!-- Non-critical CSS (Asynchronous loading) -->
     <!-- Font Awesome -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    </noscript>
 
     <!-- Bootstrap Icons -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"></noscript>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    </noscript>
 
     <!-- Google Fonts -->
     <!-- Critical Text Fonts (Load Normally to prevent FOUT) -->
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Non-critical Icons Font (Deferred Load) -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet">
     </noscript>
 
     <!-- Toastr CSS -->
-    <link rel="preload" href="{{asset('assets/css/admin/toastr.min.css')}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css"></noscript>
+    <link rel="preload" href="{{asset('assets/css/admin/toastr.min.css')}}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css">
+    </noscript>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet"
-        href="{{ asset('assets/css/web/style.css') }}?v={{ time() }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/web/style.css') }}?v={{ time() }}">
 
     <!-- Loader CSS -->
     <style>
@@ -79,6 +90,7 @@
             font-display: swap;
             src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-solid-900.woff2') format('woff2');
         }
+
         @font-face {
             font-family: 'Font Awesome 6 Free';
             font-style: normal;
@@ -86,6 +98,7 @@
             font-display: swap;
             src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-regular-400.woff2') format('woff2');
         }
+
         @font-face {
             font-family: 'Font Awesome 6 Brands';
             font-style: normal;
@@ -93,11 +106,12 @@
             font-display: swap;
             src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-brands-400.woff2') format('woff2');
         }
+
         @font-face {
             font-family: 'bootstrap-icons';
             font-display: swap;
             src: url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/fonts/bootstrap-icons.woff2?2820a38c29039ad2ece258a68e6e5a40') format('woff2'),
-                 url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/fonts/bootstrap-icons.woff?2820a38c29039ad2ece258a68e6e5a40') format('woff');
+                url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/fonts/bootstrap-icons.woff?2820a38c29039ad2ece258a68e6e5a40') format('woff');
         }
 
         #dvloader {
@@ -164,6 +178,16 @@
     </style>
     @yield('preloads')
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18095631245"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18095631245');
+</script>
 
 
 <body>
@@ -232,7 +256,8 @@
                                             <div class="col-md-6">
                                                 <label for="book_time"
                                                     class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
-                                                <select name="time" id="book_time" class="form-control bg-light border-0" required>
+                                                <select name="time" id="book_time"
+                                                    class="form-control bg-light border-0" required>
                                                     <option value="">{{ __('label.select_a_time') }}</option>
                                                     <option value="07:00">7:00 AM</option>
                                                     <option value="07:30">7:30 AM</option>
@@ -265,8 +290,8 @@
                                                 <label for="book_service_id"
                                                     class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
                                                         class="text-danger">*</span></label>
-                                                <select name="service_id" id="book_service_id" class="form-control bg-light border-0"
-                                                    required>
+                                                <select name="service_id" id="book_service_id"
+                                                    class="form-control bg-light border-0" required>
                                                     <option value="">{{ __('label.select_a_service') }}</option>
                                                     <option value="0">{{ __('label.special_offers') }}</option>
                                                     @foreach ($services as $key => $value)

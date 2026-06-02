@@ -15,8 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
-    <link href="{{ asset('assets/css/admin/style.css') }}?v={{ time() }}"
-        rel="stylesheet">
+    <link href="{{ asset('assets/css/admin/style.css') }}?v={{ time() }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
@@ -33,6 +32,7 @@
             font-display: swap;
             src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-solid-900.woff2') format('woff2');
         }
+
         @font-face {
             font-family: 'Font Awesome 6 Free';
             font-style: normal;
@@ -40,6 +40,7 @@
             font-display: swap;
             src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-regular-400.woff2') format('woff2');
         }
+
         @font-face {
             font-family: 'Font Awesome 6 Brands';
             font-style: normal;
@@ -147,13 +148,23 @@
     </script>
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18095631245"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18095631245');
+</script>
+
 <body>
 
     <main id="main-content">
         @yield('content')
     </main>
 
-    <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}"  alt="image" /></div>
+    <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}" alt="image" /></div>
 
     <!-- Jquery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
