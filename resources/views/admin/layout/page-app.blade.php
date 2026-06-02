@@ -158,6 +158,15 @@
     gtag('config', 'AW-18095631245');
 </script>
 
+<!-- Event snippet for Request quote conversion page -->
+<script>
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18095631245/IDW5CJvTyLccEI3X1bRD',
+        'value': 1.0,
+        'currency': 'AUD'
+    });
+</script>
+
 <body>
 
     <main id="main-content">
