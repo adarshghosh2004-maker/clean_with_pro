@@ -4,13 +4,21 @@
 @section('description', 'View our cleaning gallery showcasing before and after results of homes and offices in Melbourne.')
 @section('keywords', 'cleaning gallery, before after cleaning, Melbourne cleaning photos')
 
+@section('preloads')
+    @foreach ($pages as $key => $value)
+        @if ($value['name'] == 'gallery')
+            <link rel="preload" as="image" href="{{ $value['img'] }}" fetchpriority="high">
+        @endif
+    @endforeach
+@endsection
+
 @section('content')
     <div class="gallery-page">
         <!-- Hero Section -->
         <section class="hero-section">
             @foreach ($pages as $key => $value)
                 @if ($value['name'] == 'gallery')
-                    <img src="{{ $value['img'] }}" alt="Clean with Professionals Hero Image" class="hero-img">
+                    <img src="{{ $value['img'] }}" alt="Clean with Professionals Hero Image" class="hero-img" fetchpriority="high">
                 @endif
 
             @endforeach
@@ -82,8 +90,8 @@
                             <div class="gallery-card anim-trigger anim-stagger-{{ $i }}">
                                 <div class="comparison-container">
                                     <img src="{{ $value['before_img'] }}" alt="Victorian Velvet Before" class="comparison-img"
-                                        style="filter: contrast(0.8) sepia(0.3) brightness(0.8);">
-                                    <img src="{{ $value['after_img'] }}" alt="Victorian Velvet After" class="comparison-img">
+                                        style="filter: contrast(0.8) sepia(0.3) brightness(0.8);" loading="lazy">
+                                    <img src="{{ $value['after_img'] }}" alt="Victorian Velvet After" class="comparison-img" loading="lazy">
                                     <span class="label-before">BEFORE</span>
                                     <span class="label-after">AFTER</span>
                                 </div>
@@ -125,7 +133,7 @@
                     @foreach ($videos as $key => $value)
                         @if($data['id'] == $value['service_id'])
                             <div class="video-card anim-trigger anim-stagger-{{ $j }}">
-                                <img src="{{ $value['image'] }}" alt="Heritage Silk" class="video-thumbnail">
+                                <img src="{{ $value['image'] }}" alt="Heritage Silk" class="video-thumbnail" loading="lazy">
                                 <a class="play-btn-overlay video" data-bs-toggle="modal" data-bs-target="#videoModal"
                                     data-video="{{ $value['video'] }}" data-image="{{ $value['image'] }}" title="Watch">
                                     <i class="fa-solid fa-play"></i>
@@ -422,9 +430,11 @@
                     if (entry.isIntersecting) {
                         const el = entry.target;
                         el.classList.remove('anim-visible');
+                        // Use nested requestAnimationFrame to avoid forced reflow
                         requestAnimationFrame(() => {
-                            void el.offsetWidth;
-                            el.classList.add('anim-visible');
+                            requestAnimationFrame(() => {
+                                el.classList.add('anim-visible');
+                            });
                         });
                     } else {
                         entry.target.classList.remove('anim-visible');

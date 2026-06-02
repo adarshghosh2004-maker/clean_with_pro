@@ -114,7 +114,7 @@ h6,
     color: var(--primary-blue) !important;
 }
 .text-secondary-green {
-    color: var(--secondary) !important;
+    color: var(--accent-green-dk) !important;
 }
 .bg-primary-blue {
     background-color: var(--primary-blue) !important;
@@ -1232,7 +1232,7 @@ h6,
 
 .accordion-button:not(.collapsed) {
     background-color: rgba(0, 176, 80, 0.1);
-    color: var(--secondary);
+    color: var(--accent-green-dk);
     box-shadow: none;
 }
 
@@ -1461,7 +1461,7 @@ h6,
 }
 .accordion-button:not(.collapsed) {
     background-color: rgba(0, 176, 80, 0.1);
-    color: var(--secondary);
+    color: var(--accent-green-dk);
 }
 
 /* Deal Cards (specials.blade.php) */

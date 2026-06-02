@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-6">
                 <div class="card custom-border-card">
-                    <a data-bs-toggle="collapse" data-bs-target="#clear_data">
+                    <a data-toggle="collapse" data-target="#clear_data">
                         <h5 class="card-header"><i class="fa-solid fa-chevron-down float-right"></i>{{__('label.clear_cache')}}</h5>
                     </a>
 
@@ -41,7 +41,7 @@
             </div>
             <div class="col-6">
                 <div class="card custom-border-card">
-                    <a data-bs-toggle="collapse" data-bs-target="#download_database">
+                    <a data-toggle="collapse" data-target="#download_database">
                         <h5 class="card-header"><i class="fa-solid fa-chevron-down float-right"></i>{{__('label.backup_database')}}</h5>
                     </a>
 
@@ -59,7 +59,7 @@
         <div class="row">
             <div class="col-6">
                 <div class="card custom-border-card">
-                    <a data-bs-toggle="collapse" data-bs-target="#clean_database">
+                    <a data-toggle="collapse" data-target="#clean_database">
                         <h5 class="card-header"><i class="fa-solid fa-chevron-down float-right"></i>{{__('label.clean_database')}}</h5>
                     </a>
 

@@ -107,9 +107,9 @@
                                         placeholder="dd/mm/yyyy" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label
-                                        class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
-                                    <select name="time" class="form-control bg-light border-0">
+                                     <label for="landing_time"
+                                         class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
+                                     <select name="time" id="landing_time" class="form-control bg-light border-0">
                                         <option value="">{{ __('label.select_a_time') }}</option>
                                         <option value="07:00">7:00 AM</option>
                                         <option value="07:30">7:30 AM</option>
@@ -139,9 +139,9 @@
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
-                                            class="text-danger">*</span></label>
-                                    <select name="service_id" class="form-control bg-light border-0" required>
+                                     <label for="landing_service_id" class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
+                                             class="text-danger">*</span></label>
+                                     <select name="service_id" id="landing_service_id" class="form-control bg-light border-0" required>
                                         <option value="">{{ __('label.select_a_service') }}</option>
                                         <option value="0">{{ __('label.special_offers') }}</option>
                                         @foreach ($services as $value)

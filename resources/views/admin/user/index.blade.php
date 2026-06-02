@@ -274,7 +274,7 @@
 
                 {{-- Footer --}}
                 <div class="modal-footer invoice-modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
                         <i class="fa-solid fa-xmark me-1"></i> {{ __('label.close') }}
                     </button>
                     <a href="#" id="btnDownloadPdf" class="btn btn-success btn-sm d-none" target="_blank">
@@ -483,8 +483,7 @@
                 $('#modalInvoiceNumber').text('');
 
                 // Open modal
-                var modal = new bootstrap.Modal(document.getElementById('invoiceModal'));
-                modal.show();
+                $('#invoiceModal').modal('show');
 
                 // Fetch invoice data
                 $.ajax({
@@ -683,8 +682,7 @@
                                     document.body.removeChild(a);
 
                                     // Close modal after download
-                                    var modal = bootstrap.Modal.getInstance(document.getElementById('invoiceModal'));
-                                    modal.hide();
+                                    $('#invoiceModal').modal('hide');
 
                                     $('#dvloader').hide();
                                 })

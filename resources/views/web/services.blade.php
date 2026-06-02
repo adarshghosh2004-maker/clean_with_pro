@@ -4,12 +4,20 @@
 @section('description', 'Explore our wide range of cleaning services including home, office, and end-of-lease cleaning in Melbourne.')
 @section('keywords', 'cleaning services, home cleaning, office cleaning, Melbourne cleaners')
 
+@section('preloads')
+    @foreach ($pages as $key => $value)
+        @if ($value['name'] == 'service')
+            <link rel="preload" as="image" href="{{ $value['img'] }}" fetchpriority="high">
+        @endif
+    @endforeach
+@endsection
+
 @section('content')
     <!-- Section 1: Services Hero -->
     <section class="hero-section">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'service')
-                <img src="{{ $value['img'] }}" alt="Clean with Professionals Hero Image" class="hero-img">
+                <img src="{{ $value['img'] }}" alt="Clean with Professionals Hero Image" class="hero-img" fetchpriority="high">
             @endif
 
         @endforeach
@@ -71,7 +79,7 @@
     <section class="container" data-anim="fade-up">
         <div class="featured-service">
             <div class="featured-card">
-                <div class="featured-img"><img src="{{ $services[0]['banner_img'] ?? ''}}" alt="image"></div>
+                <div class="featured-img"><img src="{{ $services[0]['banner_img'] ?? ''}}" alt="image" fetchpriority="high"></div>
                 <div class="featured-info">
                     <span class="tag-popular">MOST POPULAR</span>
                     <h2>{{ $services[0]['title'] ?? ""}}</h2>
@@ -401,11 +409,7 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             const el = entry.target;
-                            el.classList.remove('anim-visible');
-                            requestAnimationFrame(() => {
-                                void el.offsetWidth;
-                                el.classList.add('anim-visible');
-                            });
+                            el.classList.add('anim-visible');
                             observer.unobserve(el);
                         }
                     });

@@ -4,7 +4,7 @@
     <div
         class="bg-primary-container text-white py-2 px-4 px-md-5 d-flex justify-content-between align-items-center small font-weight-medium">
         <div class="d-flex align-items-center gap-3">
-            <span class="badge-announcement bg-secondary px-3 py-1 rounded-pill text-uppercase fw-bold">SAME DAY
+            <span class="badge-announcement bg-warning text-dark px-3 py-1 rounded-pill text-uppercase fw-bold">SAME DAY
                 SERVICE</span>
             <span class="d-none d-sm-inline opacity-75">Expert fabric care across Melbourne metropolitan areas.</span>
         </div>
