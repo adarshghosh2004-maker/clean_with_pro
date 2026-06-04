@@ -341,7 +341,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" defer></script>
-
     <script>
         window.addEventListener("load", function () {
             const loader = document.getElementById("preloader");
