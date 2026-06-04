@@ -66,8 +66,8 @@
                                         placeholder="dd/mm/yyyy" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="contact_time" class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
-                                    <select name="time" id="contact_time" class="form-control bg-light border-0" required>
+                                    <label class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
+                                    <select name="time" class="form-control bg-light border-0" required>
                                         <option value="">{{ __('label.select_a_time') }}</option>
                                         <option value="07:00">7:00 AM</option>
                                         <option value="07:30">7:30 AM</option>
@@ -97,9 +97,9 @@
                                     </select>
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="contact_service_id" class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
+                                    <label class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
                                             class="text-danger">*</span></label>
-                                    <select name="service_id" id="contact_service_id" class="form-control bg-light border-0">
+                                    <select name="service_id" class="form-control bg-light border-0">
                                         <option value="">{{ __('label.select_service') }}</option>
                                         @foreach ($services as $key => $value)
                                             <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>

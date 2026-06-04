@@ -4,14 +4,6 @@
 @section('description', 'Learn more about Clean With Professionals, our mission, and our expert cleaning team in Melbourne.')
 @section('keywords', 'about us, cleaning company, professional cleaners, Melbourne')
 
-@section('preloads')
-    @foreach ($pages as $key => $value)
-        @if ($value['name'] == 'about')
-            <link rel="preload" as="image" href="{{ $value['img'] }}" fetchpriority="high">
-        @endif
-    @endforeach
-@endsection
-
 @section('content')
     <!-- ========================
                                                             SECTION 1: Hero
@@ -19,7 +11,7 @@
     <section class="hero-section">
         @foreach ($pages as $key => $value)
             @if ($value['name'] == 'about')
-                <img src="{{ $value['img'] }}" alt="Clean with Professionals Hero Image" class="hero-img" fetchpriority="high">
+                <img src="{{ $value['img'] }}" alt="Clean with Professionals Hero Image" class="hero-img">
             @endif
         @endforeach
         <div class="container">
@@ -63,7 +55,7 @@
                 <div class="col-lg-6" data-anim="fade-left">
                     <div class="passion-img-wrapper">
                         <img src="{{ asset('assets/imgs/About2.webp') }}" alt="Clean with Professionals Team at Work"
-                            class="passion-img shadow-lg" loading="lazy">
+                            class="passion-img shadow-lg">
                     </div>
                 </div>
             </div>
@@ -150,7 +142,7 @@
                 </div>
                 <div class="col-lg-6" data-anim="fade-left">
                     <img src="{{ asset('assets/imgs/About1.webp') }}"
-                        alt="The Professional Edge at Clean with Professionals" class="img-fluid rounded-4 shadow edge-img" loading="lazy">
+                        alt="The Professional Edge at Clean with Professionals" class="img-fluid rounded-4 shadow edge-img">
                 </div>
             </div>
         </div>

@@ -1,16 +1,12 @@
 @extends('web.layout.web-layout')
 @section('title', $service['title'] . ' | Clean With Professionals' ?? 'Clean With Professionals')
 
-@section('preloads')
-    <link rel="preload" as="image" href="{{ $service['banner_img'] }}" fetchpriority="high">
-@endsection
-
 @section('content')
     <div class="s2-page">
 
         <!-- Hero Section -->
         <section class="hero-section">
-            <img src="{{ $service['banner_img'] }}" alt="{{ $service['title'] ?? '' }}" class="hero-img" fetchpriority="high">
+            <img src="{{ $service['banner_img'] }}" alt="{{ $service['title'] ?? '' }}" class="hero-img">
             <div class="container">
                 @php
                     $middleWord = getMiddleWord($service['title']);
@@ -77,8 +73,8 @@
                     <div class="gallery-card anim-trigger anim-stagger-{{ ($key % 6) + 1 }}">
                         <div class="comparison-container">
                             <img src="{{ $value['before_img'] }}" alt="Victorian Velvet Before" class="comparison-img"
-                                style="filter: contrast(0.8) sepia(0.3) brightness(0.8);" loading="lazy">
-                            <img src="{{ $value['after_img'] }}" alt="Victorian Velvet After" class="comparison-img" loading="lazy">
+                                style="filter: contrast(0.8) sepia(0.3) brightness(0.8);">
+                            <img src="{{ $value['after_img'] }}" alt="Victorian Velvet After" class="comparison-img">
                             <span class="label-before">BEFORE</span>
                             <span class="label-after">AFTER</span>
                         </div>
@@ -113,7 +109,7 @@
                 <!-- Video 1 -->
                 @foreach ($videos as $key => $value)
                     <div class="video-card anim-trigger anim-stagger-{{ ($key % 6) + 1 }}">
-                        <img src="{{ $value['image'] }}" alt="Heritage Silk" class="video-thumbnail" loading="lazy">
+                        <img src="{{ $value['image'] }}" alt="Heritage Silk" class="video-thumbnail">
                         <a class="play-btn-overlay video" data-bs-toggle="modal" data-bs-target="#videoModal"
                             data-video="{{ $value['video'] }}" data-image="{{ $value['image'] }}" title="Watch">
                             <i class="fa-solid fa-play"></i>
@@ -161,14 +157,14 @@
 
                 <div class="haq-right anim-trigger anim-trigger-right">
                     <div class="haq-visual">
-                        <img src="{{ $question['img_1'] ?? '' }}" alt="Fabric Texture Background" class="main-img-bg" loading="lazy">
+                        <img src="{{ $question['img_1'] ?? '' }}" alt="Fabric Texture Background" class="main-img-bg">
 
                         <div class="floating-card card-top">
-                            <img src="{{ $question['img_2'] ?? '' }}" alt="Cleaning Products" loading="lazy">
+                            <img src="{{ $question['img_2'] ?? '' }}" alt="Cleaning Products">
                         </div>
 
                         <div class="floating-card card-bottom">
-                            <img src="{{ $question['img_3'] ?? '' }}" alt="Teal Sofa" loading="lazy">
+                            <img src="{{ $question['img_3'] ?? '' }}" alt="Teal Sofa">
                         </div>
                     </div>
                 </div>
@@ -301,11 +297,9 @@
                         if (entry.isIntersecting) {
                             const el = entry.target;
                             el.classList.remove('anim-visible');
-                            // Use nested requestAnimationFrame to avoid forced reflow
                             requestAnimationFrame(() => {
-                                requestAnimationFrame(() => {
-                                    el.classList.add('anim-visible');
-                                });
+                                void el.offsetWidth;
+                                el.classList.add('anim-visible');
                             });
                         } else {
                             entry.target.classList.remove('anim-visible');

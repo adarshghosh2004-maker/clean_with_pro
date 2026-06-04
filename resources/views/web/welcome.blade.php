@@ -4,12 +4,6 @@
 @section('description', 'Clean With Professionals offers reliable and affordable cleaning services in Melbourne. Book same-day service now.')
 @section('keywords', 'cleaning services, professional cleaners, Melbourne cleaning')
 
-@section('preloads')
-  @if(isset($services) && count($services) > 0)
-    <link rel="preload" as="image" href="{{ $services[0]['banner_img'] }}" fetchpriority="high">
-  @endif
-@endsection
-
 @section('content')
 
   <!-- Section 3: Hero Slider -->
@@ -18,7 +12,7 @@
     <!-- Slide 1 -->
     @foreach ($services as $key => $value)
       <div class="slide-item {{ $key == 0 ? "active" : "" }} hero-section">
-      <img alt="Modern luxury living room" class="hero-img" src="{{ $value['banner_img'] }}" {!! $key == 0 ? 'fetchpriority="high"' : 'loading="lazy"' !!} />
+      <img alt="Modern luxury living room" class="hero-img" src="{{ $value['banner_img'] }}" />
       <div class="container">
       @php
       $middleWord = getMiddleWord($value['title']);
@@ -72,14 +66,14 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6" data-anim="fade-right">
       <div class="about-images-grid position-relative">
-        <img src="assets/imgs/CWP1.webp" class="about-img-main shadow" alt="Cleaning Staff" loading="lazy">
-        <img src="assets/imgs/CWP2.webp" class="about-img-sub shadow" alt="Equipment" loading="lazy">
-        <img src="assets/imgs/CWP3.webp" class="about-img-sub shadow" alt="Clean Office" loading="lazy">
+        <img src="assets/imgs/CWP1.webp" class="about-img-main shadow" alt="Cleaning Staff">
+        <img src="assets/imgs/CWP2.webp" class="about-img-sub shadow" alt="Equipment">
+        <img src="assets/imgs/CWP3.webp" class="about-img-sub shadow" alt="Clean Office">
 
         <!-- Floating Badge -->
         <div class="position-absolute bg-primary-blue text-white p-3 rounded shadow text-center"
         style="bottom: -20px; right: -20px;">
-        <span class="h3 d-block mb-0 fw-bold">6+</span>
+        <h3 class="mb-0 fw-bold">6+</h3>
         <p class="small mb-0">Years Experience</p>
         </div>
       </div>
@@ -115,7 +109,7 @@
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">1</div>
-      <h3 class="fw-bold text-primary fs-5 mb-2">Easy Booking</h3>
+      <h4 class="fw-bold text-primary fs-5 mb-2">Easy Booking</h4>
       <p class="small text-on-surface-variant">Book your end of lease clean online or over the phone with a fast,
       hassle-free quote tailored to your property size and requirements.</p>
     </div>
@@ -123,7 +117,7 @@
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">2</div>
-      <h3 class="fw-bold text-primary fs-5 mb-2">Property Inspection</h3>
+      <h4 class="fw-bold text-primary fs-5 mb-2">Property Inspection</h4>
       <p class="small text-on-surface-variant">Our experienced team assesses every room, identifying high-traffic areas,
       stains, and agent checklist requirements before cleaning begins.</p>
     </div>
@@ -131,7 +125,7 @@
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">3</div>
-      <h3 class="fw-bold text-primary fs-5 mb-2">Deep End of Lease Clean</h3>
+      <h4 class="fw-bold text-primary fs-5 mb-2">Deep End of Lease Clean</h4>
       <p class="small text-on-surface-variant">We thoroughly clean kitchens, bathrooms, floors, windows, and all living
       spaces using professional-grade equipment and products for a real estate standard finish.</p>
     </div>
@@ -139,7 +133,7 @@
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">4</div>
-      <h3 class="fw-bold text-primary fs-5 mb-2">Final Touch & Approval</h3>
+      <h4 class="fw-bold text-primary fs-5 mb-2">Final Touch & Approval</h4>
       <p class="small text-on-surface-variant">Before we leave, we complete a detailed final inspection to ensure your
       property is fresh, spotless, and ready for handover.</p>
     </div>
@@ -198,15 +192,15 @@
       <div class="position-relative overflow-hidden rounded-4">
 
         <!-- Service Image -->
-         <img src="{{ $value['banner_img'] }}" class="showcase-img shadow w-100"
-        alt="{{ $value['title'] ?? 'Service Image' }}" loading="lazy">
+        <img src="{{ $value['banner_img'] }}" class="showcase-img shadow w-100"
+        alt="{{ $value['title'] ?? 'Service Image' }}">
 
         <!-- Overlay Content -->
         <div class="position-absolute bottom-0 start-0 w-100 p-4 text-white overlay">
 
-        <h3 class="fw-bold mb-2">
+        <h4 class="fw-bold mb-2">
         {{ $value['title'] ?? '' }}
-        </h3>
+        </h4>
 
         <p class="mb-0">
         {{ $value['description'] ?? '' }}
@@ -240,31 +234,31 @@
       <div class="col-6 col-md-4 col-lg-2" data-anim="zoom-in" data-anim-delay="100">
       <div class="industry-card">
         <i class="bi bi-shop industry-icon"></i>
-        <div class="fw-bold mb-0">Retail</div>
+        <h6 class="fw-bold mb-0">Retail</h6>
       </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2" data-anim="zoom-in" data-anim-delay="200">
       <div class="industry-card">
         <i class="bi bi-hospital industry-icon"></i>
-        <div class="fw-bold mb-0">Medical</div>
+        <h6 class="fw-bold mb-0">Medical</h6>
       </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2" data-anim="zoom-in" data-anim-delay="300">
       <div class="industry-card">
         <i class="bi bi-building industry-icon"></i>
-        <div class="fw-bold mb-0">Corporate</div>
+        <h6 class="fw-bold mb-0">Corporate</h6>
       </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2" data-anim="zoom-in" data-anim-delay="400">
       <div class="industry-card">
         <i class="bi bi-gear industry-icon"></i>
-        <div class="fw-bold mb-0">Industrial</div>
+        <h6 class="fw-bold mb-0">Industrial</h6>
       </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2" data-anim="zoom-in" data-anim-delay="500">
       <div class="industry-card">
         <i class="bi bi-book industry-icon"></i>
-        <div class="fw-bold mb-0">Education</div>
+        <h6 class="fw-bold mb-0">Education</h6>
       </div>
       </div>
     </div>
@@ -285,7 +279,7 @@
       @foreach ($videos as $key => $value)
       <div class="col-md-4" data-anim="fade-up" data-anim-delay="100">
       <div class="video-card shadow-sm">
-      <img src="{{ $value->image }}" alt="Video Thumb" loading="lazy">
+      <img src="{{ $value->image }}" alt="Video Thumb">
       <a class="play-btn video" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="{{ $value->video }}"
       data-image="{{ $value->image }}" title="Watch">
       <i class="bi bi-play-fill"></i>
@@ -445,11 +439,12 @@
     nextSlide.style.opacity = '0';
     nextSlide.classList.add('active');
 
-    // Animate in using nested requestAnimationFrame to avoid forced reflow
+    // Trigger reflow
+    void nextSlide.offsetWidth;
+
+    // Animate in
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        nextSlide.style.opacity = '1';
-      });
+      nextSlide.style.opacity = '1';
     });
 
     // Update dots

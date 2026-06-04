@@ -161,8 +161,8 @@
                                     placeholder="dd/mm/yyyy" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="footer_time" class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
-                                <select name="time" id="footer_time" class="form-control bg-light border-0" required>
+                                <label class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
+                                <select name="time" class="form-control bg-light border-0" required>
                                     <option value="">{{ __('label.select_a_time') }}</option>
                                     <option value="07:00">7:00 AM</option>
                                     <option value="07:30">7:30 AM</option>
@@ -192,9 +192,9 @@
                                 </select>
                             </div>
                             <div class="col-md-12">
-                                <label for="footer_service_id" class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
+                                <label class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
                                         class="text-danger">*</span></label>
-                                <select name="service_id" id="footer_service_id" class="form-control bg-light border-0">
+                                <select name="service_id" class="form-control bg-light border-0">
                                     <option value="">{{ __('label.select_service') }}</option>
                                     @foreach ($services as $key => $value)
                                         <option value="{{ $value['id'] }}">{{ $value['title'] }}</option>
@@ -224,19 +224,19 @@
         <div class="row g-4 justify-content-between">
             <div class="col-lg-3 col-md-6">
                 <a class="footer-img text-white fs-3 mb-4 d-block" href="#">
-                    <img src="{{ Tab_Icon() }}" alt="Clean With Professionals" loading="lazy">
+                    <img src="{{ Tab_Icon() }}" alt="Clean With Professionals">
                 </a>
                 <p class="small text-white-50 mb-4">Premium cleaning services tailored to your specific needs.
                     Experience excellence and reliability.</p>
                 <div class="social-icons">
                     @foreach ($social_links as $key => $value)
-                        <a href="{{ $value['url'] }}"><img src="{{ $value['image']}}" alt="image" loading="lazy"></a>
+                        <a href="{{ $value['url'] }}"><img src="{{ $value['image']}}" alt="image"></a>
                     @endforeach
                 </div>
             </div>
 
             <div class="col-lg-2 col-md-6">
-                <h3 class="h5">Useful Links</h3>
+                <h5>Useful Links</h5>
                 <ul class="list-unstyled mt-4">
                     <li class="mb-2"><a href="<?php echo route('home'); ?>">Home</a></li>
                     <li class="mb-2"><a href="<?php echo route('about'); ?>">About Us</a></li>
@@ -248,7 +248,7 @@
             </div>
 
             <div class="col-lg-2 col-md-6">
-                <h3 class="h5">Pages</h3>
+                <h5>Pages</h5>
                 <ul class="list-unstyled mt-4">
                     @foreach($page as $key=>$value)
                         <li class="mb-2"><a href="{{ route('page.view', $value->slug) }}">{{ $value->title }}</a>
@@ -258,7 +258,7 @@
             </div>
 
             <div class="col-lg-2 col-md-6">
-                <h3 class="h5">Our Services</h3>
+                <h5>Our Services</h5>
                 <ul class="list-unstyled mt-4">
                     @foreach ($services as $key => $value)
                         <li class="mb-2"><a href="{{ route('services_detail', $value['slug']) }}">{{ $value['title'] }}</a>
@@ -268,7 +268,7 @@
             </div>
 
             <div class="col-lg-3 col-md-6">
-                <h3 class="h5">Contact Details</h3>
+                <h5>Contact Details</h5>
                 <ul class="list-unstyled mt-4">
                     <li class="mb-3 d-flex align-items-start">
                         <i class="bi bi-geo-alt-fill text-secondary-green me-3 mt-1"></i>
@@ -310,7 +310,7 @@
 
 
 <!-- Scripts -->
-<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     // Scroll to Top Functionality
     const scrollTopBtn = document.getElementById("scrollTopBtn");

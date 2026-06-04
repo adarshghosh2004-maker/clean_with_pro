@@ -4,7 +4,7 @@
     <div
         class="bg-primary-container text-white py-2 px-4 px-md-5 d-flex justify-content-between align-items-center small font-weight-medium">
         <div class="d-flex align-items-center gap-3">
-            <span class="badge-announcement bg-warning text-dark px-3 py-1 rounded-pill text-uppercase fw-bold">SAME DAY
+            <span class="badge-announcement bg-secondary px-3 py-1 rounded-pill text-uppercase fw-bold">SAME DAY
                 SERVICE</span>
             <span class="d-none d-sm-inline opacity-75">Expert fabric care across Melbourne metropolitan areas.</span>
         </div>
@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="<?php echo route('home'); ?>">
-                <img src="{{ Tab_Icon() }}" alt="Clean With Professionals Logo" width="1024" height="1024"
+                <img src="{{ Tab_Icon() }}" alt="Clean With Professionals Logo"
                     class="navbar-logo me-3">
                 <span
                     class="m-0 fs-4 fw-bold text-primary-blue headline">{{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}</span>
@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="navbarNav" data-mobile-nav>
                 <!-- Mobile header (visible only on mobile) -->
                 <div class="mobile-menu-header">
-                    <img src="{{ Tab_Icon() }}" alt="Clean With Professionals Logo" width="1024" height="1024"
+                    <img src="{{ Tab_Icon() }}" alt="Clean With Professionals Logo"
                         class="mobile-menu-logo">
                     <span class="mobile-menu-company-name">{{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}</span>
                 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <!-- Meta Tag -->
@@ -32,88 +32,24 @@
     <meta name="twitter:description" content="@yield('description', 'Default description here')">
     <meta name="twitter:image" content="@yield('og_image', Tab_Icon())">
 
-    <!-- Preconnect to Google Fonts and CDNs -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-    <!-- Critical CSS (Preload and load normally) -->
-    <link rel="preload" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}?v={{ time() }}" as="style">
-    <link href="{{ asset('assets/css/vendor/bootstrap.min.css') }}?v={{ time() }}" rel="stylesheet">
-
-    <!-- Non-critical CSS (Asynchronous loading) -->
     <!-- Font Awesome -->
-    <link rel="preload" href="{{ asset('assets/css/vendor/all.min.css') }}?v={{ time() }}" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="{{ asset('assets/css/vendor/all.min.css') }}?v={{ time() }}">
-    </noscript>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
-    <link rel="preload" href="{{ asset('assets/css/vendor/bootstrap-icons.css') }}?v={{ time() }}" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap-icons.css') }}?v={{ time() }}">
-    </noscript>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Google Fonts -->
-    <!-- Critical Text Fonts (Load Normally to prevent FOUT) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
 
-    <!-- Non-critical Icons Font (Deferred Load) -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
-        as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet">
-    </noscript>
-
-    <!-- Toastr CSS -->
-    <link rel="preload" href="{{asset('assets/css/admin/toastr.min.css')}}" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css">
-    </noscript>
+    <link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/web/style.min.css') }}?v={{ time() }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/web/style.css') }}?v={{ time() }}">
 
     <!-- Loader CSS -->
     <style>
-        /* Font display swap overrides */
-        @font-face {
-            font-family: 'Font Awesome 6 Free';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-solid-900.woff2') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'Font Awesome 6 Free';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-regular-400.woff2') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'Font Awesome 6 Brands';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-brands-400.woff2') format('woff2');
-        }
-
-        @font-face {
-            font-family: 'bootstrap-icons';
-            font-display: swap;
-            src: url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/fonts/bootstrap-icons.woff2?2820a38c29039ad2ece258a68e6e5a40') format('woff2'),
-                url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/fonts/bootstrap-icons.woff?2820a38c29039ad2ece258a68e6e5a40') format('woff');
-        }
-
         #dvloader {
             width: 100%;
             height: 100%;
@@ -176,7 +112,6 @@
             pointer-events: none;
         }
     </style>
-    @yield('preloads')
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -208,9 +143,7 @@
     <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}" alt="image" /></div>
     @include('web.layout.navbar')
 
-    <main id="main-content">
-        @yield('content')
-    </main>
+    @yield('content')
     <div class="modal fade" id="EditModel" tabindex="-1" data-bs-backdrop="static" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -263,10 +196,9 @@
                                                     placeholder="dd/mm/yyyy" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="book_time"
+                                                <label
                                                     class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
-                                                <select name="time" id="book_time"
-                                                    class="form-control bg-light border-0" required>
+                                                <select name="time" class="form-control bg-light border-0" required>
                                                     <option value="">{{ __('label.select_a_time') }}</option>
                                                     <option value="07:00">7:00 AM</option>
                                                     <option value="07:30">7:30 AM</option>
@@ -296,11 +228,11 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-12">
-                                                <label for="book_service_id"
+                                                <label
                                                     class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
                                                         class="text-danger">*</span></label>
-                                                <select name="service_id" id="book_service_id"
-                                                    class="form-control bg-light border-0" required>
+                                                <select name="service_id" class="form-control bg-light border-0"
+                                                    required>
                                                     <option value="">{{ __('label.select_a_service') }}</option>
                                                     <option value="0">{{ __('label.special_offers') }}</option>
                                                     @foreach ($services as $key => $value)
@@ -339,8 +271,10 @@
 
     @include('web.layout.footer')
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" defer></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="{{ asset('assets/js/toastr.min.js')}}"></script>
+
     <script>
         window.addEventListener("load", function () {
             const loader = document.getElementById("preloader");
@@ -354,25 +288,16 @@
             }
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            $(document).on('click', '[data-bs-toggle="modal"]', function () {
+        $(document).on('click', '[data-bs-toggle="modal"]', function () {
 
-                let serviceId = $(this).data('id');
-                let serviceName = $(this).data('name') ?? '';
-                console.log(serviceName);
+            let serviceId = $(this).data('id');
+            let serviceName = $(this).data('name') ?? '';
+            console.log(serviceName);
 
-                // set selected option
-                $('#EditModel select[name="service_id"]').val(serviceId);
-                $('#EditModel textarea[name="msg"]').val(serviceName);
+            // set selected option
+            $('#EditModel select[name="service_id"]').val(serviceId);
+            $('#EditModel textarea[name="msg"]').val(serviceName);
 
-            });
-
-            // Toastr MSG Show
-            @if(Session::has('error'))
-                toastr.error('{{ Session::get("error") }}');
-            @elseif(Session::has('success'))
-                toastr.success('{{ Session::get("success") }}');
-            @endif
         });
 
         function get_responce_message(resp, form_name = "", url = "") {
@@ -397,6 +322,13 @@
                 }
             }
         }
+
+        // Toastr MSG Show
+        @if(Session::has('error'))
+            toastr.error('{{ Session::get("error") }}');
+        @elseif(Session::has('success'))
+            toastr.success('{{ Session::get("success") }}');
+        @endif
 
         function save_quote(form) {
 
@@ -622,8 +554,17 @@
             });
 
             // Observe all anim elements
+            let observedCount = 0;
             animElements.forEach(el => {
-                revealObserver.observe(el);
+                // If element is already in viewport, show immediately
+                const rect = el.getBoundingClientRect();
+                const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+                if (isInViewport) {
+                    el.classList.add('anim-visible');
+                    observedCount++;
+                } else {
+                    revealObserver.observe(el);
+                }
             });
 
             // Fallback: show all animated elements after timeout if observer hasn't fired
