@@ -39,22 +39,22 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
     <!-- Critical CSS (Preload and load normally) -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preload" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}?v={{ time() }}" as="style">
+    <link href="{{ asset('assets/css/vendor/bootstrap.min.css') }}?v={{ time() }}" rel="stylesheet">
 
     <!-- Non-critical CSS (Asynchronous loading) -->
     <!-- Font Awesome -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" as="style"
+    <link rel="preload" href="{{ asset('assets/css/vendor/all.min.css') }}?v={{ time() }}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/css/vendor/all.min.css') }}?v={{ time() }}">
     </noscript>
 
     <!-- Bootstrap Icons -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" as="style"
+    <link rel="preload" href="{{ asset('assets/css/vendor/bootstrap-icons.css') }}?v={{ time() }}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap-icons.css') }}?v={{ time() }}">
     </noscript>
 
     <!-- Google Fonts -->
@@ -78,7 +78,7 @@
     </noscript>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/web/style.css') }}?v={{ time() }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/web/style.min.css') }}?v={{ time() }}">
 
     <!-- Loader CSS -->
     <style>
