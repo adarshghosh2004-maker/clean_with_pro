@@ -66,14 +66,14 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6" data-anim="fade-right">
       <div class="about-images-grid position-relative">
-        <img src="assets/imgs/CWP1.webp" class="about-img-main shadow" alt="Cleaning Staff">
-        <img src="assets/imgs/CWP2.webp" class="about-img-sub shadow" alt="Equipment">
-        <img src="assets/imgs/CWP3.webp" class="about-img-sub shadow" alt="Clean Office">
+        <img src="{{ asset('assets/imgs/CWP1.webp') }}" class="about-img-main shadow" alt="Cleaning Staff">
+        <img src="{{ asset('assets/imgs/CWP2.webp') }}" class="about-img-sub shadow" alt="Equipment">
+        <img src="{{ asset('assets/imgs/CWP3.webp') }}" class="about-img-sub shadow" alt="Clean Office">
 
         <!-- Floating Badge -->
         <div class="position-absolute bg-primary-blue text-white p-3 rounded shadow text-center"
         style="bottom: -20px; right: -20px;">
-        <h3 class="mb-0 fw-bold">6+</h3>
+        <h2 class="h3 mb-0 fw-bold">6+</h2>
         <p class="small mb-0">Years Experience</p>
         </div>
       </div>
@@ -109,7 +109,7 @@
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">1</div>
-      <h4 class="fw-bold text-primary fs-5 mb-2">Easy Booking</h4>
+      <h3 class="h4 fw-bold text-primary fs-5 mb-2">Easy Booking</h3>
       <p class="small text-on-surface-variant">Book your end of lease clean online or over the phone with a fast,
       hassle-free quote tailored to your property size and requirements.</p>
     </div>
@@ -117,7 +117,7 @@
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">2</div>
-      <h4 class="fw-bold text-primary fs-5 mb-2">Property Inspection</h4>
+      <h3 class="h4 fw-bold text-primary fs-5 mb-2">Property Inspection</h3>
       <p class="small text-on-surface-variant">Our experienced team assesses every room, identifying high-traffic areas,
       stains, and agent checklist requirements before cleaning begins.</p>
     </div>
@@ -125,7 +125,7 @@
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">3</div>
-      <h4 class="fw-bold text-primary fs-5 mb-2">Deep End of Lease Clean</h4>
+      <h3 class="h4 fw-bold text-primary fs-5 mb-2">Deep End of Lease Clean</h3>
       <p class="small text-on-surface-variant">We thoroughly clean kitchens, bathrooms, floors, windows, and all living
       spaces using professional-grade equipment and products for a real estate standard finish.</p>
     </div>
@@ -133,7 +133,7 @@
       <div
       class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center fs-3 fw-black mx-auto mb-4"
       style="width: 64px; height: 64px;">4</div>
-      <h4 class="fw-bold text-primary fs-5 mb-2">Final Touch & Approval</h4>
+      <h3 class="h4 fw-bold text-primary fs-5 mb-2">Final Touch & Approval</h3>
       <p class="small text-on-surface-variant">Before we leave, we complete a detailed final inspection to ensure your
       property is fresh, spotless, and ready for handover.</p>
     </div>
@@ -198,9 +198,9 @@
         <!-- Overlay Content -->
         <div class="position-absolute bottom-0 start-0 w-100 p-4 text-white overlay">
 
-        <h4 class="fw-bold mb-2">
+        <h3 class="h4 fw-bold mb-2">
         {{ $value['title'] ?? '' }}
-        </h4>
+        </h3>
 
         <p class="mb-0">
         {{ $value['description'] ?? '' }}
@@ -234,31 +234,31 @@
       <div class="col-6 col-md-4 col-lg-2" data-anim="zoom-in" data-anim-delay="100">
       <div class="industry-card">
         <i class="bi bi-shop industry-icon"></i>
-        <h6 class="fw-bold mb-0">Retail</h6>
+        <h3 class="h6 fw-bold mb-0">Retail</h3>
       </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2" data-anim="zoom-in" data-anim-delay="200">
       <div class="industry-card">
         <i class="bi bi-hospital industry-icon"></i>
-        <h6 class="fw-bold mb-0">Medical</h6>
+        <h3 class="h6 fw-bold mb-0">Medical</h3>
       </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2" data-anim="zoom-in" data-anim-delay="300">
       <div class="industry-card">
         <i class="bi bi-building industry-icon"></i>
-        <h6 class="fw-bold mb-0">Corporate</h6>
+        <h3 class="h6 fw-bold mb-0">Corporate</h3>
       </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2" data-anim="zoom-in" data-anim-delay="400">
       <div class="industry-card">
         <i class="bi bi-gear industry-icon"></i>
-        <h6 class="fw-bold mb-0">Industrial</h6>
+        <h3 class="h6 fw-bold mb-0">Industrial</h3>
       </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2" data-anim="zoom-in" data-anim-delay="500">
       <div class="industry-card">
         <i class="bi bi-book industry-icon"></i>
-        <h6 class="fw-bold mb-0">Education</h6>
+        <h3 class="h6 fw-bold mb-0">Education</h3>
       </div>
       </div>
     </div>
@@ -285,7 +285,7 @@
       <i class="bi bi-play-fill"></i>
       </a>
       <div class="position-absolute bottom-0 start-0 w-100 p-3 bg-dark bg-opacity-50 text-white">
-      <h6 class="mb-0 fw-bold">{{ $value->service?->title ?? 'Video Title' }}</h6>
+      <h3 class="h6 mb-0 fw-bold">{{ $value->service?->title ?? 'Video Title' }}</h3>
       </div>
       </div>
       </div>

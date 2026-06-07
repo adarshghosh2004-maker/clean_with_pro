@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <!-- Meta Tag -->
@@ -114,23 +114,39 @@
     </style>
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18095631245"></script>
+<!-- Google tag (gtag.js) - Conditionally Deferred on Mobile -->
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    function loadGtag() {
+        var gScript = document.createElement('script');
+        gScript.async = true;
+        gScript.src = "https://www.googletagmanager.com/gtag/js?id=AW-18095631245";
+        document.head.appendChild(gScript);
 
-    gtag('config', 'AW-18095631245');
-</script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
 
-<!-- Event snippet for Request quote conversion page -->
-<script>
-    gtag('event', 'conversion', {
-        'send_to': 'AW-18095631245/IDW5CJvTyLccEI3X1bRD',
-        'value': 1.0,
-        'currency': 'AUD'
-    });
+        gtag('config', 'AW-18095631245', {
+            cookie_flags: 'SameSite=None;Secure'
+        });
+        
+        gtag('event', 'conversion', {
+            'send_to': 'AW-18095631245/IDW5CJvTyLccEI3X1bRD',
+            'value': 1.0,
+            'currency': 'AUD'
+        });
+    }
+
+    if (window.innerWidth <= 768) {
+        // Defer on mobile to prevent third-party cookie issues and main-thread blocking during initial load
+        window.addEventListener('load', function() {
+            setTimeout(loadGtag, 3000);
+        });
+    } else {
+        // Execute immediately for Desktop
+        loadGtag();
+    }
 </script>
 
 
@@ -154,7 +170,7 @@
                             <div class="col-lg-12" data-anim="fade-up">
                                 <div class="quote-card border border-light">
                                     <div class="text-center mb-4">
-                                        <h3 class="fw-bold text-primary-blue">{{ __('label.get_your_free_quote') }}</h3>
+                                        <h2 class="h3 fw-bold text-primary-blue">{{ __('label.get_your_free_quote') }}</h2>
                                         <p class="text-muted">{{ __('label.no_hidden_costs') }}</p>
                                     </div>
 
@@ -198,7 +214,7 @@
                                             <div class="col-md-6">
                                                 <label
                                                     class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
-                                                <select name="time" class="form-control bg-light border-0" required>
+                                                <select name="time" aria-label="Select a time" class="form-control bg-light border-0" required>
                                                     <option value="">{{ __('label.select_a_time') }}</option>
                                                     <option value="07:00">7:00 AM</option>
                                                     <option value="07:30">7:30 AM</option>
@@ -231,7 +247,7 @@
                                                 <label
                                                     class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
                                                         class="text-danger">*</span></label>
-                                                <select name="service_id" class="form-control bg-light border-0"
+                                                <select name="service_id" aria-label="Select a service" class="form-control bg-light border-0"
                                                     required>
                                                     <option value="">{{ __('label.select_a_service') }}</option>
                                                     <option value="0">{{ __('label.special_offers') }}</option>
@@ -272,7 +288,6 @@
     @include('web.layout.footer')
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{{ asset('assets/js/toastr.min.js')}}"></script>
 
     <script>

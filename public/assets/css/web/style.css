@@ -7415,3 +7415,14 @@ h6,
         width: 100%;
     }
 }
+
+/* Accessibility contrast fixes for mobile */
+@media (max-width: 768px) {
+    .dropdown-menu-custom .dropdown-item {
+        color: #333333 !important;
+    }
+    .text-muted, 
+    .bottom-nav .nav-item {
+        color: #545b62 !important; /* WCAG AA compliant grey */
+    }
+}
