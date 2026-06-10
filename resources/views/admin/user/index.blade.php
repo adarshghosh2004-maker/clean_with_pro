@@ -274,13 +274,13 @@
 
                 {{-- Footer --}}
                 <div class="modal-footer invoice-modal-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-cancel mw-120" data-bs-dismiss="modal">
                         <i class="fa-solid fa-xmark me-1"></i> {{ __('label.close') }}
                     </button>
-                    <a href="#" id="btnDownloadPdf" class="btn btn-success btn-sm d-none" target="_blank">
+                    <a href="#" id="btnDownloadPdf" class="btn btn-default mw-120 d-none" target="_blank">
                         <i class="fa-solid fa-download me-1"></i> {{ __('label.download_invoice') }}
                     </a>
-                    <button type="button" class="btn btn-primary btn-sm" id="btnSaveInvoice">
+                    <button type="button" class="btn btn-default mw-120" id="btnSaveInvoice">
                         <i class="fa-solid fa-save me-1"></i> {{ __('label.save_download') }}
                     </button>
                 </div>
