@@ -45,7 +45,11 @@ class UserController extends Controller
                 $query = User::with('service');
 
                 if (!empty($input_search)) {
-                    $query->where(function ($q) use ($input_search) {
+                    $bookingId = ltrim($input_search, '0');
+                    if ($bookingId === '') {
+                        $bookingId = '0';
+                    }
+                    $query->where(function ($q) use ($input_search, $bookingId) {
                         $q->where('name', 'LIKE', "%{$input_search}%")
                             ->orWhere('email', 'LIKE', "%{$input_search}%")
                             ->orWhere('phone', 'LIKE', "%{$input_search}%")
@@ -53,6 +57,9 @@ class UserController extends Controller
                             ->orWhereHas('service', function ($sq) use ($input_search) {
                                 $sq->where('title', 'LIKE', "%{$input_search}%");
                             });
+                        if (ctype_digit($bookingId)) {
+                            $q->orWhere('id', (int) $bookingId);
+                        }
                     });
                 }
 
