@@ -289,6 +289,132 @@
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/toastr.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        :root {
+            --primary-color: var(--primary-blue);
+            --secondary-color: var(--secondary);
+        }
+
+        @keyframes swal-entrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.85) translateY(-24px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes swal-icon-pulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 0 transparent);
+            }
+            50% {
+                filter: drop-shadow(0 0 14px var(--primary-color));
+            }
+        }
+
+        .swal-entrance {
+            animation: swal-entrance 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        .custom-swal-popup {
+            border-radius: 28px !important;
+            padding: 2.5rem 2.25rem !important;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.08),
+                0 8px 20px rgba(0, 0, 0, 0.06) !important;
+            border: 1px solid rgba(0, 0, 0, 0.04) !important;
+            max-width: 420px !important;
+        }
+
+        .custom-swal-title {
+            font-weight: 800 !important;
+            font-size: 1.5rem !important;
+            color: var(--primary-color) !important;
+            letter-spacing: -0.03em !important;
+            padding-top: 0.75rem !important;
+            line-height: 1.3 !important;
+        }
+
+        .custom-swal-html {
+            color: var(--text-dark) !important;
+            font-size: 1rem !important;
+            line-height: 1.65 !important;
+            margin-top: 0.35rem !important;
+            padding: 0 0.5rem !important;
+        }
+
+        .custom-swal-confirm {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+            border: none !important;
+            border-radius: 14px !important;
+            padding: 14px 40px !important;
+            font-weight: 700 !important;
+            font-size: 1rem !important;
+            letter-spacing: 0.02em !important;
+            color: #fff !important;
+            box-shadow:
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                0 2px 4px rgba(0, 0, 0, 0.06) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            min-width: 160px !important;
+        }
+
+        .custom-swal-confirm::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.15) 100%);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .custom-swal-confirm:hover {
+            transform: translateY(-3px) !important;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.15),
+                0 4px 8px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        .custom-swal-confirm:active {
+            transform: translateY(-1px) !important;
+            box-shadow:
+                0 6px 20px rgba(0, 0, 0, 0.12) !important;
+        }
+
+        .custom-swal-success .swal2-success-ring {
+            border-color: var(--primary-color) !important;
+        }
+
+        .custom-swal-success .swal2-success-line-tip,
+        .custom-swal-success .swal2-success-line-long {
+            background-color: var(--primary-color) !important;
+        }
+
+        .custom-swal-success .swal2-icon.swal2-success {
+            animation: swal-icon-pulse 2.4s ease-in-out infinite !important;
+        }
+
+        .custom-swal-error .swal2-icon.swal2-error {
+            border-color: var(--secondary-color) !important;
+        }
+
+        .custom-swal-error .swal2-x-mark-line-left,
+        .custom-swal-error .swal2-x-mark-line-right {
+            background-color: var(--secondary-color) !important;
+        }
+
+        .swal2-container.swal2-backdrop-show {
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+        }
+    </style>
 
     <script>
         window.addEventListener("load", function () {
@@ -361,15 +487,75 @@
                     processData: false,
                     success: function (resp) {
                         $("#dvloader").hide();
-                        get_responce_message(resp, form);
-
                         if (resp.status == '200') {
-                            $('#EditModel').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: resp.success,
+                                buttonsStyling: false,
+                                showClass: { popup: 'swal-entrance' },
+                                customClass: {
+                                    confirmButton: 'custom-swal-confirm',
+                                    popup: 'custom-swal-popup custom-swal-success',
+                                    title: 'custom-swal-title',
+                                    htmlContainer: 'custom-swal-html'
+                                }
+                            }).then(() => {
+                                document.getElementById(form).reset();
+                                $('#EditModel').modal('hide');
+                            });
+                        } else {
+                            var obj = resp.errors;
+                            if (typeof obj === 'string') {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error!',
+                                    text: obj,
+                                    buttonsStyling: false,
+                                    showClass: { popup: 'swal-entrance' },
+                                    customClass: {
+                                        confirmButton: 'custom-swal-confirm',
+                                        popup: 'custom-swal-popup custom-swal-error',
+                                        title: 'custom-swal-title',
+                                        htmlContainer: 'custom-swal-html'
+                                    }
+                                });
+                            } else {
+                                var errorHtml = '';
+                                $.each(obj, function (i, e) {
+                                    errorHtml += e + '<br>';
+                                });
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error!',
+                                    html: errorHtml,
+                                    buttonsStyling: false,
+                                    showClass: { popup: 'swal-entrance' },
+                                    customClass: {
+                                        confirmButton: 'custom-swal-confirm',
+                                        popup: 'custom-swal-popup custom-swal-error',
+                                        title: 'custom-swal-title',
+                                        htmlContainer: 'custom-swal-html'
+                                    }
+                                });
+                            }
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         $("#dvloader").hide();
-                        toastr.error(errorThrown, textStatus);
+                        Swal.fire({
+                            icon: 'error',
+                            title: textStatus,
+                            text: errorThrown,
+                            buttonsStyling: false,
+                            showClass: { popup: 'swal-entrance' },
+                            customClass: {
+                                confirmButton: 'custom-swal-confirm',
+                                popup: 'custom-swal-popup custom-swal-error',
+                                title: 'custom-swal-title',
+                                htmlContainer: 'custom-swal-html'
+                            }
+                        });
                     }
                 });
             } else {
