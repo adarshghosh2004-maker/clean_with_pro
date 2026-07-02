@@ -17,7 +17,7 @@
                     <div class="card custom-card card-color-primary">
                         <div class="card-body">
                             <div class="card-icon-primary">
-                                <i class="fa-solid fa-users fa-2x"></i>
+                                <i class="fa-solid fa-file-invoice-dollar fa-2x"></i>
                             </div>
                             <div class="card-stat-content">
                                 <span>{{ __('label.quote') }}</span>
@@ -30,7 +30,7 @@
                     <div class="card custom-card card-color-primary">
                         <div class="card-body">
                             <div class="card-icon-primary">
-                                <i class="fa-solid fa-user-tie fa-2x"></i>
+                                <i class="fa-solid fa-cogs fa-2x"></i>
                             </div>
                             <div class="card-stat-content">
                                 <span>{{ __('label.services') }}</span>
@@ -43,7 +43,7 @@
                     <div class="card custom-card card-color-primary">
                         <div class="card-body">
                             <div class="card-icon-primary">
-                                <i class="fa-solid fa-user-clock fa-2x"></i>
+                                <i class="fa-solid fa-video fa-2x"></i>
                             </div>
                             <div class="card-stat-content">
                                 <span>{{ __('label.videos') }}</span>
@@ -56,7 +56,7 @@
                     <div class="card custom-card card-color-primary">
                         <div class="card-body">
                             <div class="card-icon-primary">
-                                <i class="fa-solid fa-list fa-2x"></i>
+                                <i class="fa-solid fa-image fa-2x"></i>
                             </div>
                             <div class="card-stat-content">
                                 <span>{{ __('label.images') }}</span>
@@ -72,7 +72,62 @@
                     <div class="card custom-card card-color-primary">
                         <div class="card-body">
                             <div class="card-icon-primary">
-                                <i class="fa-solid fa-users fa-2x"></i>
+                                <i class="fa-solid fa-user-clock fa-2x"></i>
+                            </div>
+                            <div class="card-stat-content">
+                                <span>{{ __('label.pending_quotes') }}</span>
+                                <h3>{{ No_Format($pending_requests) }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="card custom-card card-color-primary">
+                        <div class="card-body">
+                            <div class="card-icon-primary">
+                                <i class="fa-solid fa-check-circle fa-2x"></i>
+                            </div>
+                            <div class="card-stat-content">
+                                <span>{{ __('label.confirmed_quotes') }}</span>
+                                <h3>{{ No_Format($confirmed_requests) }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="card custom-card card-color-primary">
+                        <div class="card-body">
+                            <div class="card-icon-primary">
+                                <i class="fa-solid fa-clipboard-check fa-2x"></i>
+                            </div>
+                            <div class="card-stat-content">
+                                <span>{{ __('label.completed_quotes') }}</span>
+                                <h3>{{ No_Format($completed_requests) }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="card custom-card card-color-primary">
+                        <div class="card-body">
+                            <div class="card-icon-primary">
+                                <i class="fa-solid fa-times-circle fa-2x"></i>
+                            </div>
+                            <div class="card-stat-content">
+                                <span>{{ __('label.cancelled_quotes') }}</span>
+                                <h3>{{ No_Format($cancelled_requests) }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row counter-row">
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="card custom-card card-color-primary">
+                        <div class="card-body">
+                            <div class="card-icon-primary">
+                                <i class="fa-solid fa-comment-dots fa-2x"></i>
                             </div>
                             <div class="card-stat-content">
                                 <span>{{ __('label.feedback') }}</span>
@@ -85,7 +140,7 @@
                     <div class="card custom-card card-color-primary">
                         <div class="card-body">
                             <div class="card-icon-primary">
-                                <i class="fa-solid fa-user-tie fa-2x"></i>
+                                <i class="fa-solid fa-question-circle fa-2x"></i>
                             </div>
                             <div class="card-stat-content">
                                 <span>{{ __('label.questions') }}</span>
@@ -98,20 +153,7 @@
                     <div class="card custom-card card-color-primary">
                         <div class="card-body">
                             <div class="card-icon-primary">
-                                <i class="fa-solid fa-user-clock fa-2x"></i>
-                            </div>
-                            <div class="card-stat-content">
-                                <span>{{ __('label.pending_quotes') }}</span>
-                                <h3>{{ No_Format($total_requests) }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                    <div class="card custom-card card-color-primary">
-                        <div class="card-body">
-                            <div class="card-icon-primary">
-                                <i class="fa-solid fa-list fa-2x"></i>
+                                <i class="fa-solid fa-server fa-2x"></i>
                             </div>
                             <div class="card-stat-content">
                                 <span>{{ __('label.active_services') }}</span>

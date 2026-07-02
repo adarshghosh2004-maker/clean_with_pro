@@ -270,6 +270,9 @@ return [
     'images' => 'चित्र',
     'feature' => 'फ़ीचर',
     'pending_quotes' => 'लंबित कोटेशन',
+    'confirmed_quotes' => 'पुष्ट प्रस्ताव',
+    'completed_quotes' => 'पूर्ण प्रस्ताव',
+    'cancelled_quotes' => 'रद्द प्रस्ताव',
 
     'access_denied' => 'पहुंच अस्वीकृत',
     'whoops_the_code_you_entered_seems_to_be_for_a_different_product' => 'ओह! आपने जो कोड दर्ज किया है, वह किसी अन्य उत्पाद के लिए प्रतीत होता है।',
@@ -345,7 +348,7 @@ return [
     'technician_signature' => 'तकनीशियन के हस्ताक्षर',
     'download_invoice' => 'चालान डाउनलोड करें',
     'save_download' => 'सहेजें और डाउनलोड करें',
-    
+
     'domestic_cleaning' => 'घरेलू सफाई',
     'end_of_lease_cleaning' => 'लीज के अंत की सफाई',
     'carpet_cleaning' => 'कालीन की सफाई',

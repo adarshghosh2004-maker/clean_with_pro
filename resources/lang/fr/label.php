@@ -270,6 +270,9 @@ return [
     'images' => 'Images',
     'feature' => 'Fonctionnalité',
     'pending_quotes' => 'Devis en attente',
+    'confirmed_quotes' => 'Devis confirmés',
+    'completed_quotes' => 'Devis terminés',
+    'cancelled_quotes' => 'Devis annulés',
 
     'access_denied' => 'Accès refusé',
     'whoops_the_code_you_entered_seems_to_be_for_a_different_product' => 'Oups ! Le code que vous avez saisi semble être destiné à un autre produit.',
@@ -345,7 +348,7 @@ return [
     'technician_signature' => 'Signature du Technicien',
     'download_invoice' => 'Télécharger la Facture',
     'save_download' => 'Enregistrer et Télécharger',
-    
+
     'domestic_cleaning' => 'Nettoyage Domestique',
     'end_of_lease_cleaning' => 'Nettoyage de Fin de Bail',
     'carpet_cleaning' => 'Nettoyage de Tapis',
