@@ -52,7 +52,24 @@
                             <th> {{__('label.time')}} </th>
                             <th> {{__('label.service')}} </th>
                             <th> {{__('label.msg')}} </th>
-                            <th> {{__('label.status')}} </th>
+                            <th>
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle p-0 fw-bold" type="button" id="statusDropdown"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{__('label.status')}}
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
+                                        <li><a class="dropdown-item status-filter" href="#"
+                                                data-status="">{{__('label.all')}}</a></li>
+                                        <li><a class="dropdown-item status-filter" href="#" data-status="0">Pending</a></li>
+                                        <li><a class="dropdown-item status-filter" href="#" data-status="2">Completed</a>
+                                        </li>
+                                        <li><a class="dropdown-item status-filter" href="#" data-status="1">Confirmed</a>
+                                        </li>
+                                        <li><a class="dropdown-item status-filter" href="#" data-status="3">Cancel</a></li>
+                                    </ul>
+                                </div>
+                            </th>
                             <th> {{__('label.action')}} </th>
                         </tr>
                     </thead>
@@ -170,7 +187,8 @@
                                     <input type="text" class="form-control form-control-sm mb-2" id="inv_technician_name">
 
                                     <h6 class="section-title mt-3">{{ __('label.bank_details_colon') }}</h6>
-                                    <p class="mb-1">{{ __('label.bsb_colon') }} <span id="bank_bsb">{{ Setting_Data()['bsb'] ?? ''}}</span></p>
+                                    <p class="mb-1">{{ __('label.bsb_colon') }} <span
+                                            id="bank_bsb">{{ Setting_Data()['bsb'] ?? ''}}</span></p>
                                     <p class="mb-0">{{ __('label.acc_colon') }} <span
                                             id="bank_acc">{{ Setting_Data()['account_number'] ?? '' }}</span></p>
                                 </div>
@@ -225,7 +243,8 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="payment_method" id="pay_bank"
                                             value="Bank_Transfer">
-                                        <label class="form-check-label" for="pay_bank">{{ __('label.bank_transfer') }}</label>
+                                        <label class="form-check-label"
+                                            for="pay_bank">{{ __('label.bank_transfer') }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -446,11 +465,12 @@
                     url: "{{ route('admin.user.index') }}",
                     data: function (d) {
                         d.input_search = $('#input_search').val();
+                        d.status_filter = current_status_filter;
                     },
                 },
                 columns: [
                     { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                     { data: 'booking_no', name: 'booking_no', orderable: false, searchable: false, render: d => d ? d : '-' },
+                    { data: 'booking_no', name: 'booking_no', orderable: false, searchable: false, render: d => d ? d : '-' },
                     { data: 'name', name: 'name', orderable: false, searchable: false, render: d => d ? d : '-' },
                     { data: 'email', name: 'email', orderable: false, searchable: false, render: d => d ? d : '-' },
                     { data: 'phone', name: 'phone', orderable: false, searchable: false, render: d => d ? d : '-' },
@@ -465,6 +485,19 @@
             });
 
             $('#input_search').keyup(function () {
+                table.draw();
+            });
+
+            var current_status_filter = '';
+            $('.status-filter').on('click', function (e) {
+                e.preventDefault();
+                current_status_filter = $(this).data('status');
+                var text = $(this).text();
+                if (current_status_filter === '') {
+                    $('#statusDropdown').text("{{__('label.status')}}");
+                } else {
+                    $('#statusDropdown').text(text);
+                }
                 table.draw();
             });
 

@@ -41,8 +41,21 @@ class UserController extends Controller
 
                 $input_search = $request['input_search'];
                 $input_type = $request['input_type'];
+                $status_filter = $request['status_filter'];
 
                 $query = User::with('service');
+
+                if (isset($status_filter) && $status_filter !== '') {
+                    if($status_filter == 0){
+                        $query->where('status', 0);
+                    }else if($status_filter == 1){
+                        $query->where('status', 1);
+                    }else if($status_filter == 2){
+                        $query->where('status', 2);
+                    }else if($status_filter == 3){
+                        $query->where('status', 3);
+                    }
+                }
 
                 if (!empty($input_search)) {
                     $bookingId = ltrim($input_search, '0');

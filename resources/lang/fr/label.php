@@ -250,6 +250,7 @@ return [
     'search' => 'Rechercher',
     'action' => 'Action',
     'status' => 'Statut',
+    'all' => 'Tout',
     'save' => 'Enregistrer',
     'cancel' => 'Annuler',
     'update' => 'Mettre à jour',

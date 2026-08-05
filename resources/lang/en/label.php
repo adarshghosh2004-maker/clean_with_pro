@@ -251,6 +251,7 @@ return [
     'search' => 'Search',
     'action' => 'Action',
     'status' => 'Status',
+    'all' => 'All',
     'save' => 'Save',
     'cancel' => 'Cancel',
     'update' => 'Update',
