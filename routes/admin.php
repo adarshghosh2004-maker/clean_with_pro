@@ -46,6 +46,7 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
 
     // Dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard/chart-data', [DashboardController::class, 'getChartData'])->name('dashboard.chart.data');
     // Profile
     Route::resource('profile', ProfileController::class)->only(['index', 'store']);
     Route::post('profile/changepassword', [ProfileController::class, 'ChangePassword'])->name('profile.changepassword');

@@ -168,15 +168,36 @@
             <div class="row">
                 <div class="col-12 col-xl-8 mb-4">
                     <div class="cart-bg h-100">
-                        <div class="box-title">
+                        <div class="box-title d-flex justify-content-between align-items-center flex-wrap">
                             <h2 class="title"><i class="fa-solid fa-chart-column fa-lg mr-2"></i>Join Users &amp; Author
                                 Statistice</h2>
+                            <div class="dash-chart-btns">
+                                <button id="year" class="dash-chart-btn active">This Year</button>
+                                <button id="month" class="dash-chart-btn">This Month</button>
+                            </div>
                         </div>
-                        <div class="dash-chart-btns mt-3">
-                            <button id="year" class="dash-chart-btn active">This Year</button>
-                            <button id="month" class="dash-chart-btn">This Month</button>
+
+                        <!-- Month Navigation Bar -->
+                        <div id="monthNavContainer" class="month-nav-wrapper d-none mt-3 p-2 bg-light rounded justify-content-between align-items-center">
+                            <button id="prevMonthBtn" class="btn btn-sm btn-outline-secondary font-weight-bold" type="button">
+                                <i class="fa-solid fa-chevron-left mr-1"></i> <span class="d-none d-sm-inline">Previous Month</span>
+                            </button>
+                            <div class="text-center">
+                                <span id="currentMonthLabel" class="h6 mb-0 font-weight-bold text-dark d-block"></span>
+                                <small id="monthTotalBadge" class="text-muted font-weight-semibold"></small>
+                            </div>
+                            <button id="nextMonthBtn" class="btn btn-sm btn-outline-secondary font-weight-bold" type="button" disabled>
+                                <span class="d-none d-sm-inline">Next Month</span> <i class="fa-solid fa-chevron-right ml-1"></i>
+                            </button>
                         </div>
-                        <div class="chart-body">
+
+                        <div class="chart-body position-relative mt-3">
+                            <!-- Loading Overlay -->
+                            <div id="chartLoadingOverlay" class="chart-loading-overlay d-none">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="sr-only">Loading stats...</span>
+                                </div>
+                            </div>
                             <div id="userRequestsChart"></div>
                         </div>
                     </div>
@@ -232,10 +253,42 @@
 @endsection
 
 @section('pagescript')
+    <style>
+        .month-nav-wrapper {
+            background-color: var(--light-color, #f8f9fa) !important;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+        }
+        .chart-loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.7);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+    </style>
+
     <!-- Chart -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <script>
+        const monthNamesFull = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let currentView = 'year';
+        const currentSystemYear = {{ $current_year ?? date('Y') }};
+        const currentSystemMonth = {{ $current_month ?? date('m') }};
+
+        let selectedYear = currentSystemYear;
+        let selectedMonth = currentSystemMonth;
 
         let userYear = @json($user_year);
         let userMonth = @json($user_month);
@@ -260,6 +313,7 @@
                 bar: {
                     horizontal: false,
                     columnWidth: '52%',
+                    borderRadius: 4
                 }
             },
             fill: {
@@ -291,10 +345,33 @@
                 style: {
                     fontSize: '13px'
                 },
+                x: {
+                    formatter: function(val) {
+                        if (currentView === 'month') {
+                            let dayNum = parseInt(val);
+                            if (dayNum) {
+                                return `${monthNamesFull[selectedMonth - 1]} ${dayNum}, ${selectedYear}`;
+                            }
+                        }
+                        return val;
+                    }
+                },
+                y: {
+                    formatter: function(val) {
+                        return val + (val === 1 ? ' Quote' : ' Quotes');
+                    }
+                }
             },
-            series: [],
+            series: [{
+                name: "Quotes",
+                data: userYear
+            }],
             xaxis: {
-                categories: [],
+                categories: [
+                    'Jan', 'Feb', 'Mar', 'Apr',
+                    'May', 'Jun', 'Jul', 'Aug',
+                    'Sep', 'Oct', 'Nov', 'Dec'
+                ],
                 axisBorder: {
                     show: false
                 },
@@ -310,90 +387,179 @@
                 }
             },
             yaxis: {
+                min: 0,
+                forceNiceScale: true,
                 labels: {
                     style: {
                         fontSize: '12px',
                         fontWeight: 600,
                         colors: '#999'
+                    },
+                    formatter: function(val) {
+                        return Math.floor(val) === val ? val : '';
                     }
                 }
             },
-            legend: {
-                position: 'top',
-                horizontalAlign: 'right',
-                fontSize: '13px',
-                fontWeight: 600,
-                markers: {
-                    radius: 4
-                },
-                labels: {
-                    colors: '#555'
+            responsive: [{
+                breakpoint: 576,
+                options: {
+                    plotOptions: {
+                        bar: { columnWidth: '70%' }
+                    },
+                    xaxis: {
+                        labels: {
+                            rotate: -45,
+                            style: { fontSize: '10px' }
+                        }
+                    }
                 }
+            }],
+            legend: {
+                show: false
             }
         };
 
         let chart = new ApexCharts(document.querySelector("#userRequestsChart"), chartOptions);
         chart.render();
 
-        function loadChartData(type) {
-            if (type === 'year') {
-                chart.updateOptions({
-                    series: [{
-                        name: "Users",
-                        data: userYear
-                    },
-                    ],
-                    xaxis: {
-                        categories: [
-                            'Jan', 'Feb', 'Mar', 'Apr',
-                            'May', 'Jun', 'Jul', 'Aug',
-                            'Sep', 'Oct', 'Nov', 'Dec'
-                        ],
-                        labels: {
-                            style: {
-                                fontSize: '12px',
-                                fontWeight: 600
-                            }
-                        }
-                    },
-                    yaxis: {
-                        labels: {
-                            style: {
-                                fontSize: '12px',
-                                fontWeight: 600
-                            }
-                        }
-                    }
-                });
+        function showLoading(show) {
+            const overlay = document.getElementById('chartLoadingOverlay');
+            if (show) {
+                overlay.classList.remove('d-none');
+                overlay.classList.add('d-flex');
+                document.getElementById('prevMonthBtn').disabled = true;
+                document.getElementById('nextMonthBtn').disabled = true;
             } else {
-                let daysInMonth = userMonth.length;
-                chart.updateOptions({
-                    series: [{
-                        name: "Users",
-                        data: userMonth
-                    },
-                    ],
-                    xaxis: {
-                        categories: Array.from({
-                            length: daysInMonth
-                        }, (_, i) => (i + 1).toString())
-                    }
-                });
+                overlay.classList.add('d-none');
+                overlay.classList.remove('d-flex');
+                updateMonthNavButtons();
             }
         }
 
-        loadChartData('year');
+        function updateMonthNavButtons() {
+            document.getElementById('prevMonthBtn').disabled = false;
+            
+            let isCurrentOrFuture = false;
+            if (selectedYear > currentSystemYear) {
+                isCurrentOrFuture = true;
+            } else if (selectedYear === currentSystemYear && selectedMonth >= currentSystemMonth) {
+                isCurrentOrFuture = true;
+            }
+
+            document.getElementById('nextMonthBtn').disabled = isCurrentOrFuture;
+        }
+
+        function fetchAndRenderChartData() {
+            showLoading(true);
+
+            const url = "{{ route('admin.dashboard.chart.data') }}";
+            $.ajax({
+                url: url,
+                type: 'GET',
+                data: {
+                    view: currentView,
+                    year: selectedYear,
+                    month: selectedMonth
+                },
+                success: function(res) {
+                    showLoading(false);
+                    if (res.status === 200) {
+                        if (currentView === 'month') {
+                            document.getElementById('currentMonthLabel').innerText = res.month_name;
+                            document.getElementById('monthTotalBadge').innerText = `Total Quotes: ${res.total_quotes}`;
+                            
+                            chart.updateOptions({
+                                series: [{
+                                    name: "Quotes",
+                                    data: res.series_data
+                                }],
+                                xaxis: {
+                                    categories: res.categories
+                                }
+                            });
+                        } else {
+                            chart.updateOptions({
+                                series: [{
+                                    name: "Quotes",
+                                    data: res.series_data
+                                }],
+                                xaxis: {
+                                    categories: res.categories
+                                }
+                            });
+                        }
+                    }
+                },
+                error: function(err) {
+                    showLoading(false);
+                    console.error("Failed to fetch chart data", err);
+                }
+            });
+        }
+
+        function switchView(view) {
+            currentView = view;
+            const monthNav = document.getElementById('monthNavContainer');
+            const yearBtn = document.getElementById('year');
+            const monthBtn = document.getElementById('month');
+
+            if (view === 'month') {
+                yearBtn.classList.remove('active');
+                monthBtn.classList.add('active');
+                monthNav.classList.remove('d-none');
+                monthNav.classList.add('d-flex');
+
+                selectedYear = currentSystemYear;
+                selectedMonth = currentSystemMonth;
+
+                fetchAndRenderChartData();
+            } else {
+                monthBtn.classList.remove('active');
+                yearBtn.classList.add('active');
+                monthNav.classList.add('d-none');
+                monthNav.classList.remove('d-flex');
+
+                selectedYear = currentSystemYear;
+                fetchAndRenderChartData();
+            }
+        }
 
         document.getElementById('year').addEventListener('click', function () {
-            loadChartData('year');
-            this.classList.add('active');
-            document.getElementById('month').classList.remove('active');
-        });
-        document.getElementById('month').addEventListener('click', function () {
-            loadChartData('month');
-            this.classList.add('active');
-            document.getElementById('year').classList.remove('active');
+            if (currentView !== 'year') {
+                switchView('year');
+            }
         });
 
+        document.getElementById('month').addEventListener('click', function () {
+            if (currentView !== 'month') {
+                switchView('month');
+            }
+        });
+
+        document.getElementById('prevMonthBtn').addEventListener('click', function () {
+            if (currentView !== 'month') return;
+            
+            selectedMonth--;
+            if (selectedMonth < 1) {
+                selectedMonth = 12;
+                selectedYear--;
+            }
+            fetchAndRenderChartData();
+        });
+
+        document.getElementById('nextMonthBtn').addEventListener('click', function () {
+            if (currentView !== 'month') return;
+
+            if (selectedYear > currentSystemYear || (selectedYear === currentSystemYear && selectedMonth >= currentSystemMonth)) {
+                return;
+            }
+
+            selectedMonth++;
+            if (selectedMonth > 12) {
+                selectedMonth = 1;
+                selectedYear++;
+            }
+            fetchAndRenderChartData();
+        });
     </script>
 @endsection
