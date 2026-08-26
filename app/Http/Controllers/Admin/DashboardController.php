@@ -85,6 +85,7 @@ class DashboardController extends Controller
             }
 
             $data['user_year'] = $user_year;
+            $data['user_year_total'] = array_sum($user_year);
             $data['user_month'] = $user_month;
             $data['current_year'] = $currentYear;
             $data['current_month'] = $currentMonth;

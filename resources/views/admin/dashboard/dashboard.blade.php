@@ -177,6 +177,20 @@
                             </div>
                         </div>
 
+                        <!-- Year Navigation Bar -->
+                        <div id="yearNavContainer" class="month-nav-wrapper d-flex mt-3 p-2 bg-light rounded justify-content-between align-items-center">
+                            <button id="prevYearBtn" class="btn btn-sm btn-outline-secondary font-weight-bold" type="button">
+                                <i class="fa-solid fa-chevron-left mr-1"></i> <span class="d-none d-sm-inline">Previous Year</span>
+                            </button>
+                            <div class="text-center">
+                                <span id="currentYearLabel" class="h6 mb-0 font-weight-bold text-dark d-block">{{ $current_year }}</span>
+                                <small id="yearTotalBadge" class="text-muted font-weight-semibold">Total Quotes: {{ $user_year_total }}</small>
+                            </div>
+                            <button id="nextYearBtn" class="btn btn-sm btn-outline-secondary font-weight-bold" type="button" disabled>
+                                <span class="d-none d-sm-inline">Next Year</span> <i class="fa-solid fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+
                         <!-- Month Navigation Bar -->
                         <div id="monthNavContainer" class="month-nav-wrapper d-none mt-3 p-2 bg-light rounded justify-content-between align-items-center">
                             <button id="prevMonthBtn" class="btn btn-sm btn-outline-secondary font-weight-bold" type="button">
@@ -283,6 +297,12 @@
             "July", "August", "September", "October", "November", "December"
         ];
 
+        const monthShortToLong = {
+            "Jan": "January", "Feb": "February", "Mar": "March", "Apr": "April",
+            "May": "May", "Jun": "June", "Jul": "July", "Aug": "August",
+            "Sep": "September", "Oct": "October", "Nov": "November", "Dec": "December"
+        };
+
         let currentView = 'year';
         const currentSystemYear = {{ $current_year ?? date('Y') }};
         const currentSystemMonth = {{ $current_month ?? date('m') }};
@@ -346,12 +366,21 @@
                     fontSize: '13px'
                 },
                 x: {
-                    formatter: function(val) {
+                    formatter: function(val, opts) {
                         if (currentView === 'month') {
                             let dayNum = parseInt(val);
                             if (dayNum) {
                                 return `${monthNamesFull[selectedMonth - 1]} ${dayNum}, ${selectedYear}`;
                             }
+                        } else if (currentView === 'year') {
+                            let monthIdx = opts ? opts.dataPointIndex : -1;
+                            if (monthIdx !== undefined && monthIdx >= 0 && monthIdx < 12) {
+                                return `${monthNamesFull[monthIdx]} ${selectedYear}`;
+                            }
+                            if (monthShortToLong[val]) {
+                                return `${monthShortToLong[val]} ${selectedYear}`;
+                            }
+                            return `${val} ${selectedYear}`;
                         }
                         return val;
                     }
@@ -429,11 +458,22 @@
                 overlay.classList.add('d-flex');
                 document.getElementById('prevMonthBtn').disabled = true;
                 document.getElementById('nextMonthBtn').disabled = true;
+                document.getElementById('prevYearBtn').disabled = true;
+                document.getElementById('nextYearBtn').disabled = true;
             } else {
                 overlay.classList.add('d-none');
                 overlay.classList.remove('d-flex');
-                updateMonthNavButtons();
+                if (currentView === 'month') {
+                    updateMonthNavButtons();
+                } else {
+                    updateYearNavButtons();
+                }
             }
+        }
+
+        function updateYearNavButtons() {
+            document.getElementById('prevYearBtn').disabled = false;
+            document.getElementById('nextYearBtn').disabled = (selectedYear >= currentSystemYear);
         }
 
         function updateMonthNavButtons() {
@@ -478,6 +518,9 @@
                                 }
                             });
                         } else {
+                            document.getElementById('currentYearLabel').innerText = res.year;
+                            document.getElementById('yearTotalBadge').innerText = `Total Quotes: ${res.total_quotes}`;
+
                             chart.updateOptions({
                                 series: [{
                                     name: "Quotes",
@@ -499,6 +542,7 @@
 
         function switchView(view) {
             currentView = view;
+            const yearNav = document.getElementById('yearNavContainer');
             const monthNav = document.getElementById('monthNavContainer');
             const yearBtn = document.getElementById('year');
             const monthBtn = document.getElementById('month');
@@ -506,6 +550,10 @@
             if (view === 'month') {
                 yearBtn.classList.remove('active');
                 monthBtn.classList.add('active');
+
+                yearNav.classList.add('d-none');
+                yearNav.classList.remove('d-flex');
+
                 monthNav.classList.remove('d-none');
                 monthNav.classList.add('d-flex');
 
@@ -516,8 +564,12 @@
             } else {
                 monthBtn.classList.remove('active');
                 yearBtn.classList.add('active');
+
                 monthNav.classList.add('d-none');
                 monthNav.classList.remove('d-flex');
+
+                yearNav.classList.remove('d-none');
+                yearNav.classList.add('d-flex');
 
                 selectedYear = currentSystemYear;
                 fetchAndRenderChartData();
@@ -534,6 +586,19 @@
             if (currentView !== 'month') {
                 switchView('month');
             }
+        });
+
+        document.getElementById('prevYearBtn').addEventListener('click', function () {
+            if (currentView !== 'year') return;
+            selectedYear--;
+            fetchAndRenderChartData();
+        });
+
+        document.getElementById('nextYearBtn').addEventListener('click', function () {
+            if (currentView !== 'year') return;
+            if (selectedYear >= currentSystemYear) return;
+            selectedYear++;
+            fetchAndRenderChartData();
         });
 
         document.getElementById('prevMonthBtn').addEventListener('click', function () {
