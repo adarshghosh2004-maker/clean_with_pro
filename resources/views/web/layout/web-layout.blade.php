@@ -18,6 +18,7 @@
     <meta name="description" content="@yield('description', 'Default description here')">
     <meta name="keywords" content="@yield('keywords', 'cleaning, services, melbourne')">
     <link rel="canonical" href="@yield('canonical', url()->current())">
+    @yield('meta_robots')
 
     <!-- Social Sharing (Open Graph) -->
     <meta property="og:title" content="@yield('title', 'Default Site Title')">
@@ -129,12 +130,6 @@
 
         gtag('config', 'AW-18095631245', {
             cookie_flags: 'SameSite=None;Secure'
-        });
-        
-        gtag('event', 'conversion', {
-            'send_to': 'AW-18095631245/IDW5CJvTyLccEI3X1bRD',
-            'value': 1.0,
-            'currency': 'AUD'
         });
     }
 
@@ -476,8 +471,12 @@
             var Demo_Mode = '<?php echo Demo_Mode(); ?>';
             if (Demo_Mode == 1) {
 
+                var $formObj = $("#" + form);
+                var $submitBtn = $formObj.find('button');
+                $submitBtn.prop('disabled', true);
                 $("#dvloader").show();
-                var formData = new FormData($("#" + form)[0]);
+
+                var formData = new FormData($formObj[0]);
                 $.ajax({
                     type: 'POST',
                     url: '{{ route("quote.store") }}',
@@ -486,25 +485,12 @@
                     contentType: false,
                     processData: false,
                     success: function (resp) {
-                        $("#dvloader").hide();
                         if (resp.status == '200') {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: resp.success,
-                                buttonsStyling: false,
-                                showClass: { popup: 'swal-entrance' },
-                                customClass: {
-                                    confirmButton: 'custom-swal-confirm',
-                                    popup: 'custom-swal-popup custom-swal-success',
-                                    title: 'custom-swal-title',
-                                    htmlContainer: 'custom-swal-html'
-                                }
-                            }).then(() => {
-                                document.getElementById(form).reset();
-                                $('#EditModel').modal('hide');
-                            });
+                            var redirectUrl = resp.redirect || '{{ route("thank.you") }}';
+                            window.location.href = redirectUrl;
                         } else {
+                            $("#dvloader").hide();
+                            $submitBtn.prop('disabled', false);
                             var obj = resp.errors;
                             if (typeof obj === 'string') {
                                 Swal.fire({
@@ -543,6 +529,7 @@
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         $("#dvloader").hide();
+                        $submitBtn.prop('disabled', false);
                         Swal.fire({
                             icon: 'error',
                             title: textStatus,
@@ -562,6 +549,13 @@
                 showError();
             }
         }
+
+        $(document).ready(function() {
+            $('#quote_form, #quote_form_save, #quote_form_landing, #quote_form_contact').on('submit', function(e) {
+                e.preventDefault();
+                save_quote(this.id);
+            });
+        });
     </script>
     <script>
         // Global Scroll Reveal Animation Logic

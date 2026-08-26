@@ -96,7 +96,13 @@ class WebController extends Controller
             $this->common->Send_Mail(9, $quote->email, $quote);
             $this->common->Send_Mail(10, Setting_Data()['email'], $quote);
 
-            return response()->json(['status' => 200, 'success' => 'Quote request sent successfully.']);
+            session()->flash('quote_submitted', true);
+
+            return response()->json([
+                'status' => 200, 
+                'success' => 'Quote request sent successfully.',
+                'redirect' => route('thank.you')
+            ]);
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }
@@ -190,5 +196,12 @@ class WebController extends Controller
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }
+    }
+
+    // ✅ Dedicated Thank You Page
+    public function thankYou()
+    {
+        $isConversion = session()->pull('quote_submitted', false);
+        return view('web.thank-you', ['isConversion' => $isConversion]);
     }
 }
