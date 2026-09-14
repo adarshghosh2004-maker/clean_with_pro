@@ -287,6 +287,21 @@ class Common extends Model
                         'view' => 'mail.domestic',
                     ];
                 } else if ($type == 2) {
+                    $serviceName = '';
+                    if (isset($array['service'])) {
+                        $serviceName = $array['service']['title'] ?? '';
+                    } elseif (isset($array->service)) {
+                        $serviceName = $array->service->title ?? '';
+                    }
+                    if (empty($serviceName)) {
+                        $serviceId = $array['service_id'] ?? ($array->service_id ?? 0);
+                        if ($serviceId > 0) {
+                            $service = Service::find($serviceId);
+                            $serviceName = $service['title'] ?? '';
+                        } elseif ($serviceId == 0) {
+                            $serviceName = 'Special Offer';
+                        }
+                    }
                     $details = [
                         'title' => App_Name() . " - End of Lease",
                         'customer_name' => $array['name'] ?? '',
@@ -295,6 +310,8 @@ class Common extends Model
                         'customer_address' => $array['suburb'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
+                        'service_type' => $serviceName,
+                        'booked_service' => $array['booked_service'] ?? '',
                         'view' => 'mail.end_of_lease',
                     ];
                 } else if ($type == 3) {

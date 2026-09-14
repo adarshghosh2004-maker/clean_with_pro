@@ -72,9 +72,16 @@
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Service</strong></td>
-                                    <td>End of Lease Cleaning</td>
+                                    <td><strong>Service Type</strong></td>
+                                    <td>{{ $details['service_type'] ?? '' }}</td>
                                 </tr>
+
+                                @if(!empty($details['booked_service']))
+                                <tr>
+                                    <td><strong>Service Booked</strong></td>
+                                    <td>{{ $details['booked_service'] }}</td>
+                                </tr>
+                                @endif
 
                                 <tr>
                                     <td><strong>Address</strong></td>
