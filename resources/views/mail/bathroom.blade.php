@@ -8,6 +8,12 @@
 
 <body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
 
+    @php
+        $bookingParts = explode(' ', $details['date'], 2);
+        $service_date = trim($bookingParts[0] ?? $details['date']);
+        $service_time = trim($bookingParts[1] ?? '');
+    @endphp
+
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
             <td align="center">
@@ -25,7 +31,7 @@
                             </h1>
 
                             <p style="margin:10px 0 0;">
-                                Booking Confirmation
+                                BOOKING CONFIRMATION
                             </p>
 
                         </td>
@@ -48,7 +54,8 @@
                             </p>
 
                             <p>
-                                Your booking details are below:
+                                Your booking has been confirmed.
+                                Please find your booking details below:
                             </p>
 
                             <hr>
@@ -58,33 +65,33 @@
                             <table width="100%" cellpadding="8">
 
                                 <tr>
-                                    <td><strong>Customer</strong></td>
-                                    <td>{{ $details['customer_name'] }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td><strong>Booking No</strong></td>
+                                    <td><strong>Booking Number</strong></td>
                                     <td>{{ $details['booking_number'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Date & Time</strong></td>
-                                    <td>{{ $details['date'] }}</td>
+                                    <td><strong>Customer Name</strong></td>
+                                    <td>{{ $details['customer_name'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Service</strong></td>
-                                    <td>Bathroom Cleaning</td>
+                                    <td><strong>Contact Number</strong></td>
+                                    <td>{{ $details['customer_mobile_no'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Address</strong></td>
+                                    <td><strong>Property Address</strong></td>
                                     <td>{{ $details['customer_address'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Mobile</strong></td>
-                                    <td>{{ $details['customer_mobile_no'] }}</td>
+                                    <td><strong>Service Date</strong></td>
+                                    <td>{{ $service_date }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Service Time</strong></td>
+                                    <td>{{ $service_time }}</td>
                                 </tr>
 
                                 <tr>
@@ -104,7 +111,7 @@
 
                             <hr>
 
-                            <h3>Bathroom Cleaning Checklist</h3>
+                            <h3>STANDARD BATHROOM CLEANING CHECKLIST</h3>
 
                             <ul>
 
@@ -132,7 +139,7 @@
 
                             <hr>
 
-                            <h3>Special Offer</h3>
+                            <h3>SPECIAL OFFER</h3>
 
                             <table width="100%" cellpadding="12" style="background:#f8f8f8;border:1px solid #ddd;">
 
@@ -155,35 +162,91 @@
 
                             <hr>
 
-                            <h3>Important Information</h3>
+                            <h3>IMPORTANT NOTES</h3>
+
+                            <p>
+                                Any cancellation or rescheduling request must be made at least
+                                24 hours prior to the scheduled service time.
+                            </p>
+
+                            <p>
+                                Requests made with less than 24 hours' notice may be subject to
+                                cancellation charges.
+                            </p>
+
+                            <p>
+                                If you need to make any changes to your booking, please contact
+                                us as soon as possible.
+                            </p>
+
+                            <hr>
+
+                            <h3>PARKING REQUIREMENT</h3>
+
+                            <p>
+                                To ensure our team can arrive and begin the service on time,
+                                please ensure suitable parking is available for our cleaning
+                                vehicle at or near the property.
+                            </p>
+
+                            <p>
+                                Parking arrangements and any applicable parking costs are the
+                                customer's responsibility. If a permit or other parking
+                                arrangement is required, please have this organised prior to
+                                our arrival.
+                            </p>
+
+                            <hr>
+
+                            <h3>PAYMENT POLICY</h3>
 
                             <ul>
 
                                 <li>
-                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at least 24 hours before the booking date, no charges will apply. If you cancel or reschedule within 24 hours of the booking date, a $60 fine will be charged.
+                                    No deposit is required to secure your booking.
+                                </li>
+
+                                <li>
+                                    Payment is due upon completion of the service and can be
+                                    made on arrival.
                                 </li>
 
                             </ul>
 
+                            <hr>
+
+                            <h3>CONTACT DETAILS</h3>
+
                             <p>
-                                If you need any assistance,
-                                please contact us.
+                                Phone: 0468 406 085
+                            </p>
+
+                            <p>
+                                Email: info@cleanwithpro.com.au
                             </p>
 
                             <br>
 
-                            Regards,
-                            <br>
-
-                            <strong>{{ App_Name() }}</strong>
-
-                            <br>
-
-                            {{ Setting_Data()['contact'] ?? '' }}
+                            <p>
+                                Thank you for choosing Clean With Professionals.
+                                We appreciate your business and look forward to providing
+                                you with a professional and high-quality cleaning service.
+                            </p>
 
                             <br>
 
-                            {{ Setting_Data()['email'] ?? '' }}
+                            Kind regards,
+                            <br>
+
+                            <strong>Clean With Professionals</strong>
+
+                            <br>
+
+                            0468 406 085
+
+                            <br>
+
+                            info@cleanwithpro.com.au
 
                         </td>
                     </tr>
