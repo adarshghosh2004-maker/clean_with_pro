@@ -75,7 +75,7 @@
 
                                 <tr>
                                     <td><strong>Service</strong></td>
-                                    <td>Oven Cleaning</td>
+                                    <td>Standard Oven Cleaning</td>
                                 </tr>
 
                                 <tr>
@@ -110,21 +110,21 @@
 
                             <hr>
 
-                            <h3>Standard Oven Cleaning Checklist</h3>
+                            <h3>STANDARD OVEN CLEANING CHECKLIST</h3>
 
                             <ul>
 
                                 <li>Deep cleaning of oven interior</li>
 
-                                <li>Oven door cleaning inside & outside</li>
+                                <li>Oven door cleaning – inside & outside</li>
 
                                 <li>Oven glass detailing</li>
 
-                                <li>Removal of grease and burnt residue</li>
+                                <li>Removal of grease & burnt residue</li>
 
                                 <li>Cleaning oven racks & trays</li>
 
-                                <li>Wipe down of exterior surfaces</li>
+                                <li>Wipe-down of exterior surfaces</li>
 
                                 <li>Degreasing around oven edges</li>
 
@@ -133,7 +133,12 @@
 
                             <hr>
 
-                            <h3>FREE Rangehood Cleaning Service Includes</h3>
+                            <h3>FREE RANGEHOOD CLEANING SERVICE INCLUDED</h3>
+
+                            <p>
+                                As part of your booking, we are pleased to provide a
+                                FREE Rangehood Cleaning Service, including:
+                            </p>
 
                             <ul>
 
@@ -143,53 +148,72 @@
 
                                 <li>Cleaning underneath and surrounding areas</li>
 
-                                <li>Exterior wipe down and detailing</li>
+                                <li>Exterior wipe-down and detailing</li>
 
-                                <li>Removal of built-up oil, dust and grime</li>
+                                <li>Removal of built-up oil, dust & grime</li>
 
                             </ul>
 
 
                             <hr>
 
-                            <h3>Important Information</h3>
+                            <h3>PARKING REQUIREMENT</h3>
 
-                            <ul>
+                            <p>
+                                To ensure our team can arrive and begin the service on time,
+                                please ensure suitable parking is available for our cleaning
+                                vehicle at or near the property.
+                            </p>
 
-                                <li>
-                                    Please ensure electricity/light remains on during service.
-                                </li>
+                            <p>
 
-                                <li>
-                                    Oven must be in working condition and able to heat properly.
-                                </li>
 
-                                <li>
-                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at least 24 hours before the booking date, no charges will apply. If you cancel or reschedule within 24 hours of the booking date, a $60 fine will be charged.
-                                </li>
+                                Parking arrangements and any applicable parking costs are the
+                                customer's responsibility. If a permit or other parking
+                                arrangement is required, please have this organised prior to
+                                our arrival.
+                            </p>
 
-                            </ul>
+                            <hr>
+
+                            <h3>CANCELLATION & RESCHEDULING POLICY</h3>
+
+                            <p>
+                                Any cancellation or rescheduling request must be made at least
+                                24 hours prior to the scheduled service time.
+                            </p>
+
+                            <p>
+                                Requests made with less than 24 hours' notice may be subject to
+                                cancellation charges.
+                            </p>
+
+                            <p>
+                                If you need to make any changes to your booking, please contact
+                                us as soon as possible.
+                            </p>
 
 
                             <p>
-                                If you need any assistance,
-                                please contact us.
+                                Thank you for choosing Clean With Professionals.
+                                We appreciate your business and look forward to providing
+                                you with a professional and high-quality cleaning service.
                             </p>
 
                             <br>
 
-                            Regards,
+                            Kind regards,
                             <br>
 
-                            <strong>{{ App_Name() }}</strong>
-
-                            <br>
-
-                            {{ Setting_Data()['contact'] ?? '' }}
+                            <strong>Clean With Professionals</strong>
 
                             <br>
 
-                            {{ Setting_Data()['email'] ?? '' }}
+                            0468 406 085
+
+                            <br>
+
+                            info@cleanwithpro.com.au
 
                         </td>
                     </tr>
