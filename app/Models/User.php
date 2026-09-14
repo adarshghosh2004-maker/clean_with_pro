@@ -30,6 +30,7 @@ class User extends Authenticatable
         'amount' => 'integer',
         'booked_hours' => 'integer',
         'booked_service' => 'string',
+        'carpet_rooms_booked' => 'integer',
         'status' => 'integer',
     ];
 

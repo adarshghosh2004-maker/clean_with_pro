@@ -77,6 +77,14 @@
                                     <td>Carpet Steam Cleaning</td>
                                 </tr>
 
+                                @if(!empty($details['carpet_rooms_booked']))
+                                    <tr>
+                                        <td><strong>Number of Carpeted Rooms Booked</strong></td>
+                                        <td>{{ $details['carpet_rooms_booked'] }} Carpeted
+                                            Room{{ $details['carpet_rooms_booked'] > 1 ? 's' : '' }}</td>
+                                    </tr>
+                                @endif
+
                                 <tr>
                                     <td><strong>Address</strong></td>
                                     <td>{{ $details['customer_address'] }}</td>
@@ -161,7 +169,9 @@
                                 </li>
 
                                 <li>
-                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at least 24 hours before the booking date, no charges will apply. If you cancel or reschedule within 24 hours of the booking date, a $60 fine will be charged.
+                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at
+                                    least 24 hours before the booking date, no charges will apply. If you cancel or
+                                    reschedule within 24 hours of the booking date, a $60 fine will be charged.
                                 </li>
 
                             </ul>

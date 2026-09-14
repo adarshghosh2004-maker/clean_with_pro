@@ -356,6 +356,7 @@ class Common extends Model
                         'customer_address' => $array['suburb'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
+                        'carpet_rooms_booked' => $array['carpet_rooms_booked'] ?? '',
                         'view' => 'mail.carpet',
                     ];
                 } else if ($type == 7) {

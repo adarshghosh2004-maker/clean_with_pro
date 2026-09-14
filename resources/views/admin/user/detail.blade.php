@@ -220,6 +220,16 @@
 								placeholder="e.g. 2 BEDROOMS + 1 BATHROOM + 3 ROOMS CARPET + GARAGE">
 						</div>
 						@endif
+
+						@if($quote->service_id == 8)
+						{{-- Carpet Steam Cleaning – Number of Carpeted Rooms Booked --}}
+						<div class="col-md-4 detail-field" id="carpet_rooms_wrapper">
+							<label>Number of Carpeted Rooms Booked</label>
+							<input type="number" name="carpet_rooms_booked" class="form-control"
+								value="{{ old('carpet_rooms_booked', $quote->carpet_rooms_booked) }}"
+								min="1" placeholder="e.g. 3 Carpeted Rooms">
+						</div>
+						@endif
 					</div>
 
 					{{-- Reply Message (editable) --}}
@@ -298,6 +308,10 @@
 				$('#booked_hours_wrapper').toggle($(this).val() == 1);
 			});
 			@endif
+
+			$('select[name="service_id"]').on('change', function () {
+				$('#carpet_rooms_wrapper').toggle($(this).val() == 8);
+			});
 
 			var serviceTitleMap = {};
 			$('select[name="service_id"] option').each(function () {
