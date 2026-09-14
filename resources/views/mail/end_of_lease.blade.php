@@ -77,10 +77,10 @@
                                 </tr>
 
                                 @if(!empty($details['booked_service']))
-                                <tr>
-                                    <td><strong>Service Booked</strong></td>
-                                    <td>{{ $details['booked_service'] }}</td>
-                                </tr>
+                                    <tr>
+                                        <td><strong>Service Booked</strong></td>
+                                        <td>{{ $details['booked_service'] }}</td>
+                                    </tr>
                                 @endif
 
                                 <tr>
@@ -189,15 +189,11 @@
                                 <li>Pet hair removal is best effort only</li>
                                 <li>Customer to arrange parking</li>
                                 <li>Payment on arrival</li>
-                            </ul>
-
-                            <hr>
-
-                            <h3>Cancellation Policy</h3>
-
-                            <ul>
-                                <li>If customer cancels/reschedules at least 24 hours before booking date, no charges apply.</li>
-                                <li>Within 24 hours, $60 fine applies.</li>
+                                <li>
+                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at
+                                    least 24 hours before the booking date, no charges will apply. If you cancel or
+                                    reschedule within 24 hours of the booking date, a $60 fine will be charged.
+                                </li>
                             </ul>
 
                             <hr>

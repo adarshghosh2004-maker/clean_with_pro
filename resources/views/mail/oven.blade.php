@@ -42,14 +42,13 @@
                             </p>
 
                             <p>
-                                Thank you for choosing
-                                <strong>{{ App_Name() }}</strong>
-                                for your cleaning service.
+                                Thank you for booking your cleaning service with
+                                <strong>{{ App_Name() }}.</strong>
                             </p>
 
                             <p>
-                                Your booking has been confirmed.
-                                Please find your booking details below:
+                                We are pleased to confirm your upcoming service. Please find your booking details and
+                                service inclusions below:
                             </p>
 
                             <hr>
@@ -97,19 +96,6 @@
 
                             <hr>
 
-                            <h3>Service Booked</h3>
-
-                            <p>
-                                Standard Oven Cleaning + FREE Rangehood Cleaning
-                            </p>
-
-                            <p>
-                                <strong>Total Amount:</strong>
-                                ${{ $details['service_cost'] }}
-                            </p>
-
-                            <hr>
-
                             <h3>STANDARD OVEN CLEANING CHECKLIST</h3>
 
                             <ul>
@@ -137,7 +123,7 @@
 
                             <p>
                                 As part of your booking, we are pleased to provide a
-                                FREE Rangehood Cleaning Service, including:
+                                <strong>FREE Rangehood Cleaning Service</strong>, including:
                             </p>
 
                             <ul>
@@ -161,15 +147,15 @@
 
                             <p>
                                 To ensure our team can arrive and begin the service on time,
-                                please ensure suitable parking is available for our cleaning
-                                vehicle at or near the property.
+                                <strong>please ensure suitable parking is available for our cleaning
+                                    vehicle at or near the property.</strong>
                             </p>
 
                             <p>
 
 
                                 Parking arrangements and any applicable parking costs are the
-                                customer's responsibility. If a permit or other parking
+                                <strong>customer's responsibility.</strong> If a permit or other parking
                                 arrangement is required, please have this organised prior to
                                 our arrival.
                             </p>
@@ -179,13 +165,13 @@
                             <h3>CANCELLATION & RESCHEDULING POLICY</h3>
 
                             <p>
-                                Any cancellation or rescheduling request must be made at least
-                                24 hours prior to the scheduled service time.
+                                Any cancellation or rescheduling request must be made <strong>at least
+                                    24 hours prior to the scheduled service time.</strong>
                             </p>
 
                             <p>
                                 Requests made with less than 24 hours' notice may be subject to
-                                cancellation charges.
+                                <strong>cancellation charges.</strong>
                             </p>
 
                             <p>
@@ -195,7 +181,7 @@
 
 
                             <p>
-                                Thank you for choosing Clean With Professionals.
+                                Thank you for choosing <strong>Clean With Professionals.</strong>
                                 We appreciate your business and look forward to providing
                                 you with a professional and high-quality cleaning service.
                             </p>

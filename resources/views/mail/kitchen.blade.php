@@ -42,14 +42,13 @@
                             </p>
 
                             <p>
-                                Thank you for choosing
-                                <strong>{{ App_Name() }}</strong>
-                                for your cleaning service.
+                                Thank you for booking your cleaning service with
+                                <strong>{{ App_Name() }}.</strong>
                             </p>
 
                             <p>
-                                Your booking has been confirmed.
-                                Please find your booking details below:
+                                We are pleased to confirm your upcoming kitchen cleaning service. Please find your
+                                booking details and service inclusions below:
                             </p>
 
                             <hr>
@@ -99,11 +98,18 @@
 
                             <h3>KITCHEN DEEP CLEANING INCLUDES</h3>
 
+                            <p>
+                                Our professional kitchen deep cleaning service is designed to remove built-up grease,
+                                food residue, dust and grime, leaving your kitchen fresh, clean and hygienic.
+                            </p>
+
+                            <h4>Our Deep Clean Includes:</h4>
+
                             <ul>
 
                                 <li>Kitchen benchtops – deep cleaned and degreased</li>
 
-                                <li>Standard oven cleaning – interior, door, glass, racks & trays</li>
+                                <li><strong>Standard oven cleaning – interior, door, glass, racks & trays</strong></li>
 
                                 <li>Cooktop & stovetop – detailed cleaning and removal of built-up grease</li>
 
@@ -134,12 +140,12 @@
                             <ul>
 
                                 <li>
-                                    No deposit is required to secure your booking.
+                                    <strong>No deposit is required to secure your booking.</strong>
                                 </li>
 
                                 <li>
-                                    Payment is due upon completion of the service and can be
-                                    made on arrival.
+                                    <strong>Payment is due upon completion of the service and can be
+                                        made on arrival.</strong>
                                 </li>
 
                             </ul>
@@ -150,13 +156,13 @@
 
                             <p>
                                 To ensure our team can arrive and begin the service on time,
-                                please ensure suitable parking is available for our cleaning
-                                vehicle at or near the property.
+                                <strong>please ensure suitable parking is available for our cleaning
+                                    vehicle at or near the property.</strong>
                             </p>
 
                             <p>
                                 Parking arrangements and any applicable parking costs are the
-                                customer's responsibility. If a permit or other parking
+                                <strong>customer's responsibility.</strong> If a permit or other parking
                                 arrangement is required, please have this organised prior to
                                 our arrival.
                             </p>
@@ -166,13 +172,13 @@
                             <h3>CANCELLATION & RESCHEDULING POLICY</h3>
 
                             <p>
-                                Any cancellation or rescheduling request must be made at least
-                                24 hours prior to the scheduled service time.
+                                Any cancellation or rescheduling request must be made <strong>at least
+                                    24 hours prior to the scheduled service time.</strong>
                             </p>
 
                             <p>
                                 Requests made with less than 24 hours' notice may be subject to
-                                cancellation charges.
+                                <strong>cancellation charges.</strong>
                             </p>
 
                             <p>
@@ -182,20 +188,8 @@
 
                             <hr>
 
-                            <h3>CONTACT DETAILS</h3>
-
                             <p>
-                                Phone: 0468 406 085
-                            </p>
-
-                            <p>
-                                Email: info@cleanwithpro.com.au
-                            </p>
-
-                            <br>
-
-                            <p>
-                                Thank you for choosing Clean With Professionals.
+                                Thank you for choosing <strong>Clean With Professionals.</strong>
                                 We appreciate your business and look forward to providing
                                 you with a professional and high-quality cleaning service.
                             </p>

@@ -102,7 +102,7 @@
                                 @if(!empty($details['carpet_rooms_booked']))
                                     <tr>
                                         <td><strong>Area / Number of Carpeted Rooms to be Cleaned</strong></td>
-                                        <td>{{ $details['carpet_rooms_booked'] }}</td>
+                                        <td>{{ $details['carpet_rooms_booked'] }} Rooms</td>
                                     </tr>
                                 @endif
 
@@ -113,7 +113,7 @@
                             <h3>SERVICE BOOKED</h3>
 
                             <p>
-                                Carpet Steam Cleaning
+                                <strong>Carpet Steam Cleaning</strong>
                             </p>
 
                             <hr>
@@ -138,56 +138,52 @@
 
                             <hr>
 
-                            <h3>IMPORTANT NOTES</h3>
+                            <h3>PAYMENT POLICY</h3>
 
                             <ul>
 
                                 <li>
-                                    We do not guarantee complete pet hair removal,
-                                    however best possible techniques will be used.
+                                    <strong>No deposit is required to secure your booking.</strong>
                                 </li>
 
                                 <li>
-                                    Heavy pet hair removal or hand scrubbing
-                                    may require additional charges.
-                                </li>
-
-                                <li>
-                                    Some old, permanent or chemical stains
-                                    may not be fully removable.
-                                </li>
-
-                                <li>
-                                    We are not responsible for existing
-                                    carpet wear or discolouration.
-                                </li>
-
-                                <li>
-                                    Furniture marks or shade differences
-                                    may remain after cleaning.
-                                </li>
-
-                                <li>
-                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at
-                                    least 24 hours before the booking date, no charges will apply. If you cancel or
-                                    reschedule within 24 hours of the booking date, a $60 fine will be charged.
+                                    <strong>Payment is due upon completion of the service and can be
+                                        made on arrival.</strong>
                                 </li>
 
                             </ul>
 
                             <hr>
 
-                            <h3>PAYMENT POLICY</h3>
+                            <h3>IMPORTANT NOTES</h3>
 
                             <ul>
 
                                 <li>
-                                    No deposit is required to secure your booking.
+                                    We do not guarantee 100% removal of pet hair, but we will use the best possible
+                                    techniques to achieve maximum results.
                                 </li>
 
                                 <li>
-                                    Payment is due upon completion of the service and can be
-                                    made on arrival.
+                                    If heavy pet hair removal or hand scrubbing is required, it will be charged as an
+                                    additional service.
+                                </li>
+
+                                <li>
+                                    Some stains (old, permanent, or chemical) may not be fully removable.
+                                </li>
+
+                                <li>
+                                    We are not responsible for pre-existing discolouration or carpet wear.
+                                </li>
+
+                                <li>
+                                    Furniture marks or shade differences may remain after cleaning.
+                                </li>
+
+                                <li>
+                                    Any cancellation or rescheduling must be advised at least 24 hours before the
+                                    booking time.
                                 </li>
 
                             </ul>
@@ -195,24 +191,6 @@
                             <hr>
 
                             <h3>CONTACT DETAILS</h3>
-
-                            <p>
-                                Phone: 0468 406 085
-                            </p>
-
-                            <p>
-                                Email: info@cleanwithpro.com.au
-                            </p>
-
-                            <br>
-
-                            <p>
-                                Thank you for choosing Clean With Professionals.
-                                We appreciate your business and look forward to providing
-                                you with a professional and high-quality cleaning service.
-                            </p>
-
-                            <br>
 
                             Kind regards,
                             <br>
@@ -226,6 +204,10 @@
                             <br>
 
                             info@cleanwithpro.com.au
+
+                            <p>
+                                Thank you for booking with <strong>Clean With Professionals.</strong>
+                            </p>
 
                         </td>
                     </tr>

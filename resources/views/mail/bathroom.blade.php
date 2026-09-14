@@ -185,13 +185,13 @@
 
                             <p>
                                 To ensure our team can arrive and begin the service on time,
-                                please ensure suitable parking is available for our cleaning
-                                vehicle at or near the property.
+                                <strong>please ensure suitable parking is available for our cleaning
+                                    vehicle at or near the property.</strong>
                             </p>
 
                             <p>
                                 Parking arrangements and any applicable parking costs are the
-                                customer's responsibility. If a permit or other parking
+                                <strong>customer's responsibility.</strong> If a permit or other parking
                                 arrangement is required, please have this organised prior to
                                 our arrival.
                             </p>
@@ -203,12 +203,12 @@
                             <ul>
 
                                 <li>
-                                    No deposit is required to secure your booking.
+                                    <strong>No deposit is required to secure your booking.</strong>
                                 </li>
 
                                 <li>
-                                    Payment is due upon completion of the service and can be
-                                    made on arrival.
+                                    <strong>Payment is due upon completion of the service and can be
+                                        made on arrival.</strong>
                                 </li>
 
                             </ul>
@@ -216,6 +216,10 @@
                             <hr>
 
                             <h3>CONTACT DETAILS</h3>
+
+                            <strong>Clean With Professionals</strong>
+
+                            <br>
 
                             <p>
                                 Phone: 0468 406 085
@@ -228,26 +232,9 @@
                             <br>
 
                             <p>
-                                Thank you for choosing Clean With Professionals.
-                                We appreciate your business and look forward to providing
-                                you with a professional and high-quality cleaning service.
+                                <strong>Thank you for booking with Clean With Professionals.</strong>
                             </p>
-
-                            <br>
-
-                            Kind regards,
-                            <br>
-
-                            <strong>Clean With Professionals</strong>
-
-                            <br>
-
-                            0468 406 085
-
-                            <br>
-
-                            info@cleanwithpro.com.au
-
+                            
                         </td>
                     </tr>
 
