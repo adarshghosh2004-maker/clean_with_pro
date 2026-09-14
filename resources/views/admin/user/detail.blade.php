@@ -157,6 +157,17 @@
 					</div>
 				</div>
 				{{-- ── Editable Fields Card ── --}}
+				@php
+					$bookedServiceKeywords = ['move in', 'move out', 'end of lease'];
+					$selectedServiceTitle = strtolower(trim($quote->service?->title ?? ''));
+					$showBookedService = false;
+					foreach ($bookedServiceKeywords as $keyword) {
+						if ($selectedServiceTitle !== '' && strpos($selectedServiceTitle, $keyword) !== false) {
+							$showBookedService = true;
+							break;
+						}
+					}
+				@endphp
 				<div class="detail-card">
 					<h5>{{ __('label.update_quote') }}</h5>
 
@@ -197,6 +208,16 @@
 							</select>
 							<input type="number" id="booked_hours_custom_input" class="form-control mt-2 d-none" min="1" placeholder="Enter hours">
 							<input type="hidden" name="booked_hours" id="booked_hours_value" value="{{ $quote->booked_hours ?? '' }}">
+						</div>
+						@endif
+
+						@if($showBookedService)
+						{{-- Booked Service (Move In / Move Out / End of Lease) --}}
+						<div class="col-12 detail-field" id="booked_service_wrapper">
+							<label>Booked Service</label>
+							<input type="text" name="booked_service" class="form-control"
+								value="{{ old('booked_service', $quote->booked_service) }}"
+								placeholder="e.g. 2 BEDROOMS + 1 BATHROOM + 3 ROOMS CARPET + GARAGE">
 						</div>
 						@endif
 					</div>
@@ -277,6 +298,23 @@
 				$('#booked_hours_wrapper').toggle($(this).val() == 1);
 			});
 			@endif
+
+			var serviceTitleMap = {};
+			$('select[name="service_id"] option').each(function () {
+				serviceTitleMap[this.value] = (this.text || '').trim().toLowerCase();
+			});
+
+			function isBookedServiceService(title) {
+				if (!title) return false;
+				var keywords = ['move in', 'move out', 'end of lease'];
+				return keywords.some(function (kw) {
+					return title.indexOf(kw) !== -1;
+				});
+			}
+
+			$('select[name="service_id"]').on('change', function () {
+				$('#booked_service_wrapper').toggle(isBookedServiceService(serviceTitleMap[$(this).val()] || ''));
+			});
 		});
 
 		function update_user() {
