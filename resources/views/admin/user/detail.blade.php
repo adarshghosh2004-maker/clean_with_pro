@@ -193,9 +193,8 @@
 								value="{{ old('amount', $quote->amount) }}" min="0" placeholder="{{ __('label.enter_amount') }}">
 						</div>
 
-						@if($quote->service_id == 1)
 						{{-- Domestic Cleaning – Booked Hours --}}
-						<div class="col-md-4 detail-field" id="booked_hours_wrapper">
+						<div class="col-md-4 detail-field {{ $quote->service_id == 1 ? '' : 'd-none' }}" id="booked_hours_wrapper">
 							<label>Domestic Cleaning – Booked Hours</label>
 							<select id="booked_hours_select" class="form-select">
 								<option value="">Select Hours</option>
@@ -209,27 +208,22 @@
 							<input type="number" id="booked_hours_custom_input" class="form-control mt-2 d-none" min="1" placeholder="Enter hours">
 							<input type="hidden" name="booked_hours" id="booked_hours_value" value="{{ $quote->booked_hours ?? '' }}">
 						</div>
-						@endif
 
-						@if($showBookedService)
 						{{-- Booked Service (Move In / Move Out / End of Lease) --}}
-						<div class="col-12 detail-field" id="booked_service_wrapper">
+						<div class="col-12 detail-field {{ $showBookedService ? '' : 'd-none' }}" id="booked_service_wrapper">
 							<label>Booked Service</label>
 							<input type="text" name="booked_service" class="form-control"
 								value="{{ old('booked_service', $quote->booked_service) }}"
 								placeholder="e.g. 2 BEDROOMS + 1 BATHROOM + 3 ROOMS CARPET + GARAGE">
 						</div>
-						@endif
 
-						@if($quote->service_id == 8)
 						{{-- Carpet Steam Cleaning – Number of Carpeted Rooms Booked --}}
-						<div class="col-md-4 detail-field" id="carpet_rooms_wrapper">
+						<div class="col-md-4 detail-field {{ $quote->service_id == 8 ? '' : 'd-none' }}" id="carpet_rooms_wrapper">
 							<label>Number of Carpeted Rooms Booked</label>
 							<input type="number" name="carpet_rooms_booked" class="form-control"
 								value="{{ old('carpet_rooms_booked', $quote->carpet_rooms_booked) }}"
 								min="1" placeholder="e.g. 3 Carpeted Rooms">
 						</div>
-						@endif
 					</div>
 
 					{{-- Reply Message (editable) --}}
@@ -269,10 +263,18 @@
 				width: '100%'
 			});
 
-			@if($quote->service_id == 1)
 			var $bhs = $('#booked_hours_select');
 			var $bhInput = $('#booked_hours_custom_input');
 			var $bhValue = $('#booked_hours_value');
+
+			function initBookedHoursSelect() {
+				if ($bhs.length && $('#booked_hours_wrapper').is(':visible') && !$bhs.data('select2')) {
+					$bhs.select2({
+						minimumResultsForSearch: Infinity,
+						width: '100%'
+					});
+				}
+			}
 
 			if ($bhs.length) {
 				var savedVal = $bhValue.val();
@@ -283,11 +285,6 @@
 					$bhs.val('custom');
 					$bhInput.removeClass('d-none').val(savedVal);
 				}
-
-				$bhs.select2({
-					minimumResultsForSearch: Infinity,
-					width: '100%'
-				});
 
 				$bhs.on('change', function () {
 					if ($(this).val() === 'custom') {
@@ -304,15 +301,6 @@
 				});
 			}
 
-			$('select[name="service_id"]').on('change', function () {
-				$('#booked_hours_wrapper').toggle($(this).val() == 1);
-			});
-			@endif
-
-			$('select[name="service_id"]').on('change', function () {
-				$('#carpet_rooms_wrapper').toggle($(this).val() == 8);
-			});
-
 			var serviceTitleMap = {};
 			$('select[name="service_id"] option').each(function () {
 				serviceTitleMap[this.value] = (this.text || '').trim().toLowerCase();
@@ -326,9 +314,27 @@
 				});
 			}
 
-			$('select[name="service_id"]').on('change', function () {
-				$('#booked_service_wrapper').toggle(isBookedServiceService(serviceTitleMap[$(this).val()] || ''));
-			});
+			function syncServiceFields() {
+				var $service = $('select[name="service_id"]');
+				var value = $service.val();
+				var title = serviceTitleMap[value] || '';
+
+				$('#booked_hours_wrapper').addClass('d-none');
+				$('#booked_service_wrapper').addClass('d-none');
+				$('#carpet_rooms_wrapper').addClass('d-none');
+
+				if (value == 1) {
+					$('#booked_hours_wrapper').removeClass('d-none');
+					initBookedHoursSelect();
+				} else if (isBookedServiceService(title)) {
+					$('#booked_service_wrapper').removeClass('d-none');
+				} else if (value == 8) {
+					$('#carpet_rooms_wrapper').removeClass('d-none');
+				}
+			}
+
+			$('select[name="service_id"]').on('change', syncServiceFields);
+			syncServiceFields();
 		});
 
 		function update_user() {
