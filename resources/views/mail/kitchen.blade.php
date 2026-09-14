@@ -16,6 +16,7 @@
                     style="background:#ffffff;border:1px solid #e5e5e5;">
 
                     <!-- Header -->
+
                     <tr>
                         <td align="center" style="background:#4e45b8;padding:25px;color:#ffffff;">
 
@@ -24,7 +25,7 @@
                             </h1>
 
                             <p style="margin:10px 0 0;">
-                                Booking Confirmation
+                                BOOKING CONFIRMATION
                             </p>
 
                         </td>
@@ -42,53 +43,53 @@
 
                             <p>
                                 Thank you for choosing
-                                <strong>{{ App_Name() }}</strong>.
+                                <strong>{{ App_Name() }}</strong>
+                                for your cleaning service.
                             </p>
 
                             <p>
-                                Your booking details are below:
+                                Your booking has been confirmed.
+                                Please find your booking details below:
                             </p>
 
-
                             <hr>
-
 
                             <h3>Booking Details</h3>
 
                             <table width="100%" cellpadding="8">
 
                                 <tr>
-                                    <td><strong>Customer</strong></td>
+                                    <td><strong>Customer Name</strong></td>
                                     <td>{{ $details['customer_name'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Booking No</strong></td>
+                                    <td><strong>Booking Number</strong></td>
                                     <td>{{ $details['booking_number'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Date & Time</strong></td>
+                                    <td><strong>Booking Date & Time</strong></td>
                                     <td>{{ $details['date'] }}</td>
                                 </tr>
 
                                 <tr>
                                     <td><strong>Service</strong></td>
-                                    <td>Kitchen Cleaning</td>
+                                    <td>Kitchen Deep Cleaning</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Address</strong></td>
+                                    <td><strong>Property Address</strong></td>
                                     <td>{{ $details['customer_address'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Mobile</strong></td>
+                                    <td><strong>Customer Mobile Number</strong></td>
                                     <td>{{ $details['customer_mobile_no'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Service Cost</strong></td>
+                                    <td><strong>Quote Amount</strong></td>
                                     <td>${{ $details['service_cost'] }}</td>
                                 </tr>
 
@@ -96,72 +97,123 @@
 
                             <hr>
 
-                            <h3>Kitchen Cleaning Checklist</h3>
+                            <h3>KITCHEN DEEP CLEANING INCLUDES</h3>
 
                             <ul>
 
-                                <li>Oven cleaning</li>
+                                <li>Kitchen benchtops – deep cleaned and degreased</li>
 
-                                <li>Stovetop and burner cleaning</li>
+                                <li>Standard oven cleaning – interior, door, glass, racks & trays</li>
 
-                                <li>Rangehood exterior cleaning</li>
+                                <li>Cooktop & stovetop – detailed cleaning and removal of built-up grease</li>
 
-                                <li>Splashback cleaning</li>
+                                <li>Splashback – thoroughly cleaned and degreased</li>
 
-                                <li>Sink and tap cleaning</li>
+                                <li>Kitchen sink & taps – cleaned and polished</li>
 
-                                <li>Bench-top cleaning</li>
+                                <li>Kitchen cabinets & drawers – exterior cleaning and detailing</li>
 
-                                <li>Cabinet exterior cleaning</li>
+                                <li>Rangehood – exterior cleaning and degreasing</li>
 
-                                <li>Switch and handle cleaning</li>
+                                <li>Appliances – exterior surfaces wiped and detailed</li>
 
-                                <li>Vacuum and floor mopping</li>
+                                <li>Removal of visible grease, food residue and grime</li>
+
+                                <li>Cleaning around kitchen edges, corners and accessible areas</li>
+
+                                <li>Kitchen floor – vacuumed/swept and mopped</li>
+
+                                <li>Final wipe-down and detailing for a fresh, clean finish</li>
 
                             </ul>
-
 
                             <hr>
 
-                            <h3>Important Information</h3>
+                            <h3>PAYMENT POLICY</h3>
 
                             <ul>
 
                                 <li>
-                                    Cupboards should be empty if inside
-                                    cleaning is required.
+                                    No deposit is required to secure your booking.
                                 </li>
 
                                 <li>
-                                    Oven should be operational before service.
-                                </li>
-
-                                <li>
-                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at least 24 hours before the booking date, no charges will apply. If you cancel or reschedule within 24 hours of the booking date, a $60 fine will be charged.
+                                    Payment is due upon completion of the service and can be
+                                    made on arrival.
                                 </li>
 
                             </ul>
 
+                            <hr>
+
+                            <h3>PARKING REQUIREMENT</h3>
 
                             <p>
-                                If you have any questions,
-                                please contact us.
+                                To ensure our team can arrive and begin the service on time,
+                                please ensure suitable parking is available for our cleaning
+                                vehicle at or near the property.
+                            </p>
+
+                            <p>
+                                Parking arrangements and any applicable parking costs are the
+                                customer's responsibility. If a permit or other parking
+                                arrangement is required, please have this organised prior to
+                                our arrival.
+                            </p>
+
+                            <hr>
+
+                            <h3>CANCELLATION & RESCHEDULING POLICY</h3>
+
+                            <p>
+                                Any cancellation or rescheduling request must be made at least
+                                24 hours prior to the scheduled service time.
+                            </p>
+
+                            <p>
+                                Requests made with less than 24 hours' notice may be subject to
+                                cancellation charges.
+                            </p>
+
+                            <p>
+                                If you need to make any changes to your booking, please contact
+                                us as soon as possible.
+                            </p>
+
+                            <hr>
+
+                            <h3>CONTACT DETAILS</h3>
+
+                            <p>
+                                Phone: 0468 406 085
+                            </p>
+
+                            <p>
+                                Email: info@cleanwithpro.com.au
                             </p>
 
                             <br>
 
-                            Regards,
-                            <br>
-
-                            <strong>{{ App_Name() }}</strong>
-
-                            <br>
-
-                            {{ Setting_Data()['contact'] ?? '' }}
+                            <p>
+                                Thank you for choosing Clean With Professionals.
+                                We appreciate your business and look forward to providing
+                                you with a professional and high-quality cleaning service.
+                            </p>
 
                             <br>
 
-                            {{ Setting_Data()['email'] ?? '' }}
+                            Kind regards,
+                            <br>
+
+                            <strong>Clean With Professionals</strong>
+
+                            <br>
+
+                            0468 406 085
+
+                            <br>
+
+                            info@cleanwithpro.com.au
 
                         </td>
                     </tr>
@@ -170,15 +222,14 @@
                     <!-- Footer -->
 
                     <tr>
-
                         <td align="center" style="padding:20px;background:#fafafa;color:#777;font-size:13px;">
 
                             Copyright ©
                             {{ Setting_Data()['company_name'] ?? "Clean With Professionals" }}
-                            2026
+                            2026.
+                            All rights reserved.
 
                         </td>
-
                     </tr>
 
                 </table>
