@@ -8,6 +8,12 @@
 
 <body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
 
+    @php
+        $bookingParts = explode(' ', $details['date'], 2);
+        $service_date = trim($bookingParts[0] ?? $details['date']);
+        $service_time = trim($bookingParts[1] ?? '');
+    @endphp
+
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
             <td align="center">
@@ -25,7 +31,7 @@
                             </h1>
 
                             <p style="margin:10px 0 0;">
-                                Booking Confirmation
+                                BOOKING CONFIRMATION
                             </p>
 
                         </td>
@@ -48,7 +54,8 @@
                             </p>
 
                             <p>
-                                Your booking details are below:
+                                Your booking has been confirmed.
+                                Please find your booking details below:
                             </p>
 
                             <hr>
@@ -58,40 +65,33 @@
                             <table width="100%" cellpadding="8">
 
                                 <tr>
-                                    <td><strong>Customer</strong></td>
-                                    <td>{{ $details['customer_name'] }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td><strong>Booking No</strong></td>
+                                    <td><strong>Booking Number</strong></td>
                                     <td>{{ $details['booking_number'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Date & Time</strong></td>
-                                    <td>{{ $details['date'] }}</td>
+                                    <td><strong>Customer Name</strong></td>
+                                    <td>{{ $details['customer_name'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Service</strong></td>
-                                    <td>Carpet Steam Cleaning</td>
+                                    <td><strong>Contact Number</strong></td>
+                                    <td>{{ $details['customer_mobile_no'] }}</td>
                                 </tr>
 
-                                @if(!empty($details['carpet_rooms_booked']))
-                                    <tr>
-                                        <td><strong>Number of Carpeted Rooms Booked</strong></td>
-                                        <td>{{ $details['carpet_rooms_booked'] }} Room{{ $details['carpet_rooms_booked'] > 1 ? 's' : '' }}</td>
-                                    </tr>
-                                @endif
-
                                 <tr>
-                                    <td><strong>Address</strong></td>
+                                    <td><strong>Property Address</strong></td>
                                     <td>{{ $details['customer_address'] }}</td>
                                 </tr>
 
                                 <tr>
-                                    <td><strong>Mobile</strong></td>
-                                    <td>{{ $details['customer_mobile_no'] }}</td>
+                                    <td><strong>Service Date</strong></td>
+                                    <td>{{ $service_date }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Service Time</strong></td>
+                                    <td>{{ $service_time }}</td>
                                 </tr>
 
                                 <tr>
@@ -99,11 +99,18 @@
                                     <td>${{ $details['service_cost'] }}</td>
                                 </tr>
 
+                                @if(!empty($details['carpet_rooms_booked']))
+                                    <tr>
+                                        <td><strong>Area / Number of Carpeted Rooms to be Cleaned</strong></td>
+                                        <td>{{ $details['carpet_rooms_booked'] }}</td>
+                                    </tr>
+                                @endif
+
                             </table>
 
                             <hr>
 
-                            <h3>Service Booked</h3>
+                            <h3>SERVICE BOOKED</h3>
 
                             <p>
                                 Carpet Steam Cleaning
@@ -111,13 +118,13 @@
 
                             <hr>
 
-                            <h3>Carpet Steam Cleaning Checklist</h3>
+                            <h3>CARPET STEAM CLEANING CHECKLIST</h3>
 
                             <ul>
 
                                 <li>Vacuuming of all carpet areas</li>
 
-                                <li>Pre-treatment of stains and high-traffic areas</li>
+                                <li>Pre-treatment of stains & high-traffic areas</li>
 
                                 <li>Deep steam extraction cleaning</li>
 
@@ -129,18 +136,11 @@
 
                             </ul>
 
-
                             <hr>
 
-                            <h3>Important Information</h3>
+                            <h3>IMPORTANT NOTES</h3>
 
                             <ul>
-
-                                <li>
-                                    Quote provided is estimated only.
-                                    Final price may vary based on carpet size,
-                                    condition and quality.
-                                </li>
 
                                 <li>
                                     We do not guarantee complete pet hair removal,
@@ -175,28 +175,61 @@
 
                             </ul>
 
+                            <hr>
+
+                            <h3>PAYMENT POLICY</h3>
+
+                            <ul>
+
+                                <li>
+                                    No deposit is required to secure your booking.
+                                </li>
+
+                                <li>
+                                    Payment is due upon completion of the service and can be
+                                    made on arrival.
+                                </li>
+
+                            </ul>
+
+                            <hr>
+
+                            <h3>CONTACT DETAILS</h3>
+
                             <p>
-                                If you need any assistance,
-                                please contact us.
+                                Phone: 0468 406 085
+                            </p>
+
+                            <p>
+                                Email: info@cleanwithpro.com.au
                             </p>
 
                             <br>
 
-                            Regards,
-                            <br>
-
-                            <strong>{{ App_Name() }}</strong>
-
-                            <br>
-
-                            {{ Setting_Data()['contact'] ?? '' }}
+                            <p>
+                                Thank you for choosing Clean With Professionals.
+                                We appreciate your business and look forward to providing
+                                you with a professional and high-quality cleaning service.
+                            </p>
 
                             <br>
 
-                            {{ Setting_Data()['email'] ?? '' }}
+                            Kind regards,
+                            <br>
+
+                            <strong>Clean With Professionals</strong>
+
+                            <br>
+
+                            0468 406 085
+
+                            <br>
+
+                            info@cleanwithpro.com.au
 
                         </td>
                     </tr>
+
 
                     <!-- Footer -->
 
