@@ -28,6 +28,7 @@ class User extends Authenticatable
         'msg' => 'string',
         'reply' => 'string',
         'amount' => 'integer',
+        'booked_hours' => 'integer',
         'status' => 'integer',
     ];
 

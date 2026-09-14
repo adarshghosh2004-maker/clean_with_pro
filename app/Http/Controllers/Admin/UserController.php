@@ -251,6 +251,7 @@ class UserController extends Controller
             $requestData['msg'] = $requestData['msg'] ?? "";
             $requestData['amount'] = $requestData['amount'] ?? 0;
             $requestData['reply'] = $requestData['reply'] ?? "";
+            $requestData['booked_hours'] = !empty($requestData['booked_hours']) ? (int) $requestData['booked_hours'] : null;
 
             $data = User::updateOrCreate(['id' => $requestData['id']], $requestData);
 

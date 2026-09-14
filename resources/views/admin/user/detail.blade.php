@@ -181,6 +181,24 @@
 							<input type="number" name="amount" class="form-control"
 								value="{{ old('amount', $quote->amount) }}" min="0" placeholder="{{ __('label.enter_amount') }}">
 						</div>
+
+						@if($quote->service_id == 1)
+						{{-- Domestic Cleaning – Booked Hours --}}
+						<div class="col-md-4 detail-field" id="booked_hours_wrapper">
+							<label>Domestic Cleaning – Booked Hours</label>
+							<select id="booked_hours_select" class="form-select">
+								<option value="">Select Hours</option>
+								<option value="2">2 Hours</option>
+								<option value="3">3 Hours</option>
+								<option value="4">4 Hours</option>
+								<option value="5">5 Hours</option>
+								<option value="6">6 Hours</option>
+								<option value="custom">Custom Hours</option>
+							</select>
+							<input type="number" id="booked_hours_custom_input" class="form-control mt-2 d-none" min="1" placeholder="Enter hours">
+							<input type="hidden" name="booked_hours" id="booked_hours_value" value="{{ $quote->booked_hours ?? '' }}">
+						</div>
+						@endif
 					</div>
 
 					{{-- Reply Message (editable) --}}
@@ -219,6 +237,46 @@
 				minimumResultsForSearch: Infinity,
 				width: '100%'
 			});
+
+			@if($quote->service_id == 1)
+			var $bhs = $('#booked_hours_select');
+			var $bhInput = $('#booked_hours_custom_input');
+			var $bhValue = $('#booked_hours_value');
+
+			if ($bhs.length) {
+				var savedVal = $bhValue.val();
+				var presets = ['2','3','4','5','6'];
+				if (savedVal && presets.indexOf(savedVal) !== -1) {
+					$bhs.val(savedVal);
+				} else if (savedVal) {
+					$bhs.val('custom');
+					$bhInput.removeClass('d-none').val(savedVal);
+				}
+
+				$bhs.select2({
+					minimumResultsForSearch: Infinity,
+					width: '100%'
+				});
+
+				$bhs.on('change', function () {
+					if ($(this).val() === 'custom') {
+						$bhInput.removeClass('d-none').focus();
+						$bhValue.val('');
+					} else {
+						$bhInput.addClass('d-none').val('');
+						$bhValue.val($(this).val());
+					}
+				});
+
+				$bhInput.on('input', function () {
+					$bhValue.val($(this).val());
+				});
+			}
+
+			$('select[name="service_id"]').on('change', function () {
+				$('#booked_hours_wrapper').toggle($(this).val() == 1);
+			});
+			@endif
 		});
 
 		function update_user() {
