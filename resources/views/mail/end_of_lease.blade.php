@@ -147,12 +147,20 @@
                                 <li>Sink & taps</li>
                             </ul>
 
+                            <strong>Laundry</strong>
+
+                            <ul>
+                                <li>Sink and taps</li>
+                                <li>Cupboard in/out</li>
+                                <li>Cobwebs and Dusting</li>
+                            </ul>
+
                             <strong>Floors</strong>
 
                             <ul>
                                 <li>Vacuum all floors</li>
                                 <li>Mop hard floors</li>
-                                <li>Carpet steam cleaning</li>
+                                <li>If Carpets added then Carpet steam cleaning</li>
                             </ul>
 
                             <hr>
@@ -181,9 +189,15 @@
                                 <li>Pet hair removal is best effort only</li>
                                 <li>Customer to arrange parking</li>
                                 <li>Payment on arrival</li>
-                                <li>
-                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at least 24 hours before the booking date, no charges will apply. If you cancel or reschedule within 24 hours of the booking date, a $60 fine will be charged.
-                                </li>
+                            </ul>
+
+                            <hr>
+
+                            <h3>Cancellation Policy</h3>
+
+                            <ul>
+                                <li>If customer cancels/reschedules at least 24 hours before booking date, no charges apply.</li>
+                                <li>Within 24 hours, $60 fine applies.</li>
                             </ul>
 
                             <hr>
