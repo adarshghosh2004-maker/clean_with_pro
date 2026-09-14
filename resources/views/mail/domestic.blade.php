@@ -73,7 +73,7 @@
 
                                 <tr>
                                     <td><strong>Service</strong></td>
-                                    <td>3 Hours Domestic Cleaning</td>
+                                    <td>@if(!empty($details['booked_hours'])){{ $details['booked_hours'] }} Hours @endif Domestic Cleaning</td>
                                 </tr>
 
                                 <tr>

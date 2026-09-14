@@ -283,6 +283,7 @@ class Common extends Model
                         'customer_address' => $array['suburb'] ?? '',
                         'customer_mobile_no' => $array['phone'] ?? '',
                         'service_cost' => $array['amount'] ?? '',
+                        'booked_hours' => $array['booked_hours'] ?? '',
                         'view' => 'mail.domestic',
                     ];
                 } else if ($type == 2) {
