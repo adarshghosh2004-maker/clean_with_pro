@@ -80,8 +80,7 @@
                                 @if(!empty($details['carpet_rooms_booked']))
                                     <tr>
                                         <td><strong>Number of Carpeted Rooms Booked</strong></td>
-                                        <td>{{ $details['carpet_rooms_booked'] }} Carpeted
-                                            Room{{ $details['carpet_rooms_booked'] > 1 ? 's' : '' }}</td>
+                                        <td>{{ $details['carpet_rooms_booked'] }} Room{{ $details['carpet_rooms_booked'] > 1 ? 's' : '' }}</td>
                                     </tr>
                                 @endif
 
