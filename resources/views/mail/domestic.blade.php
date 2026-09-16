@@ -73,7 +73,8 @@
 
                                 <tr>
                                     <td><strong>Service</strong></td>
-                                    <td>@if(!empty($details['booked_hours'])){{ $details['booked_hours'] }} Hours @endif Domestic Cleaning</td>
+                                    <td>@if(!empty($details['booked_hours'])){{ $details['booked_hours'] }} Hours @endif
+                                        Domestic Cleaning</td>
                                 </tr>
 
                                 <tr>
@@ -136,6 +137,14 @@
                                 <li>Clean toilet</li>
                             </ul>
 
+                            <strong>Laundry</strong>
+
+                            <ul>
+                                <li>Sink and taps</li>
+                                <li>Cupboard outside</li>
+                                <li>Cobwebs and Dusting</li>
+                            </ul>
+
                             <hr>
 
                             <h3>Important Information</h3>
@@ -153,7 +162,9 @@
                                 </li>
 
                                 <li>
-                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at least 24 hours before the booking date, no charges will apply. If you cancel or reschedule within 24 hours of the booking date, a $60 fine will be charged.
+                                    <strong>Cancellation Policy:</strong> If you cancel or reschedule your service at
+                                    least 24 hours before the booking date, no charges will apply. If you cancel or
+                                    reschedule within 24 hours of the booking date, a $60 fine will be charged.
                                 </li>
 
                             </ul>
