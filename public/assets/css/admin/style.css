@@ -2861,3 +2861,68 @@ div.table-responsive
     white-space: pre-line;
     min-height: 70px;
 }
+
+/* ====================================================
+   Dashboard Analytics - Responsive Layout
+   (scoped to the admin dashboard section)
+   ==================================================== */
+
+/* Chart containers must never stretch the page beyond its width */
+.chart-body {
+    width: 100%;
+    min-width: 0;
+}
+
+.chart-body .apexcharts-canvas,
+.chart-body .apexcharts-svg {
+    max-width: 100%;
+}
+
+/* Year / Month navigation bars */
+.month-nav-wrapper {
+    background-color: var(--light-color, #f8f9fa) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+}
+
+.chart-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+/* Top Services banner grid - consistent card height */
+.category-box .content-box .position-relative {
+    height: 105px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* Compact chart navigation controls on small screens */
+@media (max-width: 575.98px) {
+    .month-nav-wrapper {
+        gap: 6px;
+        padding: 8px !important;
+    }
+
+    .month-nav-wrapper .btn {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+
+    .month-nav-wrapper .h6 {
+        font-size: 15px;
+    }
+
+    .category-box .content-box .position-relative {
+        height: 90px;
+    }
+}

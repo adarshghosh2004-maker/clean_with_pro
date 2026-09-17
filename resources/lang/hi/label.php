@@ -274,6 +274,9 @@ return [
     'confirmed_quotes' => 'पुष्ट प्रस्ताव',
     'completed_quotes' => 'पूर्ण प्रस्ताव',
     'cancelled_quotes' => 'रद्द प्रस्ताव',
+    'total_earnings' => 'कुल कमाई',
+    'revenue_earnings_statistics' => 'राजस्व और कमाई आंकड़े',
+    'no_completed_service_revenue' => 'इस अवधि के लिए कोई पूर्ण सेवा राजस्व दर्ज नहीं है।',
 
     'access_denied' => 'पहुंच अस्वीकृत',
     'whoops_the_code_you_entered_seems_to_be_for_a_different_product' => 'ओह! आपने जो कोड दर्ज किया है, वह किसी अन्य उत्पाद के लिए प्रतीत होता है।',

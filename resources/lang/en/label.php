@@ -275,6 +275,9 @@ return [
     'confirmed_quotes' => 'Confirmed Quotes',
     'completed_quotes' => 'Completed Quotes',
     'cancelled_quotes' => 'Cancelled Quotes',
+    'total_earnings' => 'Total Earnings',
+    'revenue_earnings_statistics' => 'Revenue & Earnings Statistics',
+    'no_completed_service_revenue' => 'No completed service revenue recorded for this period.',
 
     'access_denied' => 'Access Denied',
     'whoops_the_code_you_entered_seems_to_be_for_a_different_product' => 'Whoops! The code you entered seems to be for a different product.',

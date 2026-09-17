@@ -20,6 +20,7 @@ use App\Models\Video;
 use App\Models\Language;
 use App\Models\Novel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Exception;
 
@@ -35,6 +36,103 @@ class DashboardController extends Controller
     public function __construct()
     {
         $this->common = new Common;
+    }
+
+    /**
+     * Base query for qualifying completed-service revenue.
+     *
+     * A row qualifies when the quote/booking (tbl_user) is marked Completed (status = 2)
+     * and belongs to a service (service_id is not null). The amount recorded is the
+     * quote's own amount (tbl_user.amount). Invoices (tbl_invoice.total) are not used
+     * because they are admin-generated documents whose total can diverge from the
+     * completed quote amount, causing inflated revenue.
+     */
+    private function revenueBaseQuery()
+    {
+        return DB::table('tbl_user as u')
+            ->where('u.status', 2)
+            ->whereNotNull('u.service_id');
+    }
+
+    /**
+     * SQL expression for the final qualifying service amount.
+     * Uses the completed quote's own amount field.
+     */
+    private function revenueAmountExpression()
+    {
+        return 'CAST(u.amount AS DECIMAL(15,2))';
+    }
+
+    /**
+     * SQL expression for the date revenue is recorded against.
+     * The service/booking date (tbl_user.date) represents when the cleaning service
+     * was performed. updated_at is deliberately avoided because it changes on any edit.
+     */
+    private function revenueDateExpression()
+    {
+        return 'u.date';
+    }
+
+    /**
+     * Total revenue for every qualifying completed service (all time).
+     */
+    private function getTotalRevenue()
+    {
+        $amountExpr = $this->revenueAmountExpression();
+
+        $row = $this->revenueBaseQuery()
+            ->selectRaw("COALESCE(SUM({$amountExpr}), 0) as total_revenue")
+            ->first();
+
+        return round((float) ($row->total_revenue ?? 0), 2);
+    }
+
+    /**
+     * Month-wise revenue for a given year (keyed to a 1-12 array).
+     */
+    private function getYearlyRevenue($year)
+    {
+        $dateExpr = $this->revenueDateExpression();
+        $amountExpr = $this->revenueAmountExpression();
+
+        $sums = $this->revenueBaseQuery()
+            ->whereRaw("YEAR({$dateExpr}) = ?", [$year])
+            ->selectRaw("MONTH({$dateExpr}) as month_num, SUM({$amountExpr}) as aggregate")
+            ->groupBy('month_num')
+            ->pluck('aggregate', 'month_num')
+            ->toArray();
+
+        $data = [];
+        for ($m = 1; $m <= 12; $m++) {
+            $data[] = round((float) ($sums[$m] ?? 0), 2);
+        }
+
+        return $data;
+    }
+
+    /**
+     * Day-wise revenue for a given month (every day of the month is represented).
+     */
+    private function getDailyRevenue($year, $month)
+    {
+        $dateExpr = $this->revenueDateExpression();
+        $amountExpr = $this->revenueAmountExpression();
+        $daysInMonth = Carbon::createFromDate($year, $month, 1)->daysInMonth;
+
+        $sums = $this->revenueBaseQuery()
+            ->whereRaw("YEAR({$dateExpr}) = ?", [$year])
+            ->whereRaw("MONTH({$dateExpr}) = ?", [$month])
+            ->selectRaw("DAY({$dateExpr}) as day_num, SUM({$amountExpr}) as aggregate")
+            ->groupBy('day_num')
+            ->pluck('aggregate', 'day_num')
+            ->toArray();
+
+        $data = [];
+        for ($d = 1; $d <= $daysInMonth; $d++) {
+            $data[] = round((float) ($sums[$d] ?? 0), 2);
+        }
+
+        return $data;
     }
 
     public function index()
@@ -101,6 +199,21 @@ class DashboardController extends Controller
             $data['top_services'] = $topServices;
 
             $data['recent_users'] = User::orderBy('created_at', 'desc')->limit(6)->get();
+
+            // Revenue / earnings - total and initial (current year & current month) chart data
+            $currency = Currency_Code();
+            $totalEarnings = $this->getTotalRevenue();
+
+            $revenue_year = $this->getYearlyRevenue($currentYear);
+            $revenue_month = $this->getDailyRevenue($currentYear, $currentMonth);
+
+            $data['currency'] = $currency;
+            $data['total_earnings'] = $totalEarnings;
+            $data['total_earnings_formatted'] = $currency . number_format($totalEarnings, 2);
+            $data['revenue_year'] = $revenue_year;
+            $data['revenue_year_total'] = round(array_sum($revenue_year), 2);
+            $data['revenue_month'] = $revenue_month;
+            $data['revenue_month_total'] = round(array_sum($revenue_month), 2);
 
             return view('admin.dashboard.dashboard', $data);
         } catch (Exception $e) {
@@ -190,6 +303,83 @@ class DashboardController extends Controller
                     'total_quotes' => $totalQuotes
                 ]);
             }
+        } catch (Exception $e) {
+            return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
+        }
+    }
+
+    /**
+     * Revenue / earnings analytics data for the dashboard chart.
+     * Mirrors the quote chart navigation but only returns aggregated amounts.
+     */
+    public function getRevenueChartData(Request $request)
+    {
+        try {
+            $view = $request->input('view', 'year');
+            $year = (int) $request->input('year', date('Y'));
+            $month = (int) $request->input('month', date('m'));
+
+            $currentYear = (int) date('Y');
+            $currentMonth = (int) date('m');
+
+            // Future periods are never selectable.
+            if ($year > $currentYear) {
+                $year = $currentYear;
+            }
+
+            $currency = Currency_Code();
+
+            if ($view === 'month') {
+                if ($year === $currentYear && $month > $currentMonth) {
+                    $month = $currentMonth;
+                }
+                if ($month < 1) {
+                    $month = 1;
+                }
+                if ($month > 12) {
+                    $month = 12;
+                }
+
+                $daysInMonth = Carbon::createFromDate($year, $month, 1)->daysInMonth;
+                $data = $this->getDailyRevenue($year, $month);
+                $totalRevenue = round(array_sum($data), 2);
+
+                $categories = [];
+                for ($day = 1; $day <= $daysInMonth; $day++) {
+                    $categories[] = (string) $day;
+                }
+
+                return response()->json([
+                    'status' => 200,
+                    'view' => 'month',
+                    'year' => $year,
+                    'month' => $month,
+                    'month_name' => Carbon::createFromDate($year, $month, 1)->format('F Y'),
+                    'days_in_month' => $daysInMonth,
+                    'categories' => $categories,
+                    'series_data' => $data,
+                    'total_revenue' => $totalRevenue,
+                    'total_revenue_formatted' => $currency . number_format($totalRevenue, 2),
+                    'currency' => $currency,
+                    'is_current_month' => ($year === $currentYear && $month === $currentMonth),
+                ]);
+            }
+
+            // Year view
+            $data = $this->getYearlyRevenue($year);
+            $totalRevenue = round(array_sum($data), 2);
+
+            return response()->json([
+                'status' => 200,
+                'view' => 'year',
+                'year' => $year,
+                'categories' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                'series_data' => $data,
+                'total_revenue' => $totalRevenue,
+                'total_revenue_formatted' => $currency . number_format($totalRevenue, 2),
+                'currency' => $currency,
+                'is_current_year' => ($year === $currentYear),
+            ]);
         } catch (Exception $e) {
             return response()->json(['status' => 400, 'errors' => $e->getMessage()]);
         }

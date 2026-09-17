@@ -274,6 +274,9 @@ return [
     'confirmed_quotes' => 'Devis confirmés',
     'completed_quotes' => 'Devis terminés',
     'cancelled_quotes' => 'Devis annulés',
+    'total_earnings' => 'Revenus totaux',
+    'revenue_earnings_statistics' => 'Statistiques de revenus',
+    'no_completed_service_revenue' => 'Aucun revenu de service terminé enregistré pour cette période.',
 
     'access_denied' => 'Accès refusé',
     'whoops_the_code_you_entered_seems_to_be_for_a_different_product' => 'Oups ! Le code que vous avez saisi semble être destiné à un autre produit.',
