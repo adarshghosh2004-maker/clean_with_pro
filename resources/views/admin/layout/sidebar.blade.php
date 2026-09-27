@@ -3,14 +3,14 @@
         <a href="{{ route('admin.dashboard') }}" class="primary-color side-logo">
             <h3>{{ App_Name() }}</h3>
         </a>
-        <button class="btn side-toggle">
+        <button class="btn side-toggle" type="button" aria-label="Toggle navigation menu" aria-controls="side-menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </button>
     </div>
 
-    <ul class="side-menu mt-4">
+    <ul class="side-menu mt-4" id="side-menu">
         <p class="partition"><span>{{__('label.dashboard_and_report')}}</span></p>
         <li
             class="side_line {{ request()->routeIs('admin.dashboard*') ? 'active' : '' }}{{ request()->routeIs('admin.profile*') ? 'active' : '' }}">
@@ -87,7 +87,7 @@
             </a>
         </li>
         <p class="partition"><span>{{__('label.account')}}</span></p>
-        <li>
+        <li class="side_line side_line-signout">
             <a href="{{ route('admin.logout') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fa-solid fa-arrow-right-from-bracket fa-2xl menu-icon"></i>
