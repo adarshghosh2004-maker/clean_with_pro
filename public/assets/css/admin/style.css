@@ -2504,6 +2504,28 @@ textarea:focus-visible,
     align-items: center;
 }
 
+/* ── Card header chevron ───────────────────────────────────────────────────
+   The header above is a flex row, and `float` does not apply to a flex item,
+   so the Bootstrap `float-right` on a disclosure chevron is inert: the icon
+   renders first, on the left of the label, instead of last on the right.
+
+   Ordering it after the label and letting its own leading margin take up the
+   free space puts it back on the right edge at every width, and the header's
+   own `align-items: center` keeps it on the label's centre line. The icon
+   keeps the font-size it inherits from the header, so it tracks the type down
+   the breakpoint ladder (--fs-xl / --fs-2xl / 18px) with no rule of its own,
+   and it never shrinks when a long label crowds it on a narrow screen. */
+.custom-border-card .card-header>.fa-chevron-down {
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
 .custom-border-card .badge-header {
     font-size: var(--fs-xl);
     letter-spacing: var(--tracking-tight);
