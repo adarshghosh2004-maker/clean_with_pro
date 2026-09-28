@@ -9,7 +9,7 @@
         @include('admin.layout.header')
 
         <div class="body-content">
-            <h1 class="page-title-sm">{{__('label.feature')}}</h1>
+            <h1 class="page-title-sm">Overview</h1>
 
             <!-- Statistics Cards Row 1 -->
             <div class="row counter-row">
@@ -182,8 +182,8 @@
                 <div class="col-12 mb-4">
                     <div class="cart-bg">
                         <div class="box-title d-flex justify-content-between align-items-center flex-wrap">
-                            <h2 class="title"><i class="fa-solid fa-chart-column fa-lg mr-2"></i>Join Users &amp; Author
-                                Statistice</h2>
+                            <h2 class="title"><i class="fa-solid fa-chart-column fa-lg mr-2"></i>Quote Request
+                                Statistics</h2>
                             <div class="dash-chart-btns">
                                 <button id="year" class="dash-chart-btn active">This Year</button>
                                 <button id="month" class="dash-chart-btn">This Month</button>

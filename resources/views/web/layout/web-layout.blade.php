@@ -159,7 +159,7 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <section class="quote-form-section m-0" id="quote" style="margin-top: 80px;" data-anim="fade-up">
+                <section class="quote-form-section m-0" id="quote_modal_form" style="margin-top: 80px;" data-anim="fade-up">
                     <div class="container p-0">
                         <div class="row justify-content-center">
                             <div class="col-lg-12" data-anim="fade-up">
@@ -432,13 +432,13 @@
 
         $(document).on('click', '[data-bs-toggle="modal"]', function () {
 
-            let serviceId = $(this).data('id');
+            let serviceId = $(this).data('id') ?? '';
             let serviceName = $(this).data('name') ?? '';
             console.log(serviceName);
 
             // set selected option
-            $('#EditModel select[name="service_id"]').val(serviceId);
-            $('#EditModel textarea[name="msg"]').val(serviceName);
+            $('#quote_form select[name="service_id"]').val(serviceId);
+            $('#quote_form textarea[name="msg"]').val(serviceName);
 
         });
 

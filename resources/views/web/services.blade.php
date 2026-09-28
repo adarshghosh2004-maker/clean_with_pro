@@ -68,21 +68,23 @@
         </div>
     </section>
 
-    <section class="container" data-anim="fade-up">
-        <div class="featured-service">
-            <div class="featured-card">
-                <div class="featured-img"><img src="{{ $services[0]['banner_img'] ?? ''}}" alt="image"></div>
-                <div class="featured-info">
-                    <span class="tag-popular">MOST POPULAR</span>
-                    <h2>{{ $services[0]['title'] ?? ""}}</h2>
-                    <p>{{ $services[0]['description'] ?? "" }}</p>
-                    <a href="{{ route('services_detail', $services[0]['slug'] ?? "") }}" class="view-details">
-                        <i class="fa-solid fa-file-invoice"></i> VIEW DETAILS <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+    @if(count($services) > 0)
+        <section class="container" data-anim="fade-up">
+            <div class="featured-service">
+                <div class="featured-card">
+                    <div class="featured-img"><img src="{{ $services[0]['banner_img'] ?? ''}}" alt="image"></div>
+                    <div class="featured-info">
+                        <span class="tag-popular">MOST POPULAR</span>
+                        <h2>{{ $services[0]['title'] ?? ""}}</h2>
+                        <p>{{ $services[0]['description'] ?? "" }}</p>
+                        <a href="{{ route('services_detail', $services[0]['slug'] ?? "") }}" class="view-details">
+                            <i class="fa-solid fa-file-invoice"></i> VIEW DETAILS <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="section-padding" data-anim="fade-up">
         <div class="section-header anim-trigger">
