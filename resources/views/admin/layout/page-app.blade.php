@@ -16,6 +16,7 @@
     <link href="{{asset('assets/css/admin/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/admin/style.css') }}?v={{ time() }}" rel="stylesheet">
+    @stack('page_styles')
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
@@ -70,6 +71,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
     <!-- Toastr -->
     <script src="{{ asset('assets/js/toastr.min.js')}}"></script>
+    <script>
+        // Centralised Toastr timing for the Admin Panel.
+        // Merged over the library defaults, so design/position/colours are untouched.
+        //
+        // toastr starts the auto-hide timer at the same moment it starts the
+        // fade-in (showDuration: 300ms), so timeOut must be 2000ms + showDuration
+        // for the toast to actually sit at full opacity for a full 2 seconds.
+        // Verified in-browser: timeOut 2000 => 1730ms fully visible (too short);
+        //                         timeOut 2500 => 2200ms fully visible.
+        toastr.options = {
+            "timeOut": 2500,
+            "extendedTimeOut": 2500
+        };
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18095631245"></script>
@@ -128,7 +143,7 @@
                 if (url != "") {
                     setTimeout(function () {
                         window.location.replace(url);
-                    }, 500);
+                    }, 2000);
                 }
             } else {
                 var obj = resp.errors;

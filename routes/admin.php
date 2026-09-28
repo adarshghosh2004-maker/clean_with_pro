@@ -47,7 +47,12 @@ Route::group(['middleware' => 'authadmin', 'as' => 'admin.'], function () {
     // Dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('dashboard/chart-data', [DashboardController::class, 'getChartData'])->name('dashboard.chart.data');
-    Route::get('dashboard/revenue-chart-data', [DashboardController::class, 'getRevenueChartData'])->name('dashboard.revenue.data');
+
+    // Earning
+    Route::get('earning', [DashboardController::class, 'earning'])->name('earning');
+    Route::get('earning/chart-data', [DashboardController::class, 'earningChartData'])->name('earning.chart.data');
+    Route::get('earning/quotes', [DashboardController::class, 'earningQuotes'])->name('earning.quotes.data');
+
     // Profile
     Route::resource('profile', ProfileController::class)->only(['index', 'store']);
     Route::post('profile/changepassword', [ProfileController::class, 'ChangePassword'])->name('profile.changepassword');

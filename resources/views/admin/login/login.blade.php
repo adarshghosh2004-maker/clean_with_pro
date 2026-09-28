@@ -10,7 +10,7 @@
                 <div class="caption">
                     <div>
                         <!-- logo -->
-                        <h1 style="font-size: 60px; font-weight: bold;">{{ App_Name() }}</h1>
+                        <h1>{{ App_Name() }}</h1>
 
                         <?php $setting = Setting_Data(); ?>
                         <p class="text">

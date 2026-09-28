@@ -135,7 +135,7 @@
 
     if (window.innerWidth <= 768) {
         // Defer on mobile to prevent third-party cookie issues and main-thread blocking during initial load
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             setTimeout(loadGtag, 3000);
         });
     } else {
@@ -165,7 +165,8 @@
                             <div class="col-lg-12" data-anim="fade-up">
                                 <div class="quote-card border border-light">
                                     <div class="text-center mb-4">
-                                        <h2 class="h3 fw-bold text-primary-blue">{{ __('label.get_your_free_quote') }}</h2>
+                                        <h2 class="h3 fw-bold text-primary-blue">{{ __('label.get_your_free_quote') }}
+                                        </h2>
                                         <p class="text-muted">{{ __('label.no_hidden_costs') }}</p>
                                     </div>
 
@@ -209,7 +210,8 @@
                                             <div class="col-md-6">
                                                 <label
                                                     class="form-label small fw-semibold text-muted">{{ __('label.time_optional') }}</label>
-                                                <select name="time" aria-label="Select a time" class="form-control bg-light border-0" required>
+                                                <select name="time" aria-label="Select a time"
+                                                    class="form-control bg-light border-0" required>
                                                     <option value="">{{ __('label.select_a_time') }}</option>
                                                     <option value="07:00">7:00 AM</option>
                                                     <option value="07:30">7:30 AM</option>
@@ -242,8 +244,8 @@
                                                 <label
                                                     class="form-label small fw-semibold text-muted">{{ __('label.service') }}<span
                                                         class="text-danger">*</span></label>
-                                                <select name="service_id" aria-label="Select a service" class="form-control bg-light border-0"
-                                                    required>
+                                                <select name="service_id" aria-label="Select a service"
+                                                    class="form-control bg-light border-0" required>
                                                     <option value="">{{ __('label.select_a_service') }}</option>
                                                     <option value="0">{{ __('label.special_offers') }}</option>
                                                     @foreach ($services as $key => $value)
@@ -297,6 +299,7 @@
                 opacity: 0;
                 transform: scale(0.85) translateY(-24px);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1) translateY(0);
@@ -304,9 +307,12 @@
         }
 
         @keyframes swal-icon-pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 filter: drop-shadow(0 0 0 transparent);
             }
+
             50% {
                 filter: drop-shadow(0 0 14px var(--primary-color));
             }
@@ -550,8 +556,8 @@
             }
         }
 
-        $(document).ready(function() {
-            $('#quote_form, #quote_form_save, #quote_form_landing, #quote_form_contact').on('submit', function(e) {
+        $(document).ready(function () {
+            $('#quote_form, #quote_form_save, #quote_form_landing, #quote_form_contact').on('submit', function (e) {
                 e.preventDefault();
                 save_quote(this.id);
             });

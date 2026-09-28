@@ -54,7 +54,7 @@
                             <th> {{__('label.msg')}} </th>
                             <th>
                                 <div class="dropdown">
-                                    <button class="btn dropdown-toggle p-0 fw-bold" type="button" id="statusDropdown"
+                                    <button class="btn dropdown-toggle" type="button" id="statusDropdown"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         {{__('label.status')}}
                                     </button>
@@ -62,9 +62,9 @@
                                         <li><a class="dropdown-item status-filter" href="#"
                                                 data-status="">{{__('label.all')}}</a></li>
                                         <li><a class="dropdown-item status-filter" href="#" data-status="0">Pending</a></li>
-                                        <li><a class="dropdown-item status-filter" href="#" data-status="2">Completed</a>
-                                        </li>
                                         <li><a class="dropdown-item status-filter" href="#" data-status="1">Confirmed</a>
+                                        </li>
+                                        <li><a class="dropdown-item status-filter" href="#" data-status="2">Completed</a>
                                         </li>
                                         <li><a class="dropdown-item status-filter" href="#" data-status="3">Cancel</a></li>
                                     </ul>
@@ -447,6 +447,21 @@
     <script>
         $(document).ready(function () {
 
+            /* Seeded from ?status_filter= so a link can arrive with one status
+               already applied. It is the same parameter the table already sends
+               and the same 0/1/2/3 the controller already reads, so no second
+               filter path is introduced: the dropdown label is read back from the
+               existing menu item, and anything unexpected falls back to "All",
+               exactly what the page shows without the parameter. */
+            var url_status_filter = @json((string) request()->query('status_filter', ''));
+            var current_status_filter = (url_status_filter === '0' || url_status_filter === '1' ||
+                url_status_filter === '2' || url_status_filter === '3') ? url_status_filter : '';
+
+            var status_menu_item = $('.status-filter[data-status="' + current_status_filter + '"]');
+            if (status_menu_item.length && current_status_filter !== '') {
+                $('#statusDropdown').text(status_menu_item.text().trim());
+            }
+
             var table = $('#datatable').DataTable({
                 dom: "<'top'f>rt<'row'<'col-2'i><'col-1'l><'col-9'p>>",
                 searching: false,
@@ -488,7 +503,6 @@
                 table.draw();
             });
 
-            var current_status_filter = '';
             $('.status-filter').on('click', function (e) {
                 e.preventDefault();
                 current_status_filter = $(this).data('status');

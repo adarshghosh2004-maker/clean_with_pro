@@ -19,6 +19,12 @@
                 <span>{{__('label.dashboard')}}</span>
             </a>
         </li>
+        <li class="side_line {{ request()->routeIs('admin.earning*') ? 'active' : '' }}">
+            <a href="{{ route('admin.earning') }}">
+                <i class="fa-solid fa-chart-line fa-2xl menu-icon"></i>
+                <span>{{__('label.earning')}}</span>
+            </a>
+        </li>
         <p class="partition"><span>{{__('label.basic_data')}}</span></p>
         <li class="side_line {{ request()->routeIs('admin.question*') ? 'active' : '' }}">
             <a href="{{ route('admin.question.index') }}">
