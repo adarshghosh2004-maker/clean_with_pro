@@ -7,107 +7,8 @@
 
     <div class="right-content">
         @include('admin.layout.header')
-
-        {{-- ==================================================================
-             EARNING ANALYSIS
-
-             Every earnings figure on this page is produced by DashboardController
-             from one definition of qualifying revenue: a quote with status = 2
-             and the amount on that quote. Nothing here reads a dashboard card, a
-             sample figure or an invoice total, and every amount printed as
-             earnings below is the sum of rows the reader can open in the report
-             table at the foot of the page.
-
-             The page is six sections, in reading order:
-               HEADER     what is counted, and the filters that scope it
-               SUMMARY    the four earnings figures the report opens on
-               STATUS     the quote pipeline: every status, not just completed
-               ANALYTICS  earnings over time, earnings by service, quote volume
-               REPORT     the completed quotes behind the figures
-               INSIGHTS   the same numbers, restated as plain facts
-
-             STATUS is reporting only. It reads the same quote rows through the
-             same filters, but it feeds nothing: Total Earnings is still the sum
-             of completed quotes and cannot be moved by a figure in that panel.
-             ================================================================== --}}
         <div class="body-content earning-page">
-
-
-        {{-- ── SUMMARY ────────────────────────────────────────────────────
-                 Four figures, all cut from the same filtered set as the charts
-                 and the table below. Each card carries a caption underneath its
-                 figure saying what that figure was cut from, because on this
-                 page "total" and "average" mean different things depending on
-                 the filters.                                                          --}}
-            <div class="row counter-row earn-section">
-                <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                    <div class="card custom-card card-color-primary earn-card--accent">
-                        <div class="card-body">
-                            <div class="card-icon-primary">
-                                <i class="fa-solid fa-sack-dollar fa-2x"></i>
-                            </div>
-                            <div class="card-stat-content">
-                                <span>{{ __('label.total_earnings') }}</span>
-                                <h3 id="earnTotal">{{ $summary['total_earnings_formatted'] }}</h3>
-                                <small class="earn-card__meta">
-                                    {{ $distribution['distinct_services'] }} {{ __('label.services') }}
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                    <div class="card custom-card card-color-primary earn-card--count">
-                        <div class="card-body">
-                            <div class="card-icon-primary">
-                                <i class="fa-solid fa-clipboard-check fa-2x"></i>
-                            </div>
-                            <div class="card-stat-content">
-                                <span>{{ __('label.completed_quotes') }}</span>
-                                <h3 id="earnCount">{{ $summary['completed_quotes'] }}</h3>
-                                <small class="earn-card__meta">
-                                    {{ $filter_options['bounds']['earliest'] }}&ndash;{{ $filter_options['bounds']['latest'] }}
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                    <div class="card custom-card card-color-primary">
-                        <div class="card-body">
-                            <div class="card-icon-primary">
-                                <i class="fa-solid fa-divide fa-2x"></i>
-                            </div>
-                            <div class="card-stat-content">
-                                <span>{{ __('label.average_earnings_per_completed_quote') }}</span>
-                                <h3 id="earnAverage">{{ $summary['average_earnings_formatted'] }}</h3>
-                                <small class="earn-card__meta earn-card__meta--figure">
-                                    {{ $summary['completed_quotes'] }} {{ __('label.completed_quotes') }}
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                    <div class="card custom-card card-color-primary">
-                        <div class="card-body">
-                            <div class="card-icon-primary">
-                                <i class="fa-solid fa-calendar-day fa-2x"></i>
-                            </div>
-                            <div class="card-stat-content">
-                                <span>{{ __('label.current_period_earnings') }}</span>
-                                <h3 id="earnPeriodValue">{{ $summary['period_earnings_formatted'] }}</h3>
-                                <small class="earn-card__meta" id="earnPeriodLabel">{{ $summary['period_label'] }}</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- ── HEADER ─────────────────────────────────────────────────────
-                 Title, subtitle, the scope note, and the filter controls. The
-                 form is a plain GET: every filter state below is a shareable
-                 URL and the page still filters with scripting disabled.       --}}
+            
             <div class="earn-head">
                 <div class="earn-head__top">
                     <div class="earn-head__main">
@@ -175,6 +76,70 @@
                         </a>
                     </div>
                 </form>
+            </div>
+            <div class="row counter-row earn-section">
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="card custom-card card-color-primary earn-card--accent">
+                        <div class="card-body">
+                            <div class="card-icon-primary">
+                                <i class="fa-solid fa-sack-dollar fa-2x"></i>
+                            </div>
+                            <div class="card-stat-content">
+                                <span>{{ __('label.total_earnings') }}</span>
+                                <h3 id="earnTotal">{{ $summary['total_earnings_formatted'] }}</h3>
+                                <small class="earn-card__meta">
+                                    {{ $distribution['distinct_services'] }} {{ __('label.services') }}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="card custom-card card-color-primary earn-card--count">
+                        <div class="card-body">
+                            <div class="card-icon-primary">
+                                <i class="fa-solid fa-clipboard-check fa-2x"></i>
+                            </div>
+                            <div class="card-stat-content">
+                                <span>{{ __('label.completed_quotes') }}</span>
+                                <h3 id="earnCount">{{ $summary['completed_quotes'] }}</h3>
+                                <small class="earn-card__meta">
+                                    {{ $filter_options['bounds']['earliest'] }}&ndash;{{ $filter_options['bounds']['latest'] }}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="card custom-card card-color-primary">
+                        <div class="card-body">
+                            <div class="card-icon-primary">
+                                <i class="fa-solid fa-divide fa-2x"></i>
+                            </div>
+                            <div class="card-stat-content">
+                                <span>{{ __('label.average_earnings_per_completed_quote') }}</span>
+                                <h3 id="earnAverage">{{ $summary['average_earnings_formatted'] }}</h3>
+                                <small class="earn-card__meta earn-card__meta--figure">
+                                    {{ $summary['completed_quotes'] }} {{ __('label.completed_quotes') }}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                    <div class="card custom-card card-color-primary">
+                        <div class="card-body">
+                            <div class="card-icon-primary">
+                                <i class="fa-solid fa-calendar-day fa-2x"></i>
+                            </div>
+                            <div class="card-stat-content">
+                                <span>{{ __('label.current_period_earnings') }}</span>
+                                <h3 id="earnPeriodValue">{{ $summary['period_earnings_formatted'] }}</h3>
+                                <small class="earn-card__meta" id="earnPeriodLabel">{{ $summary['period_label'] }}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {{-- ── QUOTE STATUS OVERVIEW ───────────────────────────────────

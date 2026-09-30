@@ -119,9 +119,11 @@
     /* ── Semantic ────────────────────────────────────────────────────────── */
     --success: #0f9d7a;
     --success-600: #0b7d61;
+    --success-700: #085c47;
     --success-tint: rgba(15, 157, 122, 0.11);
     --danger: #c53a3a;
     --danger-600: #ad2f2f;
+    --danger-700: #8a2626;
     --danger-tint: rgba(197, 58, 58, 0.1);
     --warning: #c07f0a;
     --warning-tint: rgba(192, 127, 10, 0.12);
@@ -1076,7 +1078,6 @@ textarea:focus-visible,
     bottom: 0;
     width: 3px;
     border-radius: var(--radius-md) 0 0 var(--radius-md);
-    background: var(--brand-secondary);
 }
 
 /* Fixed icon column keeps every glyph on the same optical centre line and
@@ -5807,15 +5808,45 @@ div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:last-chil
     opacity: 0.9;
 }
 
-.toast-success {
-    background: var(--surface);
-    border-left: 3px solid var(--success);
+/* ── Toast state colours ──────────────────────────────────────────────────
+   Toastr tags each toast with its own state class (`toast-success`,
+   `toast-error`, ...), and the container rule above paints every toast with
+   `background-color: var(--surface)` (white) plus a neutral border. An ID +
+   class selector is therefore required here: a bare `.toast-success` (0,1,0)
+   loses to `#toast-container>div` (1,0,1) and the toast would render white.
+   Success is green and error is red, each with a solid `-600` fill, a darker
+   `-700` border of the same hue, and white text / icons for legibility.
+   Info and warning are untouched. */
+#toast-container>.toast-success {
+    background-color: var(--success-600);
+    border: 1px solid var(--success-700);
+    color: var(--white-color);
 }
 
-.toast-error,
-.toast-danger {
-    background: var(--surface);
-    border-left: 3px solid var(--danger);
+#toast-container>:is(.toast-error, .toast-danger) {
+    background-color: var(--danger-600);
+    border: 1px solid var(--danger-700);
+    color: var(--white-color);
+}
+
+/* Flip the inner text to white so it stays readable on the coloured fills.
+   Icons are the white PNGs toastr.min.css already supplies, so they need no
+   override. */
+#toast-container>:is(.toast-success, .toast-error, .toast-danger) :is(.toast-title, .toast-heading, .toast-message) {
+    color: var(--white-color);
+}
+
+#toast-container>:is(.toast-success, .toast-error, .toast-danger) :is(.toast-message) :is(a, label) {
+    color: var(--white-color);
+}
+
+#toast-container>:is(.toast-success, .toast-error, .toast-danger) :is(.toast-message) :is(a):hover {
+    color: var(--white-color);
+}
+
+#toast-container>:is(.toast-success, .toast-error, .toast-danger) .toast-close-button,
+#toast-container>:is(.toast-success, .toast-error, .toast-danger) :is(.toast-close-button:hover, .toast-close-button:focus) {
+    color: var(--white-color);
 }
 
 .toast-warning {
