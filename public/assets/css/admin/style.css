@@ -5383,27 +5383,27 @@ div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:last-chil
 }
 
 .status-0 {
-    background: var(--warning-tint);
-    border-color: rgba(192, 127, 10, 0.2);
-    color: #8a5b06;
+    background: rgba(192, 127, 10, 0.22);
+    border-color: rgba(192, 127, 10, 0.38);
+    color: #6d4705;
 }
 
 .status-1 {
-    background: var(--info-tint);
-    border-color: rgba(44, 107, 166, 0.2);
-    color: #1f4f7d;
+    background: rgba(44, 107, 166, 0.2);
+    border-color: rgba(44, 107, 166, 0.36);
+    color: #173d61;
 }
 
 .status-2 {
-    background: var(--success-tint);
-    border-color: var(--brand-secondary-tint-strong);
-    color: #0a6b53;
+    background: rgba(15, 157, 122, 0.22);
+    border-color: rgba(15, 157, 122, 0.38);
+    color: #085643;
 }
 
 .status-3 {
-    background: var(--neutral-tint);
-    border-color: rgba(111, 124, 140, 0.22);
-    color: var(--n-600);
+    background: rgba(197, 58, 58, 0.18);
+    border-color: rgba(197, 58, 58, 0.34);
+    color: #8a2626;
 }
 
 /* Bootstrap badge harmonisation */
@@ -8794,33 +8794,33 @@ div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:last-chil
 /* Pending — amber. Waiting on a decision. */
 .upcoming-btn,
 .status-0 {
-    background: var(--warning-tint);
-    border-color: rgba(192, 127, 10, 0.26);
-    color: #8a5b06;
+    background: rgba(192, 127, 10, 0.22);
+    border-color: rgba(192, 127, 10, 0.38);
+    color: #6d4705;
 }
 
 /* Confirmed — blue. Locked in, work not yet done. */
 .show-btn,
 .status-1 {
-    background: var(--info-tint);
-    border-color: rgba(44, 107, 166, 0.24);
-    color: #1f4f7d;
+    background: rgba(44, 107, 166, 0.2);
+    border-color: rgba(44, 107, 166, 0.36);
+    color: #173d61;
 }
 
 /* Completed — brand green. The good terminal state. */
 .primary-btn,
 .status-2 {
-    background: var(--success-tint);
-    border-color: rgba(15, 157, 122, 0.28);
-    color: #0a6b53;
+    background: rgba(15, 157, 122, 0.22);
+    border-color: rgba(15, 157, 122, 0.38);
+    color: #085643;
 }
 
 /* Cancelled — muted red. Terminal, but not an alarm. */
 .hide-btn,
 .status-3 {
-    background: var(--danger-tint);
-    border-color: rgba(197, 58, 58, 0.24);
-    color: #9c2c2c;
+    background: rgba(197, 58, 58, 0.18);
+    border-color: rgba(197, 58, 58, 0.34);
+    color: #8a2626;
 }
 
 /* The Active / Inactive toggle label that sits beside the switch in the
@@ -10558,8 +10558,9 @@ select.custom-select {
    never be the thing that widens the page, and a column that carries a chart
    stretches its panel so the plot area, not the header, absorbs the leftover
    height on a tall row. */
-.earning-page .earn-grid {
-    margin-bottom: 0;
+.earning-page>.earn-grid {
+    margin-bottom: var(--dash-gap, var(--sp-4));
+    row-gap: var(--dash-gap, var(--sp-4));
 }
 
 .earning-page .earn-grid>[class*="col-"] {

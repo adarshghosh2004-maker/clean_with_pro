@@ -284,7 +284,7 @@
                      as-is by rendering the plot as #revenueChart inside a
                      .cart-bg.                                                        --}}
                 <div class="row earn-grid earn-section">
-                    <div class="col-xl-8 col-12 mb-4">
+                    <div class="col-xl-8 col-12">
                         <div class="cart-bg earn-panel">
                             <div class="box-title d-flex justify-content-between align-items-center flex-wrap">
                                 <div class="earn-panel__heading">

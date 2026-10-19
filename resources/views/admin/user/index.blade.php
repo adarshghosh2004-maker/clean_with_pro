@@ -424,23 +424,23 @@
         }
 
         .badge-pending {
-            background: #fff3cd;
-            color: #856404;
+            background: rgba(192, 127, 10, 0.22);
+            color: #6d4705;
         }
 
         .badge-confirmed {
-            background: #d1e7dd;
-            color: #0f5132;
+            background: rgba(44, 107, 166, 0.2);
+            color: #173d61;
         }
 
         .badge-completed {
-            background: #cfe2ff;
-            color: #084298;
+            background: rgba(15, 157, 122, 0.22);
+            color: #085643;
         }
 
         .badge-cancelled {
-            background: #f8d7da;
-            color: #842029;
+            background: rgba(197, 58, 58, 0.18);
+            color: #8a2626;
         }
     </style>
 
