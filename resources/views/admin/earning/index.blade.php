@@ -256,7 +256,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
                 <div class="earn-empty earn-empty--inline @if ($status_breakdown['has_data']) d-none @endif"
                     id="earnStatusEmpty">

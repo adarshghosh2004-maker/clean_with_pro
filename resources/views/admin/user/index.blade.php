@@ -327,6 +327,12 @@
             border-bottom: 2px solid #1a4a7a;
         }
 
+        .invoice-modal-header .modal-title,
+        .invoice-modal-header .modal-title i,
+        .invoice-modal-header .close {
+            color: #fff;
+        }
+
         .invoice-modal-footer {
             background: #f8f9fa;
             border-top: 1px solid #e9ecef;
