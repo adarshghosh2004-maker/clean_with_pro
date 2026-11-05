@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Tab Icon -->
+    <link rel="shortcut icon" href="{{ Tab_Icon() }}">
+
+    <!-- Title Tag  -->
+    <title>@yield('tab_title') | {{ App_Name() }}</title>
+
+    <link href="{{asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{asset('assets/css/admin/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{asset('assets/css/admin/toastr.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/admin/style.css') }}?v={{ time() }}" rel="stylesheet">
+    @stack('page_styles')
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <!-- base_url -->
+    <input type="hidden" value="{{URL('')}}" id="base_url">
+
+    <!--Custom Script-->
+    <script>
+        var globalSiteUrl = '<?php echo $path = url('/'); ?>'
+        var serverEnvironment = '<?php echo env('APP_ENV'); ?>'
+        var currentRouteName = '<?php echo request()->route()->getName(); ?>'
+    </script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18095631245"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18095631245');
+</script>
+
+<!-- Event snippet for Request quote conversion page -->
+<script>
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18095631245/IDW5CJvTyLccEI3X1bRD',
+        'value': 1.0,
+        'currency': 'AUD'
+    });
+</script>
+
+<body>
+
+    @yield('content')
+
+    <div style="display:none" id="dvloader"><img src="{{ asset('assets/imgs/loading.gif')}}" alt="image" /></div>
+
+    <!-- Jquery -->
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Datatable -->
+    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/js.js')}}"></script>
+    <!-- pdfmake -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <!-- Toastr -->
+    <script src="{{ asset('assets/js/toastr.min.js')}}"></script>
+    <script>
+        // Centralised Toastr timing for the Admin Panel.
+        // Merged over the library defaults, so design/position/colours are untouched.
+        //
+        // toastr starts the auto-hide timer at the same moment it starts the
+        // fade-in (showDuration: 300ms), so timeOut must be 2000ms + showDuration
+        // for the toast to actually sit at full opacity for a full 2 seconds.
+        // Verified in-browser: timeOut 2000 => 1730ms fully visible (too short);
+        //                         timeOut 2500 => 2200ms fully visible.
+        toastr.options = {
+            "timeOut": 2500,
+            "extendedTimeOut": 2500
+        };
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18095631245"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-18095631245');
+    </script>
+
+    <script>
+        // Counter
+        $('.counting').each(function () {
+            var $this = $(this),
+                countTo = $this.attr('data-count');
+
+            countTo = getVal(countTo);
+
+            $(this).prop('Counter', 0).animate({
+                countNum: countTo
+            }, {
+                duration: 2000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                },
+                complete: function () {
+                    $this.text($this.attr('data-count'));
+                }
+            });
+        });
+
+        function getVal(val) {
+
+            multiplier = val.substr(-1).toLowerCase();
+
+            if (multiplier == "k")
+                return parseFloat(val) * 1000;
+            else if (multiplier == "m")
+                return parseFloat(val) * 1000000;
+            else if (multiplier == "b")
+                return parseFloat(val) * 1000000000;
+            else if (multiplier == "t")
+                return parseFloat(val) * 1000000000000;
+            else
+                return val;
+        }
+
+        function get_responce_message(resp, form_name = "", url = "") {
+            if (resp.status == '200') {
+                toastr.success(resp.success);
+                if (form_name != "") {
+                    document.getElementById(form_name).reset();
+                }
+                if (url != "") {
+                    setTimeout(function () {
+                        window.location.replace(url);
+                    }, 2000);
+                }
+            } else {
+                var obj = resp.errors;
+                if (typeof obj === 'string') {
+                    toastr.error(obj);
+                } else {
+                    $.each(obj, function (i, e) {
+                        toastr.error(e);
+                    });
+                }
+            }
+        }
+
+        // Toastr MSG Show
+        @if(Session::has('error'))
+            toastr.error('{{ Session::get("error") }}');
+        @elseif(Session::has('success'))
+            toastr.success('{{ Session::get("success") }}');
+        @endif
+
+        // Image Upload Preview
+        $('#imageUpload').change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreview').attr("src", e.target.result);
+                    $('#imagePreview').hide();
+                    $('#imagePreview').fadeIn(650);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+        $('#imageUpload2').change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreview2').attr("src", e.target.result);
+                    $('#imagePreview2').hide();
+                    $('#imagePreview2').fadeIn(650);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+        $('#imageUpload3').change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreview3').attr("src", e.target.result);
+                    $('#imagePreview3').hide();
+                    $('#imagePreview3').fadeIn(650);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+        $('#imageUploadModel').change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreviewModel').attr("src", e.target.result);
+                    $('#imagePreviewModel').hide();
+                    $('#imagePreviewModel').fadeIn(650);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+        $('#imageUploadLandscape').change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreviewLandscape').attr("src", e.target.result);
+                    $('#imagePreviewLandscape').hide();
+                    $('#imagePreviewLandscape').fadeIn(650);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+        $('#imageUploadLandscapeModel').change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imagePreviewLandscapeModel').attr("src", e.target.result);
+                    $('#imagePreviewLandscapeModel').hide();
+                    $('#imagePreviewLandscapeModel').fadeIn(650);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        // Sidebar Scroll Down
+        function sidebar_down() {
+            var activeItem = $('.sidebar .active');
+            if (activeItem.length > 0) {
+                var sidebar = $('.sidebar');
+                var offset = activeItem.offset().top - sidebar.offset().top + sidebar.scrollTop() - 300;
+                sidebar.animate({
+                    scrollTop: offset
+                }, 500);
+            }
+        }
+        sidebar_down();
+
+        // DataTable Defaults
+        var dataTableDefaults = {
+            dom: "<'top'f>rt<'row'<'col-2'i><'col-1'l><'col-9'p>>",
+            searching: false,
+            responsive: true,
+            autoWidth: false,
+            processing: true,
+            serverSide: true,
+            lengthMenu: [
+                [10, 50, 100, 500, -1],
+                [10, 50, 100, 500, "All"]
+            ],
+            language: {
+                paginate: {
+                    previous: "<i class='fa-solid fa-chevron-left'></i>",
+                    next: "<i class='fa-solid fa-chevron-right'></i>"
+                }
+            }
+        };
+
+        // Demo Mode Ajex Error
+        function showError() {
+            toastr.error("{{ __('label.you_have_no_right_to_add_edit_and_delete') }}");
+        }
+    </script>
+
+    @yield('pagescript')
+</body>
+
+</html>
